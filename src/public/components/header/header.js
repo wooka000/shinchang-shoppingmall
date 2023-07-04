@@ -12,32 +12,32 @@ nav.innerHTML = `
                     <!-- Menu -->
                     <menu>
                         <ul class="main-menu">
-                            <li>스토어</li>
-                            <li>이벤트</li>
-                            <li>커뮤니티</li>
+                            <li class="store"><a>스토어</a></li>
+                            <li class="event"><a>이벤트</a></li>
+                            <li class="community"><a>커뮤니티</a></li>
                         </ul>
                         <div class="hide-menu">
                             <div style="width: 140px">
                                 <ul>
-                                    <li>인기 | 신상품</li>
-                                    <li>의류</li>
-                                    <li>피규어</li>
-                                    <li>다이어리</li>
-                                    <li>아크릴 키링</li>
-                                    <li>핸드폰 케이스</li>
+                                    <li><a>인기 | 신상품</a></li>
+                                    <li><a>의류</a></li>
+                                    <li><a>피규어</a></li>
+                                    <li><a>다이어리</a></li>
+                                    <li><a>아크릴 키링</a></li>
+                                    <li><a>핸드폰 케이스</a></li>
                                 </ul>
                             </div>
                             <div style="width: 100px">
                                 <ul>
-                                    <li>sale</li>
-                                    <li>사전 예약</li>
+                                    <li><a>sale</a></li>
+                                    <li><a>사전 예약</a></li>
                                 </ul>
                             </div>
                             <div style="width: 150px">
                                 <ul>
-                                    <li>Q&A</li>
-                                    <li>도움말</li>
-                                    <li>공지사항</li>
+                                    <li><a>Q&A</a></li>
+                                    <li><a>도움말</a></li>
+                                    <li><a>공지사항</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -46,28 +46,23 @@ nav.innerHTML = `
                     <!-- login & myPage -->
                     <ul class="sign-list">
                         <li>
-                            <i class="fa-solid fa-lock"></i>
+                            <img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" />
                         </li>
                         <li class="login">
-                            <!-- <i class="fa-regular fa-user"></i> -->
-                            <img
-                                src="https://webtoonshop.co.kr/web/season2_skin/skin61/images/member_icon_b.svg"
-                            />
+                            <img src="../../public/assets/img/icon/user.svg" />
                             <div class="hide-login">
                                 <ul>
-                                    <li>로그인</li>
-                                    <li>회원 가입</li>
-                                    <li>마이 페이지</li>
+                                    <li><a>로그인</a></li>
+                                    <li><a>회원 가입</a></li>
+                                    <li><a>마이 페이지</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <!-- <i class="fa-solid fa-cart-shopping"></i> -->
-                            <img src="https://webtoonshop.co.kr/web/season2_skin/skin61/images/basket_icon_b.svg" alt="" />
+                            <img src="../../public/assets/img/icon/cart.svg" alt="" />
                         </li>
                         <li>
-                            <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
-                            <img src="https://webtoonshop.co.kr/web/season2_skin/skin61/images/search_icon_b.svg" alt="" />
+                            <img src="../../public/assets/img/icon/search.svg" alt="" />
                         </li>
                     </ul>
     `;
