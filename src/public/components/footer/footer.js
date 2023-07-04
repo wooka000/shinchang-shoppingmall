@@ -6,19 +6,13 @@ div.setAttribute('class', 'footer-box');
 div.innerHTML = `
 <div class="site-logo">
                     <div>
-                        <img src="../../public/assets/img/site-logo/twitter.svg" alt="twitter" />
+                        <img src="../../public/assets/img/icon/twitter.svg" alt="twitter" />
                     </div>
                     <div>
-                        <img
-                            src="https://e7.pngegg.com/pngimages/208/269/png-clipart-youtube-play-button-computer-icons-youtube-youtube-logo-angle-rectangle-thumbnail.png"
-                            alt="youtube"
-                        />
+                        <img src="../../public/assets/img/icon/youtube.svg" alt="youtube" />
                     </div>
                     <div>
-                        <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png"
-                            alt="facebook"
-                        />
+                        <img src="../../public/assets/img/icon/facebook.svg" alt="facebook" />
                     </div>
                 </div>
                 <div class="info">
@@ -26,14 +20,14 @@ div.innerHTML = `
                 </div>
                 <div class="net">
                     <div>
-                        <img src="https://cdn-icons-png.flaticon.com/512/3653/3653846.png" alt="email" />
+                        <img src="../../public/assets/img/icon/email.svg" alt="email" />
                         <span> &nbsp; info@tteogipmaeulshop.com</span>
                     </div>
                     <div>
                         <div>|</div>
                     </div>
                     <div>
-                        <img src="https://cdn-icons-png.flaticon.com/512/2067/2067643.png" alt="call" />
+                        <img src="../../public/assets/img/icon/call.svg" alt="call" />
                         <span>&nbsp; 1994-0505 </span>
                     </div>
                 </div>
