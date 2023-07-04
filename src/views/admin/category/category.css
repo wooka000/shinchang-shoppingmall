@@ -1,0 +1,89 @@
+@import url("../../../public/style/reset.css");
+@import url("../../../public/style/style.css");
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  color: black;
+  padding: 50px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+#empty {
+  width: 30px;
+}
+
+#title {
+  font-size: 36px;
+}
+
+button {
+  background-color: white;
+}
+
+#content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#content-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  height: 60vh;
+  margin-right: 10px;
+  background-color: #353535;
+  color: white;
+  border-radius: 10px;
+}
+
+.page {
+  text-align: center;
+  padding: 5px;
+  margin: 10px 0px;
+}
+
+.page:hover {
+  cursor: pointer;
+  background-color: #000000;
+}
+
+.first-page {
+  border-bottom: 2px solid white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#content-detail {
+  width: 85%;
+  height: 60vh;
+  text-align: center;
+  font-size: 20px;
+}
+
+.category {
+  margin-bottom: 10px;
+}
+
+.button-modify {
+  margin-right: 5px;
+  margin-left: 20px;
+}
