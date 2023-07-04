@@ -22,7 +22,7 @@ body {
 
 #header .logo > img {
     width: 180px;
-    height: 65px;
+    height: 75px;
     font-size: 2rem;
     font-weight: bold;
 }
@@ -57,8 +57,8 @@ i {
     transform: translateX(-40%);
     display: flex;
     justify-content: space-around;
-    color: #fff;
-    background-color: #000;
+    color: #000;
+    background-color: #fff;
     text-align: center;
     overflow: hidden;
     transition: all 0.5s ease-in-out;

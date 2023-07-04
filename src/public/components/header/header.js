@@ -6,7 +6,7 @@ nav.setAttribute('id', 'nav');
 nav.innerHTML = `
                     <!-- Logo -->
                     <div class="logo">
-                        <img src="../../public/assets/img/logo/떡잎방범대.png" alt="Logo" />
+                        <img src="../../public/assets/img/logo/떡잎마을샵-logo.png" alt="Logo" />
                     </div>
     
                     <!-- Menu -->
