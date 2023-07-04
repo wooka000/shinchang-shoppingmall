@@ -43,7 +43,7 @@ nav.innerHTML = `
                         </div>
                     </menu>
     
-                    <!-- Login & myPage -->
+                    <!-- login & myPage -->
                     <ul class="sign-list">
                         <li>
                             <i class="fa-solid fa-lock"></i>
