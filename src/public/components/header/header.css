@@ -1,0 +1,114 @@
+body {
+    width: 100%;
+    line-height: 25px;
+}
+
+#header {
+    width: 100%;
+    height: 100px;
+    color: #000;
+    position: relative;
+}
+
+#header #nav {
+    display: flex;
+    height: 100%;
+    padding: 0 3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* logo --------------------- */
+
+#header .logo > img {
+    width: 180px;
+    height: 65px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* sign-list ---------------- */
+
+#header .sign-list {
+    display: flex;
+    width: 230px;
+    justify-content: space-around;
+    position: relative;
+}
+
+#header .sign-list > li > img,
+i {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#header .sign-list > li {
+    position: relative;
+}
+
+/* sign-list : hide-login --- */
+
+#header .sign-list > li .hide-login {
+    width: 120px;
+    position: absolute;
+    top: 48px;
+    transform: translateX(-40%);
+    display: flex;
+    justify-content: space-around;
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+/* category ----------------- */
+
+#header menu {
+    position: absolute;
+    width: 550px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-80%);
+}
+
+#header menu .main-menu {
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#header menu .main-menu li {
+    margin: 0 4rem;
+}
+
+/* category : hide-menu ----- */
+
+#header menu .hide-menu {
+    width: 550px;
+    position: absolute;
+    top: 80px;
+
+    display: flex;
+    justify-content: space-around;
+
+    overflow: hidden;
+    color: #fff;
+
+    background-color: #000;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+}
+
+#header > menu > .hide-menu ul {
+    padding: 0 2rem 0 0;
+}
+
+#header > menu > .hide-menu ul li {
+    margin: 0 2rem;
+}
