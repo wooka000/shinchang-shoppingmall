@@ -45,13 +45,13 @@
     height: 20px;
 }
 
+.footer-logo {
+    height: 65px;
+}
+
 .footer-logo img {
     width: 170px;
     height: 70px;
-}
-
-.copyright {
-    height: 60px;
 }
 
 .copyright > span {
