@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./order.css">
+  <link rel="stylesheet" href="../../public/components/header/header.css">
+  <link rel="stylesheet" href="../../public/components/footer/footer.css">
+  <link rel="stylesheet" href="../../public/style/reset.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="container">
+    <section class="back">
+      <a id="back" href="#">
+        <img src="./images/back-button.png" alt="뒤로가기버튼" class="back-button">
+      </a>
+      <h3>장바구니</h3>
+    </section>
+
+    <div class="order">
+      <section class="customer-info">
+        <div class="info">
+          <div class="section-title">
+            <h2>주문자 정보</h2>
+          </div>
+
+          <div class="customer-input">
+            <div>
+              <label for="inputName">이름</label>
+              <input type="text" id="inputName" placeholder="이름을 입력해 주세요.">
+            </div>
+            <div>
+              <label for="inputNumber">전화번호</label>
+              <input type="text" id="inputNumber" placeholder="- 없이 01000000000">
+            </div>
+            <div>
+              <label for="inputMail">이메일</label>
+              <input type="email" id="inputMail" placeholder="배송 정보를 받을 이메일을 입력해 주세요.">
+            </div>
+            <div>
+              <label for="inputPassword">비밀번호</label>
+              <input type="password" id="inputPassword" placeholder="주문 내역을 확인할 비밀번호를 입력해 주세요.">
+            </div>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="section-title">
+            <h2>배송지 정보</h2>
+          </div>
+
+          <div class="customer-input">
+            <div>
+              <label for="inputName">수령인</label>
+              <input type="text" id="inputName" placeholder="이름을 입력해 주세요.">
+            </div>
+            <div>
+              <label for="inputNumber">전화번호</label>
+              <input type="text" id="inputNumber" placeholder="- 없이 01000000000">
+            </div>
+            <div>
+              <label>주소</label>
+              <section class="address">
+                <input type="text" placeholder="우편번호">
+                <button>우편번호 검색</button>
+              </section>
+              <input type="text" placeholder="주소">
+              <input type="text" placeholder="상세 주소를 입력해 주세요.">
+            </div>
+            <div>
+              <label for="inputMessage">배송 메모</label>
+              <input type="text" id="inputMessage" placeholder="배송 메모를 입력해 주세요.">
+            </div>
+          </div>
+        </div>
+
+        <div class="info">
+          <button class="order-button">결제하기</button>
+        </div>
+      </section>
+
+      <section class="order-list">
+        <div class="sticky-div">
+          <div class="section-title _2">
+            <h2>주문 상품</h2>
+          </div>
+
+          <article class="order-card">
+            <div class="order-check">
+              <!-- <input class="checkbox" type="checkbox"> -->
+            </div>
+            <aside class="order-content">
+              <div class="order-thumb">
+                <div class="order-image">
+                  <img src="../cart/images/case1.png" alt="짱구케이스">
+                </div>
+                <div class="order-item">
+                  <div class="order-header">
+                    <h5 class="product-num">No. 1095846</h5>
+                    <!-- <img src="../cart/images/x-button.png" alt="장바구니 취소" class="x-button"> -->
+                  </div>
+                  <h4 class="product-title">짱구 맹구 아이폰 케이스</h4>
+                  <h5 class="product-type">아이폰 13 하드케이스(무광)</h5>
+                  <div class="product-price">
+                    <div><h3>18,000원</h3></div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-footer">
+                <div class="order-summary">
+                  <div class="order-amount">상품금액 18,000원 / 배송비 3,000원</div>
+                  <div class="order-price">총 21,000원</div>
+                </div>
+              </div>
+            </aside>
+          </article>
+          <article class="order-card">
+            <div class="order-check">
+              <!-- <input class="checkbox" type="checkbox"> -->
+            </div>
+            <aside class="order-content">
+              <div class="order-thumb">
+                <div class="order-image">
+                  <img src="../cart/images/case1.png" alt="짱구케이스">
+                </div>
+                <div class="order-item">
+                  <div class="order-header">
+                    <h5 class="product-num">No. 1095846</h5>
+                    <!-- <img src="./images/x-button.png" alt="장바구니 취소" class="x-button"> -->
+                  </div>
+                  <h4 class="product-title">짱구 맹구 아이폰 케이스</h4>
+                  <h5 class="product-type">아이폰 13 하드케이스(무광)</h5>
+                  <div class="product-price">
+                    <div><h3>18,000원</h3></div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-footer">
+                <div class="order-summary">
+                  <div class="order-amount">상품금액 18,000원 / 배송비 3,000원</div>
+                  <div class="order-price">총 21,000원</div>
+                </div>
+              </div>
+            </aside>
+          </article>
+
+          <div class="order-receipt">
+            <div class="product-amount receipt">
+              <div>총 수량</div>
+              <div>1개</div>
+            </div>
+            <div class="product-sum receipt">
+              <div>총 상품 금액</div>
+              <div>18,000원</div>
+            </div>
+            <div class="delivery-price receipt">
+              <div>총 배송비</div>
+              <div>3,000원</div>
+            </div>
+            <div class="total-amount receipt">
+              <div>총 주문금액</div>
+              <div>21,000원</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+</body>
+
+  <script src="../../public/components/header/header.js"></script>
+  <script src="../../public/components/footer/footer.js"></script>
+</html>
