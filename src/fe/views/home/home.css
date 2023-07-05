@@ -1,0 +1,143 @@
+/* slide --------------------- */
+
+swiper-container {
+    width: 100%;
+    height: 800px;
+    z-index: 0;
+    position: relative;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* new products list ----------------- */
+
+.new-products-list {
+    margin: 0 auto;
+    width: 1000px;
+    color: #000;
+}
+
+.new-products-list > div {
+    height: 100%;
+    color: rgb(0, 0, 0);
+    margin: 8rem 0px;
+}
+
+.list-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-title > div > strong {
+    font-size: 22px;
+}
+
+.more {
+    background: none;
+    font-size: 16px;
+}
+
+hr {
+    border: 1px solid;
+    margin: 1rem 0 3rem 0;
+}
+
+.new-products {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.new-products > div img {
+    width: 230px;
+    height: 230px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+.new-products > div img:hover {
+    transform: translateY(-1rem);
+}
+
+.new-products > div > div {
+    text-align: center;
+}
+
+.products-title {
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0.5rem 0px 1rem;
+}
+
+.products-price {
+    font-size: 14px;
+}
+
+/* popular goods ----------------- */
+
+.popular-list {
+    width: 100%;
+    background-color: rgb(249, 249, 249);
+    color: rgb(0, 0, 0);
+    padding: 6rem 0px;
+}
+
+.popular-list > div {
+    width: 1000px;
+    margin: 0px auto;
+}
+
+.popular-title {
+    text-align: center;
+    margin: 0px 0px 3rem;
+}
+
+.popular-title > strong {
+    font-size: 22px;
+}
+
+.popular-list > div hr {
+    width: 50px;
+    border: 1px solid rgb(211, 211, 211);
+    margin: 0 auto;
+}
+
+.popular-contents {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 3rem;
+    gap: 1.5rem;
+}
+
+.popular-category {
+    text-align: center;
+    margin: 1rem 0px;
+}
+
+.popular-category > img {
+    width: 230px;
+    height: 160px;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+.popular-category > img:hover {
+    transform: scale(1.1);
+}
