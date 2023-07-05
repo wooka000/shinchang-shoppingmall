@@ -1,44 +1,33 @@
-import express from 'express';
-import User from '../models/userModel.js';
+import { Router } from "express";
+import User from "../database/schema/userSchema.js";
 
-const userRouter = express.Router();
+const userRouter = Router();
 
-userRouter.get("/createadmin", async (req, res) => {
+userRouter.post("/register", async (req, res) => {
+  const { name, email, password } = req.body;
+
+  console.log("success POST");
+
   try {
-    const user = new User({
-      name: 'admin',
-      id: 'idtest',
-      password: 'pwtest',
+    let user = await User.findOne({ email });
+    if (user) {
+      return res
+        .status(400)
+        .json({ error: [{ msg: "이미 존재하는 이메일입니다." }] });
+    }
+
+    user = new User({
+      name,
+      email,
+      password,
     });
-    const createUser = await user.save();
-    res.send(createUser);
-  } catch (err) {
-    res.status(500).send({ message: err.message })
+    await user.save();
+
+    res.send("Success");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
   }
 });
 
-userRouter.post(    
-    '/signin',
-    expressAsyncHandler(async(req, res) => {  
-        const signinUser = await User.findOne({
-            id: req.body.id,
-            password: req.body.password,
-        });
-        if(!signinUser){
-            res.status(401).send({
-                message: 'Invalid id or Password'
-            })
-        }else{
-            res.send({
-                _id: signinUser._id,
-                name: signinUser.name,
-                id: signinUser.id,
-                isAdmin: signinUser.isAdmin,
-                token: generateToken(signinUser),
-            })
-        }
-    }) //expressHandler End
-);
-
-
-export default userRouter;
+export { userRouter };
