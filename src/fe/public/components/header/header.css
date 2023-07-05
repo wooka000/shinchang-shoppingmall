@@ -8,7 +8,7 @@ body {
     height: 100px;
     color: #000;
     position: fixed;
-    z-index: 1;
+    z-index: 33;
 }
 
 #header:hover {
@@ -25,7 +25,7 @@ body {
 
 /* logo --------------------- */
 
-#header .logo > img {
+#header .logo a > img {
     width: 180px;
     height: 75px;
     font-size: 2rem;
@@ -41,7 +41,7 @@ body {
     position: relative;
 }
 
-#header .sign-list > li > img {
+#header .sign-list > li > a > img {
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -61,11 +61,15 @@ body {
     transform: translateX(-40%);
     display: flex;
     justify-content: space-around;
-    color: #000;
     background-color: #fff;
     text-align: center;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
+}
+
+.sign-list a {
+    color: #000;
+    text-decoration: none;
 }
 
 .sign-list a:hover {
@@ -112,7 +116,6 @@ body {
     justify-content: space-around;
 
     overflow: hidden;
-    color: #fff;
 
     background-color: rgba(0, 0, 0, 0.9);
     transition: all 0.5s ease-in-out;
@@ -127,8 +130,10 @@ body {
     margin: 0 2rem;
 }
 
-a {
+.hide-menu > div > ul > li a {
     cursor: pointer;
+    text-decoration: none;
+    color: #fff;
 }
 
 .hide-menu a:hover {
