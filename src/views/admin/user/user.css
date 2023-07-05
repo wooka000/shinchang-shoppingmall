@@ -1,12 +1,16 @@
 @import url("../../../public/style/reset.css");
 @import url("../../../public/style/style.css");
 
+#logo {
+  width: 300px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   background-color: white;
   align-items: center;
-  padding: 10px;
+  padding: 50px;
   width: 100%;
   height: 100%;
   color: black;
@@ -17,7 +21,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 20px;
-  padding: 10px;
+  border-bottom: 5px solid black;
 }
 
 #empty {
@@ -57,6 +61,10 @@ button {
   margin: 10px 0px;
 }
 
+.special-page {
+  background-color: #000000;
+}
+
 .page:hover {
   cursor: pointer;
   background-color: #000000;
@@ -82,19 +90,28 @@ a {
   border: 2px solid black;
   font-size: 20px;
   margin-bottom: 5px;
+  background-color: #e6ffde;
 }
 
-#user-container-number {
+#user-container-number,
+.user-number {
   width: 10%;
 }
-#user-container-name {
+#user-container-name,
+.user-name {
   width: 20%;
 }
-#user-container-id {
+#user-container-id,
+.user-id {
   width: 20%;
 }
-#user-container-date {
-  width: 40%;
+#user-container-date,
+.user-date {
+  width: 20%;
+}
+#user-container-authority,
+.user-authority {
+  width: 20%;
 }
 
 .user {
@@ -103,16 +120,11 @@ a {
   margin-bottom: 5px;
 }
 
-.user-number {
-  width: 10%;
+#empty {
+  color: white;
 }
 
-.user-name {
-  width: 20%;
-}
-.user-id {
-  width: 20%;
-}
-.user-date {
-  width: 40%;
+.fa-trash:hover {
+  color: red;
+  font-size: 24px;
 }

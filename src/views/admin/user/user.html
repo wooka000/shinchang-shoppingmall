@@ -14,16 +14,22 @@
   <body>
     <div class="container">
       <div class="header">
-        <div id="empty"></div>
-        <div id="title">관리자 페이지</div>
+        <div id="title">
+          <img
+            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
         <button>
-          <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
       <div id="content">
         <div id="content-title">
           <div class="page first-page">관리 목록</div>
-          <div class="page"><a href="../user/user.html">회원 관리</a></div>
+          <div class="page special-page">
+            <a href="../user/user.html">회원 관리</a>
+          </div>
           <div class="page">
             <a href="../product/product.html">제품 관리</a>
           </div>
@@ -33,38 +39,64 @@
           <div class="page"><a href="../order/order.html">주문 관리</a></div>
         </div>
         <div id="content-detail">
+          <div id="empty">empty</div>
           <div class="user-container">
             <div id="user-container-number">회원번호</div>
             <div id="user-container-name">회원명</div>
             <div id="user-container-id">아이디</div>
             <div id="user-container-date">가입날짜</div>
+            <div id="user-container-authority">권한</div>
           </div>
           <div class="user">
             <div class="user-number">1</div>
             <div class="user-name">짱구</div>
             <div class="user-id">jjang</div>
-            <div class="user-date">2023.07.04.11:28</div>
+            <div class="user-date">2023-07-04</div>
+            <div class="user-authority">
+              <select>
+                <option>관리자</option>
+                <option>일반사용자</option>
+              </select>
+            </div>
             <button><i class="fa-solid fa-trash"></i></button>
           </div>
           <div class="user">
             <div class="user-number">2</div>
             <div class="user-name">맹구</div>
             <div class="user-id">mang</div>
-            <div class="user-date">2023.07.04.13:38</div>
+            <div class="user-date">2023-07-04</div>
+            <div class="user-authority">
+              <select>
+                <option>관리자</option>
+                <option>일반사용자</option>
+              </select>
+            </div>
             <button><i class="fa-solid fa-trash"></i></button>
           </div>
           <div class="user">
             <div class="user-number">3</div>
             <div class="user-name">철수</div>
             <div class="user-id">chul</div>
-            <div class="user-date">2023.07.04.14:24</div>
+            <div class="user-date">2023-07-04</div>
+            <div class="user-authority">
+              <select>
+                <option>관리자</option>
+                <option>일반사용자</option>
+              </select>
+            </div>
             <button><i class="fa-solid fa-trash"></i></button>
           </div>
           <div class="user">
             <div class="user-number">4</div>
             <div class="user-name">흰둥이</div>
             <div class="user-id">hynn</div>
-            <div class="user-date">2023.07.04.15:38</div>
+            <div class="user-date">2023-07-04</div>
+            <div class="user-authority">
+              <select>
+                <option>관리자</option>
+                <option>일반사용자</option>
+              </select>
+            </div>
             <button><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>

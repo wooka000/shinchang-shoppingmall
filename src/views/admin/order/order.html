@@ -14,10 +14,14 @@
   <body>
     <div class="container">
       <div class="header">
-        <div id="empty"></div>
-        <div id="title">관리자 페이지</div>
+        <div id="title">
+          <img
+            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
         <button id="logout">
-          <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
       <div id="content">
@@ -30,9 +34,76 @@
           <div class="page">
             <a href="../category/category.html">카테고리 관리</a>
           </div>
-          <div class="page"><a href="../order/order.html">주문 관리</a></div>
+          <div class="page special-page">
+            <a href="../order/order.html">주문 관리</a>
+          </div>
         </div>
-        <div id="content-detail">주문 관련 정보 나열</div>
+        <div id="content-detail">
+          <div id="empty">empty</div>
+          <div class="order-container">
+            <div id="order-container-date">날짜</div>
+            <div id="order-container-name">주문자성함</div>
+            <div id="order-container-info">주문정보</div>
+            <div id="order-container-price">주문총액</div>
+            <div id="order-container-status">상태관리</div>
+          </div>
+          <div class="order">
+            <div class="order-date">2023-07-05</div>
+            <div class="order-name">짱구</div>
+            <div class="order-info">짱구 휴대폰 케이스</div>
+            <div class="order-price">23900원</div>
+            <div class="order-status">
+              <select>
+                <option>상품 준비중</option>
+                <option>상품 배송중</option>
+                <option>배송 완료</option>
+              </select>
+            </div>
+            <button><i class="fa-solid fa-trash"> 삭제</i></button>
+          </div>
+          <div class="order">
+            <div class="order-date">2023-07-05</div>
+            <div class="order-name">짱구</div>
+            <div class="order-info">짱구 휴대폰 케이스</div>
+            <div class="order-price">23900원</div>
+            <div class="order-status">
+              <select>
+                <option>상품 준비중</option>
+                <option>상품 배송중</option>
+                <option>배송 완료</option>
+              </select>
+            </div>
+            <button><i class="fa-solid fa-trash"> 삭제</i></button>
+          </div>
+          <div class="order">
+            <div class="order-date">2023-07-05</div>
+            <div class="order-name">짱구</div>
+            <div class="order-info">짱구 휴대폰 케이스</div>
+            <div class="order-price">23900원</div>
+            <div class="order-status">
+              <select>
+                <option>상품 준비중</option>
+                <option>상품 배송중</option>
+                <option>배송 완료</option>
+              </select>
+            </div>
+            <button><i class="fa-solid fa-trash"> 삭제</i></button>
+          </div>
+          <div class="order">
+            <div class="order-date">2023-07-05</div>
+            <div class="order-name">짱구</div>
+            <div class="order-info">짱구 휴대폰 케이스</div>
+            <div class="order-price">23900원</div>
+            <div class="order-status">
+              <select>
+                <option>상품 준비중</option>
+                <option>상품 배송중</option>
+                <option>배송 완료</option>
+              </select>
+            </div>
+            <button><i class="fa-solid fa-trash"> 삭제</i></button>
+          </div>
+        </div>
       </div>
     </div>
   </body>

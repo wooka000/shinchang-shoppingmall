@@ -14,17 +14,21 @@
   <body>
     <div class="container">
       <div class="header">
-        <div id="empty"></div>
-        <div id="title">관리자 페이지</div>
+        <div id="title">
+          <img
+            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
         <button id="logout">
-          <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
       <div id="content">
         <div id="content-title">
           <div class="page first-page">관리 목록</div>
           <div class="page"><a href="../user/user.html">회원 관리</a></div>
-          <div class="page">
+          <div class="page special-page">
             <a href="../product/product.html">제품 관리</a>
           </div>
           <div class="page">
@@ -37,7 +41,7 @@
             <i class="fa-solid fa-plus">제품추가</i>
           </button>
           <div class="product-container">
-            <div id="product-container-number">회원번호</div>
+            <div id="product-container-number">제품번호</div>
             <div id="product-container-image">이미지</div>
             <div id="product-container-name">이름</div>
             <div id="product-container-price">가격</div>
@@ -48,7 +52,7 @@
             <div class="product-image">짱구</div>
             <div class="product-name">jjang</div>
             <div class="product-price">1500원</div>
-            <div class="product-date">2023.07.04.11:28</div>
+            <div class="product-date">2023-07-04</div>
             <button class="button-modify">
               <i class="fa-solid fa-pencil"></i>
             </button>
@@ -59,7 +63,7 @@
             <div class="product-image">짱구</div>
             <div class="product-name">jjang</div>
             <div class="product-price">1500원</div>
-            <div class="product-date">2023.07.04.11:28</div>
+            <div class="product-date">2023-07-04</div>
             <button class="button-modify">
               <i class="fa-solid fa-pencil"></i>
             </button>
@@ -70,7 +74,7 @@
             <div class="product-image">짱구</div>
             <div class="product-name">jjang</div>
             <div class="product-price">1500원</div>
-            <div class="product-date">2023.07.04.11:28</div>
+            <div class="product-date">2023-07-04</div>
             <button class="button-modify">
               <i class="fa-solid fa-pencil"></i>
             </button>
@@ -81,7 +85,7 @@
             <div class="product-image">짱구</div>
             <div class="product-name">jjang</div>
             <div class="product-price">1500원</div>
-            <div class="product-date">2023.07.04.11:28</div>
+            <div class="product-date">2023-07-04</div>
             <button class="button-modify">
               <i class="fa-solid fa-pencil"></i>
             </button>
@@ -92,14 +96,34 @@
             <div class="product-image">짱구</div>
             <div class="product-name">jjang</div>
             <div class="product-price">1500원</div>
-            <div class="product-date">2023.07.04.11:28</div>
+            <div class="product-date">2023-07-04</div>
             <button class="button-modify">
               <i class="fa-solid fa-pencil"></i>
             </button>
             <button><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>
+        <div class="modal hidden">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form>
+              <label for="newProduct-name" class="label">제품 이름</label>
+              <input id="newProduct-name" placeholder="짱구 잠옷" type="text" />
+              <label for="newProduct-category" class="label">카테고리</label>
+              <input id="newProduct-category" placeholder="의류" type="text" />
+              <label for="newProduct-price" class="label">제품 가격</label>
+              <input id="newProduct-price" placeholder="30000" type="number" />
+              <label for="newProduct-image" class="label">제품 사진</label>
+              <input id="newProduct-image" type="file" />
+              <div id="newProduct-button-container">
+                <button id="button-product-upload">제품 등록</button>
+                <button id="button-product-cancel">취소</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
+    <script src="product.js"></script>
   </body>
 </html>

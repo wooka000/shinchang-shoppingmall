@@ -14,10 +14,14 @@
   <body>
     <div class="container">
       <div class="header">
-        <div id="empty"></div>
-        <div id="title">관리자 페이지</div>
+        <div id="title">
+          <img
+            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
         <button id="logout">
-          <i class="fa-solid fa-right-from-bracket fa-lg"></i>
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
       <div id="content">
@@ -27,56 +31,89 @@
           <div class="page">
             <a href="../product/product.html">제품 관리</a>
           </div>
-          <div class="page">
+          <div class="page special-page">
             <a href="../category/category.html">카테고리 관리</a>
           </div>
           <div class="page"><a href="../order/order.html">주문 관리</a></div>
         </div>
         <div id="content-detail">
+          <div>
+            <button class="button-category-add">
+              <i class="fa-solid fa-plus">카테고리 추가</i>
+            </button>
+          </div>
           <div class="category">
             인기 | 신상품
-            <button class="button-modify">
-              <i class="fa-solid fa-pencil"></i>
-            </button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <div class="buttons">
+              <button class="button-modify">
+                <i class="fa-solid fa-pencil"> 수정</i>
+              </button>
+              <button><i class="fa-solid fa-trash">삭제</i></button>
+            </div>
           </div>
           <div class="category">
             피규어
-            <button class="button-modify">
-              <i class="fa-solid fa-pencil"></i>
-            </button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <div class="buttons">
+              <button class="button-modify">
+                <i class="fa-solid fa-pencil"> 수정</i>
+              </button>
+              <button><i class="fa-solid fa-trash">삭제</i></button>
+            </div>
           </div>
           <div class="category">
             다이어리
-            <button class="button-modify">
-              <i class="fa-solid fa-pencil"></i>
-            </button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <div class="buttons">
+              <button class="button-modify">
+                <i class="fa-solid fa-pencil"> 수정</i>
+              </button>
+              <button><i class="fa-solid fa-trash">삭제</i></button>
+            </div>
           </div>
           <div class="category">
             아크릴 키링
-            <button class="button-modify">
-              <i class="fa-solid fa-pencil"></i>
-            </button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <div class="buttons">
+              <button class="button-modify">
+                <i class="fa-solid fa-pencil"> 수정</i>
+              </button>
+              <button><i class="fa-solid fa-trash">삭제</i></button>
+            </div>
           </div>
           <div class="category">
             핸드폰 케이스
-            <button class="button-modify">
-              <i class="fa-solid fa-pencil"></i>
-            </button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <div class="buttons">
+              <button class="button-modify">
+                <i class="fa-solid fa-pencil"> 수정</i>
+              </button>
+              <button><i class="fa-solid fa-trash">삭제</i></button>
+            </div>
           </div>
           <div class="category">
             의류
-            <button class="button-modify">
-              <i class="fa-solid fa-pencil"></i>
-            </button>
-            <button><i class="fa-solid fa-trash"></i></button>
+            <div class="buttons">
+              <button class="button-modify">
+                <i class="fa-solid fa-pencil"> 수정</i>
+              </button>
+              <button><i class="fa-solid fa-trash">삭제</i></button>
+            </div>
+          </div>
+        </div>
+        <div class="modal hidden">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form>
+              <label for="newCategory-name" class="label">카테고리 이름</label>
+              <input
+                id="newCategory-name"
+                placeholder="ex) 피규어"
+                type="text"
+              />
+              <button id="button-category-upload">등록</button>
+              <button id="button-category-cancel">취소</button>
+            </form>
           </div>
         </div>
       </div>
     </div>
+    <script src="category.js"></script>
   </body>
 </html>

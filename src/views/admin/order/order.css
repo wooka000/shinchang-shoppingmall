@@ -1,12 +1,16 @@
 @import url("../../../public/style/reset.css");
 @import url("../../../public/style/style.css");
 
+#logo {
+  width: 300px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   background-color: white;
   align-items: center;
-  padding: 10px;
+  padding: 50px;
   width: 100%;
   height: 100%;
   color: black;
@@ -17,7 +21,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 20px;
-  padding: 10px;
+  border-bottom: 5px solid black;
 }
 
 #empty {
@@ -57,6 +61,10 @@ button {
   margin: 10px 0px;
 }
 
+.special-page {
+  background-color: #000000;
+}
+
 .page:hover {
   cursor: pointer;
   background-color: #000000;
@@ -77,88 +85,45 @@ a {
   text-align: center;
 }
 
-.user-container,
-.product-container {
+.order-container {
   display: flex;
   border: 2px solid black;
   font-size: 20px;
   margin-bottom: 5px;
+  background-color: #e6ffde;
 }
 
-#user-container-number {
+#order-container-date,
+.order-date {
+  width: 15%;
+}
+#order-container-name,
+.order-name {
   width: 10%;
 }
-#user-container-name {
-  width: 20%;
-}
-#user-container-id {
-  width: 20%;
-}
-#user-container-date {
-  width: 40%;
-}
-
-#product-container-number {
-  width: 10%;
-}
-#product-container-image {
-  width: 20%;
-}
-#product-container-name {
-  width: 20%;
-}
-#product-container-price {
-  width: 10%;
-}
-#product-container-date {
+#order-container-info,
+.order-info {
   width: 30%;
 }
+#order-container-price,
+.order-price {
+  width: 10%;
+}
+#order-container-status,
+.order-status {
+  width: 20%;
+}
 
-.user,
-.product {
+.order {
   display: flex;
-  border: 2px solid black;
   font-size: 20px;
-  margin-bottom: 1px;
-}
-
-.user-number {
-  width: 10%;
-}
-
-.user-name {
-  width: 20%;
-}
-.user-id {
-  width: 20%;
-}
-.user-date {
-  width: 40%;
-}
-
-.product-number {
-  width: 10%;
-}
-.product-image {
-  width: 20%;
-}
-.product-name {
-  width: 20%;
-}
-.product-price {
-  width: 10%;
-}
-.product-date {
-  width: 30%;
-}
-
-.button-modify {
-  margin-right: 10px;
-}
-
-.button-product-add {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
   margin-bottom: 5px;
+}
+
+.fa-trash:hover {
+  color: red;
+}
+
+#empty {
+  color: white;
 }
