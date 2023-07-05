@@ -33,7 +33,7 @@ h3 {
 .order {
   display: flex;
   /* justify-content: space-between; */
-  gap: 4.5rem;
+  gap: 7rem;
 }
 
 .customer-info {
@@ -42,7 +42,7 @@ h3 {
   flex-direction: column;
   gap: 2rem;
   /* flex-grow: 1; */
-  width: 60%;
+  width: 64%;
   flex-shrink: 2;
 }
 
@@ -209,18 +209,6 @@ img {
   font-weight: 300;
 }
 
-/* .x-button {
-  width: 15px;
-} */
-
-.product-title {
-  /* margin-top: 10px; */
-}
-
-.product-type {
-  /* margin-top: 7px; */
-}
-
 .product-price {
   margin-top: 0.5rem;
   display: flex;
@@ -273,5 +261,5 @@ input[type="button"] {
 }
 
 .order-list {
-  width: 40%;
+  width: 36%;
 }
