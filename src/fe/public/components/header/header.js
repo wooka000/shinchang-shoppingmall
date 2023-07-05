@@ -46,10 +46,10 @@ nav.innerHTML = `
                     <!-- login & myPage -->
                     <ul class="sign-list">
                         <li>
-                            <img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" />
+                            <a href=""><img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" /></a>
                         </li>
                         <li class="login">
-                            <img src="../../public/assets/img/icon/user.svg" />
+                            <a href=""><img src="../../public/assets/img/icon/user.svg" /></a>
                             <div class="hide-login">
                                 <ul>
                                     <li><a href="">로그인</a></li>
@@ -59,10 +59,10 @@ nav.innerHTML = `
                             </div>
                         </li>
                         <li>
-                            <img src="../../public/assets/img/icon/cart.svg" alt="" />
+                            <a href=""><img src="../../public/assets/img/icon/cart.svg" alt="" /></a>
                         </li>
                         <li>
-                            <img src="../../public/assets/img/icon/search.svg" alt="" />
+                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="" /></a>
                         </li>
                     </ul>
     `;
