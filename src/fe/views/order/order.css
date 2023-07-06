@@ -86,7 +86,7 @@ input {
   gap: 1.3rem;
 }
 
-.address input {
+.address > input {
   flex-grow: 1;
 }
 
@@ -110,6 +110,10 @@ input {
 .address button:active, .order-button:active {
   transform: scale(102%);
   transition: .1s;
+}
+
+.address:last-child > input:first-child {
+  width: 60%;
 }
 
 .order-button {
