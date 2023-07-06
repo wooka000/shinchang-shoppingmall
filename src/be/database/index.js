@@ -14,4 +14,4 @@ db.on("error", (error) =>
   console.error("MongoDB 연결에 실패하였습니다" + DB_URL + "\n" + error)
 );
 
-export * from "./models/user-model.js";
+export * from "./models/userModel.js";
