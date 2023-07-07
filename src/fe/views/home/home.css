@@ -2,7 +2,7 @@
 
 swiper-container {
     width: 100%;
-    height: 800px;
+    height: 100%;
     z-index: 0;
     position: relative;
 }
@@ -10,31 +10,50 @@ swiper-container {
 swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: green;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
 }
 
 swiper-slide img {
     display: block;
-    width: 100%;
-    height: 100%;
+    width: 750px;
+    height: 750px;
     object-fit: cover;
+    margin: 0 2rem 0 0;
+}
+
+.slide-contents {
+    text-align: left;
+    padding-right: 20%;
+}
+
+.slide-contents button {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 28px;
+    background-color: #000;
+}
+
+.slide-contents button:hover {
+    background-color: #fff;
+    color: #000;
 }
 
 /* new products list ----------------- */
 
 .new-products-list {
     margin: 0 auto;
-    width: 1000px;
+    width: 70%;
+    padding: 90px 0;
     color: #000;
 }
 
 .new-products-list > div {
     height: 100%;
     color: rgb(0, 0, 0);
-    margin: 8rem 0px;
+    margin: 4rem 0px;
 }
 
 .list-title {
@@ -60,14 +79,16 @@ hr {
     width: 100%;
     height: auto;
     display: grid;
+    text-align: center;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    grid-gap: 4rem 1.5rem;
 }
 
 .new-products > div img {
-    width: 230px;
-    height: 230px;
+    width: 100%;
+    /* height: 80%; */
     cursor: pointer;
+    border-radius: 3%;
     transition: all 0.5s ease-in-out 0s;
 }
 
@@ -99,7 +120,7 @@ hr {
 }
 
 .popular-list > div {
-    width: 1000px;
+    width: 70%;
     margin: 0px auto;
 }
 
@@ -132,9 +153,13 @@ hr {
     margin: 1rem 0px;
 }
 
+.popular-category div {
+    margin: 0.5rem 0;
+}
+
 .popular-category > img {
-    width: 230px;
-    height: 160px;
+    width: 100%;
+    height: 70%;
     transition: all 0.5s ease-in-out 0s;
 }
 
