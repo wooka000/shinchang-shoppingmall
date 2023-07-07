@@ -3,6 +3,7 @@ const modal = document.querySelector(".modal");
 const modalBackground = document.querySelector(".modal-background");
 const uploadButton = document.querySelector("#button-product-upload");
 const cancelButton = document.querySelector("#button-product-cancel");
+const modifyButton = document.querySelector(".button-modify");
 const deleteButton = document.querySelector(".button-delete");
 
 // 제품 추가
@@ -12,97 +13,67 @@ const productCategory = document.querySelector("#newProduct-category");
 const productPrice = document.querySelector("#newProduct-price");
 const productImage = document.querySelector("#newProduct-image");
 
-let products = [
-  {
-    productNumber: 1,
-    name: "짱구 케이스",
-    price: "18000원",
-    createdAt: new Date().getMilliseconds(),
-    image: "이미지 파일",
-    category: "케이스",
-  },
-  {
-    productNumber: 2,
-    name: "맹구 케이스",
-    price: "17000원",
-    createdAt: new Date().getMilliseconds(),
-    image: "이미지 파일",
-    category: "케이스",
-  },
-  {
-    productNumber: 3,
-    name: "철수 케이스",
-    price: "19000원",
-    createdAt: new Date().getMilliseconds(),
-    image: "이미지 파일",
-    category: "케이스",
-  },
-  {
-    productNumber: 4,
-    name: "흰둥이 케이스",
-    price: "13000원",
-    createdAt: new Date().getMilliseconds(),
-    image: "이미지 파일",
-    category: "케이스",
-  },
-];
+fetchJSONData();
 
-// product 배열을 받아옴
-// 받아온 배열을 50번째줄부터 채워넣어야함. +삭제 버튼과 함께
-// 그럼 .order 내의 태그들은 js로 이동해서 사용 __.insertAdjacentHTML
-
-for (let i = 0; i < products.length; i++) {
-  content.insertAdjacentHTML(
-    "beforeend",
-    `<div class="product">
-      <div class="product-number">${products[i].productNumber}</div>
-      <div class="product-image">${products[i].image}</div>
-      <div class="product-name">${products[i].name}</div>
-      <div class="product-price">${products[i].price}</div>
-      <div class="product-date">${products[i].createdAt}</div>
-      <button class="button-modify">
-        <i class="fa-solid fa-pencil"></i>
-      </button>
-      <button class="button-delete">
-        <i class="fa-solid fa-trash"></i>
-      </button>
-    </div>
-    `
-  );
+// json파일에서 데이터 불러오기 (초기 화면 세팅)
+// 이벤트 안에서 바로 걸어주기
+async function fetchJSONData() {
+  const response = await fetch("./product.json");
+  const data = await response.json();
+  console.log(data);
+  for (let i = 0; i < data.length; i++) {
+    content.insertAdjacentHTML(
+      "beforeend",
+      `<div class="product">
+        <div class="product-number">${data[i].productNumber}</div>
+        <div class="product-image">${data[i].image}</div>
+        <div class="product-name">${data[i].name}</div>
+        <div class="product-price">${data[i].price}</div>
+        <div class="product-date">${data[i].createdAt}</div>
+        <button class="button-modify">
+          <i class="fa-solid fa-pencil"></i>
+        </button>
+        <button class="button-delete">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+      `
+    );
+  }
 }
 
-function onClick(e) {
+// 제품추가 버튼 클릭 시 이벤트
+function addProduct(e) {
   e.preventDefault();
   modal.classList.toggle("hidden");
 }
 
-addButton.addEventListener("click", onClick);
-modalBackground.addEventListener("click", onClick);
-cancelButton.addEventListener("click", onClick);
+addButton.addEventListener("click", addProduct);
+modalBackground.addEventListener("click", addProduct);
+cancelButton.addEventListener("click", addProduct);
 
-// 제품 업로드
-
-function upload(e) {
+// 제품등록 버튼 클릭시
+async function upload(e) {
   e.preventDefault();
-  products.push({
+  const response = await fetch("./product.json");
+  const data = await response.json();
+  data.push({
     productNumber: 10,
     name: productName.value,
     price: productPrice.value,
-    createdAt: new Date().getMilliseconds(),
+    createdAt: `${new Date().getMonth() + 1}.${new Date().getDate()}`,
     image: productImage.value,
     category: productCategory.value,
   });
-  console.log(products);
+
   content.insertAdjacentHTML(
     "beforeend",
     `<div class="product">
-      <div class="product-number">${
-        products[products.length - 1].productNumber
-      }</div>
-      <div class="product-image">${products[products.length - 1].image}</div>
-      <div class="product-name">${products[products.length - 1].name}</div>
-      <div class="product-price">${products[products.length - 1].price}</div>
-      <div class="product-date">${products[products.length - 1].createdAt}</div>
+      <div class="product-number">${data[data.length - 1].productNumber}</div>
+      <div class="product-image">${data[data.length - 1].image}</div>
+      <div class="product-name">${data[data.length - 1].name}</div>
+      <div class="product-price">${data[data.length - 1].price}</div>
+      <div class="product-date">${data[data.length - 1].createdAt}</div>
       <button class="button-modify">
         <i class="fa-solid fa-pencil"></i>
       </button>
@@ -117,21 +88,36 @@ function upload(e) {
   productPrice.value = "";
   productImage.value = "";
   modal.classList.toggle("hidden");
+  console.log(data);
 }
 
 uploadButton.addEventListener("click", upload);
 
 //제품 삭제
-// 삭제 및 수정은 제품 데이터를 가지고 하기엔 무리가 있어보임 얼른 백엔드에서 데이터 받아서 해야할듯?
-// function deleteProduct(e) {
-//   console.log(e);
-//   if (e.target.classList[1] === "fa-trash") {
-//     const productNumber = 1;
-//     const newProducts = products.filter(
-//       (product) => product.productNumber !== productNumber
-//     );
-//     products = newProducts;
-//   }
+// js에서 동적으로 생성한 엘리먼트 접근 방법
+//=> 현재는 content라는 틀에 이벤트를 등록해서 삭제 버튼이 아닌 틀안의 모든요소에서 이벤트 발생
+// 새로운 배열을 만드는데 성공, 어떻게 json파일의 배열을 업데이트?
+async function deleteProduct(e) {
+  e.preventDefault();
+  const id = Number(e.target.parentNode.parentNode.firstElementChild.innerText);
+  const response = await fetch("./product.json");
+  const data = await response.json();
+  const newData = data.filter((element) => element.productNumber !== id);
+  console.log(newData);
+}
+
+content.addEventListener("click", deleteProduct);
+
+//제품 수정
+//삭제와 같은 이유로 엘리먼트 접근을 못함 => 클릭 이벤트 생성 X
+// async function updateProduct(e) {
+//   e.preventDefault();
+//   modifyModal.classList.toggle("hidden");
 // }
 
-// content.addEventListener("click", deleteProduct);
+// const modifyBackground = document.querySelector(".modal-modify-background");
+// const modifyContent = document.querySelector(".modal-modify-content");
+
+// modifyButton.addEventListener("click", addProduct);
+// modifyBackground.addEventListener("click", addProduct);
+// modifyContent.addEventListener("click", addProduct);
