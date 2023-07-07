@@ -1,6 +1,11 @@
 import cors from "cors";
 import express from "express";
-import { userRouter } from "./routers/index.js";
+import {
+  userRouter,
+  productRouter,
+  orderRouter,
+  categoryRouter,
+} from "./routers/index.js";
 
 const app = express();
 
@@ -9,10 +14,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/user", userRouter);
-// app.use("/api/products", productsRouter);
+app.use("/api/products", productRouter);
 // app.use("/api/admin", adminRouter);
 // app.use("/api/cart", cartRouter);
-// app.use("/api/order", orderRouter);
+app.use("/api/order", orderRouter);
+app.use("/api/category", categoryRouter);
 
 // app.use(errorHandler);
 
