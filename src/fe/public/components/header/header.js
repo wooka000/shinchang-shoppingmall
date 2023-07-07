@@ -54,6 +54,7 @@ nav.innerHTML = `
                                 <ul>
                                     <li><a href="">로그인</a></li>
                                     <li><a href="">회원 가입</a></li>
+                                    <li><a href="">장바구니</a></li>
                                     <li><a href="">마이 페이지</a></li>
                                 </ul>
                             </div>
@@ -62,7 +63,7 @@ nav.innerHTML = `
                             <a href=""><img src="../../public/assets/img/icon/cart.svg" alt="" /></a>
                         </li>
                         <li>
-                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="" /></a>
+                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="" style="width: 25px; height: 25px; margin: 2px" /></a>
                         </li>
                     </ul>
     `;
