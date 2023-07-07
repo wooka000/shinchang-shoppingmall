@@ -18,7 +18,7 @@
     </div>
     <div class="order">
       <section class="order-list">
-        <article class="order-card">
+        <!-- <article class="order-card">
           <div class="order-check">
             <input class="checkbox" type="checkbox" name="product" value="" checked="on">
           </div>
@@ -187,7 +187,7 @@
               </div>
             </div>
           </aside>
-        </article>
+        </article> -->
       </section>
       
       <section class="order-info">
@@ -195,19 +195,19 @@
         <div class="order-receipt">
           <div class="product-amount receipt">
             <div>총 수량</div>
-            <div>1개</div>
+            <div id="total-amount"></div>
           </div>
           <div class="product-sum receipt">
             <div>총 상품 금액</div>
-            <div>18,000원</div>
+            <div id="total-price"></div>
           </div>
           <div class="delivery-price receipt">
             <div>총 배송비</div>
-            <div>3,000원</div>
+            <div id="total-delivery-charge"></div>
           </div>
           <div class="total-amount receipt">
             <div>총 주문금액</div>
-            <div>21,000원</div>
+            <div id="total-money"></div>
           </div>
         </div>
         <div class="order-button"><a class="btn" href="../order/order.html">주문하기</a></div>
@@ -220,5 +220,6 @@
 
   <script src="../../public/components/header/header.js"></script>
   <script src="../../public/components/footer/footer.js"></script>
+  <script src="./cart.js"></script>
 
 </html>
