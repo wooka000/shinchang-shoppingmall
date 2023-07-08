@@ -29,9 +29,10 @@ function render() {
   let num = 0;  // 총 주문 수량
   let sum = 0;  // 총 주문 금액
   let totalDC = 3000;  // 임의의 총 배송비
-  for (let i = 1; i < localStorage.length + 1; i++) {
-    let deliveryCharge = i*1000;
-    let pro = JSON.parse(localStorage.getItem(`pro${i}`));
+  let keys = Object.keys(localStorage);
+  for (let key of keys) {
+    let deliveryCharge = Math.floor(Math.random()*3 + 1) * 1000;
+    let pro = JSON.parse(localStorage.getItem(key));
     num++;
     sum += pro.price;
     output += `
@@ -84,15 +85,16 @@ function render() {
   totalMoney.innerText = sum + totalDC;
 }
 
-render(); 
+render();
 
-
-// // x 버튼으로 장바구니에서 제외
-// const xBtn = document.querySelectorAll(".x-button");
-// xBtn.forEach(btn => {
-//   btn.addEventListener("click", e => {
-//     let idx = btn.classList[1].substring(0, 1);
-//     localStorage.removeItem(`pro${idx}`);
-//     render();
-//   })
-// })
+// x 버튼으로 장바구니에서 제외
+const xBtn = document.querySelectorAll(".x-button");
+xBtn.forEach(btn => {
+  console.log(btn);
+  btn.addEventListener("click", e => {
+    let idx = btn.classList[1].substring(0, 1);
+    localStorage.removeItem(`pro${idx}`);
+    render();
+  });
+})
+// 처음 한번만 제대로 삭제되고 두번째부터는 x 버튼을 눌러도, 로컬스토리지를 직접 삭제해도 화면의 변화가 없음..
