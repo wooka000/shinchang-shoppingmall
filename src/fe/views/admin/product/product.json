@@ -1,0 +1,34 @@
+[
+  {
+    "productNumber": 1,
+    "name": "짱구 케이스",
+    "price": "18000원",
+    "createdAt": "07.04",
+    "image": "이미지 파일",
+    "category": "케이스"
+  },
+  {
+    "productNumber": 2,
+    "name": "맹구 케이스",
+    "price": "17000원",
+    "createdAt": "07.05",
+    "image": "이미지 파일",
+    "category": "케이스"
+  },
+  {
+    "productNumber": 3,
+    "name": "철수 케이스",
+    "price": "19000원",
+    "createdAt": "07.06",
+    "image": "이미지 파일",
+    "category": "케이스"
+  },
+  {
+    "productNumber": 4,
+    "name": "흰둥이 케이스",
+    "price": "13000원",
+    "createdAt": "07.07",
+    "image": "이미지 파일",
+    "category": "케이스"
+  }
+]

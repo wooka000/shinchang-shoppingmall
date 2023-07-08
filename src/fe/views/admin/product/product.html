@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="product.css" />
+    <script
+      src="https://kit.fontawesome.com/59c9ef03f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div id="title">
+          <img
+            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
+        <button id="button-back">
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
+        </button>
+      </div>
+      <div id="content">
+        <div id="content-title">
+          <div class="page first-page">관리 목록</div>
+          <div class="page"><a href="../user/user.html">회원 관리</a></div>
+          <div class="page special-page">
+            <a href="../product/product.html">제품 관리</a>
+          </div>
+          <div class="page">
+            <a href="../category/category.html">카테고리 관리</a>
+          </div>
+          <div class="page"><a href="../order/order.html">주문 관리</a></div>
+        </div>
+        <div id="content-detail">
+          <div class="add-container">
+            <button class="button-product-add">
+              <i class="fa-solid fa-plus">제품추가</i>
+            </button>
+          </div>
+          <div class="product-container">
+            <div id="product-container-number">제품번호</div>
+            <div id="product-container-image">이미지</div>
+            <div id="product-container-name">이름</div>
+            <div id="product-container-price">가격</div>
+            <div id="product-container-date">등록시간</div>
+          </div>
+        </div>
+        <div class="modal hidden">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form action="#">
+              <label for="newProduct-name" class="label">제품 이름</label>
+              <input
+                id="newProduct-name"
+                placeholder="ex) 짱구 잠옷"
+                type="text"
+              />
+              <label for="newProduct-category" class="label">카테고리</label>
+              <input
+                id="newProduct-category"
+                placeholder="ex) 의류"
+                type="text"
+              />
+              <label for="newProduct-price" class="label">제품 가격</label>
+              <input
+                id="newProduct-price"
+                placeholder="ex) 30000"
+                type="number"
+              />
+              <label for="newProduct-image" class="label">제품 사진</label>
+              <input id="newProduct-image" type="file" />
+              <div id="newProduct-button-container">
+                <input
+                  id="button-product-upload"
+                  type="submit"
+                  value="제품등록"
+                />
+                <input id="button-product-cancel" type="submit" value="취소" />
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-modify hidden">
+          <div class="modal-modify-background"></div>
+          <div class="modal-modify-content"></div>
+        </div>
+      </div>
+    </div>
+    <script src="product.js"></script>
+  </body>
+</html>
