@@ -10,10 +10,6 @@ function nextError(callback) {
   };
 }
 
-userRouter.get("/test", async (req, res, next) => {
-  return res.json({ message: "test" });
-});
-
 userRouter.post("/register", async (req, res, next) => {
   try {
     console.log(req.body);
