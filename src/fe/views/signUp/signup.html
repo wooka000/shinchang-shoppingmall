@@ -5,15 +5,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>회원가입</title>
         <link rel="stylesheet" href="signup.css" />
+        <script src="signup.js"></script>
     </head>
     <body>
+        <form action="" method="" id="form"></form>
         <div class="container">
             <div class="title">
                 <h1>회원가입</h1>
             </div>
             <div class="test">
                 <span>아이디</span>
-                <input type="text" placeholder=" 아이디를 입력해 주세요." />
+                <input
+                    id="id"
+                    type="text"
+                    placeholder=" 아이디를 입력해 주세요."
+                    name="id"
+                />
             </div>
 
             <div class="test">
@@ -21,6 +28,8 @@
                 <input
                     type="password"
                     placeholder=" 비밀번호를 입력해주세요."
+                    name="passoword"
+                    id="password"
                 />
             </div>
 
@@ -29,12 +38,19 @@
                 <input
                     type="password"
                     placeholder=" 비밀번호를 다시 입력해주세요."
+                    name="password"
+                    id="passwordc"
                 />
             </div>
 
             <div class="test">
                 <span>이름</span>
-                <input type="text" placeholder=" 이름을 입력해 주세요." />
+                <input
+                    type="text"
+                    placeholder=" 이름을 입력해 주세요."
+                    name="name"
+                    id="name"
+                />
             </div>
 
             <div class="test">
@@ -42,6 +58,7 @@
                 <section class="address">
                     <div class="address-num">
                         <input
+                            name="address"
                             id="sample6_postcode"
                             class="detail"
                             type="text"
@@ -75,7 +92,12 @@
 
             <div class="test">
                 <span>전화번호</span>
-                <input type="text" placeholder=" - 없이 01000000000" />
+                <input
+                    type="text"
+                    placeholder=" - 없이 01000000000"
+                    name="number"
+                    id="number"
+                />
             </div>
 
             <!-- <div class="test">
@@ -84,7 +106,9 @@
         </div> -->
 
             <div class="">
-                <button class="login-btn">가입하기</button>
+                <button class="login-btn" onclick="formcheck()">
+                    가입하기
+                </button>
             </div>
         </div>
     </body>
