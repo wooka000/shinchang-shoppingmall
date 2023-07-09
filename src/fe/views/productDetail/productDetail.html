@@ -3,13 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>떡잎마을샵 상품 상세</title>
+        <title>상품 상세</title>
 
         <!-- CSS -->
         <link rel="stylesheet" href="../../public/style/reset.css" />
         <link rel="stylesheet" href="../../public/components/header/header.css" />
         <link rel="stylesheet" href="../../public/components/footer/footer.css" />
-        <link rel="stylesheet" href="./productsDetail.css" />
+        <link rel="stylesheet" href="./productDetail.css" />
 
         <!-- favicon -->
         <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
@@ -21,11 +21,8 @@
         <main>
             <div>
                 <div class="product-main">
-                    <div class="product-img">
-                        <div>
-                            <img src="../../public/assets/img/goodsImg/짱구.jpeg" alt="" />
-                        </div>
-                    </div>
+                    <!-- 로드되자마자 보이는 이미지 -->
+                    <div class="product-img"></div>
 
                     <!-- product contents 정보 변하지 않음-->
                     <div class="product-contents">
@@ -35,11 +32,10 @@
                     </div>
                     <div class="contents-main">
                         <h3>상품 기본 정보</h3>
-                        <div class="contents-img">
-                            <div>
-                                <img src="../../public/assets/img/goodsImg/짱구.jpeg" alt="product-img" />
-                            </div>
-                        </div>
+
+                        <!-- 본문 상품 정보 이미지 -->
+                        <div class="contents-img"></div>
+
                         <div class="contents-ex">
                             심장은 위하여서 이상은 불어 끝에 하여도 것이다. 우는 간에 길을 사랑의 찾아 끓는 말이다.
                             실현에 천자만홍이 그들의 품었기 바로 천고에 것이다. 때까지 꽃이 같이 봄바람이다. 불어 두기
@@ -117,30 +113,30 @@
                 <div class="product-form">
                     <div class="product-field">
                         <div>
-                            <div class="product-info">
-                                <h2>[짱구] 짱구 떡잎 방범대 아크릴 집게 1종</h2>
-                                <p>7,000원</p>
-                            </div>
+                            <!-- 제품 제목 및 가격 -->
+                            <div class="product-info"></div>
+
                             <div class="product-device">
                                 <p>기종</p>
-                                <select name="device" id="">
-                                    <option value="14pro">iphone 14 pro</option>
-                                    <option value="14">iphone 14</option>
-                                    <option value="13pro">iphone 13 pro</option>
-                                    <option value="13">iphone 13</option>
-                                    <option value="S23">galaxy S23</option>
-                                    <option value="zFlip">galaxy zflip</option>
-                                    <option value="ultra">galaxy S23 ultra</option>
+                                <select name="device" class="select">
+                                    <option value="14pro">아이폰 14 PRO</option>
+                                    <option value="14">아이폰 14</option>
+                                    <option value="13pro">아이폰 13 PRO</option>
+                                    <option value="13">아이폰 13</option>
+                                    <option value="S23">갤럭시 S23</option>
+                                    <option value="S22">갤럭시 S22</option>
+                                    <option value="ultra">갤럭시 S23 울트라</option>
+                                    <option value="zflip">갤럭시 Z플립 4</option>
                                 </select>
                             </div>
                             <div class="product-counter">
                                 <div>수량</div>
                                 <div class="counter-btn">
-                                    <button type="button" class="minus-btn" name="plus">
+                                    <button class="minus-btn" name="plus">
                                         <img src="../../public/assets/img/icon/minus.svg" alt="minus" />
                                     </button>
                                     <input type="text" name="quantity" value="1" readonly />
-                                    <button type="button" class="plus-btn" name="minus">
+                                    <button class="plus-btn" name="minus">
                                         <img src="../../public/assets/img/icon/plus.svg" alt="plus" />
                                     </button>
                                 </div>
@@ -150,8 +146,8 @@
 
                             <div class="product-btn">
                                 <div>
-                                    <button class="cart-btn">장바구니 담기</button>
-                                    <button class="order-btn">바로 구매하기</button>
+                                    <button type="submit" class="cart-btn">장바구니 담기</button>
+                                    <button type="submit" class="order-btn">바로 구매하기</button>
                                 </div>
                             </div>
                             <div class="delivery-start">
@@ -171,12 +167,12 @@
 
         <!-- footer -->
         <div id="footer"></div>
+
+        <!-- js header & footer -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
+
+        <!-- js productDetail -->
+        <script src="./productDetail.js"></script>
     </body>
-
-    <!-- header & footer -->
-    <script src="../../public/components/header/header.js"></script>
-    <script src="../../public/components/footer/footer.js"></script>
-
-    <!-- productDetail -->
-    <script src="./productsDetail.js"></script>
 </html>
