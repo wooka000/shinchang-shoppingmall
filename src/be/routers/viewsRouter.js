@@ -13,7 +13,7 @@ viewsRouter.use("/login", serveStatic("login"));
 viewsRouter.use("/", serveStatic(""));
 
 function serveStatic(resource) {
-  const resourcePath = path.join(__dirname, `../fe/views/${resource}`);
+  const resourcePath = path.join(__dirname, `../../fe/views/${resource}`);
   const option = { index: `${resource}.html` };
 
   return express.static(resourcePath, option);
