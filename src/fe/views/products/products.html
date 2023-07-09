@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>상품 목록</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../public/style/reset.css" />
+        <link rel="stylesheet" href="../../public/components/header/header.css" />
+        <link rel="stylesheet" href="../../public/components/footer/footer.css" />
+        <link rel="stylesheet" href="./productList.css" />
+
+        <!-- font-awesome -->
+        <script src="https://kit.fontawesome.com/89cb732b4c.js" crossorigin="anonymous"></script>
+
+        <!-- favicon -->
+        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header"></div>
+
+        <main>
+            <!-- list-title -->
+            <div class="list-title"></div>
+
+            <!-- drop down -->
+            <div class="drop-down">
+                <select name="" id="">
+                    <option value="">가격 낮은순</option>
+                    <option value="">가격 높은순</option>
+                </select>
+            </div>
+
+            <!-- product-list -->
+            <div class="products-list"></div>
+
+            <!-- pagination -->
+            <div class="pagination">
+                <div>
+                    <img src="./pagination.png" alt="" />
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+
+        <!-- header / footer -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
+
+        <!-- list -->
+        <script src="./productList.js"></script>
+    </body>
+</html>
