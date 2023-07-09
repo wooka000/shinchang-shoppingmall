@@ -25,46 +25,48 @@
         <div class="info">
           <div class="section-title">
             <h2>주문자 정보</h2>
+            <p> &nbsp표시가 있는 항목은 필수 항목입니다.</p>
           </div>
 
           <div class="customer-input">
             <div>
-              <label for="inputName">이름</label>
-              <input type="text" id="inputName" placeholder="이름을 입력해 주세요.">
+              <label for="inputName" class="required">이름 &nbsp</label>
+              <input type="text" id="inputName" placeholder="이름을 입력해 주세요." required>
             </div>
             <div>
-              <label for="inputNumber">전화번호</label>
-              <input type="text" id="inputNumber" placeholder="- 없이 01000000000">
+              <label for="inputNumber" class="required">전화번호 &nbsp</label>
+              <input type="text" id="inputNumber" placeholder="- 없이 01000000000" required>
             </div>
             <div>
               <label for="inputMail">이메일</label>
               <input type="email" id="inputMail" placeholder="배송 정보를 받을 이메일을 입력해 주세요.">
             </div>
-            <div>
+            <!-- <div>
               <label for="inputPassword">비밀번호</label>
               <input type="password" id="inputPassword" placeholder="주문 내역을 확인할 비밀번호를 입력해 주세요.">
-            </div>
+            </div> -->
           </div>
         </div>
 
         <div class="info">
           <div class="section-title">
             <h2>배송지 정보</h2>
+            <p> &nbsp표시가 있는 항목은 필수 항목입니다.</p>
           </div>
 
           <div class="customer-input">
             <div>
-              <label for="inputName">수령인</label>
-              <input type="text" id="inputName" placeholder="이름을 입력해 주세요.">
+              <label for="inputName" class="required">수령인 &nbsp</label>
+              <input type="text" id="inputName" placeholder="이름을 입력해 주세요." required>
             </div>
-            <div>
+            <!-- <div>
               <label for="inputNumber">전화번호</label>
               <input type="text" id="inputNumber" placeholder="- 없이 01000000000">
-            </div>
+            </div> -->
             <div>
-              <label>주소</label>
+              <label class="required">주소 &nbsp</label>
               <section class="address">
-                <input id="sample6_postcode" type="text" placeholder="우편번호">
+                <input id="sample6_postcode" type="text" placeholder="우편번호" required>
                 <button onclick="execDaumPostcode()">우편번호 검색</button>
               </section>
               <input id="sample6_address" type="text" placeholder="주소">
@@ -75,7 +77,16 @@
             </div>
             <div>
               <label for="inputMessage">배송 메모</label>
-              <input type="text" id="inputMessage" placeholder="배송 메모를 입력해 주세요.">
+              <select id="inputMessage" onchange="messageSelect()">
+                <option>배송 메모를 선택해 주세요.</option>
+                <option>배송 전에 미리 연락 바랍니다.</option>
+                <option>부재시 전화 주시거나 문자 남겨주세요.</option>
+                <option>부재시 경비실에 맡겨주세요.</option>
+                <option>부재시 문 앞에 놓아주세요.</option>
+                <option>도착시 문 앞에 놓고 벨 눌러주세요.</option>
+                <option>직접 입력</option>
+              </select>
+              <input type="text" id="dm" class="hide" placeholder="배송 메모를 입력해 주세요.">
             </div>
           </div>
         </div>
@@ -91,81 +102,25 @@
             <h2>주문 상품</h2>
           </div>
 
-          <article class="order-card">
-            <div class="order-check">
-              <!-- <input class="checkbox" type="checkbox"> -->
-            </div>
-            <aside class="order-content">
-              <div class="order-thumb">
-                <div class="order-image">
-                  <img src="../cart/images/case1.png" alt="짱구케이스">
-                </div>
-                <div class="order-item">
-                  <div class="order-header">
-                    <h5 class="product-num">No. 1095846</h5>
-                    <!-- <img src="../cart/images/x-button.png" alt="장바구니 취소" class="x-button"> -->
-                  </div>
-                  <h4 class="product-title">짱구 맹구 아이폰 케이스</h4>
-                  <h5 class="product-type">아이폰 13 하드케이스(무광)</h5>
-                  <div class="product-price">
-                    <div><h3>18,000원</h3></div>
-                  </div>
-                </div>
-              </div>
-              <div class="order-footer">
-                <div class="order-summary">
-                  <div class="order-amount">상품금액 18,000원 / 배송비 3,000원</div>
-                  <div class="order-price">총 21,000원</div>
-                </div>
-              </div>
-            </aside>
-          </article>
-          <article class="order-card">
-            <div class="order-check">
-              <!-- <input class="checkbox" type="checkbox"> -->
-            </div>
-            <aside class="order-content">
-              <div class="order-thumb">
-                <div class="order-image">
-                  <img src="../cart/images/case1.png" alt="짱구케이스">
-                </div>
-                <div class="order-item">
-                  <div class="order-header">
-                    <h5 class="product-num">No. 1095846</h5>
-                    <!-- <img src="./images/x-button.png" alt="장바구니 취소" class="x-button"> -->
-                  </div>
-                  <h4 class="product-title">짱구 맹구 아이폰 케이스</h4>
-                  <h5 class="product-type">아이폰 13 하드케이스(무광)</h5>
-                  <div class="product-price">
-                    <div><h3>18,000원</h3></div>
-                  </div>
-                </div>
-              </div>
-              <div class="order-footer">
-                <div class="order-summary">
-                  <div class="order-amount">상품금액 18,000원 / 배송비 3,000원</div>
-                  <div class="order-price">총 21,000원</div>
-                </div>
-              </div>
-            </aside>
-          </article>
+          <div class="card-list">
+          </div>
 
           <div class="order-receipt">
             <div class="product-amount receipt">
               <div>총 수량</div>
-              <div>1개</div>
+              <div id="total-amount">1개</div>
             </div>
             <div class="product-sum receipt">
               <div>총 상품 금액</div>
-              <div>18,000원</div>
+              <div id="total-price">18,000원</div>
             </div>
             <div class="delivery-price receipt">
               <div>총 배송비</div>
-              <div>3,000원</div>
+              <div id="total-delivery-charge">3,000원</div>
             </div>
             <div class="total-amount receipt">
               <div>총 주문금액</div>
-              <div>21,000원</div>
+              <div id="total-money">21,000원</div>
             </div>
           </div>
         </div>
@@ -173,11 +128,21 @@
     </div>
   </main>
 
+  <section id="modal-box">
+    <div class="complete">
+      <div class="complete-message">
+        <h2>주문이 완료되었습니다!</h2>
+      </div>
+      <a id="orderlist" href="#">주문내역 보기</a>
+      <a id="home" href="../home/home.html">홈으로</a>
+    </div>
+  </section>
+
   <div id="footer"></div>
-</body>
 
   <script src="../../public/components/header/header.js"></script>
   <script src="../../public/components/footer/footer.js"></script>
+  <script src="./order.js"></script>
 
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script>
@@ -186,8 +151,8 @@
           oncomplete: function(data) {
               // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
               // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-              var addr = ''; // 주소 변수
-              var extraAddr = ''; // 참고항목 변수
+              let addr = ''; // 주소 변수
+              let extraAddr = ''; // 참고항목 변수
 
               //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
               if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
@@ -228,11 +193,11 @@
     }
 
     function orderComplete() {
-      alert("결제가 완료되었습니다.");
-      location.href="./orderComplete.html";
+      let modal = document.querySelector("#modal-box");
+      setTimeout(() => {
+        modal.classList.add("active");
+      }, 500);
     }
   </script>
-  <script>
-    
-  </script>
+</body>
 </html>
