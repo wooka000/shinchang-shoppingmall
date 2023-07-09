@@ -87,6 +87,15 @@ async function init() {
     });
 
     // 바로 구매하기
+    orderBtn.addEventListener('click', () => {
+        const immediatePurchase = productDummy[8];
+        immediatePurchase.quantity = num;
+
+        const { productName } = immediatePurchase;
+
+        const orderPd = JSON.stringify({ [productName]: immediatePurchase });
+        localStorage.setItem('buy-now', orderPd);
+    });
 }
 
 init();
