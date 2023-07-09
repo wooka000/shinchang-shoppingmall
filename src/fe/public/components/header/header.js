@@ -1,12 +1,13 @@
 // create header
 const header = document.querySelector('#header');
 const nav = document.createElement('div');
+const headerFragment = new DocumentFragment();
 
 nav.setAttribute('id', 'nav');
 nav.innerHTML = `
                     <!-- Logo -->
                     <div class="logo">
-                        <a href=""><img src="../../public/assets/img/logo/떡잎마을샵-logo.png" alt="Logo" /></a>
+                        <a href="/"><img src="../../public/assets/img/logo/떡잎마을샵-logo.png" alt="Logo" /></a>
                     </div>
     
                     <!-- Menu -->
@@ -68,39 +69,44 @@ nav.innerHTML = `
                     </ul>
     `;
 
-header.appendChild(nav);
+headerFragment.appendChild(nav);
+header.appendChild(headerFragment);
 
 // category nav
 const $menu = document.querySelector('menu');
 const $hideMenu = document.querySelector('.hide-menu');
-const padding = 30;
 const hideMenuHeight = $hideMenu.offsetHeight;
-
-$hideMenu.style.height = 0;
-
-$menu.addEventListener('mouseover', () => {
-    $hideMenu.style.height = `${hideMenuHeight + padding}px`;
-    $hideMenu.style.padding = '1rem 0';
-});
-
-$menu.addEventListener('mouseout', () => {
-    $hideMenu.style.height = 0;
-    $hideMenu.style.padding = 0;
-});
+const padding = 30;
 
 // login nav
 const $login = document.querySelector('.login');
 const $hideLogin = document.querySelector('.hide-login');
 const hideLoginHeight = $hideLogin.offsetHeight;
 
+$hideMenu.style.height = 0;
 $hideLogin.style.height = 0;
 
-$login.addEventListener('mouseover', () => {
-    $hideLogin.style.height = `${hideLoginHeight + padding}px`;
-    $hideLogin.style.padding = `1rem 0`;
-});
+function mouseOverHandler(target) {
+    target.style.height = `${(target === $hideMenu ? hideMenuHeight : hideLoginHeight) + padding}px`;
+    target.style.padding = '1rem 0';
+}
 
-$login.addEventListener('mouseleave', () => {
-    $hideLogin.style.height = 0;
-    $hideLogin.style.padding = 0;
+function mouseOutHandler(target) {
+    target.style.height = 0;
+    target.style.padding = 0;
+}
+
+$menu.addEventListener('mouseover', () => mouseOverHandler($hideMenu));
+$menu.addEventListener('mouseout', () => mouseOutHandler($hideMenu));
+
+$login.addEventListener('mouseover', () => mouseOverHandler($hideLogin));
+$login.addEventListener('mouseleave', () => mouseOutHandler($hideLogin));
+
+// scroll 이동시 헤더 배경 색상 추가
+window.addEventListener('scroll', () => {
+    if (window.scrollY !== 0) {
+        header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+    } else {
+        header.removeAttribute('style');
+    }
 });
