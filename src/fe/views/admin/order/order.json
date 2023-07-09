@@ -1,0 +1,30 @@
+[
+  {
+    "orderDate": "07.07",
+    "orderName": "짱구",
+    "orderInfo": "짱구 휴대폰 케이스",
+    "orderPrice": 23900,
+    "orderStatus": "상품 준비중"
+  },
+  {
+    "orderDate": "07.06",
+    "orderName": "맹구",
+    "orderInfo": "맹구 휴대폰 케이스",
+    "orderPrice": 21900,
+    "orderStatus": "상품 준비중"
+  },
+  {
+    "orderDate": "07.05",
+    "orderName": "철수",
+    "orderInfo": "철수 휴대폰 케이스",
+    "orderPrice": 12000,
+    "orderStatus": "상품 준비중"
+  },
+  {
+    "orderDate": "07.04",
+    "orderName": "흰둥이",
+    "orderInfo": "흰둥이 휴대폰 케이스",
+    "orderPrice": 28900,
+    "orderStatus": "상품 준비중"
+  }
+]

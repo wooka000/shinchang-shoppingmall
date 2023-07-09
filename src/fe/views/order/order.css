@@ -1,0 +1,273 @@
+@import url(../../public/style/reset.css);
+@import url(../../public/style/style.css);
+
+body {
+  margin: 0 auto;
+}
+
+.container {
+  padding: 160px 160px 60px;
+  color: black;
+}
+
+.back {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 0.7rem;
+}
+
+h3 {
+  line-height: 35px;
+}
+
+#back {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+}
+
+.back-button {
+  width: 35px;
+}
+
+.order {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 7rem;
+}
+
+.customer-info {
+  /* flex-basis: 700px; */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* flex-grow: 1; */
+  width: 64%;
+  flex-shrink: 2;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info:last-child {
+  margin-top: 30px;
+  align-items: center;
+}
+
+.info:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, .25);
+}
+
+.customer-input {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 0 15px 65px;
+}
+
+.customer-input div {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+input {
+  height: 55px;
+  padding: 20px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 7px;
+}
+
+input:focus {
+  outline: 1px solid dodgerblue;
+}
+
+.address {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.address > input {
+  flex-grow: 1;
+}
+
+.address button {
+  width: 200px;
+  border-radius: 10px;
+  background-color: black;
+  color: #fff;
+}
+
+/* .address button:hover {
+  background-color: rgb(228, 98, 98);
+  color: black;
+  transition: .4s;
+} */
+
+.address button:hover {
+  opacity: .8;
+}
+
+.address button:active, .order-button:active {
+  transform: scale(102%);
+  transition: .1s;
+}
+
+.address:last-child > input:first-child {
+  width: 60%;
+}
+
+.order-button {
+  text-align: center;
+  width: 300px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: black;
+  color: #fff;
+}
+
+.btn {
+  text-decoration: none;
+}
+
+.order-button:hover {
+  /* background-color: rgb(228, 98, 98); */
+  background-color: rgb(43, 43, 255);
+  color: white;
+  transition: .4s;
+}
+
+.sticky-div {
+  position: sticky;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  flex-basis: 400px;
+}
+
+.section-title {
+  padding: 15px;
+}
+
+._2 {
+  padding-bottom: 5px;
+}
+
+.order-card {
+  width: 100%;
+  height: 238px;
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 10px;
+}
+
+.order-check {
+  height: 15%;
+  background-color: var(--color-main);
+  position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* input[type=checkbox] {
+  -ms-transform: scale(1.5); 
+  -moz-transform: scale(1.5); 
+  -webkit-transform: scale(1.5); 
+  -o-transform: scale(1.5);
+  padding: 10px;
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  }  */
+
+.order-content {
+  height: 85%;
+}
+
+.order-thumb {
+  display: flex;
+  height: 74%;
+  gap: 20px;
+  padding: 10px;
+}
+
+.order-image {
+  height: 100%;
+}
+
+img {
+  height: 100%;
+}
+
+.order-item {
+  padding: 5px 10px 5px 5px;
+  width: 100%;
+  font-size: small;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product-num {
+  font-weight: 300;
+}
+
+.product-price {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="button"] {
+  width: 20px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.order-footer {
+  padding: 0 10px 12px 10px;
+}
+
+.order-summary {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--color-main);
+  display: flex;
+  justify-content: space-between;
+  font-size: small;
+}
+
+.order-price {
+  font-weight: bolder;
+}
+
+.order-receipt {
+  border: 1px solid rgba(0, 0, 0, .1);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.receipt {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.receipt:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.total-amount {
+  font-weight: bold;
+}
+
+.order-list {
+  width: 36%;
+}
