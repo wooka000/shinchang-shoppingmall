@@ -10,8 +10,6 @@ const viewsRouter = express.Router();
 viewsRouter.use("/", serveStatic("home"));
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
-viewsRouter.use("/productList", serverStatic("productList"));
-viewsRouter.use("/productsDetail", serverStatic("productDetail"));
 viewsRouter.use("/", serveStatic(""));
 
 function serveStatic(resource) {
