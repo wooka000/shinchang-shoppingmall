@@ -5,36 +5,68 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>회원가입</title>
         <link rel="stylesheet" href="signup.css" />
+        <script src="signup.js"></script>
+        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+        <!-- CSS -->
+
+        <link rel="stylesheet" href="../../public/style/reset.css" />
+        <link
+            rel="stylesheet"
+            href="../../public/components/header/header.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../../public/components/footer/footer.css"
+        />
+
+        <link rel="stylesheet" href="login.css" />
     </head>
     <body>
-        <div class="container">
+        <!-- header -->
+        <div id="header"></div>
+        <form action="" method="post" id="form"></form>
+        <div class="containerr">
             <div class="title">
                 <h1>회원가입</h1>
             </div>
-            <div class="test">
+            <div class="test text-id">
                 <span>아이디</span>
-                <input type="text" placeholder=" 아이디를 입력해 주세요." />
+                <input
+                    id="id"
+                    type="text"
+                    placeholder=" 아이디를 입력해 주세요."
+                    name="id"
+                />
             </div>
 
-            <div class="test">
+            <div class="test text-password">
                 <span>비밀번호</span>
                 <input
                     type="password"
                     placeholder=" 비밀번호를 입력해주세요."
+                    name="passoword"
+                    id="password"
                 />
             </div>
 
-            <div class="test">
+            <div class="test.">
                 <span>비밀번호 확인</span>
                 <input
                     type="password"
                     placeholder=" 비밀번호를 다시 입력해주세요."
+                    name="password"
+                    id="passwordc"
                 />
             </div>
 
             <div class="test">
                 <span>이름</span>
-                <input type="text" placeholder=" 이름을 입력해 주세요." />
+                <input
+                    type="text"
+                    placeholder=" 이름을 입력해 주세요."
+                    name="name"
+                    id="name"
+                />
             </div>
 
             <div class="test">
@@ -42,6 +74,7 @@
                 <section class="address">
                     <div class="address-num">
                         <input
+                            name="address"
                             id="sample6_postcode"
                             class="detail"
                             type="text"
@@ -75,7 +108,12 @@
 
             <div class="test">
                 <span>전화번호</span>
-                <input type="text" placeholder=" - 없이 01000000000" />
+                <input
+                    type="text"
+                    placeholder=" - 없이 01000000000"
+                    name="number"
+                    id="number"
+                />
             </div>
 
             <!-- <div class="test">
@@ -84,9 +122,18 @@
         </div> -->
 
             <div class="">
-                <button class="login-btn">가입하기</button>
+                <button class="login-btn" onclick="formcheck()">
+                    가입하기
+                </button>
             </div>
         </div>
+
+        <!-- footer -->
+        <div id="footer"></div>
+
+        <!-- header & footer -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
     </body>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
