@@ -1,6 +1,12 @@
 import cors from "cors";
 import express from "express";
-import { viewsRouter, userRouter } from "./routers/index.js";
+import {
+  viewsRouter,
+  userRouter,
+  productsRouter,
+  categoryRouter,
+  orderRouter,
+} from "./routers/index.js";
 
 const app = express();
 
@@ -10,10 +16,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", viewsRouter);
 
 app.use("/api/user", userRouter);
-// app.use("/api/products", productsRouter);
+app.use("/api/products", productsRouter);
+app.use("/api/category", categoryRouter);
 // app.use("/api/admin", adminRouter);
 // app.use("/api/cart", cartRouter);
-// app.use("/api/order", orderRouter);
+app.use("/api/order", orderRouter);
 
 // app.use(errorHandler);
 

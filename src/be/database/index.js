@@ -15,3 +15,6 @@ db.on("error", (error) =>
 );
 
 export * from "./models/userModel.js";
+export * from "./models/productsModel.js";
+export * from "./models/orderModel.js";
+export * from "./models/categoryModel.js";
