@@ -1,6 +1,12 @@
 import cors from "cors";
 import express from "express";
-import { viewsRouter, userRouter } from "./routers/index.js";
+import {
+  viewsRouter,
+  userRouter,
+  productsRouter,
+  categoryRouter,
+  orderRouter,
+} from "./routers/index.js";
 
 const app = express();
 

@@ -10,20 +10,17 @@ const viewsRouter = express.Router();
 viewsRouter.use("/", serveStatic("home"));
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
-viewsRouter.use("/", publicStatic(""));
 viewsRouter.use("/", serveStatic(""));
+viewsRouter.use(
+  "/public",
+  express.static(path.join(__dirname, "../../fe/public"))
+);
 
 function serveStatic(resource) {
   const resourcePath = path.join(__dirname, `../../fe/views/${resource}`);
   const option = { index: `${resource}.html` };
 
   return express.static(resourcePath, option);
-}
-function publicStatic(resource) {
-  const publicPath = path.join(__dirname, `../../fe/public/${resource}`);
-  const option = { index: `${resource}.html` };
-
-  return express.static(publicPath, option);
 }
 
 export { viewsRouter };
