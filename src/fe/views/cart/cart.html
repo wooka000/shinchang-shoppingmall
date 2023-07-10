@@ -33,7 +33,7 @@
             <div id="total-price"></div>
           </div>
           <div class="delivery-price receipt">
-            <div>총 배송비</div>
+            <div>배송비</div>
             <div id="total-delivery-charge"></div>
           </div>
           <div class="total-amount receipt">
@@ -41,16 +41,18 @@
             <div id="total-money"></div>
           </div>
         </div>
-        <div class="order-button"><a class="btn" href="../order/order.html">주문하기</a></div>
+        <div class="button">
+          <div class="order-button"><a class="btn" onclick="order()">주문하기</a></div>
+          <div class="delete-button"><a class="btn" onclick="deleteAll()">전체삭제</a></div>
+        </div>
       </section>
     </div>
   </main>
 
   <div id="footer"></div>
-</body>
 
   <script src="../../public/components/header/header.js"></script>
   <script src="../../public/components/footer/footer.js"></script>
   <script src="./cart.js"></script>
-
+</body>
 </html>

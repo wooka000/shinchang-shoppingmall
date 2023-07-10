@@ -1,12 +1,13 @@
 import cors from "cors";
 import express from "express";
-import { userRouter } from "./routers/index.js";
+import { viewsRouter, userRouter } from "./routers/index.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use("/", viewsRouter);
 
 app.use("/api/user", userRouter);
 // app.use("/api/products", productsRouter);
