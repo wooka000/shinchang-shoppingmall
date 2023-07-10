@@ -6,14 +6,30 @@
         <title>회원가입</title>
         <link rel="stylesheet" href="signup.css" />
         <script src="signup.js"></script>
+        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+        <!-- CSS -->
+
+        <link rel="stylesheet" href="../../public/style/reset.css" />
+        <link
+            rel="stylesheet"
+            href="../../public/components/header/header.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../../public/components/footer/footer.css"
+        />
+
+        <link rel="stylesheet" href="login.css" />
     </head>
     <body>
-        <form action="" method="" id="form"></form>
-        <div class="container">
+        <!-- header -->
+        <div id="header"></div>
+        <form action="" method="post" id="form"></form>
+        <div class="containerr">
             <div class="title">
                 <h1>회원가입</h1>
             </div>
-            <div class="test">
+            <div class="test text-id">
                 <span>아이디</span>
                 <input
                     id="id"
@@ -23,7 +39,7 @@
                 />
             </div>
 
-            <div class="test">
+            <div class="test text-password">
                 <span>비밀번호</span>
                 <input
                     type="password"
@@ -33,7 +49,7 @@
                 />
             </div>
 
-            <div class="test">
+            <div class="test.">
                 <span>비밀번호 확인</span>
                 <input
                     type="password"
@@ -111,6 +127,13 @@
                 </button>
             </div>
         </div>
+
+        <!-- footer -->
+        <div id="footer"></div>
+
+        <!-- header & footer -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
     </body>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
