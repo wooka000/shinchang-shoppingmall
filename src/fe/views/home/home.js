@@ -1,9 +1,3 @@
-/*
-백엔드에서 메인에 받아와야 하는 데이터
-상품 createdAt 기준으로 총 8개
-상품 객체 { 상품 번호: number, 상품 종류: string, 등록 시간: date, 상품 이미지: string, 상품 명: string, 상품 가격: price }
-*/
-
 // dummy.json 이용해서 메인에 상품 로드하기
 async function newProductLoad() {
     const response = await fetch('../../public/db/productDummy.json');
@@ -20,9 +14,9 @@ async function newProductLoad() {
 
         div.innerHTML = `
         <div>
-            <a href="productDetail/${pd.productNum}"><img src="./${pd.productImg}" alt="goods 1" /></a>
+            <a href="/productDetail"><img src="./${pd.productImg}" alt="goods 1" /></a>
             <div class="products-title">
-                <a href="/productDetail/${pd.productNum}"><strong>${pd.productName}</strong></a>
+                <strong><a href="/productDetail">${pd.productName}</a></strong>
             </div>
 
             <div class="products-price">
