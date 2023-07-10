@@ -117,8 +117,8 @@ h3 {
     margin: 0 0 1rem 0;
 }
 
-.product-info > p {
-    font-size: 22px;
+.product-info > div p {
+    font-size: 20px;
 }
 
 .product-device {
