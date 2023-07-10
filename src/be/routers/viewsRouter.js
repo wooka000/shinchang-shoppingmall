@@ -10,6 +10,15 @@ const viewsRouter = express.Router();
 viewsRouter.use("/", serveStatic("home"));
 viewsRouter.use("/register", serveStatic("register"));
 viewsRouter.use("/login", serveStatic("login"));
+viewsRouter.use("/products", serveStatic("products"));
+viewsRouter.use("/productDetail", serveStatic("productDetail"));
+viewsRouter.use("/order", serveStatic("order"));
+viewsRouter.use("/cart", serveStatic("cart"));
+viewsRouter.use("/admin/category", serveStatic("adminCategory"));
+viewsRouter.use("/admin/order", serveStatic("adminOrder"));
+viewsRouter.use("/admin/product", serveStatic("adminProduct"));
+viewsRouter.use("/admin/user", serveStatic("adminUser"));
+
 viewsRouter.use("/", serveStatic(""));
 viewsRouter.use(
   "/public",
