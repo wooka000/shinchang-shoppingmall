@@ -60,7 +60,7 @@ async function init() {
         // 이미 저장되어 있는 카트 목록 불러오기
         const prevCartProductList = JSON.parse(localStorage.getItem('cart-list')) || {};
 
-        let currentProductInfo = productDummy[8];
+        let currentProductInfo = productDummy[4];
 
         const { productNum, productName } = currentProductInfo;
 
@@ -78,6 +78,9 @@ async function init() {
 
         // 로컬 스토리지에 저장
         localStorage.setItem('cart-list', newList);
+
+        alert('장바구니에 담겼음 ㅋㅋ 쟈ㅏㅇ바구니로 갈래?');
+        location.href('/cart');
     });
 
     // 바로 구매하기

@@ -23,6 +23,19 @@ async function categoryProductLoad() {
     strong.textContent = productDummy[0].category;
     listTitle.appendChild(strong);
 
+    const option = document.querySelector('select');
+    console.log(option);
+
+    const changeValue = (target) => {
+        // 선택한 option의 value 값
+        console.log(target.value);
+
+        // option의 text 값
+        console.log(target.options[target.selectedIndex].text);
+    };
+
+    changeValue();
+
     // 상품 리스트 부분
     let productList = document.querySelector('.products-list');
     const listFragment = new DocumentFragment();
@@ -36,7 +49,7 @@ async function categoryProductLoad() {
             <img src="../home/${pd.productImg}" alt="goods 1" />
         </a>
         <div class="products-title">
-            <a href=""><strong>${pd.productName}</strong></a>
+            <a href="/productDetail"><strong>${pd.productName}</strong></a>
         </div>
         <div class="products-price">
             <strong>${pd.price.toLocaleString()}원</strong>
@@ -49,3 +62,6 @@ async function categoryProductLoad() {
 }
 
 categoryProductLoad();
+
+// option = low 라면 -> sort 함수로 데이터를 낮은 순으로 정렬 후 for문 돌려주기
+// 반대의 경우도 똑같다
