@@ -19,9 +19,9 @@ async function productLoad() {
 
         div.innerHTML = `
         <div>
-            <img src="./${el.productImg}" alt="goods 1" />
+            <a href="/productDetail"><img src="./${el.productImg}" alt="goods 1" /></a>
             <div class="products-title">
-                <strong>${el.productName}</strong>
+                <strong><a href="/productDetail">${el.productName}</a></strong>
             </div>
             <div class="products-price">
                 <strong>${el.price}원</strong>
