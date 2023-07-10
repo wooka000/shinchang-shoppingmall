@@ -68,11 +68,18 @@ swiper-slide img {
 .more {
     background: none;
     font-size: 16px;
+    text-decoration: none;
+    color: #000;
 }
 
 hr {
     border: 1px solid;
     margin: 1rem 0 3rem 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
 }
 
 .new-products {
@@ -165,4 +172,9 @@ hr {
 
 .popular-category > img:hover {
     transform: scale(1.1);
+}
+
+a {
+    text-decoration: none;
+    color: #000;
 }

@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #000;
+}
+.modify-btn {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+.modify-btn > button {
+    background-color: #000;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    width: 140px;
+}
+
+.name h1 {
+    text-align: center;
+}
+/* first box */
+.state {
+    border: 1.5px solid rgb(55, 54, 54, 0.5);
+    border-radius: 10px;
+    height: 100px;
+    margin-top: 10px;
+}
+.state ul {
+    text-align: center;
+    list-style-type: disc;
+}
+
+.state li {
+    justify-content: center;
+    display: inline-block;
+    padding-top: 35px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.state a {
+    text-decoration: none;
+    color: black;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: 2px;
+}
+/* button box */
+.card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user {
+    margin: 0 auto;
+    border: 1.5px solid rgb(55, 54, 54, 0.5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 25%;
+    width: 100%;
+}
+
+.user-profile {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    align-items: center;
+}
+
+.user-image {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-image {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+}
+
+.user-info {
+    height: 60%;
+    width: 60%;
+    border-right: 1.5px solid rgb(55, 54, 54, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center;  */
+    /*  */
+}
+
+.user-grade {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.my-page {
+    margin-top: 10px;
+}
+.modify {
+    margin-top: 15px;
+    border: 1.5px solid rgb(55, 54, 54, 0.5);
+    border-radius: 10px;
+}
+.frist-img-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.frist-img-box > .frist-product-img {
+    padding-top: 10px;
+    padding-left: 20px;
+    width: 12%;
+}
+.second-img-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.5px solid rgb(55, 54, 54, 0.5);
+}
+.second-product-img {
+    padding-top: 10px;
+    padding-left: 20px;
+    height: 100%;
+    width: 12%;
+}
+
+.frist-img-box button {
+    margin-right: 30px;
+    background-color: #000;
+    color: white;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.second-img-box button {
+    margin-right: 30px;
+    background-color: #000;
+    color: white;
+    border-radius: 10px;
+    width: 100px;
+}
+
+.product-name {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    padding: 160px 160px 60px;
+    border: solid 1px black;
+    margin: 0 auto;
+}
