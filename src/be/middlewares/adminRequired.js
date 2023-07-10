@@ -1,14 +1,16 @@
 function adminRequired(req, res, next) {
-  if (req.currentUserRole !== "admin") {
+  try {
+    if (req.currentUserRole !== "admin") {
+      throw new Error("관리자만 사용 가능합니다.");
+    }
+
+    next();
+  } catch (error) {
     res.status(403).json({
       result: "forbidden-approach",
-      reason: "관리자만 사용가능합니다.",
+      reason: error.message,
     });
-
-    return;
   }
-
-  next();
 }
 
 export { adminRequired };

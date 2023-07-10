@@ -24,7 +24,7 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    subscription: {
+    subscriptionDate: {
       type: String,
       required: true,
     },

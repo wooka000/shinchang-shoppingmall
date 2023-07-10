@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="order.css" />
+    <script
+      src="https://kit.fontawesome.com/59c9ef03f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div id="title">
+          <img
+            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
+        <button id="button-back">
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
+        </button>
+      </div>
+      <div id="content">
+        <div id="content-title">
+          <div class="page first-page">관리 목록</div>
+          <div class="page"><a href="../user/user.html">회원 관리</a></div>
+          <div class="page">
+            <a href="../product/product.html">제품 관리</a>
+          </div>
+          <div class="page">
+            <a href="../category/category.html">카테고리 관리</a>
+          </div>
+          <div class="page special-page">
+            <a href="../order/order.html">주문 관리</a>
+          </div>
+        </div>
+        <div id="content-detail">
+          <div id="empty">empty</div>
+          <div class="order-container">
+            <div id="order-container-date">날짜</div>
+            <div id="order-container-name">주문자성함</div>
+            <div id="order-container-info">주문정보</div>
+            <div id="order-container-price">주문총액</div>
+            <div id="order-container-status">상태관리</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="order.js"></script>
+  </body>
+</html>

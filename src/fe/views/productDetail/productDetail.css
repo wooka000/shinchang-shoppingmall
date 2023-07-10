@@ -106,7 +106,6 @@ h3 {
     height: 100%;
     display: flex;
     justify-content: center;
-    right: 60px;
 }
 
 .product-field > div {
@@ -249,6 +248,10 @@ input[name='quantity'] {
     height: 20px;
     display: flex;
     align-items: center;
+}
+
+.delivery-start div:nth-child(2) {
+    text-align: right;
 }
 
 .delivery-date {

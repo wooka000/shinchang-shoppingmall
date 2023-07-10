@@ -1,0 +1,30 @@
+[
+  {
+    "userNumber": 1,
+    "userName": "짱구",
+    "userId": "jjang",
+    "createdAt": "07.04",
+    "admin": "관리자"
+  },
+  {
+    "userNumber": 2,
+    "userName": "맹구",
+    "userId": "mang",
+    "createdAt": "07.05",
+    "admin": "일반사용자"
+  },
+  {
+    "userNumber": 3,
+    "userName": "철수",
+    "userId": "chul",
+    "createdAt": "07.06",
+    "admin": "일반사용자"
+  },
+  {
+    "userNumber": 4,
+    "userName": "흰둥이",
+    "userId": "hynn",
+    "createdAt": "07.07",
+    "admin": "일반사용자"
+  }
+]
