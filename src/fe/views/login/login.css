@@ -1,51 +1,58 @@
-* {
-    padding: 0;
-    margin: 0;
+main {
+    width: 100%;
+    height: calc(100vh - 230px);
+    margin: 0 auto;
+    color: #000;
+    z-index: 0;
+    position: relative;
+    padding: 160px 160px 60px;
+}
+
+/* 공통 스타일 */
+input {
     border: none;
+    width: 100%;
+    height: 48px;
+    border-radius: 6px;
 }
-body {
-    font-size: 14px;
-    font-family: "Roboto", sans-serif;
-}
+
 .login-wrapper {
-    width: 400px;
-    height: 360px;
-    padding: 40px;
+    width: 500px;
+    height: 400px;
     box-sizing: border-box;
-    background-color: #eeeff1;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
 }
 
 .login-wrapper > h2 {
-    font-size: 24px;
-    color: black;
-    margin: 20px;
+    color: #000;
+    margin: 0 0 2.5rem 0;
     text-align: center;
 }
-#login-form > input {
+
+.line {
     width: 100%;
-    height: 48px;
-    padding: 0 10px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-    border-radius: 6px;
-    background-color: #f8f8f8;
+    height: 2px;
+    background-color: #000;
+    margin: 2rem 0;
 }
+
+.email-input {
+    margin: 0 0 1.5rem 0;
+}
+
+.email-input > input,
+.pw-input > input {
+    padding: 1rem;
+    border: 1px solid #d2d2d2;
+    margin: 0.5rem 0 0 0;
+}
+
 #login-form > input::placeholder {
     color: #d2d2d2;
 }
-#login-form > input[type="submit"] {
+
+input[type='submit'] {
     color: #fff;
-    font-size: 16px;
-    background-color: greenyellow;
-    margin-top: 20px;
-}
-#login-form > input[type="checkbox"] {
-    display: none;
-}
-#login-form > label {
-    color: #999999;
+    background-color: black;
+    margin-top: 2rem;
 }
