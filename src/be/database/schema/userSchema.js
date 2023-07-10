@@ -3,10 +3,6 @@ import { Schema } from "mongoose";
 const UserSchema = new Schema(
   // User Schema 생성
   {
-    id: {
-      type: String,
-      required: true,
-    },
     name: {
       type: String,
       required: true,
@@ -21,11 +17,11 @@ const UserSchema = new Schema(
       required: true,
     },
     isAdmin: {
-      type: String,
+      type: Boolean,
       required: true,
     },
     subscriptionDate: {
-      type: String,
+      type: Date,
       required: true,
     },
   }
