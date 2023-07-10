@@ -38,10 +38,10 @@ productsRouter.get("/:categoryId", async (req, res) => {
 });
 
 // 상품 상세 항목 조회
-productsRouter.get("/:productId", async (req, res) => {
+productsRouter.get("/:productNo", async (req, res) => {
   try {
-    const productId = req.params.productId;
-    const product = await productsService.getProductById(productId);
+    const productNo = req.params.productNo;
+    const product = await productsService.getProductByProductNo(productNo);
     res.json(product);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -49,11 +49,14 @@ productsRouter.get("/:productId", async (req, res) => {
 });
 
 // 상품 수정(Admin) o
-productsRouter.put("/:productId", async (req, res) => {
+productsRouter.put("/:productNo", async (req, res) => {
   try {
-    const productId = req.params.productId;
-    const update = req.body; // Assuming the updated product details are sent in the request body
-    const updatedProduct = await productsService.setProduct(productId, update);
+    const productNo = req.params.productNo;
+    const update = req.body;
+    const updatedProduct = await productsService.setProductByProductNo(
+      productNo,
+      update
+    );
     res.json(updatedProduct);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -61,10 +64,10 @@ productsRouter.put("/:productId", async (req, res) => {
 });
 
 // 상품 삭제(Admin) o
-productsRouter.delete("/:productId", async (req, res) => {
+productsRouter.delete("/:productNo", async (req, res) => {
   try {
-    const productId = req.params.productId;
-    await productsService.deleteProductData(productId);
+    const productNo = req.params.productNo;
+    await productsService.deleteProductByProductNo(productNo);
     res.json({ result: "success" });
   } catch (error) {
     res.status(500).json({ error: error.message });

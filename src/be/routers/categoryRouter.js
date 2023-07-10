@@ -6,7 +6,7 @@ const categoryRouter = Router();
 // 카테고리 추가 o
 categoryRouter.post("/", async (req, res) => {
   try {
-    const categoryInfo = req.body; // Assuming the category details are sent in the request body
+    const categoryInfo = req.body;
     const createdCategory = await categoryService.addCategory(categoryInfo);
     res.json(createdCategory);
   } catch (error) {
@@ -28,7 +28,7 @@ categoryRouter.get("/", async (req, res) => {
 categoryRouter.put("/:categoryId", async (req, res) => {
   try {
     const categoryId = req.params.categoryId;
-    const update = req.body; // Assuming the updated category details are sent in the request body
+    const update = req.body;
     const updatedCategory = await categoryService.setCategory(
       categoryId,
       update

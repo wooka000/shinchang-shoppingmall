@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const ProductsSchema = new Schema({
-  productNo: { type: Number, required: true }, // 제품번호
+  productNo: { type: Number, required: true, index: true }, // 제품번호
   productName: { type: String, required: true }, // 제품명
   category: { type: String, required: true }, // 카테고리
   price: { type: Number, required: true }, // 가격

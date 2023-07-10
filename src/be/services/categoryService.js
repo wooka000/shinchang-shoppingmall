@@ -4,7 +4,7 @@ class CategoryService {
   async addCategory(categoryInfo) {
     const { categoryName } = categoryInfo;
 
-    const category = await categoryModel.findByTitle(categoryName);
+    const category = await categoryModel.findByName(categoryName);
     if (category) {
       throw new Error("존재하는 카테고리명 입니다. 다른 이름을 입력해 주세요.");
     }
