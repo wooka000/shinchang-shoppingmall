@@ -26,15 +26,15 @@ async function categoryProductLoad() {
     const option = document.querySelector('select');
     console.log(option);
 
-    const changeValue = (target) => {
-        // 선택한 option의 value 값
-        console.log(target.value);
+    // const changeValue = (target) => {
+    //     // 선택한 option의 value 값
+    //     console.log(target.value);
 
-        // option의 text 값
-        console.log(target.options[target.selectedIndex].text);
-    };
+    //     // option의 text 값
+    //     console.log(target.options[target.selectedIndex].text);
+    // };
 
-    changeValue();
+    // changeValue();
 
     // 상품 리스트 부분
     let productList = document.querySelector('.products-list');
@@ -45,7 +45,7 @@ async function categoryProductLoad() {
         products.setAttribute('class', 'products');
 
         products.innerHTML = `
-        <a href="">
+        <a href="/productDetail">
             <img src="../home/${pd.productImg}" alt="goods 1" />
         </a>
         <div class="products-title">
