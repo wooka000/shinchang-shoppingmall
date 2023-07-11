@@ -19,9 +19,9 @@ class CategoryService {
     return categories;
   }
 
-  async setCategory(categoryId, toUpdate) {
+  async setCategory(categoryName, toUpdate) {
     const updatedCategory = await categoryModel.update({
-      categoryId,
+      categoryName,
       update: toUpdate,
     });
 
@@ -41,21 +41,20 @@ class CategoryService {
     return category;
   }
 
-  async deleteCategoryData(categoryId) {
-    // // 만약 해당 카테고리의 제품이 1개라도 있다면, 삭제 불가함.
-    // const product = await productsModel.findOneByCategoryId(categoryId);
+  async deleteCategoryData(categoryName) {
+    const products = await productsModel.findAllByCategoryName(categoryName);
+    if (products.length > 0) {
+      throw new Error(
+        `해당 카테고리에 등록된 제품이 있습니다. 등록된 제품이 없어야 카테고리 삭제가 가능합니다.`
+      );
+    }
 
-    // if (product) {
-    //   throw new Error(
-    //     `${categoryId} 카테고리에 등록된 제품이 있습니다. 등록된 제품이 없어야 카테고리 삭제가 가능합니다. `
-    //   );
-    // }
+    const { deletedCount } = await categoryModel.deleteByCategoryName(
+      categoryName
+    );
 
-    const { deletedCount } = await categoryModel.deleteById(categoryId);
-
-    // 삭제에 실패한 경우, 에러 메시지 반환
     if (deletedCount === 0) {
-      throw new Error(`${categoryId} 카테고리의 삭제에 실패하였습니다`);
+      throw new Error(`카테고리의 삭제에 실패하였습니다.`);
     }
 
     return { result: "success" };
