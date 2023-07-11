@@ -1,5 +1,5 @@
-@import url("../../../public/style/reset.css");
-@import url("../../../public/style/style.css");
+@import url("../../public/style/reset.css");
+@import url("../../public/style/style.css");
 
 #button-back:hover {
   font-size: 20px;
@@ -38,6 +38,7 @@
 
 button {
   background-color: white;
+  border: none;
 }
 
 #content {
@@ -122,13 +123,26 @@ a {
   display: flex;
   font-size: 20px;
   margin-bottom: 5px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  align-items: center;
+}
+
+select {
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
 }
 
 #empty {
   color: white;
 }
 
+.fa-trash {
+  font-size: 24px;
+}
+
 .fa-trash:hover {
   color: red;
-  font-size: 24px;
+  font-size: 26px;
 }
