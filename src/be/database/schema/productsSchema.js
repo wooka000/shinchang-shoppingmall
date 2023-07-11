@@ -8,7 +8,7 @@ const ProductsSchema = new Schema({
   categoryName: { type: String, required: true }, // 카테고리명
   price: { type: Number, required: true }, // 가격
   image: { type: String, required: true }, // 이미지
-  createAt: { type: Date }, //등록시간
+  createAt: { type: Date, default: Date.now }, //등록시간
 });
 
 export { ProductsSchema };
