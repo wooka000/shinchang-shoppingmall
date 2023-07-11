@@ -25,12 +25,12 @@ categoryRouter.get("/", async (req, res) => {
 });
 
 // 카테고리 수정 o
-categoryRouter.put("/:categoryId", async (req, res) => {
+categoryRouter.put("/:categoryName", async (req, res) => {
   try {
-    const categoryId = req.params.categoryId;
+    const categoryName = req.params.categoryName;
     const update = req.body;
     const updatedCategory = await categoryService.setCategory(
-      categoryId,
+      categoryName,
       update
     );
     res.json(updatedCategory);
@@ -40,10 +40,10 @@ categoryRouter.put("/:categoryId", async (req, res) => {
 });
 
 // 카테고리 삭제 o
-categoryRouter.delete("/:categoryId", async (req, res) => {
+categoryRouter.delete("/:categoryName", async (req, res) => {
   try {
-    const categoryId = req.params.categoryId;
-    await categoryService.deleteCategoryData(categoryId);
+    const categoryName = req.params.categoryName;
+    await categoryService.deleteCategoryData(categoryName);
     res.json({ result: "success" });
   } catch (error) {
     res.status(500).json({ error: error.message });

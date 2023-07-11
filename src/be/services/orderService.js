@@ -11,23 +11,23 @@ class OrderService {
     return orders;
   }
 
-  async getOrderById(orderId) {
-    const order = await orderModel.findById(orderId);
+  async getOrderByOrderNo(orderNo) {
+    const order = await orderModel.findByOrderNo(orderNo);
     if (!order) {
       throw new Error("해당 주문번호의 주문이 없습니다. 다시 확인해 주세요.");
     }
     return order;
   }
 
-  async updateOrder(orderId, update) {
-    const updatedOrder = await orderModel.update({ orderId, update });
+  async updateOrder(orderNo, update) {
+    const updatedOrder = await orderModel.update({ orderNo, update });
     return updatedOrder;
   }
 
-  async deleteOrder(orderId) {
-    const { deletedCount } = await orderModel.deleteById(orderId);
+  async deleteOrder(orderNo) {
+    const { deletedCount } = await orderModel.deleteByOrderNo(orderNo);
     if (deletedCount === 0) {
-      throw new Error(`${orderId} 주문의 삭제에 실패하였습니다.`);
+      throw new Error(`${orderNo} 주문의 삭제에 실패하였습니다.`);
     }
     return { result: "success" };
   }
