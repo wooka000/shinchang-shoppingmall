@@ -1,7 +1,7 @@
 // 상품 상세 페이지 리스트 업
 async function init() {
   // 상품 번호 가져오기
-  let productNum = 5;
+  let productNum = 12;
 
   const response = await fetch('../../public/db/exampleDummy.json');
   const data = await response.json();
