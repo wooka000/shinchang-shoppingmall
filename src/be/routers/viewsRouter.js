@@ -18,6 +18,7 @@ viewsRouter.use("/admin/category", serveStatic("adminCategory"));
 viewsRouter.use("/admin/order", serveStatic("adminOrder"));
 viewsRouter.use("/admin/product", serveStatic("adminProduct"));
 viewsRouter.use("/admin/user", serveStatic("adminUser"));
+viewsRouter.use("/order/complete", serveStatic("orderComplete"));
 
 viewsRouter.use("/", serveStatic(""));
 viewsRouter.use(

@@ -25,10 +25,10 @@ orderRouter.get("/", async (req, res) => {
 });
 
 // 특정 주문 조회 o
-orderRouter.get("/:orderId", async (req, res) => {
+orderRouter.get("/:orderNo", async (req, res) => {
   try {
-    const orderId = req.params.orderId;
-    const order = await orderService.getOrderById(orderId);
+    const orderNo = req.params.orderNo;
+    const order = await orderService.getOrderByOrderNo(orderNo);
     res.json(order);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -36,11 +36,11 @@ orderRouter.get("/:orderId", async (req, res) => {
 });
 
 // 주문 수정 o
-orderRouter.put("/:orderId", async (req, res) => {
+orderRouter.put("/:orderNo", async (req, res) => {
   try {
-    const orderId = req.params.orderId;
-    const update = req.body; // Assuming the updated order details are sent in the request body
-    const updatedOrder = await orderService.updateOrder(orderId, update);
+    const orderNo = req.params.orderNo;
+    const update = req.body;
+    const updatedOrder = await orderService.updateOrder(orderNo, update);
     res.json(updatedOrder);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -48,10 +48,10 @@ orderRouter.put("/:orderId", async (req, res) => {
 });
 
 // 주문 삭제 o
-orderRouter.delete("/:orderId", async (req, res) => {
+orderRouter.delete("/:orderNo", async (req, res) => {
   try {
-    const orderId = req.params.orderId;
-    await orderService.deleteOrder(orderId);
+    const orderNo = req.params.orderNo;
+    await orderService.deleteOrder(orderNo);
     res.json({ result: "success" });
   } catch (error) {
     res.status(500).json({ error: error.message });

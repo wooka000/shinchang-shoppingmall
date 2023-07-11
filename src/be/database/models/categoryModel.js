@@ -18,20 +18,20 @@ export class CategoryModel {
     return categories;
   }
 
-  async update({ categoryId, update }) {
-    const searchCategoryId = { _id: categoryId };
+  async update({ categoryName, update }) {
+    const searchCategoryName = { categoryName };
     const option = { returnOriginal: false };
 
     const updatedCategory = await Category.findOneAndUpdate(
-      searchCategoryId,
+      searchCategoryName,
       update,
       option
     );
     return updatedCategory;
   }
 
-  async deleteById(categoryId) {
-    const result = await Category.deleteOne({ _id: categoryId });
+  async deleteByCategoryName(categoryName) {
+    const result = await Category.deleteOne({ categoryName });
     return result;
   }
 }
