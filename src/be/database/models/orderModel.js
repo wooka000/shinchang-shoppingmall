@@ -14,21 +14,21 @@ export class OrderModel {
     return orders;
   }
 
-  async findById(orderId) {
-    const order = await Order.findOne({ _id: orderId });
+  async findByOrderNo(orderNo) {
+    const order = await Order.findOne({ orderNo });
     return order;
   }
 
-  async update({ orderId, update }) {
-    const filter = { _id: orderId };
+  async update({ orderNo, update }) {
+    const filter = { orderNo };
     const option = { returnOriginal: false };
 
     const updatedOrder = await Order.findOneAndUpdate(filter, update, option);
     return updatedOrder;
   }
 
-  async deleteById(orderId) {
-    const result = await Order.deleteOne({ _id: orderId });
+  async deleteByOrderNo(orderNo) {
+    const result = await Order.deleteOne({ orderNo });
     return result;
   }
 }
