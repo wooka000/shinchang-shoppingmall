@@ -23,75 +23,72 @@
 
     <div class="order">
 
-      <form action="/order/complete" method="post">
-        <section class="customer-info">
-          <div class="info">
-            <div class="section-title">
-              <h2>주문자 정보</h2>
-              <p> &nbsp표시가 있는 항목은 필수 항목입니다.</p>
-            </div>
-
-            <div class="customer-input">
-              <div>
-                <label for="inputName" class="required">이름 &nbsp</label>
-                <input type="text" id="inputName" name="name" placeholder="이름을 입력해 주세요." required>
-              </div>
-              <div>
-                <label for="inputNumber" class="required">전화번호 &nbsp</label>
-                <input type="text" id="inputNumber" name="phone" placeholder="- 없이 01000000000" required>
-              </div>
-              <div>
-                <label for="inputMail">이메일</label>
-                <input type="email" id="inputMail" name="email" placeholder="배송 정보를 받을 이메일을 입력해 주세요.">
-              </div>
-            </div>
+      <section class="customer-info">
+        <div class="info">
+          <div class="section-title">
+            <h2>주문자 정보</h2>
+            <p> &nbsp표시가 있는 항목은 필수 항목입니다.</p>
           </div>
 
-          <div class="info">
-            <div class="section-title">
-              <h2>배송지 정보</h2>
-              <p> &nbsp표시가 있는 항목은 필수 항목입니다.</p>
+          <div class="customer-input">
+            <div>
+              <label for="inputName" class="required">이름 &nbsp</label>
+              <input type="text" id="name" placeholder="이름을 입력해 주세요." required>
             </div>
-
-            <div class="customer-input">
-              <div>
-                <label for="inputName" class="required">수령인 &nbsp</label>
-                <input type="text" id="inputName" name="recipientName" placeholder="이름을 입력해 주세요." required>
-              </div>
-              <div>
-                <label class="required">주소 &nbsp</label>
-                <section class="address">
-                  <input id="sample6_postcode" type="text" placeholder="우편번호" name="addressCode" required>
-                  <button onclick="execDaumPostcode()">우편번호 검색</button>
-                </section>
-                <input id="sample6_address" type="text" name="address" placeholder="주소">
-                <section class="address">
-                  <input id="sample6_detailAddress" type="text" name="addressDetail" placeholder="상세 주소를 입력해 주세요.">
-                  <input id="sample6_extraAddress" type="text" name="refer" placeholder="참고항목">
-                </section>
-              </div>
-              <div>
-                <label for="inputMessage">배송 메모</label>
-                <select id="inputMessage" name="message" onchange="messageSelect()">
-                  <option value="">배송 메모를 선택해 주세요.</option>
-                  <option value="배송 전에 미리 연락 바랍니다.">배송 전에 미리 연락 바랍니다.</option>
-                  <option value="부재시 전화 주시거나 문자 남겨주세요.">부재시 전화 주시거나 문자 남겨주세요.</option>
-                  <option value="부재시 경비실에 맡겨주세요.">부재시 경비실에 맡겨주세요.</option>
-                  <option value="부재시 문 앞에 놓아주세요.">부재시 문 앞에 놓아주세요.</option>
-                  <option value="도착시 문 앞에 놓고 벨 눌러주세요.">도착시 문 앞에 놓고 벨 눌러주세요.</option>
-                  <option value="직접 입력">직접 입력</option>
-                </select>
-                <input type="text" id="dm" class="hide" name="directMessage" placeholder="배송 메모를 입력해 주세요.">
-              </div>
+            <div>
+              <label for="inputNumber" class="required">전화번호 &nbsp</label>
+              <input type="text" id="phone" placeholder="- 없이 01000000000" required>
+            </div>
+            <div>
+              <label for="inputMail">이메일</label>
+              <input type="email" id="email" placeholder="배송 정보를 받을 이메일을 입력해 주세요.">
             </div>
           </div>
+        </div>
 
-          <div class="info">
-            <!-- <button class="order-button" onclick="orderComplete()">결제하기</button> -->
-            <button class="order-button">결제하기</button>
+        <div class="info">
+          <div class="section-title">
+            <h2>배송지 정보</h2>
+            <p> &nbsp표시가 있는 항목은 필수 항목입니다.</p>
           </div>
-        </section>
-      </form>
+
+          <div class="customer-input">
+            <div>
+              <label for="inputName" class="required">수령인 &nbsp</label>
+              <input type="text" id="recipientName" placeholder="이름을 입력해 주세요." required>
+            </div>
+            <div>
+              <label class="required">주소 &nbsp</label>
+              <section class="address">
+                <input id="sample6_postcode" type="text" placeholder="우편번호" required>
+                <button type="button" onclick="execDaumPostcode()">우편번호 검색</button>
+              </section>
+              <input id="sample6_address" type="text" placeholder="주소">
+              <section class="address">
+                <input id="sample6_detailAddress" type="text" placeholder="상세 주소를 입력해 주세요.">
+                <input id="sample6_extraAddress" type="text" placeholder="참고항목">
+              </section>
+            </div>
+            <div>
+              <label for="inputMessage">배송 메모</label>
+              <select id="deliveryMessage" onchange="messageSelect()">
+                <option value="">배송 메모를 선택해 주세요.</option>
+                <option value="배송 전에 미리 연락 바랍니다.">배송 전에 미리 연락 바랍니다.</option>
+                <option value="부재시 전화 주시거나 문자 남겨주세요.">부재시 전화 주시거나 문자 남겨주세요.</option>
+                <option value="부재시 경비실에 맡겨주세요.">부재시 경비실에 맡겨주세요.</option>
+                <option value="부재시 문 앞에 놓아주세요.">부재시 문 앞에 놓아주세요.</option>
+                <option value="도착시 문 앞에 놓고 벨 눌러주세요.">도착시 문 앞에 놓고 벨 눌러주세요.</option>
+                <option value="직접 입력">직접 입력</option>
+              </select>
+              <input type="text" id="dm" class="hide" name="directMessage" placeholder="배송 메모를 입력해 주세요.">
+            </div>
+          </div>
+        </div>
+
+        <div class="info">
+          <button class="order-button">결제하기</button>
+        </div>
+      </section>
 
       <section class="order-list">
         <div class="sticky-div">
@@ -170,7 +167,7 @@
                   }
                   // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
                   if(extraAddr !== ''){
-                      extraAddr = ' (' + extraAddr + ')';
+                      extraAddr = '(' + extraAddr + ')';
                   }
                   // 조합된 참고항목을 해당 필드에 넣는다.
                   document.getElementById("sample6_extraAddress").value = extraAddr;
@@ -187,13 +184,6 @@
           }
       }).open();
     }
-
-    // function orderComplete() {
-    //   let modal = document.querySelector("#modal-box");
-    //   setTimeout(() => {
-    //     modal.classList.add("active");
-    //   }, 500);
-    // }
   </script>
 </body>
 </html>

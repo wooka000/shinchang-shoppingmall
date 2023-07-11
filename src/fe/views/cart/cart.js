@@ -91,31 +91,8 @@ function render() {
   totalMoney.innerText = `${(total + deliveryCharge).toLocaleString()} 원`;
 }
 
-// x 버튼으로 장바구니에서 제외
-// const xBtn = document.querySelectorAll(".x-button");
-// xBtn.forEach(btn => {
-//   console.log(btn);
-//   btn.addEventListener("click", e => {
-//     let idx = btn.classList[1].substring(0, 1);
-//     localStorage.removeItem(`pro${idx}`);
-//     render();
-//   });
-// })
-// 처음 한번만 제대로 삭제되고 두번째부터는 x 버튼을 눌러도, 로컬스토리지를 직접 삭제해도 화면의 변화가 없음..
-
-// const xBtn = document.querySelectorAll(".x-button");
-// xBtn.forEach(btn => {
-//   btn.addEventListener("click", e => {
-//     let card = document.querySelector(`.order-card-${btn.classList[1]}`);
-//     let idx = btn.classList[1].substring(0, 1);
-//     localStorage.removeItem(`pro${idx}`);
-//     card.classList.add("delete");
-//     // render();
-//   });
-// })
-
 function plus(n) {
-  let idx = String(n)[0];
+  let idx = String(n);
   let currObj = JSON.parse(localStorage.getItem(`pro${idx}`));
   let currNum = JSON.parse(localStorage.getItem(`pro${idx}`)).quantity;
   currObj.quantity = currNum+1;
@@ -124,7 +101,7 @@ function plus(n) {
 }
 
 function minus(n) {
-  let idx = String(n)[0];
+  let idx = String(n);
   let currObj = JSON.parse(localStorage.getItem(`pro${idx}`));
   let currNum = JSON.parse(localStorage.getItem(`pro${idx}`)).quantity;
   if ((currNum-1) > 0) currObj.quantity = currNum-1;
@@ -133,7 +110,7 @@ function minus(n) {
 }
 
 function deleteCard(n) {
-  let idx = String(n)[0];
+  let idx = String(n);
   localStorage.removeItem(`pro${idx}`);
   render();
 }
@@ -153,7 +130,7 @@ function order() {
 }
 
 function toggle(n) {
-  let idx = String(n)[0];
+  let idx = String(n);
   let currObj = JSON.parse(localStorage.getItem(`pro${idx}`));
   let currChecked = JSON.parse(localStorage.getItem(`pro${idx}`)).checked;
   if (currChecked == "checked") currObj.checked = "";

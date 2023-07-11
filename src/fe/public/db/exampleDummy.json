@@ -99,6 +99,36 @@
       "productDate": "2023-04-09",
       "quantity": 1,
       "checked": "checked"
+    },
+    {
+      "productNum": 10,
+      "productName": "상품 10",
+      "category": "키링",
+      "price": 7000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 11,
+      "productName": "상품 11",
+      "category": "잠옷",
+      "price": 13000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 12,
+      "productName": "상품 12",
+      "category": "휴대폰 케이스",
+      "price": 30000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
     }
   ]
 }
