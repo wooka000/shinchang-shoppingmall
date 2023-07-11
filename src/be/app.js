@@ -6,6 +6,7 @@ import {
   productsRouter,
   categoryRouter,
   orderRouter,
+  questionRouter,
 } from "./routers/index.js";
 
 const app = express();
@@ -21,6 +22,8 @@ app.use("/api/category", categoryRouter);
 // app.use("/api/admin", adminRouter);
 // app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
+
+app.use("/api/qna", questionRouter);
 
 // app.use(errorHandler);
 
