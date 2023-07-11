@@ -10,7 +10,7 @@ export class ProductsModel {
   }
 
   async findAllProducts() {
-    const products = await Product.find({}).sort({ createAt: 1 });
+    const products = await Product.find({}).sort({ createAt: -1 });
     return products;
   }
 
