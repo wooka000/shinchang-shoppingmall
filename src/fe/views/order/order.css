@@ -44,11 +44,15 @@ h3 {
   gap: 7rem;
 }
 
+form {
+  flex-basis: 60%;
+}
+
 .customer-info {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 64%;
+  width: 100%;
   flex-shrink: 2;
 }
 
@@ -301,7 +305,7 @@ input[type="button"] {
   width: 36%;
 }
 
-.complete {
+/* .complete {
   width: 380px;
   height: 280px;
   background-color: white;
@@ -374,4 +378,8 @@ a {
 
 #modal-box.active {
   display: flex;
+} */
+
+#footer .info {
+  border: none;
 }
