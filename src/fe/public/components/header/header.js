@@ -1,10 +1,18 @@
-// create header
-const header = document.querySelector('#header');
-const nav = document.createElement('div');
-const headerFragment = new DocumentFragment();
+async function headerRender() {
+    const response = await fetch('/api/category', {
+        method: 'GET',
+    });
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
 
-nav.setAttribute('id', 'nav');
-nav.innerHTML = `
+    // 헤더 생성
+    const header = document.querySelector('#header');
+    const nav = document.createElement('div');
+    const headerFragment = new DocumentFragment();
+
+    nav.setAttribute('id', 'nav');
+    nav.innerHTML = `
                     <!-- Logo -->
                     <div class="logo">
                         <a href="/"><img src="../../public/assets/img/logo/떡잎마을샵-logo.png" alt="Logo" /></a>
@@ -19,13 +27,8 @@ nav.innerHTML = `
                         </ul>
                         <div class="hide-menu">
                             <div style="width: 140px">
-                                <ul>
+                                <ul class="menu-ul">
                                     <li><a href="/products">인기 | 신상품</a></li>
-                                    <li><a href="/products">의류</a></li>
-                                    <li><a href="/products">피규어</a></li>
-                                    <li><a href="/products">다이어리</a></li>
-                                    <li><a href="/products">아크릴 키링</a></li>
-                                    <li><a href="/products">핸드폰 케이스</a></li>
                                 </ul>
                             </div>
                             <div style="width: 100px">
@@ -69,44 +72,61 @@ nav.innerHTML = `
                     </ul>
     `;
 
-headerFragment.appendChild(nav);
-header.appendChild(headerFragment);
+    headerFragment.appendChild(nav);
+    header.appendChild(headerFragment);
 
-// category nav
-const $menu = document.querySelector('menu');
-const $hideMenu = document.querySelector('.hide-menu');
-const hideMenuHeight = $hideMenu.offsetHeight;
-const padding = 30;
+    // 카테고리 api 호출 후 db에 저장된 정보에 따라 호출
+    const hideMenu = document.querySelector('.menu-ul');
+    const categoryFragment = new DocumentFragment();
 
-// login nav
-const $login = document.querySelector('.login');
-const $hideLogin = document.querySelector('.hide-login');
-const hideLoginHeight = $hideLogin.offsetHeight;
+    data.forEach((el) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a>${el.categoryName}</a>`;
+        categoryFragment.appendChild(li);
+    });
 
-$hideMenu.style.height = 0;
-$hideLogin.style.height = 0;
+    hideMenu.appendChild(categoryFragment);
 
-function mouseOverHandler(target) {
-    target.style.height = `${(target === $hideMenu ? hideMenuHeight : hideLoginHeight) + padding}px`;
-    target.style.padding = '1rem 0';
-}
+    // category nav
+    const $menu = document.querySelector('menu');
+    const $hideMenu = document.querySelector('.hide-menu');
+    const hideMenuHeight = $hideMenu.offsetHeight;
+    const padding = 30;
 
-function mouseOutHandler(target) {
-    target.style.height = 0;
-    target.style.padding = 0;
-}
+    // login nav
+    const $login = document.querySelector('.login');
+    const $hideLogin = document.querySelector('.hide-login');
+    const hideLoginHeight = $hideLogin.offsetHeight;
 
-$menu.addEventListener('mouseover', () => mouseOverHandler($hideMenu));
-$menu.addEventListener('mouseout', () => mouseOutHandler($hideMenu));
+    $hideMenu.style.height = 0;
+    $hideLogin.style.height = 0;
 
-$login.addEventListener('mouseover', () => mouseOverHandler($hideLogin));
-$login.addEventListener('mouseleave', () => mouseOutHandler($hideLogin));
-
-// scroll 이동시 헤더 배경 색상 추가
-window.addEventListener('scroll', () => {
-    if (window.scrollY !== 0) {
-        header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
-    } else {
-        header.removeAttribute('style');
+    function mouseOverHandler(target) {
+        target.style.height = `${(target === $hideMenu ? hideMenuHeight : hideLoginHeight) + padding}px`;
+        target.style.padding = '1rem 0';
     }
-});
+
+    function mouseOutHandler(target) {
+        target.style.height = 0;
+        target.style.padding = 0;
+    }
+
+    $menu.addEventListener('mouseover', () => mouseOverHandler($hideMenu));
+    $menu.addEventListener('mouseout', () => mouseOutHandler($hideMenu));
+
+    $login.addEventListener('mouseover', () => mouseOverHandler($hideLogin));
+    $login.addEventListener('mouseleave', () => mouseOutHandler($hideLogin));
+
+    // scroll 이동시 헤더 배경 색상 추가
+    window.addEventListener('scroll', () => {
+        if (window.scrollY !== 0) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+        } else {
+            header.removeAttribute('style');
+        }
+    });
+
+    // 로그인시 로그인에서 로그아웃으로 변경 / 회원가입 지우기 (jwt 토큰 유무 확인)
+}
+
+headerRender();
