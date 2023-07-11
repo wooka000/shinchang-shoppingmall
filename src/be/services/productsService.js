@@ -15,7 +15,9 @@ class ProductsService {
 
   async getProductsByCategoryName(categoryName) {
     const category = await categoryModel.findByName(categoryName);
-    const products = await productsModel.findAllByCategoryId(category._id);
+    const products = await productsModel.findAllByCategoryName(
+      category.categoryName
+    );
 
     return products;
   }

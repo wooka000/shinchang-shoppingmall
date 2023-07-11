@@ -6,7 +6,7 @@ const productsRouter = Router();
 // 상품 추가(Admin) o
 productsRouter.post("/", async (req, res) => {
   try {
-    const productInfo = req.body; // Assuming the product details are sent in the request body
+    const productInfo = req.body;
     const createdProduct = await productsService.addProduct(productInfo);
     res.json(createdProduct);
   } catch (error) {
@@ -24,12 +24,12 @@ productsRouter.get("/", async (req, res) => {
   }
 });
 
-// 카테고리 별 상품 목록 조회
-productsRouter.get("/:categoryId", async (req, res) => {
+// 카테고리 별 상품 목록 조회 o
+productsRouter.get("/category", async (req, res) => {
   try {
-    const categoryId = req.params.categoryId;
+    const categoryName = req.query.categoryName;
     const products = await productsService.getProductsByCategoryName(
-      categoryId
+      categoryName
     );
     res.json(products);
   } catch (error) {
@@ -37,7 +37,7 @@ productsRouter.get("/:categoryId", async (req, res) => {
   }
 });
 
-// 상품 상세 항목 조회
+// 상품 상세 항목 조회 o
 productsRouter.get("/:productNo", async (req, res) => {
   try {
     const productNo = req.params.productNo;
