@@ -8,8 +8,8 @@ function render() {
   let keys = Object.keys(localStorage).filter(k => JSON.parse(localStorage.getItem(k)).checked === "checked");
   for (let key of keys) {
     let pro = JSON.parse(localStorage.getItem(key));
-    totalQuantity += pro.num;
-    total += pro.num * pro.price;
+    totalQuantity += pro.quantity;
+    total += pro.quantity * pro.price;
     output += `
       <article class="order-card">
         <div class="order-check">
@@ -17,23 +17,23 @@ function render() {
         <aside class="order-content">
           <div class="order-thumb">
             <div class="order-image">
-              <img src="${pro.imgUrl}" alt="짱구케이스">
+              <img src="../home/${pro.productImg}" alt="짱구케이스">
             </div>
             <div class="order-item">
               <div class="order-header">
-                <h5 class="product-num">${pro.serialNum}</h5>
+                <h5 class="product-num">${pro.productNum}</h5>
               </div>
-              <h4 class="product-title">${pro.name}</h4>
-              <h5 class="product-type">${pro.type}</h5>
+              <h4 class="product-title">${pro.productName}</h4>
+              <h5 class="product-type">${pro.category}</h5>
               <div class="product-price">
-                <div><h3>${pro.price} 원</h3></div>
+                <div><h3>${pro.price.toLocaleString()} 원</h3></div>
               </div>
             </div>
           </div>
           <div class="order-footer">
             <div class="order-summary">
-              <div class="order-amount">상품금액 ${pro.price} 원 / 수량 ${pro.num} 개</div>
-              <div class="order-price">총 ${pro.price * pro.num} 원</div>
+              <div class="order-amount">상품금액 ${pro.price.toLocaleString()} 원 / 수량 ${pro.quantity} 개</div>
+              <div class="order-price">총 ${(pro.price * pro.quantity).toLocaleString()} 원</div>
             </div>
           </div>
         </aside>
@@ -50,9 +50,9 @@ function render() {
   const totalMoney = document.querySelector("#total-money");
 
   totalAmount.innerText = `${totalQuantity} 개`;
-  totalPrice.innerText = `${total} 원`;
-  totalDeliveryCharge.innerText = `${deliveryCharge} 원`;
-  totalMoney.innerText = `${total + deliveryCharge} 원`;
+  totalPrice.innerText = `${total.toLocaleString()} 원`;
+  totalDeliveryCharge.innerText = `${deliveryCharge.toLocaleString()} 원`;
+  totalMoney.innerText = `${(total + deliveryCharge).toLocaleString()} 원`;
 }
 
 function messageSelect() {
