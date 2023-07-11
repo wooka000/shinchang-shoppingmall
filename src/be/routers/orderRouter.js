@@ -6,7 +6,7 @@ const orderRouter = Router();
 // 주문 생성 o
 orderRouter.post("/", async (req, res) => {
   try {
-    const orderInfo = req.body; // Assuming the order details are sent in the request body
+    const orderInfo = req.body;
     const createdOrder = await orderService.createOrder(orderInfo);
     res.json(createdOrder);
   } catch (error) {
