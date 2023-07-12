@@ -37,7 +37,7 @@ userRouter.post("/login", async function (req, res, next) {
 });
 
 // 전체 유저 목록을 가져옴
-userRouter.get(
+userRouter.post(
   "/userlist",
   loginRequired,
   adminRequired,
