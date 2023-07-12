@@ -1,62 +1,140 @@
-* {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+main {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
     color: #000;
-    box-sizing: border-box;
+    z-index: 0;
+    position: relative;
+    padding: 160px 160px 60px;
+    display: flex;
+    justify-content: center;
 }
 
-.user-name > h2 {
-    margin-bottom: 10px;
+.mypage-wrapper {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
 }
-.container .user-name {
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    margin: 2rem 0;
+}
+
+.contents-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     align-items: center;
+    justify-content: center;
 }
-.container {
+
+.img-wrapper {
+    width: 100%;
+    text-align: center;
+    height: 283px;
+}
+
+.img-wrapper div {
+    width: 100%;
+    height: 230px;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-input {
-    width: 100%;
-    height: 48px;
-    padding: 0 10px;
-    box-sizing: border-box;
-    margin-bottom: 16px;
-    border-radius: 6px;
-    border: 1.5px solid rgb(55, 54, 54, 0.5);
-    width: 100%;
-    height: 50px;
-    margin-right: 35%;
+
+.img-wrapper img {
+    width: 60%;
+    height: 85%;
 }
-.address {
-    margin: 0 auto;
-}
-.address-num > button {
-    width: 120px;
-    height: 51px;
+
+.img-wrapper button {
+    height: 3rem;
+    width: 40%;
     border-radius: 10px;
-    background-color: black;
-    color: #fff;
-    margin-bottom: 50px;
-    margin-right: 80px;
 }
-.btn {
-    display: flex;
+
+.middle-wrapper {
+    width: 40%;
+    padding: 1rem;
 }
-.btn button {
-    width: 120px;
-    height: 51px;
+
+.middle-wrapper div {
+    margin: 1rem 0;
+}
+
+.middle-wrapper input,
+.last-wrapper input {
+    width: 100%;
+    height: 3rem;
+    padding: 0.7rem;
+    margin: 0.5rem 0;
     border-radius: 10px;
-    background-color: black;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.last-wrapper {
+    width: 40%;
+    padding: 1rem;
+}
+
+.address-wrapper {
+    margin: 1rem 0;
+}
+
+.address-search {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.address-search input {
+    width: 70%;
+    margin: 0 0.5rem 0 0;
+}
+
+.address-search button {
+    width: 25%;
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #eeeff1;
+    color: #000;
+}
+
+.main-address {
+    margin: 0.5rem 0;
+}
+
+.sub-address input:first-child {
+    width: 70%;
+    margin: 0.5rem 0.2rem 0.5rem 0;
+}
+
+.sub-address input:nth-child(2) {
+    width: 27%;
+}
+
+.btn-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+}
+
+.btn-wrapper button {
+    width: 45%;
+    height: 3rem;
+    border-radius: 10px;
+    margin: 1rem 0.5rem;
+}
+
+.modify-btn {
+    background-color: #000;
     color: #fff;
 }
-.user {
-    margin-left: 10px;
+
+.delete-btn {
+    background-color: rgb(251, 82, 82);
+    color: #fff;
 }
-.container {
-    padding: 160px 160px 60px;
-    border: solid 1px black;
-    margin: 0 auto;
-}
-/*  */
