@@ -1,26 +1,33 @@
-// dummy.json 이용해서 메인에 상품 로드하기
-async function newProductLoad() {
-    const response = await fetch('../../public/db/productDummy.json');
-    const data = await response.json();
-    const productDummy = data.product;
+// 상품을 로드하는 함수
+async function newProductRender() {
+    const response = await fetch('/api/products', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
-    // 최신 상품 8개 배열
-    let newProduct = productDummy.sort((a, b) => new Date(b.productDate) - new Date(a.productDate)).slice(0, 8);
+    const data = await response.json();
+    const newProduct = data.slice(0, 10);
+
+    // 최신 상품 10개 배열
     let products = document.querySelector('.new-products');
     const newPdFragment = new DocumentFragment();
 
-    newProduct.forEach((pd) => {
+    newProduct.forEach(({ productNo, productName, price }) => {
         const div = document.createElement('div');
 
         div.innerHTML = `
         <div>
-            <a href="/productDetail"><img src="./${pd.productImg}" alt="goods 1" /></a>
+            <div class="img-wrapper">
+            <a href="/products/${productNo}"><img src="./list.jpeg" alt="img" /></a>
+            </div>
             <div class="products-title">
-                <strong><a href="/productDetail">${pd.productName}</a></strong>
+                <strong><a href="/products/${productNo}">${productName}</a></strong>
             </div>
 
             <div class="products-price">
-                <strong>${pd.price.toLocaleString()}원</strong>
+                <strong>${price.toLocaleString()}원</strong>
             </div>
         </div>`;
 
@@ -30,7 +37,7 @@ async function newProductLoad() {
     products.appendChild(newPdFragment);
 }
 
-newProductLoad();
+newProductRender();
 
 // aos 초기화
 // data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000"
