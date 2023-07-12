@@ -432,6 +432,7 @@ register.addEventListener("click", function (e) {
         })
         .then((responseData) => {
             console.log("회원가입이 성공적으로 완료되었습니다.", responseData);
+            window.location.href = "/login";
         })
         .catch((error) => {
             console.error("회원가입 중 오류가 발생했습니다.", error);
