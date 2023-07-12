@@ -101,16 +101,25 @@ function formcheck() {
 const register = document.querySelector("#register");
 register.addEventListener("click", function (e) {
     e.preventDefault();
-    const idd = document.getElementById("id");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("id");
     const passwordInput = document.getElementById("password");
     const phoneNumberInput = document.getElementById("number");
-    const names = document.getElementById("name");
+    const address1Input = document.getElementById("sample6_address");
+    const address2Input = document.getElementById("sample6_detailAddress");
+    const postalCodeInput = document.getElementById("sample6_postcode");
+
+    const subscriptionDate = new Date().getTime();
 
     const data = {
-        id: idd.value,
+        name: nameInput.value,
+        email: emailInput.value,
         password: passwordInput.value,
         phoneNumber: phoneNumberInput.value,
-        name: names.value,
+        address1: address1Input.value,
+        address2: address2Input.value,
+        postalCode: postalCodeInput.value,
+        subscriptionDate: subscriptionDate.toString(),
     };
 
     fetch("/user/register", {
