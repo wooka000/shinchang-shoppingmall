@@ -15,7 +15,7 @@ async function productDetailRender() {
     let productFragment = new DocumentFragment();
     let productDiv = document.createElement('div');
 
-    productDiv.innerHTML = `<img src="../home/${image}" alt="product-img" />`;
+    productDiv.innerHTML = `<img src="${image}" alt="product-img" />`;
     productFragment.appendChild(productDiv);
     productImg.appendChild(productFragment);
 
@@ -24,7 +24,7 @@ async function productDetailRender() {
     let contentsFragment = new DocumentFragment();
     let contentsDiv = document.createElement('div');
 
-    contentsDiv.innerHTML = `<img src="../home/${image}" alt="product-img" />`;
+    contentsDiv.innerHTML = `<img src="${image}" alt="product-img" />`;
     contentsFragment.appendChild(contentsDiv);
     contentsImg.appendChild(contentsFragment);
 
