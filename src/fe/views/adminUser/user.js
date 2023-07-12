@@ -6,19 +6,19 @@ const deleteCheckButton = document.querySelector("#modal-button-delete");
 
 // 삭제할 유저의 id를 전역변수로 관리
 let deleteUserId;
-
 fetchJSONData();
 
 async function fetchJSONData() {
   const response = await fetch("/api/user/userlist", {
     method: "GET",
     headers: {
-      "Content-Type": "applycation/json",
+      "Content-Type": "application/json",
     },
   });
   const data = await response.json();
   console.log(data);
   // map 사용해서 객체형태로 받아오기
+  //const { _id, name, email, subscriptionDate } = data;
   for (let i = 0; i < data.length; i++) {
     content.insertAdjacentHTML(
       "beforeend",
