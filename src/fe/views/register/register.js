@@ -119,10 +119,10 @@ register.addEventListener("click", function (e) {
         address1: address1Input.value,
         address2: address2Input.value,
         postalCode: postalCodeInput.value,
-        subscriptionDate: subscriptionDate.toString(),
+        subscriptionDate: subscriptionDate.value,
     };
 
-    fetch("/user/register", {
+    fetch("/api/user/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -130,6 +130,7 @@ register.addEventListener("click", function (e) {
         body: JSON.stringify(data),
     })
         .then((response) => {
+            console.log(response);
             if (!response.ok) {
                 throw new Error("회원가입에 실패했습니다.");
             }
