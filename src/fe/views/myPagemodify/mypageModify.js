@@ -127,6 +127,41 @@ async function myPageModifyRender() {
 
 myPageModifyRender();
 
+// 회원 정보 수정 함수
+async function modifyUserInfo() {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch('/api/user/my', {
+        method: 'PATCH',
+        headers: {
+            authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: {
+            name: '엘리스',
+            password: 'changedPW',
+            currentPassword: 'elicePW',
+            address1: '서울특별시 성동구 아차산로17길 48',
+            address2: '성수낙낙 2층',
+            postalCode: '04799',
+            phoneNumber: '010-2222-3333',
+            role: 'user',
+        },
+    });
+
+    console.log(response);
+}
+
+const modifyBtn = document.querySelector('.modify-btn');
+modifyBtn.addEventListener('click', () => {
+    if (confirm('회원 정보를 수정하시겠습니까?') == true) {
+        modifyUserInfo();
+        alert('회원 정보가 수정되었습니다.');
+
+        // location.href = '/mypage/modify';
+    }
+});
+
 // 회원 탈퇴 함수
 async function deleteUser() {
     const token = localStorage.getItem('token');
