@@ -10,8 +10,12 @@ let deleteUserId;
 fetchJSONData();
 
 async function fetchJSONData() {
-  // const users = await Api.get("/api/userlist");
-  const response = await fetch("./user.json");
+  const response = await fetch("/api/user/userlist", {
+    method: "GET",
+    headers: {
+      "Content-Type": "applycation/json",
+    },
+  });
   const data = await response.json();
   console.log(data);
   // map 사용해서 객체형태로 받아오기
@@ -41,7 +45,7 @@ async function fetchJSONData() {
     function onDelete(e) {
       e.preventDefault();
       // 회원 번호를 이용해 데이터베이스에서 해당 유저 찾기
-      // findUser(e.target.parentNode.parentNode.firstElementChild.innerText);
+      //Usermodel.findUserById(e.target.parentNode.parentNode.firstElementChild.innerText);
       console.log(e.target.parentNode.parentNode.firstElementChild.innerText);
       deleteUserId = e.target.parentNode.parentNode.firstElementChild.innerText;
       modalClick();
