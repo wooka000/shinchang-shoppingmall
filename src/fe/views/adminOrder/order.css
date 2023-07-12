@@ -1,5 +1,5 @@
-@import url("../../../public/style/reset.css");
-@import url("../../../public/style/style.css");
+@import url("../../public/style/reset.css");
+@import url("../../public/style/style.css");
 
 #button-back:hover {
   font-size: 20px;
@@ -84,52 +84,63 @@ a {
 
 #content-detail {
   width: 85%;
+  text-align: center;
+}
+
+.order-container {
+  display: flex;
+  border: 2px solid black;
   font-size: 20px;
-}
-
-.category {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.button-modify {
-  margin-right: 5px;
-  margin-left: 20px;
-}
-
-.add-container {
-  display: flex;
-  justify-content: end;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  border-bottom: 3px solid black;
-}
-
-.button-category-add {
   margin-bottom: 5px;
+  background-color: #e6ffde;
+  border-radius: 5px;
+  padding: 3px;
 }
 
-.fa-plus {
-  border: 2px solid green;
-  border-radius: 10px;
-  padding: 5px;
+#order-container-date,
+.order-date {
+  width: 15%;
+}
+#order-container-name,
+.order-name {
+  width: 10%;
+}
+#order-container-info,
+.order-info {
+  width: 30%;
+}
+#order-container-price,
+.order-price {
+  width: 10%;
+}
+#order-container-status,
+.order-status {
+  width: 20%;
 }
 
-.fa-plus:hover {
-  background-color: green;
-  color: white;
+.order {
+  display: flex;
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-bottom: 1px solid black;
 }
 
-.fa-pencil:hover {
-  color: blue;
-  font-size: 24px;
+select {
+  text-align: center;
+  border-radius: 5px;
 }
 
 .fa-trash:hover {
   color: red;
-  font-size: 24px;
+  font-size: 22px;
 }
+
+#empty {
+  color: white;
+}
+
+/* 삭제 버튼 클릭 시 */
 
 .modal {
   display: flex;
@@ -146,8 +157,14 @@ a {
 .modal-background {
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
+  text-align: end;
+}
+
+.modal-button {
+  color: black;
+  border: 1px solid black;
 }
 
 .modal-content {
@@ -157,36 +174,43 @@ a {
   border-radius: 10px;
   top: 0;
   padding: 10px 25px;
+  border: 1px solid black;
 }
 
 .hidden {
   display: none;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-}
-
-label {
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-input {
-  margin-bottom: 30px;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-#button-category-upload {
-  margin-bottom: 10px;
+#modal-button-delete {
+  margin-top: 30px;
+  margin-right: 10px;
   background-color: #e6ffde;
   font-weight: bold;
+  width: 20%;
+  border-radius: 10px;
+}
+#modal-button-delete:hover {
+  color: white;
+  background-color: green;
 }
 
-#button-category-cancel {
-  background-color: red;
+#modal-button-cancel {
+  margin-top: 30px;
+  background-color: rgb(255, 95, 95);
   font-weight: bold;
+  width: 20%;
+  border-radius: 10px;
+}
+#modal-button-cancel:hover {
+  color: white;
+  background-color: red;
+}
+
+.fa-x {
+  color: white;
+  padding: 20px;
+}
+
+.fa-x:hover {
+  cursor: pointer;
 }

@@ -59,7 +59,7 @@ form {
 .info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: .8rem;
 }
 
 .info:last-child {
@@ -78,7 +78,7 @@ form {
   padding: 0 15px 65px;
 }
 
-.customer-input div {
+.customer-input div:not(:first-child) {
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
@@ -174,12 +174,46 @@ input:focus {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: .8rem;
 }
 
 .section-title > p {
   font-size: 12px;
 }
+
+.pull-info {
+  display: flex;
+  align-items: center;
+  /* margin: 15px 0 0 5px; */
+  justify-content: space-between;
+}
+
+.info-check {
+  display: flex;
+  gap: .7rem;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+#name, #recipientName {
+  width: 100%;
+  margin-top: 20px;
+}
+
+input[type=checkbox] {
+  height: auto;
+  transform: scale(1.3);
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* input[type=checkbox]:hover {
+  outline: none;
+}
+input[type=checkbox]:active {
+  outline: none;
+} */
 
 .required::after, .section-title > p::before {
   content: "";

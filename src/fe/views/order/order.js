@@ -2,6 +2,14 @@ const productReq = [];  // 서버로 보낼 장바구니 정보를 담을 배열
 
 render();
 
+// 서버에서 로그인중인 회원의 회원정보 가져오는 api 호출하기
+// fetch('/api/user/register')
+//   .then(res => res.json())
+//   .then(data => console.log(data))
+//   .catch(err => console.log(err))
+
+
+
 function render() {
   let output = '';
   let totalQuantity = 0;  // 총 주문 수량
