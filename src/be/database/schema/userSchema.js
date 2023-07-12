@@ -21,17 +21,16 @@ const UserSchema = new Schema(
       required: false,
       default: "user", // user, admin 2가지
     },
-    address: {
-      type: new Schema(
-        {
-          postalCode: String,
-          address1: String,
-          address2: String,
-        },
-        {
-          _id: false,
-        }
-      ),
+    adress1: {
+      type: String,
+      required: true,
+    },
+    adress2: {
+      type: String,
+      required: true,
+    },
+    postalCode: {
+      type: String,
       required: true,
     },
     phoneNumber: {
