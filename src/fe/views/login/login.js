@@ -79,7 +79,7 @@ loginBtn.addEventListener("click", function (e) {
     var password = document.getElementById("password").value;
 
     // API 호출
-    fetch("/login", {
+    fetch("/api/user/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -91,9 +91,11 @@ loginBtn.addEventListener("click", function (e) {
     })
         .then(function (response) {
             // 응답 상태 코드 확인
+            console.log(response);
             if (response.status === 200) {
                 // 로그인 성공 시 토큰 값을 가져와서 로컬 스토리지에 저장
                 return response.json().then(function (data) {
+                    console.log(data);
                     // 토큰 값 로컬 스토리지에 저장
                     localStorage.setItem("token", data.token);
                     localStorage.setItem("username", username);
@@ -127,3 +129,5 @@ window.addEventListener("load", function () {
         console.log("토큰 값이 저장되어 있지 않습니다.");
     }
 });
+
+// admin / adminpw
