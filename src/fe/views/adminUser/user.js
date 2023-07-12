@@ -8,6 +8,11 @@ const deleteCheckButton = document.querySelector("#modal-button-delete");
 let deleteUserId;
 fetchJSONData();
 
+// userlist 가져오기, productlist 가져오기, categorylist 가져오기, orderlist 가져오기
+// user 삭제, product 삭제, category 삭제, order 삭제
+// product 추가, category 추가
+// user 권한 수정, order status 수정
+
 async function fetchJSONData() {
   const response = await fetch("/api/user/userlist", {
     method: "GET",
