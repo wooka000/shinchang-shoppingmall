@@ -7,9 +7,7 @@ class ProductsService {
     return createdNewProduct;
   }
 
-  async getProducts() {
-    const page = 1;
-    const limit = 12;
+  async getProducts(page, limit) {
     const skip = (page - 1) * limit;
     const products = await productsModel.findAllProducts(skip, limit);
 
@@ -29,7 +27,7 @@ class ProductsService {
     const product = await productsModel.findByProductNo(productNo);
 
     if (!product) {
-      throw new Error("?•´?‹¹ ? œ?’ˆë²ˆí˜¸?˜ ?ƒ?’ˆ??? ì¡´ì¬?•˜ì§? ?•Š?Šµ?‹ˆ?‹¤.");
+      throw new Error("?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ë²ˆí˜¸?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½??? ì¡´ì¬?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½.");
     }
 
     return product;
@@ -48,7 +46,7 @@ class ProductsService {
     const { deletedCount } = await productsModel.deleteByProductNo(productNo);
 
     if (deletedCount === 0) {
-      throw new Error(`${productId} ? œ?’ˆ?˜ ?‚­? œ?— ?‹¤?Œ¨?•˜????Šµ?‹ˆ?‹¤`);
+      throw new Error(`${productId} ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½????ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½`);
     }
 
     return { result: "success" };
