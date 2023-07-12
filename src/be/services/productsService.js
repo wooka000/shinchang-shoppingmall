@@ -7,9 +7,8 @@ class ProductsService {
     return createdNewProduct;
   }
 
-  async getProducts(page, limit) {
-    const skip = (page - 1) * limit;
-    const products = await productsModel.findAllProducts(skip, limit);
+  async getProducts(page, perPage) {
+    const products = await productsModel.findAllProducts(page, perPage);
 
     return products;
   }
@@ -27,7 +26,7 @@ class ProductsService {
     const product = await productsModel.findByProductNo(productNo);
 
     if (!product) {
-      throw new Error("?��?�� ?��?��번호?�� ?��?��??? 존재?���? ?��?��?��?��.");
+      throw new Error(`${productNo}에 해당하는 상품이 존재하지 않습니다.`);
     }
 
     return product;
@@ -46,7 +45,7 @@ class ProductsService {
     const { deletedCount } = await productsModel.deleteByProductNo(productNo);
 
     if (deletedCount === 0) {
-      throw new Error(`${productId} ?��?��?�� ?��?��?�� ?��?��?��????��?��?��`);
+      throw new Error(`${productNo}에 해당하는 상품이 존재하지 않습니다.`);
     }
 
     return { result: "success" };
