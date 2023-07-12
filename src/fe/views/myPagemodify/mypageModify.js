@@ -126,3 +126,27 @@ async function myPageModifyRender() {
 }
 
 myPageModifyRender();
+
+// 회원 탈퇴 함수
+async function deleteUser() {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch('/api/user/my', {
+        method: 'DELETE',
+        headers: {
+            authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (response.ok) localStorage.removeItem('token');
+}
+
+// 회원 탈퇴 버튼 클릭 이벤트
+const deleteBtn = document.querySelector('.delete-btn');
+deleteBtn.addEventListener('click', () => {
+    if (confirm('정말 탈퇴하실 건가요🫢?') == true) {
+        deleteUser();
+        alert('탈퇴가 완료되었습니다😱');
+    }
+});
