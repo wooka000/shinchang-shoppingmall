@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="user.css" />
+    <link rel="stylesheet" type="text/css" href="./user.css" />
     <script
       src="https://kit.fontawesome.com/59c9ef03f3.js"
       crossorigin="anonymous"
@@ -16,7 +16,7 @@
       <div class="header">
         <div id="title">
           <img
-            src="../../../public/assets/img/logo/떡잎마을샵-logo.png"
+            src="../../public/assets/img/logo/떡잎마을샵-logo.png"
             id="logo"
           />
         </div>
@@ -28,28 +28,40 @@
         <div id="content-title">
           <div class="page first-page">관리 목록</div>
           <div class="page special-page">
-            <a href="../user/user.html">회원 관리</a>
+            <a href="../adminUser/adminUser.html">회원 관리</a>
           </div>
           <div class="page">
-            <a href="../product/product.html">제품 관리</a>
+            <a href="../adminProduct/adminProduct.html">제품 관리</a>
           </div>
           <div class="page">
-            <a href="../category/category.html">카테고리 관리</a>
+            <a href="../adminCategory/adminCategory.html">카테고리 관리</a>
           </div>
-          <div class="page"><a href="../order/order.html">주문 관리</a></div>
+          <div class="page">
+            <a href="../adminOrder/adminOrder.html">주문 관리</a>
+          </div>
         </div>
         <div id="content-detail">
           <div id="empty">empty</div>
           <div class="user-container">
             <div id="user-container-number">회원번호</div>
             <div id="user-container-name">회원명</div>
-            <div id="user-container-id">아이디</div>
+            <div id="user-container-id">이메일</div>
             <div id="user-container-date">가입날짜</div>
             <div id="user-container-authority">권한</div>
           </div>
         </div>
       </div>
+      <div class="modal hidden">
+        <div class="modal-background"><i class="fa-solid fa-x"></i></div>
+        <div class="modal-content">
+          <div>
+            회원정보 삭제 시 복구할 수 없습니다. 정말로 삭제하시겠습니까?
+          </div>
+          <button class="modal-button" id="modal-button-delete">네</button>
+          <button class="modal-button" id="modal-button-cancel">아니오</button>
+        </div>
+      </div>
     </div>
-    <script src="user.js"></script>
+    <script src="./user.js" type="module"></script>
   </body>
 </html>
