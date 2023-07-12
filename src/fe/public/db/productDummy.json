@@ -1,100 +1,109 @@
 {
     "product": [
         {
-            "productNum": 1,
-            "productName": "상품 1",
-            "category": "휴대폰 케이스",
+            "productNo": 1,
+            "productName": "상품 123423423",
+            "categoryName": "핸드폰 케이스",
             "price": 7000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-04-09"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 2,
-            "productName": "상품 2",
-            "category": "의류",
+            "productNo": 2,
+            "productName": "상품 232423",
+            "categoryName": "인형",
             "price": 9000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-05-10"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 3,
+            "productNo": 3,
             "productName": "상품 3",
-            "category": "아크릴 키링",
+            "categoryName": "키링",
             "price": 10000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-03-20"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 4,
+            "productNo": 4,
             "productName": "상품 4",
-            "category": "지류 굿즈",
+            "categoryName": "지류 굿즈",
             "price": 3000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-07-10"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 5,
+            "productNo": 5,
             "productName": "상품 5",
-            "category": "텀블러",
+            "categoryName": "텀블러",
             "price": 15000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-04-08"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 6,
+            "productNo": 6,
             "productName": "상품 6",
-            "category": "피규어",
+            "categoryName": "피규어",
             "price": 20000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-04-09"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 7,
+            "productNo": 7,
             "productName": "상품 7",
-            "category": "휴대폰 케이스",
+            "categoryName": "핸드폰 케이스",
             "price": 10000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-04-12"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 8,
+            "productNo": 8,
             "productName": "상품 8",
-            "category": "피규어",
+            "categoryName": "피규어",
             "price": 30000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-04-20"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 9,
+            "productNo": 9,
             "productName": "상품 9",
-            "category": "지류 굿즈",
+            "categoryName": "지류 굿즈",
             "price": 7000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-04-26"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 10,
+            "productNo": 10,
             "productName": "상품 10",
-            "category": "아크릴 키링",
+            "categoryName": "키링",
             "price": 7000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-05-18"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 11,
+            "productNo": 11,
             "productName": "상품 11",
-            "category": "의류",
+            "categoryName": "필통",
             "price": 7000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-07-01"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         },
         {
-            "productNum": 12,
+            "productNo": 12,
             "productName": "상품 12",
-            "category": "인형",
+            "categoryName": "인형",
             "price": 8000,
-            "productImg": "list.jpeg",
-            "productDate": "2023-07-06"
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
+        },
+        {
+            "productNo": 13,
+            "productName": "상품 13",
+            "categoryName": "핸드폰 케이스",
+            "price": 8000,
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
+        },
+        {
+            "productNo": 14,
+            "productName": "상품 14",
+            "categoryName": "인형",
+            "price": 8000,
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
+        },
+        {
+            "productNo": 125,
+            "productName": "상품 125",
+            "categoryName": "필통",
+            "price": 8000,
+            "image": "https://i.pinimg.com/736x/86/c4/15/86c415c460b206d78466f4d601ad0285.jpg"
         }
     ]
 }
