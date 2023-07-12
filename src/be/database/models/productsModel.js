@@ -9,7 +9,8 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
-  async findAllProducts(skip, limit) {
+  async findAllProducts(page, limit) {
+    const skip = (page - 1) * limit;
     const products = await Product.find({})
       .sort({ createAt: -1 })
       .skip(skip)

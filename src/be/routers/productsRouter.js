@@ -17,7 +17,9 @@ productsRouter.post("/", async (req, res) => {
 // 상품 전체 목록 조회 o
 productsRouter.get("/", async (req, res) => {
   try {
-    const products = await productsService.getProducts();
+    const page = req.query.page || 1;
+    const limit = req.query.limit || 12;
+    const products = await productsService.getProducts(page, limit);
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
