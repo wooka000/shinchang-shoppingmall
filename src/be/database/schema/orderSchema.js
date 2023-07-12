@@ -19,6 +19,7 @@ const OrderSchema = new Schema({
       quantity: { type: Number, required: true }, // 상품 수량
     },
   ],
+  createAt: { type: Date, default: Date.now }, //등록시간
 });
 
 export { OrderSchema };
