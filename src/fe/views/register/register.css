@@ -139,3 +139,6 @@ input:focus {
     color: #fff;
     background-color: #000;
 }
+#number {
+    margin-right: 11px;
+}
