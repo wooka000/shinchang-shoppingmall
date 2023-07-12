@@ -55,15 +55,16 @@ async function headerRender() {
     
                     <!-- login & myPage -->
                     <ul class="sign-list">
-                        <li>
+                        <li class="admin-btn">
                             <a href="/admin/user"><img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" /></a>
                         </li>
                         <li class="login">
                             <a href="/login"><img src="../../public/assets/img/icon/user.svg" /></a>
                             <div class="hide-login">
                                 <ul>
-                                    <li><a href="/login">로그인</a></li>
-                                    <li><a href="/register">회원 가입</a></li>
+                                    <li class="login-btn"><a href="/login">로그인</a></li>
+                                    <li class="logout-btn">로그아웃</li>
+                                    <li class="register-btn"><a href="/register">회원 가입</a></li>
                                     <li><a href="/cart">장바구니</a></li>
                                     <li><a href="/mypage">마이 페이지</a></li>
                                 </ul>
@@ -97,7 +98,7 @@ async function headerRender() {
     const $menu = document.querySelector('menu');
     const $hideMenu = document.querySelector('.hide-menu');
     const hideMenuHeight = $hideMenu.offsetHeight;
-    const padding = 30;
+    const padding = 20;
 
     const $login = document.querySelector('.login');
     const $hideLogin = document.querySelector('.hide-login');
@@ -108,7 +109,7 @@ async function headerRender() {
 
     function mouseOverHandler(target) {
         target.style.height = `${(target === $hideMenu ? hideMenuHeight : hideLoginHeight) + padding}px`;
-        target.style.padding = '1rem 0';
+        target.style.padding = '1rem 0 0 0';
     }
 
     function mouseOutHandler(target) {
@@ -131,7 +132,44 @@ async function headerRender() {
         }
     });
 
-    // 로그인시 로그인에서 로그아웃으로 변경 / 회원가입 지우기 (jwt 토큰 살아있는지 유무 확인) 되면 하기
+    // 로그인시 로그인에서 로그아웃으로 변경 / 회원가입 가리기 (jwt 토큰 살아있는지 유무 확인)
+    let loginBtn = document.querySelector('.login-btn');
+    let registerBtn = document.querySelector('.register-btn');
+    let logoutBtn = document.querySelector('.logout-btn');
+
+    function changeBtnStyle(status) {
+        loginBtn.style.display = status ? 'none' : 'block';
+        registerBtn.style.display = status ? 'none' : 'block';
+        logoutBtn.style.display = status ? 'block' : 'none';
+    }
+
+    const checkToken = localStorage.getItem('token');
+
+    if (checkToken) {
+        changeBtnStyle(checkToken);
+
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('로그아웃하시겠습니까?') === true) {
+                alert('방문해 주셔서 감사합니다😍 다음에 또 방문 부탁드려요😘');
+                localStorage.removeItem('token');
+
+                changeBtnStyle(false);
+
+                location.href = '/';
+            } else alert('즐거운 쇼핑 되시길 바랍니다😋');
+        });
+    } else {
+        changeBtnStyle(checkToken);
+    }
+
+    // admin 일 경우 마크 띄우기
+    const adminBtn = document.querySelector('.admin-btn');
+
+    if (true) {
+        adminBtn.style.display = 'block';
+    } else {
+        adminBtn.style.display = 'none';
+    }
 }
 
 headerRender();
