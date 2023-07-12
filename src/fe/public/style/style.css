@@ -1,0 +1,18 @@
+:root {
+    /* 메인 슬라이더 제목 */
+    --font-size-title: 35px;
+
+    /* 메인에 시선집중! 처럼 서브 타이틀 */
+    --font-size-subtitle: 22px;
+
+    /* 상품 상세 페이지 타이틀 */
+    --font-size-productTitle: 18px;
+
+    /* 일반 텍스트 사이즈(마이페이지 등) */
+    --font-size-text: 16px;
+
+    /* 좀 더 작은 폰트 */
+    --font-size-small: 14px;
+
+    --color-main: #f8f8f8;
+}

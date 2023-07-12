@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>떡잎마을샵</title>
+  <link rel="stylesheet" href="./cart.css">
+  <link rel="stylesheet" href="../../public/components/header/header.css">
+  <link rel="stylesheet" href="../../public/components/footer/footer.css">
+  <link rel="stylesheet" href="../../public/style/reset.css">
+  <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+</head>
+<body>
+  <div id="header"></div>
+
+  <main class="container">
+    <div class="container-title">
+      <h2>장바구니</h2>
+    </div>
+    
+    <div class="order">
+      <section class="order-list"> 
+      </section>
+      
+      <section class="order-info">
+        <h2 id="orderinfo">주문 정보</h2>
+        <div class="order-receipt">
+          <div class="product-amount receipt">
+            <div>총 수량</div>
+            <div id="total-amount"></div>
+          </div>
+          <div class="product-sum receipt">
+            <div>총 상품 금액</div>
+            <div id="total-price"></div>
+          </div>
+          <div class="delivery-price receipt">
+            <div>배송비</div>
+            <div id="total-delivery-charge"></div>
+          </div>
+          <div class="total-amount receipt">
+            <div>총 주문금액</div>
+            <div id="total-money"></div>
+          </div>
+        </div>
+        <div class="button">
+          <div class="order-button"><a class="btn" onclick="order()">주문하기</a></div>
+          <div class="delete-button"><a class="btn" onclick="deleteAll()">전체삭제</a></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../../public/components/header/header.js"></script>
+  <script src="../../public/components/footer/footer.js"></script>
+  <script src="./cart.js"></script>
+</body>
+</html>

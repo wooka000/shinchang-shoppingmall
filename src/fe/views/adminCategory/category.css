@@ -1,0 +1,238 @@
+@import url("../../public/style/reset.css");
+@import url("../../public/style/style.css");
+
+#button-back:hover {
+  font-size: 20px;
+}
+
+#logo {
+  width: 300px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: center;
+  padding: 50px;
+  width: 100%;
+  height: 100%;
+  color: black;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  border-bottom: 5px solid black;
+}
+
+#empty {
+  width: 30px;
+}
+
+#title {
+  font-size: 36px;
+}
+
+button {
+  background-color: white;
+}
+
+#content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+#content-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  height: 60vh;
+  margin-right: 10px;
+  background-color: #353535;
+  color: white;
+  border-radius: 10px;
+}
+
+.page {
+  text-align: center;
+  padding: 5px;
+  margin: 10px 0px;
+}
+
+.special-page {
+  background-color: #000000;
+}
+
+.page:hover {
+  cursor: pointer;
+  background-color: #000000;
+}
+
+.first-page {
+  border-bottom: 2px solid white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#content-detail {
+  width: 85%;
+  font-size: 20px;
+}
+
+.category {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.category-name {
+  width: 30%;
+}
+
+.button-modify {
+  margin-right: 5px;
+  margin-left: 20px;
+}
+
+.add-container {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid black;
+}
+
+.button-category-add {
+  margin-bottom: 5px;
+}
+
+.fa-plus {
+  border: 2px solid green;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.fa-plus:hover {
+  background-color: green;
+  color: white;
+}
+
+.fa-pencil:hover {
+  color: blue;
+  font-size: 24px;
+}
+
+.fa-trash:hover {
+  color: red;
+  font-size: 24px;
+}
+
+.modal,
+.modal-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.modal-background,
+.modal-delete-background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  text-align: right;
+  padding: 10px;
+}
+
+.modal-content,
+.modal-delete-content {
+  text-align: center;
+  position: relative;
+  background-color: white;
+  border-radius: 10px;
+  top: 0;
+  padding: 10px 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+input {
+  margin-bottom: 30px;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+#button-category-upload {
+  margin-bottom: 10px;
+  background-color: #e6ffde;
+  font-weight: bold;
+}
+
+#button-category-cancel {
+  background-color: red;
+  font-weight: bold;
+}
+
+#modal-button-delete {
+  margin-top: 30px;
+  margin-right: 10px;
+  background-color: #e6ffde;
+  font-weight: bold;
+  width: 20%;
+  border-radius: 10px;
+  padding: 5px;
+}
+#modal-button-delete:hover {
+  color: white;
+  background-color: green;
+}
+
+#modal-button-cancel {
+  margin-top: 30px;
+  background-color: rgb(255, 95, 95);
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 5px;
+}
+#modal-button-cancel:hover {
+  color: white;
+  background-color: red;
+}
+
+.fa-x {
+  color: white;
+  padding: 20px;
+}
+
+.fa-x:hover {
+  cursor: pointer;
+}

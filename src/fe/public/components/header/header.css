@@ -1,0 +1,152 @@
+body {
+    width: 100%;
+    line-height: 25px;
+}
+
+#header {
+    width: 100%;
+    height: 80px;
+    color: #000;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    margin: 0 auto;
+}
+
+#header:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+#header #nav {
+    display: flex;
+    height: 100%;
+    padding: 0 3rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* logo --------------------- */
+
+#header .logo a > img {
+    width: 180px;
+    height: 75px;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* sign-list ---------------- */
+
+#header .sign-list {
+    display: flex;
+    width: 230px;
+    justify-content: space-around;
+    position: relative;
+}
+
+#header .sign-list > li > a > img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#header .sign-list > li {
+    position: relative;
+}
+
+/* sign-list : hide-login --- */
+
+#header .sign-list > li .hide-login {
+    width: 120px;
+    position: absolute;
+    top: 48px;
+    transform: translateX(-40%);
+    display: flex;
+    justify-content: space-around;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.sign-list a,
+.hide-menu a {
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.sign-list a:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* category ----------------- */
+
+#header menu {
+    position: absolute;
+    width: 500px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    left: 15%;
+    justify-content: space-around;
+}
+
+#header menu .main-menu {
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.main-menu a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #000;
+}
+
+.store:hover,
+.event:hover,
+.community:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#header menu .main-menu li {
+    margin: 0 4rem;
+}
+
+/* category : hide-menu ----- */
+
+#header menu .hide-menu {
+    width: 550px;
+    position: absolute;
+    top: 80px;
+
+    display: flex;
+    justify-content: space-around;
+
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+}
+
+#header > menu > .hide-menu ul {
+    padding: 0 2rem 0 0;
+}
+
+#header > menu > .hide-menu ul li {
+    margin: 0 2rem;
+}
+
+.hide-menu > div > ul > li a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
+
+.hide-menu a:hover {
+    color: rgba(255, 255, 255, 0.5);
+}
