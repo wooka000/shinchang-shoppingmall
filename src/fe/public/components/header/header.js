@@ -1,10 +1,17 @@
 async function headerRender() {
+    // 카테고리 api 호출
     const response = await fetch('/api/category', {
         method: 'GET',
     });
-    console.log(response);
-    const data = await response.json();
-    console.log(data);
+    let data = await response.json();
+
+    // (acc, query) => acc.push({...query}); acc.sort((a, b) => a.categoryName.length - b.categoryName.length); return acc;
+    data = data.reduce(
+        (acc, query) => [...acc, query].sort((a, b) => a.categoryName.length - b.categoryName.length),
+        []
+    );
+
+    data = [...data.slice(-1), ...data].slice(0, -1);
 
     // 헤더 생성
     const header = document.querySelector('#header');
@@ -21,27 +28,26 @@ async function headerRender() {
                     <!-- Menu -->
                     <menu>
                         <ul class="main-menu">
-                            <li class="store"><a href='#'>스토어</a></li>
-                            <li class="event"><a href='#'>이벤트</a></li>
-                            <li class="community"><a href='#'>커뮤니티</a></li>
+                            <li class="store"><a href="">스토어</a></li>
+                            <li class="event"><a href="">이벤트</a></li>
+                            <li class="community"><a href="">커뮤니티</a></li>
                         </ul>
                         <div class="hide-menu">
                             <div style="width: 140px">
                                 <ul class="menu-ul">
-                                    <li><a href="/products">인기 | 신상품</a></li>
                                 </ul>
                             </div>
                             <div style="width: 100px">
                                 <ul>
-                                    <li><a href="#">sale</a></li>
-                                    <li><a href="#">사전 예약</a></li>
+                                    <li><a href="">sale</a></li>
+                                    <li><a href="">사전 예약</a></li>
                                 </ul>
                             </div>
                             <div style="width: 150px">
                                 <ul>
-                                    <li><a href="#">Q&A</a></li>
-                                    <li><a href="#">도움말</a></li>
-                                    <li><a href="#">공지사항</a></li>
+                                    <li><a href="">Q&A</a></li>
+                                    <li><a href="">도움말</a></li>
+                                    <li><a href="">공지사항</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -50,7 +56,7 @@ async function headerRender() {
                     <!-- login & myPage -->
                     <ul class="sign-list">
                         <li>
-                            <a href="/admin"><img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" /></a>
+                            <a href="/admin/user"><img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" /></a>
                         </li>
                         <li class="login">
                             <a href="/login"><img src="../../public/assets/img/icon/user.svg" /></a>
@@ -67,7 +73,7 @@ async function headerRender() {
                             <a href="/cart"><img src="../../public/assets/img/icon/cart.svg" alt="" /></a>
                         </li>
                         <li>
-                            <a href="#"><img src="../../public/assets/img/icon/search.svg" alt="" style="width: 25px; height: 25px; margin: 2px" /></a>
+                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="" style="width: 25px; height: 25px; margin: 2px" /></a>
                         </li>
                     </ul>
     `;
@@ -79,21 +85,20 @@ async function headerRender() {
     const hideMenu = document.querySelector('.menu-ul');
     const categoryFragment = new DocumentFragment();
 
-    data.forEach((el) => {
+    data.forEach(({ categoryName }) => {
         const li = document.createElement('li');
-        li.innerHTML = `<a>${el.categoryName}</a>`;
+        li.innerHTML = `<a href="/products/category?categoryName=${categoryName}">${categoryName}</a>`;
         categoryFragment.appendChild(li);
     });
 
     hideMenu.appendChild(categoryFragment);
 
-    // category nav
+    // 카테고리 및 로그인 nav 바 마우스 호버시 보여주기
     const $menu = document.querySelector('menu');
     const $hideMenu = document.querySelector('.hide-menu');
     const hideMenuHeight = $hideMenu.offsetHeight;
     const padding = 30;
 
-    // login nav
     const $login = document.querySelector('.login');
     const $hideLogin = document.querySelector('.hide-login');
     const hideLoginHeight = $hideLogin.offsetHeight;
@@ -126,7 +131,7 @@ async function headerRender() {
         }
     });
 
-    // 로그인시 로그인에서 로그아웃으로 변경 / 회원가입 지우기 (jwt 토큰 유무 확인)
+    // 로그인시 로그인에서 로그아웃으로 변경 / 회원가입 지우기 (jwt 토큰 살아있는지 유무 확인) 되면 하기
 }
 
 headerRender();
