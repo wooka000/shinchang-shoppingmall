@@ -1,35 +1,38 @@
 async function productsRender() {
-    // url 구분해서 categoryName 가져오기
-    let queryObject = location.search
-        .replace('?', '')
-        .split('&')
-        .reduce((acc, query) => {
-            let [key, value] = query.split('=');
-            acc[key] = decodeURI(value);
+  // url 구분해서 categoryName 가져오기
+  let queryObject = location.search
+    .replace("?", "")
+    .split("&")
+    .reduce((acc, query) => {
+      let [key, value] = query.split("=");
+      acc[key] = decodeURI(value);
 
-            return acc;
-        }, {});
+      return acc;
+    }, {});
 
-    let { categoryName } = queryObject;
+  let { categoryName } = queryObject;
 
-    // 상품 카테고리 제목
-    const listTitle = document.querySelector('.list-title');
-    const strong = document.createElement('strong');
+  // 상품 카테고리 제목
+  const listTitle = document.querySelector(".list-title");
+  const strong = document.createElement("strong");
 
-    strong.textContent = categoryName;
-    listTitle.appendChild(strong);
+  strong.textContent = categoryName;
+  listTitle.appendChild(strong);
 
-    // 상품 전체 목록 불러와서 넣어줄 div
-    let productList = document.querySelector('.products-list');
+  // 상품 전체 목록 불러와서 넣어줄 div
+  let productList = document.querySelector(".products-list");
 
-    // 전체 목록 불러오기
-    if (categoryName === '인기 | 신상품') {
-        apiFetch(productList, '/api/products');
-    } else {
-        apiFetch(productList, `/api/products/category?categoryName=${categoryName}`);
-    }
+  // 전체 목록 불러오기
+  if (categoryName === "인기 | 신상품") {
+    apiFetch(productList, "/api/products");
+  } else {
+    apiFetch(
+      productList,
+      `/api/products/category?categoryName=${categoryName}`
+    );
+  }
 
-    /*
+  /*
     pagination
     let currentPage = 1;
     let itemsPerPage = 5;
@@ -68,24 +71,24 @@ productsRender();
 
 // api 호출 함수
 async function apiFetch(target, url) {
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    // 상품 목록
-    const listFragment = new DocumentFragment();
+  // 상품 목록
+  const listFragment = new DocumentFragment();
 
-    data.forEach(({ productNo, productName, price, image }) => {
-        let products = document.createElement('div');
-        products.setAttribute('class', 'products');
-        products.setAttribute('id', `${productNo}`);
+  data.forEach(({ productNo, productName, price, image }) => {
+    let products = document.createElement("div");
+    products.setAttribute("class", "products");
+    products.setAttribute("id", `${productNo}`);
 
-        products.innerHTML = `
+    products.innerHTML = `
             <div class="img-wrapper">
                 <a href="/products/${productNo}">
                     <img src="${image}" alt="goods 1" />
@@ -99,8 +102,8 @@ async function apiFetch(target, url) {
             </div>
         `;
 
-        listFragment.appendChild(products);
-    });
+    listFragment.appendChild(products);
+  });
 
-    target.appendChild(listFragment);
+  target.appendChild(listFragment);
 }
