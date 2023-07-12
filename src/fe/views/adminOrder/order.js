@@ -1,5 +1,8 @@
 const content = document.querySelector("#content-detail");
-console.log(content);
+const modal = document.querySelector(".modal");
+const modalBackground = document.querySelector(".modal-background");
+const cancelButton = document.querySelector("#modal-button-cancel");
+const deleteCheckButton = document.querySelector("#modal-button-delete");
 
 fetchJSONData();
 
@@ -22,18 +25,35 @@ async function fetchJSONData() {
             <option>배송 완료</option>
           </select>
         </div>
-        <button>
+        <button id="delete-button-${data[i].orderNo}">
           <i class="fa-solid fa-trash"> 삭제</i>
         </button>
       </div>
       `
     );
+    const deleteButton = document.querySelector(
+      `#delete-button-${data[i].orderNo}`
+    );
+
+    function onDelete(e) {
+      e.preventDefault();
+      console.log(e.target.parentNode.parentNode.firstElementChild.innerText);
+      modalClick();
+    }
+    deleteButton.addEventListener("click", onDelete);
   }
 }
 
-document.addEventListener("click", function (e) {
-  console.log(e.target.parentNode.parentNode.firstElementChild.innerText);
-});
+function modalClick() {
+  modal.classList.toggle("hidden");
+}
 
-const deleteButton = document.querySelector("#order-delete");
-console.log(deleteButton);
+modalBackground.addEventListener("click", modalClick);
+cancelButton.addEventListener("click", modalClick);
+
+function deleteUser(e) {
+  e.preventDefault();
+  console.log(e.target);
+  //'네'버튼 클릭 시 데이터베이스의 주문 삭제
+}
+deleteCheckButton.addEventListener("click", deleteUser);
