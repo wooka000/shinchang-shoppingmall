@@ -1,18 +1,21 @@
-// 상품 상세 페이지 리스트 업
-async function init() {
-    // 상품 번호 가져오기
-    let productNum = {};
+async function productDetailRender() {
+    const response = await fetch(`/api${window.location.pathname}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
 
-    const response = await fetch('../../public/db/productDummy.json');
     const data = await response.json();
-    const productDummy = data.product;
+
+    let { productNo, productName, image, price } = data;
 
     // 로드되자마자 보이는 이미지
     let productImg = document.querySelector('.product-img');
     let productFragment = new DocumentFragment();
     let productDiv = document.createElement('div');
 
-    productDiv.innerHTML = `<img src="../home/${productDummy[1].productImg}" alt="product-img" />`;
+    productDiv.innerHTML = `<img src="../home/${image}" alt="product-img" />`;
     productFragment.appendChild(productDiv);
     productImg.appendChild(productFragment);
 
@@ -21,7 +24,7 @@ async function init() {
     let contentsFragment = new DocumentFragment();
     let contentsDiv = document.createElement('div');
 
-    contentsDiv.innerHTML = `<img src="../home/${productDummy[1].productImg}" alt="product-img" />`;
+    contentsDiv.innerHTML = `<img src="../home/${image}" alt="product-img" />`;
     contentsFragment.appendChild(contentsDiv);
     contentsImg.appendChild(contentsFragment);
 
@@ -30,8 +33,9 @@ async function init() {
     let productInfoFragment = new DocumentFragment();
     let productInfoDiv = document.createElement('div');
 
-    productInfoDiv.innerHTML = `<h2>${productDummy[1].productName}</h2>
-                            <p>${productDummy[1].price.toLocaleString()}</p>`;
+    productInfoDiv.innerHTML = `<h2>${productName}</h2>
+                            <p>${price.toLocaleString()}</p>`;
+
     productInfoFragment.appendChild(productInfoDiv);
     productInfo.appendChild(productInfoFragment);
 
@@ -57,30 +61,25 @@ async function init() {
 
     // 장바구니 담기
     cartBtn.addEventListener('click', () => {
-        // 이미 저장되어 있는 카트 목록 불러오기
-        const prevCartProductList = JSON.parse(localStorage.getItem('cart-list')) || {};
+        // 로컬 스토리지에 이미 저장되어 있는 목록 중에 현재 상품 상세 페이지에 있는 상품이 있는지 확인
+        let currentPdInfo = JSON.parse(localStorage.getItem(`${productNo}`));
 
-        let currentProductInfo = productDummy[4];
-
-        const { productNum, productName } = currentProductInfo;
-
-        // 이미 저장되어 있는 카트 목록에 제품 번호가 있는지 확인
-        if (prevCartProductList[productNum]) {
-            currentProductInfo = prevCartProductList[productNum];
-        } else {
-            currentProductInfo.quantity = 0;
+        if (!currentPdInfo) {
+            currentPdInfo = data;
+            currentPdInfo.quantity = 0;
         }
 
-        currentProductInfo.quantity += num;
+        currentPdInfo.quantity += num;
+        localStorage.setItem(`${productNo}`, JSON.stringify(currentPdInfo));
 
-        // 현재 장바구니에 담을 데이터를 저장되어 있는 카트 목록에 추가 -> 배열 json 문자열로 변환
-        const newList = JSON.stringify({ ...prevCartProductList, [productName]: currentProductInfo });
+        // 장바구니 버튼 클릭시 페이지 이동
+        const confirmCart = confirm('장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?');
 
-        // 로컬 스토리지에 저장
-        localStorage.setItem('cart-list', newList);
-
-        alert('장바구니에 담겼음 ㅋㅋ 쟈ㅏㅇ바구니로 갈래?');
-        location.href('/cart');
+        if (confirmCart === true) {
+            location.href = '/cart';
+        } else {
+            alert('즐거운 쇼핑 되시길 바랍니다🥰');
+        }
     });
 
     // 바로 구매하기
@@ -92,7 +91,47 @@ async function init() {
 
         const orderPd = JSON.stringify({ [productName]: immediatePurchase });
         localStorage.setItem('buy-now', orderPd);
+
+        alert('결제 화면으로 넘어갑니다.');
+
+        location.href = '/order';
     });
 }
 
-init();
+productDetailRender();
+
+/*
+로컬 스토리지 객체로 담기
+
+cartBtn.addEventListener('click', () => {
+    // 이미 저장되어 있는 카트 목록 불러오기
+    const prevCartProductList = JSON.parse(localStorage.getItem('cart-list')) || {};
+
+    let currentProductInfo = productDummy[4];
+
+    const { productNum, productName } = currentProductInfo;
+
+    // 이미 저장되어 있는 카트 목록에 제품 번호가 있는지 확인
+    if (prevCartProductList[productNum]) {
+        currentProductInfo = prevCartProductList[productNum];
+    } else {
+        currentProductInfo.quantity = 0;
+    }
+
+    currentProductInfo.quantity += num;
+
+    // 현재 장바구니에 담을 데이터를 저장되어 있는 카트 목록에 추가 -> 배열 json 문자열로 변환
+    const newList = JSON.stringify({ ...prevCartProductList, [productName]: currentProductInfo });
+
+    // 로컬 스토리지에 저장
+    localStorage.setItem('cart-list', newList);
+
+    const confirmCart = confirm('장바구니에 상품이 담겼습니다. 장바구니로 이동하시겠습니까?');
+
+    if (confirmCart === true) {
+        location.href = '/cart';
+    } else {
+        alert('즐거운 쇼핑 되시길 바랍니다🥰');
+    }
+});
+*/
