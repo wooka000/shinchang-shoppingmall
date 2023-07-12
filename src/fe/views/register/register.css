@@ -84,16 +84,18 @@ input:focus {
 }
 
 #sample6_detailAddress {
-    width: 17rem;
+    /* flex-basis: 60%; */
+    width: 170px;
 }
 
 #sample6_extraAddress {
     margin: 0;
-    width: 100px;
+    /* flex-basis: 40%; */
+    width: 142px;
 }
 
 #sample6_address {
-    width: 18rem;
+    width: 320px;
 }
 
 .address-num button {
