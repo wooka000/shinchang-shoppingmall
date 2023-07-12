@@ -9,8 +9,11 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
-  async findAllProducts() {
-    const products = await Product.find({}).sort({ createAt: -1 });
+  async findAllProducts(skip, limit) {
+    const products = await Product.find({})
+      .sort({ createAt: -1 })
+      .skip(skip)
+      .limit(limit);
     return products;
   }
 
