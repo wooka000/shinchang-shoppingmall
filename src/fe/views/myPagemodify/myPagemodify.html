@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원 정보 수정</title>
+
+        <!-- css -->
+        <link rel="stylesheet" href="../../public/style/reset.css" />
+        <link rel="stylesheet" href="../../public/components/header/header.css" />
+        <link rel="stylesheet" href="../../public/components/footer/footer.css" />
+        <link rel="stylesheet" href="./mypageModify.css" />
+
+        <!-- favicon -->
+        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header"></div>
+
+        <!-- main -->
+        <main>
+            <div class="mypage-wrapper">
+                <h2>회원 정보 수정</h2>
+
+                <div class="line"></div>
+
+                <div class="contents-wrapper">
+                    <div class="middle-wrapper">
+                        <div class="name-wrapper">
+                            <p>이름</p>
+                            <input type="text" value="" readonly />
+                        </div>
+                        <div class="id-wrapper">
+                            <p>아이디</p>
+                            <input type="text" readonly />
+                        </div>
+                        <div class="password-wrapper">
+                            <p>비밀번호</p>
+                            <input type="text" />
+                        </div>
+                        <div class="password-check-wrapper">
+                            <p>비밀번호 확인</p>
+                            <input type="text" />
+                        </div>
+                        <div class="number-wrapper">
+                            <p>전화번호</p>
+                            <input type="text" id="number" />
+                        </div>
+                    </div>
+                    <div class="last-wrapper">
+                        <div class="img-wrapper">
+                            <div>
+                                <img src="./철수.jpeg" alt="" />
+                            </div>
+                            <button>이미지 선택</button>
+                        </div>
+                        <div class="address-wrapper">
+                            <div>
+                                <p>주소</p>
+                            </div>
+                            <div>
+                                <div class="address-search">
+                                    <input type="text" value="19945" />
+                                    <button>검색</button>
+                                </div>
+                                <div class="main-address">
+                                    <input type="text" value="서울특별시 초록구 떡잎마을 떡잎3로" />
+                                </div>
+                                <div class="sub-address">
+                                    <input type="text" value="짱구네" />
+                                    <input type="text" placeholder="참고 사항" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-wrapper">
+                    <button class="modify-btn">회원 정보 수정</button>
+                    <button class="delete-btn">회원 탈퇴</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <div id="footer"></div>
+
+        <!-- header & footer script -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
+
+        <!-- mypageModify script -->
+        <script src="./mypageModify.js"></script>
+
+        <!-- address script -->
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    </body>
+</html>

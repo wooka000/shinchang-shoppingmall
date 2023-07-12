@@ -1,0 +1,100 @@
+{
+    "product": [
+        {
+            "productNum": 1,
+            "productName": "상품 1",
+            "category": "휴대폰 케이스",
+            "price": 7000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-04-09"
+        },
+        {
+            "productNum": 2,
+            "productName": "상품 2",
+            "category": "의류",
+            "price": 9000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-05-10"
+        },
+        {
+            "productNum": 3,
+            "productName": "상품 3",
+            "category": "아크릴 키링",
+            "price": 10000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-03-20"
+        },
+        {
+            "productNum": 4,
+            "productName": "상품 4",
+            "category": "지류 굿즈",
+            "price": 3000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-07-10"
+        },
+        {
+            "productNum": 5,
+            "productName": "상품 5",
+            "category": "텀블러",
+            "price": 15000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-04-08"
+        },
+        {
+            "productNum": 6,
+            "productName": "상품 6",
+            "category": "피규어",
+            "price": 20000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-04-09"
+        },
+        {
+            "productNum": 7,
+            "productName": "상품 7",
+            "category": "휴대폰 케이스",
+            "price": 10000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-04-12"
+        },
+        {
+            "productNum": 8,
+            "productName": "상품 8",
+            "category": "피규어",
+            "price": 30000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-04-20"
+        },
+        {
+            "productNum": 9,
+            "productName": "상품 9",
+            "category": "지류 굿즈",
+            "price": 7000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-04-26"
+        },
+        {
+            "productNum": 10,
+            "productName": "상품 10",
+            "category": "아크릴 키링",
+            "price": 7000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-05-18"
+        },
+        {
+            "productNum": 11,
+            "productName": "상품 11",
+            "category": "의류",
+            "price": 7000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-07-01"
+        },
+        {
+            "productNum": 12,
+            "productName": "상품 12",
+            "category": "인형",
+            "price": 8000,
+            "productImg": "list.jpeg",
+            "productDate": "2023-07-06"
+        }
+    ]
+}

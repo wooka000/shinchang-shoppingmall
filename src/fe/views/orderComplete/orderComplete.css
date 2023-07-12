@@ -1,0 +1,78 @@
+@import url(../../public/style/reset.css);
+@import url(../../public/style/style.css);
+
+.container {
+  padding: 160px 160px 60px;
+  height: calc(100vh - 230px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.complete {
+  width: 380px;
+  height: 280px;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  box-shadow:
+  0px 0px 2.2px rgba(0, 0, 0, 0.014),
+  0px 0px 5.3px rgba(0, 0, 0, 0.02),
+  0px 0px 10px rgba(0, 0, 0, 0.025),
+  0px 0px 17.9px rgba(0, 0, 0, 0.03),
+  0px 0px 33.4px rgba(0, 0, 0, 0.036),
+  0px 0px 80px rgba(0, 0, 0, 0.05);
+}
+
+.complete-message {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.complete-message > h2::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 6px;
+  margin-right: 0.4em;
+  border-left: 4px solid #00A200;
+  border-bottom: 4px solid #00A200;
+  transform: rotate(-45deg);
+  vertical-align: 0.3em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#orderlist, #home {
+  display: inline-block;
+  width: 280px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, .2);
+  font-size: var(--font-size-subtitle);
+  text-align: center;
+  line-height: 50px;
+  border-radius: 10px;
+}
+
+#home {
+  background-color: #00d1b2;
+  color: white;
+  margin-bottom: 25px;
+}
+
+#orderlist:hover, #home:hover {
+  opacity: .6;
+}
+
+#orderlist:active, #home:active {
+  transform: scale(102%);
+  transition: .1s;
+}

@@ -1,0 +1,146 @@
+main {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    color: #000;
+    z-index: 0;
+    position: relative;
+    padding: 130px 60px;
+}
+
+.container {
+    background-color: #eeeff1;
+    background-color: white;
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.register-title {
+    text-align: center;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    margin: 2rem 0;
+}
+
+input {
+    border-radius: 10px;
+    width: 20rem;
+    height: 3rem;
+    padding: 0.7rem;
+    margin: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.form-wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.form-wrapper > div {
+    width: 92%;
+}
+
+.span-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.span-wrapper > div {
+    width: 20%;
+}
+
+.address {
+    width: 75.5%;
+    /* padding-right: 10px;s */
+}
+
+.address-num {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+input:focus {
+    outline: 1px solid dodgerblue;
+}
+
+.address-detail {
+    display: flex;
+    align-items: center;
+}
+
+.address-detail > input {
+    /* margin: 0 auto; */
+}
+
+#sample6_detailAddress {
+    /* flex-basis: 60%; */
+    width: 170px;
+}
+
+#sample6_extraAddress {
+    margin: 0;
+    /* flex-basis: 40%; */
+    width: 142px;
+}
+
+#sample6_address {
+    width: 320px;
+}
+
+.address-num button {
+    width: 120px;
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #eeeff1;
+    color: #000;
+}
+
+.address-num button:hover {
+    opacity: 0.8;
+}
+
+.login-btn {
+    margin-bottom: 6px;
+    border-radius: 5px;
+    margin-top: 30px;
+    width: 230px;
+    height: 45px;
+
+    background-color: #00d1b2;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    opacity: 0.6;
+}
+
+.register-btn {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
+}
+
+.register-btn > button {
+    border-radius: 10px;
+    height: 4rem;
+    width: 99%;
+    color: #fff;
+    background-color: #000;
+}
+#number {
+    margin-right: 11px;
+}

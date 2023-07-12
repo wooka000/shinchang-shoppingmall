@@ -1,0 +1,134 @@
+{
+  "product": [
+    {
+      "productNum": 0,
+      "productName": "상품 0",
+      "category": "휴대폰 케이스",
+      "price": 7000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 1,
+      "productName": "상품 1",
+      "category": "의류",
+      "price": 14000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 2,
+      "productName": "상품 2",
+      "category": "휴대폰 케이스",
+      "price": 15000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 3,
+      "productName": "상품 3",
+      "category": "지류 굿즈",
+      "price": 8000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 4,
+      "productName": "상품 4",
+      "category": "휴대폰 케이스",
+      "price": 25000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 5,
+      "productName": "상품 5",
+      "category": "의류",
+      "price": 13000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 6,
+      "productName": "상품 6",
+      "category": "의류",
+      "price": 17000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 7,
+      "productName": "상품 7",
+      "category": "지류 굿즈",
+      "price": 21000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 8,
+      "productName": "상품 8",
+      "category": "키링",
+      "price": 7000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 9,
+      "productName": "상품 9",
+      "category": "휴대폰 케이스",
+      "price": 7000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 10,
+      "productName": "상품 10",
+      "category": "키링",
+      "price": 7000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 11,
+      "productName": "상품 11",
+      "category": "잠옷",
+      "price": 13000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    },
+    {
+      "productNum": 12,
+      "productName": "상품 12",
+      "category": "휴대폰 케이스",
+      "price": 30000,
+      "productImg": "list.jpeg",
+      "productDate": "2023-04-09",
+      "quantity": 1,
+      "checked": "checked"
+    }
+  ]
+}

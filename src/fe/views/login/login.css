@@ -1,0 +1,125 @@
+main {
+    width: 100%;
+    height: calc(100vh - 230px);
+    margin: 0 auto;
+    color: #000;
+    z-index: 0;
+    position: relative;
+    padding: 160px 160px 60px;
+}
+
+/* 공통 스타일 */
+input {
+    border: none;
+    width: 100%;
+    height: 48px;
+    border-radius: 6px;
+}
+
+.login-wrapper {
+    width: 500px;
+    height: 400px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.login-wrapper > h2 {
+    color: #000;
+    margin: 0 0 2.5rem 0;
+    text-align: center;
+}
+
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    margin: 2rem 0;
+}
+
+.email-input {
+    margin: 0 0 1.5rem 0;
+}
+
+.email-input > input,
+.pw-input > input {
+    padding: 1rem;
+    border: 1px solid #d2d2d2;
+    margin: 0.5rem 0 0 0;
+}
+
+#login-form > input::placeholder {
+    color: #d2d2d2;
+}
+
+input[type="submit"] {
+    color: #fff;
+    background-color: black;
+    margin-top: 2rem;
+}
+button {
+    width: 100%;
+    height: 3rem;
+    border-radius: 6px;
+    margin: 2.5rem 0 0 0;
+    background-color: #000;
+    color: #fff;
+}
+#footer {
+    width: 100%;
+    height: 230px;
+    color: #000;
+    background-color: #f9f9f9;
+    text-align: center;
+    line-height: 30px;
+    padding: 2rem 1rem;
+}
+
+#footer .footer-box {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.site-logo {
+    display: flex;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.site-logo > div {
+    margin: 0 auto;
+}
+
+.site-logo > div img {
+    width: 30px;
+    height: 30px;
+}
+
+.net {
+    display: flex;
+    justify-content: space-around;
+    width: 450px;
+    margin: 0 auto;
+}
+
+.net > div {
+    display: flex;
+    align-items: center;
+}
+
+.net > div img {
+    width: 20px;
+    height: 20px;
+}
+
+.footer-logo {
+    height: 55px;
+}
+
+.footer-logo img {
+    width: 9rem;
+    height: 3.8rem;
+}
+
+.copyright > span {
+    font-size: 14px;
+}
