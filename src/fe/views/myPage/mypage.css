@@ -89,6 +89,7 @@ body {
 
 a {
   width: 33%;
+  text-decoration: none;
 }
 
 .check-card {
