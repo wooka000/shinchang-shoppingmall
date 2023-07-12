@@ -85,15 +85,26 @@ a {
 .new-products {
     width: 100%;
     height: auto;
-    display: grid;
+    display: flex;
     text-align: center;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 4rem 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 2rem;
 }
 
-.new-products > div img {
+.new-products > div {
+    flex: 1 1 264px;
+}
+
+.img-wrapper {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.img-wrapper img {
     width: 100%;
-    /* height: 80%; */
+    height: 100%;
     cursor: pointer;
     border-radius: 3%;
     transition: all 0.5s ease-in-out 0s;
@@ -149,28 +160,33 @@ a {
 .popular-contents {
     width: 100%;
     height: auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     margin-top: 3rem;
-    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .popular-category {
     text-align: center;
     margin: 1rem 0px;
+    width: 25%;
+    flex: 1 1 264px;
 }
 
-.popular-category div {
-    margin: 0.5rem 0;
+.category-img-wrapper {
+    margin: 0 auto;
+    width: 200px;
+    aspect-ratio: 1.6/1;
 }
 
-.popular-category > img {
-    width: 100%;
-    height: 70%;
+.category-img-wrapper > a > img {
     transition: all 0.5s ease-in-out 0s;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
 }
 
-.popular-category > img:hover {
+.category-img-wrapper > img:hover {
     transform: scale(1.1);
 }
 

@@ -117,8 +117,8 @@ h3 {
     margin: 0 0 1rem 0;
 }
 
-.product-info > p {
-    font-size: 22px;
+.product-info > div p {
+    font-size: 20px;
 }
 
 .product-device {
@@ -150,6 +150,7 @@ select {
 }
 
 .product-counter {
+    margin: 1rem 0;
     display: flex;
     justify-content: space-between;
 }
@@ -248,10 +249,12 @@ input[name='quantity'] {
     height: 20px;
     display: flex;
     align-items: center;
+    width: 23.5%;
 }
 
 .delivery-start div:nth-child(2) {
     text-align: right;
+    width: 76.5%;
 }
 
 .delivery-date {

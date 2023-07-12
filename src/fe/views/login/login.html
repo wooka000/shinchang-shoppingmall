@@ -18,7 +18,7 @@
 
         <!-- favicon -->
         <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
-        <script src="login.js"></script>
+        <script defer src="login.js"></script>
     </head>
     <!-- <body>
         <div class="login-wrapper">
@@ -40,24 +40,27 @@
 
                 <div class="line"></div>
 
-                <form id="login-form">
-                    <div class="email-input">
-                        <strong>아이디</strong>
-                        <input type="text" name="id" placeholder="id" id="id" />
-                    </div>
+                <!-- <form id="login-form" method="post"> -->
+                <div class="email-input">
+                    <strong>아이디</strong>
+                    <input type="text" name="id" placeholder="ID" id="id" />
+                </div>
 
-                    <div class="pw-input">
-                        <strong>비밀번호</strong>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            id="password"
-                        />
-                    </div>
+                <div class="pw-input">
+                    <strong>비밀번호</strong>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        id="password"
+                    />
+                </div>
 
-                    <input type="submit" value="로그인" onclick="loginId()" />
-                </form>
+                <!-- <input id="login-btn" type="button" value="로그인" /> -->
+                <button id="login-btn">로그인</button>
+                <!-- onclick="loginId()" -->
+
+                <!-- <button type="submit" form="/user/login"></button> -->
             </div>
         </main>
 
