@@ -13,7 +13,7 @@ export class ProductsModel {
     page,
     perPage,
     sortBy = "createdAt",
-    sortOrder = "desc"
+    sortPrice = "desc"
   ) {
     const skip = perPage * (page - 1);
     const sortOption = {};
