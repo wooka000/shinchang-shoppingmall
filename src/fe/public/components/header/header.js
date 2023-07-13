@@ -168,13 +168,26 @@ async function headerRender() {
   }
 
   // admin 일 경우 마크 띄우기
-  const adminBtn = document.querySelector(".admin-btn");
+  fetch("/api/user/my", {
+    method: "GET",
+    headers: {
+      Authorization: `bearer ${checkToken}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      const isAdmin = data.role === "admin";
 
-  if (true) {
-    adminBtn.style.display = "block";
-  } else {
-    adminBtn.style.display = "none";
-  }
+      const adminBtn = document.querySelector(".admin-btn");
+
+      if (isAdmin) {
+        adminBtn.style.display = "block";
+      } else {
+        adminBtn.style.display = "none";
+      }
+    })
+    .catch(console.log);
 }
 
 headerRender();

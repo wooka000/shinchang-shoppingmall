@@ -64,9 +64,12 @@ userRouter.patch("/my", loginRequired, async function (req, res, next) {
     // body data 로부터 업데이트할 사용자 정보를 추출함.
     const fullName = req.body.fullName;
     const password = req.body.password;
-    const address = req.body.address;
+    const postalCode = req.body.postalCode;
+    const address1 = req.body.address1;
+    const address2 = req.body.address2;
     const phoneNumber = req.body.phoneNumber;
     const role = req.body.role;
+    const profileImage = req.body.profileImage;
 
     // body data로부터, 확인용으로 사용할 현재 비밀번호를 추출함.
     const currentPassword = req.body.currentPassword;
@@ -83,8 +86,11 @@ userRouter.patch("/my", loginRequired, async function (req, res, next) {
     const toUpdate = {
       ...(fullName && { fullName }),
       ...(password && { password }),
-      ...(address && { address }),
+      ...(address1 && { address1 }),
+      ...(address2 && { address2 }),
+      ...(postalCode && { postalCode }),
       ...(phoneNumber && { phoneNumber }),
+      ...(profileImage && { profileImage }),
       ...(role && { role }),
     };
 
