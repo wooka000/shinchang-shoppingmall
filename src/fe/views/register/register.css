@@ -61,7 +61,6 @@ input {
 
 .address {
     width: 75.5%;
-    /* padding-right: 10px;s */
 }
 
 .address-num {
@@ -79,18 +78,12 @@ input:focus {
     align-items: center;
 }
 
-.address-detail > input {
-    /* margin: 0 auto; */
-}
-
 #sample6_detailAddress {
-    /* flex-basis: 60%; */
     width: 170px;
 }
 
 #sample6_extraAddress {
     margin: 0;
-    /* flex-basis: 40%; */
     width: 142px;
 }
 
