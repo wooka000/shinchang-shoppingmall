@@ -9,6 +9,7 @@ const sample6_postcode = document.querySelector("#sample6_postcode");
 const sample6_address = document.querySelector("#sample6_address");
 const sample6_detailAddress = document.querySelector("#sample6_detailAddress");
 const sample6_extraAddress = document.querySelector("#sample6_extraAddress");
+const userId = localStorage.getItem('username');
 
 render();
 
@@ -42,7 +43,8 @@ orderBtn.addEventListener('click', async (e) => {
       detailAddress: sample6_detailAddress.value,
       extraAddress: sample6_extraAddress.value,
       deliveryMessage: message,
-      orderArray: productReq
+      orderArray: productReq,
+      userId: userId
     })
   })
 
