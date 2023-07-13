@@ -21,8 +21,7 @@ class OrderService {
   }
 
   async getOrderByUserId(userId) {
-    const user = await userModel.findByEmail(userId);
-    const order = await orderModel.findByUserId(user.email);
+    const order = await orderModel.findByUserId(userId);
     return order;
   }
 

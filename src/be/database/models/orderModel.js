@@ -20,7 +20,7 @@ export class OrderModel {
   }
 
   async findByUserId(userId) {
-    const order = await Order.findOne({ userId });
+    const order = await Order.find({ userId });
     return order;
   }
 

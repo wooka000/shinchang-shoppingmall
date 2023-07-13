@@ -35,7 +35,7 @@ orderRouter.get("/:orderNo", async (req, res) => {
   }
 });
 
-// 특정 사용자 주문 조회 - userId
+// 특정 사용자 전체 주문 조회 - userId
 orderRouter.get("/userId/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
