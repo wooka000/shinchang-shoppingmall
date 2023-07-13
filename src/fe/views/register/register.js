@@ -281,6 +281,7 @@ register.addEventListener("click", function (e) {
         })
         .then((responseData) => {
             console.log("회원가입이 성공적으로 완료되었습니다.", responseData);
+            alert("회원가입이 완료되었습니다.로그인 페이지로 이동합니다 ");
             window.location.href = "/login";
         })
         .catch((error) => {
