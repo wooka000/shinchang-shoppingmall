@@ -20,10 +20,9 @@ class OrderService {
     return order;
   }
 
-  async getOrderByEmail(email) {
-    const user = await userModel.findByEmail(email);
-    const userEmail = user.email;
-    const order = await orderModel.findByEmail(userEmail);
+  async getOrderByUserId(userId) {
+    const user = await userModel.findByEmail(userId);
+    const order = await orderModel.findByUserId(user.email);
     return order;
   }
 
