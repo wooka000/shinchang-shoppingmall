@@ -19,7 +19,7 @@ productsRouter.get("/", async (req, res) => {
   try {
     let page = Number(req.query.page || 1);
     let perPage = Number(req.query.perPage || 12);
-    const sortOption = req.query.sortOption || "createdAt";
+    const sortOption = req.query.sortOption || "createAt";
 
     if (isNaN(page) || page < 1) page = 1;
     if (isNaN(perPage) || perPage < 1) perPage = 12;
@@ -40,7 +40,7 @@ productsRouter.get("/category", async (req, res) => {
   try {
     let page = Number(req.query.page || 1);
     let perPage = Number(req.query.perPage || 12);
-    const sortOption = req.query.sortOption || "createdAt";
+    const sortOption = req.query.sortOption || "createAt";
     const categoryName = req.query.categoryName;
 
     if (isNaN(page) || page < 1) page = 1;
