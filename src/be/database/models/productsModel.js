@@ -12,8 +12,8 @@ export class ProductsModel {
   async findAllProducts(page, perPage, sortOption) {
     const sortQuery = {};
 
-    if (sortOption === "createdAt") {
-      sortQuery.createdAt = -1; // 최신순
+    if (sortOption === "createAt") {
+      sortQuery.createAt = -1; // 최신순
     } else if (sortOption === "priceDesc") {
       sortQuery.price = -1; // 가격 내림차순
     } else if (sortOption === "priceAsc") {
@@ -39,8 +39,8 @@ export class ProductsModel {
   async findAllByCategoryName(page, perPage, sortOption, categoryName) {
     const sortQuery = {};
 
-    if (sortOption === "createdAt") {
-      sortQuery.createdAt = -1; // 최신순
+    if (sortOption === "createAt") {
+      sortQuery.createAt = -1; // 최신순
     } else if (sortOption === "priceDesc") {
       sortQuery.price = -1; // 가격 내림차순
     } else if (sortOption === "priceAsc") {
