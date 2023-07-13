@@ -1,12 +1,15 @@
 const productReq = [];  // 서버로 보낼 장바구니 정보를 담을 배열
 
-render();
+const userName = document.querySelector("#name");
+const phone = document.querySelector("#phone");
+const email = document.querySelector("#email");
+const recipientName = document.querySelector("#recipientName");
+const sample6_postcode = document.querySelector("#sample6_postcode");
+const sample6_address = document.querySelector("#sample6_address");
+const sample6_detailAddress = document.querySelector("#sample6_detailAddress");
+const sample6_extraAddress = document.querySelector("#sample6_extraAddress");
 
-// 서버에서 로그인중인 회원의 회원정보 가져오는 api 호출하기
-// fetch('/api/user/register')
-//   .then(res => res.json())
-//   .then(data => console.log(data))
-//   .catch(err => console.log(err))
+render();
 
 
 
@@ -80,17 +83,8 @@ function messageSelect() {
 }
 
 const orderBtn = document.querySelector(".order-button");
-orderBtn.addEventListener('click', (e) => {
+orderBtn.addEventListener('click', async (e) => {
   e.preventDefault();
-
-  let name = document.querySelector("#name").value;
-  let phone = document.querySelector("#phone").value;
-  let email = document.querySelector("#email").value;
-  let recipientName = document.querySelector("#recipientName").value;
-  let sample6_postcode = document.querySelector("#sample6_postcode").value;
-  let sample6_address = document.querySelector("#sample6_address").value;
-  let sample6_detailAddress = document.querySelector("#sample6_detailAddress").value;
-  let sample6_extraAddress = document.querySelector("#sample6_extraAddress").value;
 
   let message = "";
   let deliveryMessage = document.querySelector("#deliveryMessage");
@@ -102,29 +96,55 @@ orderBtn.addEventListener('click', (e) => {
     message = selectedMessage;
   }
 
-  fetch('/api/order', {
+  const response = await fetch('/api/order', {
     method: 'POST',
     body: JSON.stringify({  // 주문자 정보, 배송지 정보, 장바구니 물품들 정보로 이루어진 json 문자열
-      userName: name,
-      phoneNumber: phone,
-      userEmail: email,
-      recipientName: recipientName,
-      addressCode: sample6_postcode,
-      address: sample6_address,
-      detailAddress: sample6_detailAddress,
-      extraAddress: sample6_extraAddress,
+      userName: userName.value,
+      phoneNumber: phone.value,
+      userEmail: email.value,
+      recipientName: recipientName.value,
+      addressCode: sample6_postcode.value,
+      address: sample6_address.value,
+      detailAddress: sample6_detailAddress.value,
+      extraAddress: sample6_extraAddress.value,
       deliveryMessage: message,
       orderArray: productReq
     })
   })
-  .then(res => res.json())  // res = { orderArray: [{productNum: num, quantity: num}, ...] }
-  .then(data => {
-    console.log(data); 
+
+  const data = await response.json();
+  
+  console.log(data);
+
     // orderArray를 순회하여 productNum 프로퍼티의 값을 가져온 후 그에 해당하는 키값의 로컬스토리지 제거해주기 -> orderArray를 응답으로 안받고 그냥 productReq 순회해서 제거해도 될듯?
-    for (let product of productReq) {
-      localStorage.removeItem(`pro${product.productNum}`);
-    };
     // location.href="/order/complete";
-  })
-  .catch(err => console.log(err));
 });
+
+// 서버에서 로그인중인 회원의 회원정보 가져오는 api 호출하기
+async function getUserinfo() {
+  const token = localStorage.getItem('token');
+  const response = await fetch('/api/user/my', {
+    method: 'GET',
+    headers: {
+      authorization: `bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
+async function check(n) {
+  const data = await getUserinfo();
+  if (n === 1) {
+    userName.value = data.name;
+    phone.value = data.phoneNumber;
+    email.value = data.email;
+  } else if (n === 2) {
+    recipientName.value = data.name;
+    sample6_postcode.value = data.postalCode;
+    sample6_address.value = data.address1;
+    sample6_detailAddress.value = data.address2;
+  }
+}
