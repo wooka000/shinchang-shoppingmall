@@ -19,6 +19,11 @@ class CategoryService {
     return categories;
   }
 
+  async getCategory(categoryName) {
+    const category = await categoryModel.findCategory(categoryName);
+    return category;
+  }
+
   async setCategory(categoryName, toUpdate) {
     const updatedCategory = await categoryModel.update({
       categoryName,
