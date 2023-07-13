@@ -16,6 +16,8 @@ const OrderSchema = new Schema({
   orderArray: [
     {
       productNo: { type: Number, required: true }, // 상품 번호
+      productName: { type: String, required: true }, // 상품 이름
+      price: { type: Number, required: true }, // 상품 가격
       quantity: { type: Number, required: true }, // 상품 수량
     },
   ],
