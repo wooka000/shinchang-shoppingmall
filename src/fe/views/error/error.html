@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Error</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../public/style/reset.css" />
+        <link rel="stylesheet" href="../../public/components/header/header.css" />
+        <link rel="stylesheet" href="../../public/components/footer/footer.css" />
+        <link rel="stylesheet" href="./error.css" />
+
+        <!-- favicon -->
+        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header"></div>
+
+        <!-- main -->
+        <main>
+            <div class="main-wrapper">
+                <div class="error-msg">
+                    <h1><strong>404</strong> ERROR</h1>
+                </div>
+                <div class="error-contents">
+                    <p>죄송합니다. 페이지를 찾을 수 없습니다.</p>
+                    <p>존재하지 않는 주소를 입력하셨거나,</p>
+                    <p>요청하신 페이지의 주소가 변경, 삭제되어 찾을 수 없습니다.</p>
+                </div>
+                <div>
+                    <button><span>떡잎</span>마을샵으로</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <div id="footer"></div>
+
+        <!-- js header & footer -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
+
+        <script>
+            const homeBtn = document.querySelector('button');
+
+            homeBtn.addEventListener('click', () => {
+                location.href = '/';
+            });
+        </script>
+    </body>
+</html>
