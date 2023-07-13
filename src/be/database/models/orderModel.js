@@ -19,6 +19,11 @@ export class OrderModel {
     return order;
   }
 
+  async findByEmail(email) {
+    const order = await Order.findOne({ userEmail: email });
+    return order;
+  }
+
   async update({ orderNo, update }) {
     const filter = { orderNo };
     const option = { returnOriginal: false };
