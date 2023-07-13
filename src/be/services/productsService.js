@@ -7,31 +7,23 @@ class ProductsService {
     return createdNewProduct;
   }
 
-  async getProducts(page, perPage, sortBy, sortOrder) {
+  async getProducts(page, perPage, sortOption) {
     const { products, totalPage } = await productsModel.findAllProducts(
       page,
       perPage,
-      sortBy,
-      sortOrder
+      sortOption
     );
 
     return { products, totalPage };
   }
 
-  async getProductsByCategoryName(
-    page,
-    perPage,
-    categoryName,
-    sortBy,
-    sortOrder
-  ) {
+  async getProductsByCategoryName(page, perPage, sortOption, categoryName) {
     const category = await categoryModel.findByName(categoryName);
     const { products, totalPage } = await productsModel.findAllByCategoryName(
       page,
       perPage,
-      category.categoryName,
-      sortBy,
-      sortOrder
+      sortOption,
+      category.categoryName
     );
 
     return { products, totalPage };
