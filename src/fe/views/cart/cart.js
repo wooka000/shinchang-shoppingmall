@@ -1,30 +1,9 @@
-// 로컬스토리지에 담을 더미 객체 생성
-// class Product {
-//   constructor(serialNum, name, imgUrl, type, num, price, checked="checked") {
-//     this.serialNum = serialNum;
-//     this.name = name;
-//     this.imgUrl = imgUrl;
-//     this.type = type;
-//     this.num = num;
-//     this.price = price;
-//     this.checked = checked;
-//   }
-// }
-
-// let product1 = new Product('11111', '상품1', "https://m.ezendolls.com/web/product/big/201803/609_shop1_972362.jpg", '휴대폰 케이스', 1, 18000);
-// let product2 = new Product('22222', '상품2', "https://m.ezendolls.com/web/product/big/201803/609_shop1_972362.jpg", '의류', 2, 23000);
-// let product3 = new Product('33333', '상품3', "https://m.ezendolls.com/web/product/big/201803/609_shop1_972362.jpg", '아크릴 키링', 1, 7000);
-// let product4 = new Product('44444', '상품4', "https://m.ezendolls.com/web/product/big/201803/609_shop1_972362.jpg", '지류 굿즈', 1, 14000);
-// let product5 = new Product('55555', '상품5', "https://m.ezendolls.com/web/product/big/201803/609_shop1_972362.jpg", '텀블러', 3, 9000);
-
-
-// localStorage.setItem('pro1', JSON.stringify(product1));
-// localStorage.setItem('pro2', JSON.stringify(product2));
-// localStorage.setItem('pro3', JSON.stringify(product3));
-// localStorage.setItem('pro4', JSON.stringify(product4));
-// localStorage.setItem('pro5', JSON.stringify(product5));
+/*
+사용자마다 장바구니 데이터가 각각 다른데 어떻게 계정마다의 로컬스토리지 내용을 따로 관리하지?
+*/
 
 render();
+
 
 // 로컬스토리지에서 더미 객체를 하나씩 가져와 장바구니 목록, 주문 정보 렌더링
 function render() {
@@ -32,7 +11,9 @@ function render() {
   let totalQuantity = 0;  // 총 주문 수량
   let total = 0;  
   let deliveryCharge = 3000;  // 배송비
-  let keys = Object.keys(localStorage);
+  // username, token 로컬스토리지 등을 제외하고 장바구니에 담은 상품의 로컬스토리지들만 추출
+  let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro");
+  // console.log(keys);
   for (let key of keys) {
     let pro = JSON.parse(localStorage.getItem(key));
     if (pro.checked == "checked") {
