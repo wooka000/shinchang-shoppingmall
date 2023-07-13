@@ -9,11 +9,12 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
-  async findAllProducts(skip, limit) {
+  async findAllProducts(page, perPage) {
+    const skip = perPage * (page - 1);
     const products = await Product.find({})
       .sort({ createAt: -1 })
       .skip(skip)
-      .limit(limit);
+      .limit(perPage);
     return products;
   }
 
