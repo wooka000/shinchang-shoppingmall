@@ -22,7 +22,7 @@ async function userInfoRender() {
         section.innerHTML = `
     <div class="user-profile">
                         <div class="user-image">
-                            <img id="user-image" src="./images/defaultUser.png" alt="프로필사진" />
+                            <img id="user-image" src="../../public/assets/img/icon/user.svg" alt="프로필사진" />
                         </div>
                         <div class="user-info">
                             <h4>${name}</h4>
