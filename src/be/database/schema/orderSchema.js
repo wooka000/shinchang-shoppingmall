@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 
 const { Schema } = mongoose;
+const offset = 1000 * 60 * 60 * 9;
+const koreaNow = new Date(new Date().getTime() + offset);
 
 const OrderSchema = new Schema({
   orderNo: { type: Number, required: true, index: true }, // 주문 번호
@@ -21,8 +23,9 @@ const OrderSchema = new Schema({
       quantity: { type: Number, required: true }, // 상품 수량
     },
   ],
-  createAt: { type: Date, default: Date.now }, //등록시간
-  userId: { type: String }, // 유저 ID
+  createAt: { type: Date, default: koreaNow }, //등록시간
+  userId: { type: String, required: true }, // 유저 ID,
+  status: { type: String, required: true }, // 주문 상태
 });
 
 export { OrderSchema };
