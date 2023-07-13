@@ -23,8 +23,11 @@ productsRouter.get("/", async (req, res) => {
     if (isNaN(page) || page < 1) page = 1;
     if (isNaN(perPage) || perPage < 1) perPage = 12;
 
-    const products = await productsService.getProducts(page, perPage);
-    res.json(products);
+    const { products, totalPage } = await productsService.getProducts(
+      page,
+      perPage
+    );
+    res.json({ products, totalPage });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

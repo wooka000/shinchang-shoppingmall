@@ -11,11 +11,20 @@ export class ProductsModel {
 
   async findAllProducts(page, perPage) {
     const skip = perPage * (page - 1);
-    const products = await Product.find({})
+    const productsPromise = await Product.find({})
       .sort({ createAt: -1 })
       .skip(skip)
       .limit(perPage);
-    return products;
+    const countPromise = Product.countDocuments({});
+
+    const [products, count] = await Promise.all([
+      productsPromise,
+      countPromise,
+    ]);
+
+    const totalPage = Math.ceil(count / perPage);
+
+    return { products, totalPage };
   }
 
   async findAllByCategoryName(categoryName) {

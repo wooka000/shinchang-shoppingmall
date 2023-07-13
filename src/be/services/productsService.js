@@ -8,9 +8,12 @@ class ProductsService {
   }
 
   async getProducts(page, perPage) {
-    const products = await productsModel.findAllProducts(page, perPage);
+    const { products, totalPage } = await productsModel.findAllProducts(
+      page,
+      perPage
+    );
 
-    return products;
+    return { products, totalPage };
   }
 
   async getProductsByCategoryName(categoryName) {
