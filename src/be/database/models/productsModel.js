@@ -9,12 +9,21 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
-  async findAllProducts(page, perPage) {
+  async findAllProducts(
+    page,
+    perPage,
+    sortBy = "createdAt",
+    sortOrder = "desc"
+  ) {
     const skip = perPage * (page - 1);
+    const sortOption = {};
+    sortOption[sortBy] = sortPrice === "asc" ? 1 : -1;
+
     const productsPromise = await Product.find({})
-      .sort({ createAt: -1 })
+      .sort(sortOption)
       .skip(skip)
       .limit(perPage);
+
     const countPromise = Product.countDocuments({});
 
     const [products, count] = await Promise.all([
