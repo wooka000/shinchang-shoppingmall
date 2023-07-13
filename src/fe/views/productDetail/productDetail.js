@@ -35,7 +35,7 @@ async function productDetailRender() {
         let productInfoDiv = document.createElement('div');
 
         productInfoDiv.innerHTML = `<h2>${productName}</h2>
-                            <p>${price.toLocaleString()}</p>`;
+                            <p>${price.toLocaleString()}원</p>`;
 
         productInfoFragment.appendChild(productInfoDiv);
         productInfo.appendChild(productInfoFragment);
@@ -71,6 +71,7 @@ async function productDetailRender() {
             }
 
             currentPdInfo.quantity += num;
+            currentPdInfo.checked = 'checked';
             localStorage.setItem(`pro${productNo}`, JSON.stringify(currentPdInfo));
 
             // 장바구니 버튼 클릭시 페이지 이동
