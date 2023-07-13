@@ -24,6 +24,17 @@ categoryRouter.get("/", async (req, res) => {
   }
 });
 
+// 카테고리명으로 카테고리 조회 o
+categoryRouter.get("/:categoryName", async (req, res) => {
+  try {
+    const categoryName = req.params.categoryName;
+    const category = await categoryService.getCategory(categoryName);
+    res.json(category);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // 카테고리 수정 o
 categoryRouter.put("/:categoryName", async (req, res) => {
   try {
