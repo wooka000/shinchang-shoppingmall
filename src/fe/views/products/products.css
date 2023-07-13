@@ -19,6 +19,7 @@ a {
 .list-title {
     text-align: center;
     margin: 2rem 0 6rem 0;
+    cursor: pointer;
 }
 
 .list-title strong {
@@ -28,7 +29,7 @@ a {
 /* drop down */
 
 .drop-down {
-    margin: 2rem 0;
+    margin: 2rem 3rem 3rem 3rem;
 }
 
 select {
