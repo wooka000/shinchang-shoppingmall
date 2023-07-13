@@ -8,10 +8,11 @@ const deleteCheckButton = document.querySelector("#modal-button-delete");
 let deleteUserId;
 fetchJSONData();
 
-// userlist 가져오기, productlist 가져오기, categorylist 가져오기, orderlist 가져오기
-// user 삭제, product 삭제, category 삭제, order 삭제
-// product 추가, category 추가
-// user 권한 수정, order status 수정
+// user 삭제 api 부탁드리기
+// userlist 가져오기 O, productlist 가져오기 O, categorylist 가져오기 O, orderlist 가져오기 O
+// user 삭제, product 삭제 O, category 삭제 O, order 삭제 O
+// product 추가 O, category 추가 O
+// user 권한 수정, order status 수정 (추가 기능)
 
 async function fetchJSONData() {
   const token = localStorage.getItem("token");
@@ -53,7 +54,6 @@ async function fetchJSONData() {
     function onDelete(e) {
       e.preventDefault();
       // 회원 번호를 이용해 데이터베이스에서 해당 유저 찾기
-      //Usermodel.findUserById(e.target.parentNode.parentNode.firstElementChild.innerText);
       console.log(e.target.parentNode.parentNode.firstElementChild.innerText);
       deleteUserId = e.target.parentNode.parentNode.firstElementChild.innerText;
       modalClick();
@@ -82,7 +82,6 @@ async function fetchJSONData() {
 function deleteUser(e) {
   console.log(e.target);
   //'네'버튼 클릭 시 데이터베이스의 유저 삭제
-  // deleteUser(deleteUserId);
   modalClick();
 }
 deleteCheckButton.addEventListener("click", deleteUser);

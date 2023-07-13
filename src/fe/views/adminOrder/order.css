@@ -123,6 +123,7 @@ a {
   margin-bottom: 5px;
   padding: 10px;
   border-bottom: 1px solid black;
+  align-items: center;
 }
 
 select {

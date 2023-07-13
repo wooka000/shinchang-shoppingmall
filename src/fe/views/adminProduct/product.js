@@ -41,11 +41,11 @@ async function fetchJSONData() {
   });
 
   const data = await response.json();
-  console.log(data);
+  console.log(data.products);
   productsLength = data.length;
   console.log(productsLength);
 
-  data.map((element) => {
+  data.products.map((element) => {
     const { productName, image, price, createAt, productNo } = element;
 
     content.insertAdjacentHTML(
@@ -141,6 +141,7 @@ modalBackground.addEventListener("click", addProduct);
 cancelButton.addEventListener("click", addProduct);
 
 // 제품 등록 버튼 클릭 시 이벤트
+// ************* 제품 번호 수정 필요 ******************
 async function upload(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");

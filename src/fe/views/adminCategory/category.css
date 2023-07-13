@@ -89,13 +89,22 @@ a {
 .category {
   margin-bottom: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   padding: 10px;
   border-bottom: 1px solid black;
+  align-items: center;
 }
 
 .category-name {
-  width: 30%;
+  width: 10%;
+}
+
+.category-image {
+  width: 20%;
+}
+
+.category-image-src {
+  width: 60px;
 }
 
 .button-modify {

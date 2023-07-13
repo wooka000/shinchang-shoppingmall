@@ -23,12 +23,12 @@ async function fetchJSONData() {
   data.map((element) => {
     const { userName, orderArray, orderStatus, orderNo } = element;
     let price = 0;
-    let orderInfo = "업데이트중";
-    // for (let i = 0; i < orderArray.length; i++) {
-    //   price += orderArray[i].quantity * orderArray[i].price;
-    //   orderInfo += `${orderArray[i].productName} - ${orderArray[i].quantity}개  `;
-    // }
-    // console.log(orderInfo);
+    let orderInfo = "";
+    for (let i = 0; i < orderArray.length; i++) {
+      price += orderArray[i].quantity * orderArray[i].price;
+      orderInfo += `${orderArray[i].productName} - ${orderArray[i].quantity}개  `;
+    }
+    console.log(orderInfo);
     content.insertAdjacentHTML(
       "beforeend",
       `<div class="order">
@@ -97,5 +97,3 @@ async function deleteUser(e) {
   location.href = "/admin/order";
 }
 deleteCheckButton.addEventListener("click", deleteUser);
-
-// orderSchema => orderArray에 상품 이름과 상품 가격 => 주문 정보 표기와 주문 총액 표기

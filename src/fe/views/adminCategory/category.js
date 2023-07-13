@@ -33,7 +33,7 @@ async function fetchJSONData() {
   console.log(data);
 
   data.map((element) => {
-    const { _id, categoryName } = element;
+    const { _id, categoryName, image } = element;
     content.insertAdjacentHTML(
       "beforeend",
       `
@@ -41,8 +41,11 @@ async function fetchJSONData() {
         <div class="category-name">
           ${categoryName}
         </div>
+        <div class="category-image">
+          <img class="category-image-src" src=${image} alt="이미지"/>
+        </div>
         <div class="buttons">
-          <button class="button-modify-${_id}">
+          <button class="button-modify button-modify-${_id}">
             <i class="fa-solid fa-pencil"> 수정</i>
           </button>
           <button id="delete-button-${_id}">
@@ -64,23 +67,25 @@ async function fetchJSONData() {
     deleteButton.addEventListener("click", onDelete);
 
     // 수정 버튼 누를시
+    // 단일 카테고리 조회 API 필요 => 내일 아침에 여쭤보기
     const modifyButton = document.querySelector(`.button-modify-${_id}`);
     async function onModify(e) {
       e.preventDefault();
       const name =
         e.target.parentNode.parentNode.parentNode.firstElementChild.innerText;
       modifyCategoryName = name;
-      const token = localStorage.getItem("token");
-      const response = await fetch(`/api/products/${modifyCategoryName}`, {
-        method: "GET",
-        headers: {
-          authorization: `bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      modifyCategoryName = data;
-
+      // const token = localStorage.getItem("token");
+      // const response = await fetch(`/api/products/${modifyCategoryName}`, {
+      //   method: "GET",
+      //   headers: {
+      //     authorization: `bearer ${token}`,
+      //     "Content-Type": "application/json",
+      //   },
+      // });
+      // const data = await response.json();
+      // modifyCategoryName = data;
+      console.log(newCategoryName.value);
+      newCategoryName.value = "hello";
       console.log(newCategoryName.value);
       modifyModal.classList.toggle("hidden");
     }
@@ -109,13 +114,13 @@ deleteModalCheck.addEventListener("click", deleteCategory);
 
 // 카테고리 추가 버튼 누를 시 이벤트
 const newCategoryName = document.querySelector("#newCategory-name");
+const newCategoryImage = document.querySelector("#newCategory-image");
 function addButtonClick(e) {
   e.preventDefault();
   modal.classList.toggle("hidden");
 }
 
 // 카테고리 등록 버튼 클릭 시 이벤트
-// 카테고리 이미지?
 async function upload(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");
@@ -127,7 +132,7 @@ async function upload(e) {
     },
     body: JSON.stringify({
       categoryName: newCategoryName.value,
-      image: "image",
+      image: newCategoryImage.value,
     }),
   });
   const data = await response.json();
@@ -139,6 +144,9 @@ async function upload(e) {
     <div class="category">
       <div class="category-name">
         ${data.categoryName}
+      </div>
+      <div class="category-image">
+        <img class="category-image-src" src=${data.image} alt="이미지"/>
       </div>
       <div class="buttons">
         <button class="button-modify-${data._id}">
@@ -167,8 +175,8 @@ async function modifyCategory(e) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      categoryName: modifyCategoryName,
-      image: "https://sitem.ssgcdn.com/32/70/47/item/1000026477032_i1_750.jpg",
+      categoryName: newCategoryName.value,
+      image: newCategoryImage.value,
     }),
   });
   const data = await response.json();
