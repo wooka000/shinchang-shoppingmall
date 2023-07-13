@@ -19,13 +19,17 @@ productsRouter.get("/", async (req, res) => {
   try {
     let page = Number(req.query.page || 1);
     let perPage = Number(req.query.perPage || 12);
+    const sortBy = req.query.sortBy || "createdAt";
+    const sortPrice = req.query.sortPrice || "desc";
 
     if (isNaN(page) || page < 1) page = 1;
     if (isNaN(perPage) || perPage < 1) perPage = 12;
 
     const { products, totalPage } = await productsService.getProducts(
       page,
-      perPage
+      perPage,
+      sortBy,
+      sortPrice
     );
     res.json({ products, totalPage });
   } catch (error) {

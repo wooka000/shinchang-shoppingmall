@@ -7,10 +7,12 @@ class ProductsService {
     return createdNewProduct;
   }
 
-  async getProducts(page, perPage) {
+  async getProducts(page, perPage, sortBy, sortPrice) {
     const { products, totalPage } = await productsModel.findAllProducts(
       page,
-      perPage
+      perPage,
+      sortBy,
+      sortPrice
     );
 
     return { products, totalPage };
