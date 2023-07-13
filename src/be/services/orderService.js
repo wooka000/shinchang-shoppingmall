@@ -1,4 +1,4 @@
-import { orderModel } from "../database/index.js";
+import { orderModel, userModel } from "../database/index.js";
 
 class OrderService {
   async createOrder(orderInfo) {
@@ -17,6 +17,13 @@ class OrderService {
     if (!order) {
       throw new Error("해당 주문번호의 주문이 없습니다. 다시 확인해 주세요.");
     }
+    return order;
+  }
+
+  async getOrderByEmail(email) {
+    const user = await userModel.findByEmail(email);
+    const userEmail = user.email;
+    const order = await orderModel.findByEmail(userEmail);
     return order;
   }
 
