@@ -20,6 +20,7 @@ const OrderSchema = new Schema({
     },
   ],
   createAt: { type: Date, default: Date.now }, //등록시간
+  userId: { type: String }, // 유저 ID
 });
 
 export { OrderSchema };

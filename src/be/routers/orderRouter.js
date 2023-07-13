@@ -35,11 +35,11 @@ orderRouter.get("/:orderNo", async (req, res) => {
   }
 });
 
-// 특정 사용자 주문 조회 - email
-orderRouter.get("/orderer/:email", async (req, res) => {
+// 특정 사용자 주문 조회 - userId
+orderRouter.get("/userId/:userId", async (req, res) => {
   try {
-    const email = req.params.email;
-    const order = await orderService.getOrderByEmail(email);
+    const userId = req.params.userId;
+    const order = await orderService.getOrderByUserId(userId);
     res.json(order);
   } catch (error) {
     res.status(500).json({ error: error.message });

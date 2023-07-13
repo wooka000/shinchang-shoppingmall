@@ -19,8 +19,8 @@ export class OrderModel {
     return order;
   }
 
-  async findByEmail(email) {
-    const order = await Order.findOne({ userEmail: email });
+  async findByUserId(userId) {
+    const order = await Order.findOne({ userId });
     return order;
   }
 
