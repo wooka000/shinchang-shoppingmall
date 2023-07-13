@@ -1,23 +1,24 @@
 // 상품을 로드하는 함수
 async function newProductRender() {
-    const response = await fetch('/api/products', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    try {
+        const response = await fetch('/api/products', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
-    const data = await response.json();
-    const newProduct = data.slice(0, 10);
+        const data = await response.json();
+        const newProduct = data.products.slice(0, 10);
 
-    // 최신 상품 10개 배열
-    let products = document.querySelector('.new-products');
-    const newPdFragment = new DocumentFragment();
+        // 최신 상품 10개 배열
+        let products = document.querySelector('.new-products');
+        const newPdFragment = new DocumentFragment();
 
-    newProduct.forEach(({ productNo, productName, price, image }) => {
-        const div = document.createElement('div');
+        newProduct.forEach(({ productNo, productName, price, image }) => {
+            const div = document.createElement('div');
 
-        div.innerHTML = `
+            div.innerHTML = `
         <div>
             <div class="img-wrapper">
             <a href="/products/${productNo}"><img src="${image}" alt="img" /></a>
@@ -31,29 +32,33 @@ async function newProductRender() {
             </div>
         </div>`;
 
-        newPdFragment.appendChild(div);
-    });
+            newPdFragment.appendChild(div);
+        });
 
-    products.appendChild(newPdFragment);
+        products.appendChild(newPdFragment);
+    } catch (error) {
+        location.href = '/error';
+    }
 }
 
 newProductRender();
 
 async function popularCategoryRender() {
-    const response = await fetch('/api/category', {
-        method: 'GET',
-    });
-    const data = await response.json();
+    try {
+        const response = await fetch('/api/category', {
+            method: 'GET',
+        });
+        const data = await response.json();
 
-    const productContents = document.querySelector('.popular-contents');
-    const popularCategoryFragment = new DocumentFragment();
+        const productContents = document.querySelector('.popular-contents');
+        const popularCategoryFragment = new DocumentFragment();
 
-    data.forEach(({ categoryName, image }) => {
-        const div = document.createElement('div');
-        div.setAttribute('class', 'popular-category');
+        data.forEach(({ categoryName, image }) => {
+            const div = document.createElement('div');
+            div.setAttribute('class', 'popular-category');
 
-        if (categoryName != '인기 | 신상품') {
-            div.innerHTML = `
+            if (categoryName != '인기 | 신상품') {
+                div.innerHTML = `
             <div class="category-img-wrapper">
                 <a href="/products/category?categoryName=${categoryName}">
                     <img src="${image}" alt="goods 1" />
@@ -62,11 +67,14 @@ async function popularCategoryRender() {
             <div class="title">
                 <a href="/products/category?categoryName=${categoryName}"><strong>${categoryName}</strong></a>
             </div>`;
-            popularCategoryFragment.appendChild(div);
-        }
-    });
+                popularCategoryFragment.appendChild(div);
+            }
+        });
 
-    productContents.appendChild(popularCategoryFragment);
+        productContents.appendChild(popularCategoryFragment);
+    } catch (error) {
+        location.href = '/error';
+    }
 }
 
 popularCategoryRender();
