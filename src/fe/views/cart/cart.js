@@ -9,7 +9,7 @@ function render() {
   let deliveryCharge = 3000;  // 배송비
   // username, token 로컬스토리지 등을 제외하고 장바구니에 담은 상품의 로컬스토리지들만 추출
   let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro");
-  // console.log(keys);
+
   for (let key of keys) {
     let pro = JSON.parse(localStorage.getItem(key));
     if (pro.checked == "checked") {
@@ -52,6 +52,7 @@ function render() {
         </aside>
       </article>`
   }
+
   if (totalQuantity === 0) deliveryCharge = 0;
 
   const section = document.querySelector(".order-list");
@@ -69,26 +70,23 @@ function render() {
 }
 
 function plus(n) {
-  let idx = String(n);
-  let currObj = JSON.parse(localStorage.getItem(`pro${idx}`));
-  let currNum = JSON.parse(localStorage.getItem(`pro${idx}`)).quantity;
+  let currObj = JSON.parse(localStorage.getItem(`pro${n}`));
+  let currNum = JSON.parse(localStorage.getItem(`pro${n}`)).quantity;
   currObj.quantity = currNum+1;
-  localStorage.setItem(`pro${idx}`, JSON.stringify(currObj));
+  localStorage.setItem(`pro${n}`, JSON.stringify(currObj));
   render();
 }
 
 function minus(n) {
-  let idx = String(n);
-  let currObj = JSON.parse(localStorage.getItem(`pro${idx}`));
-  let currNum = JSON.parse(localStorage.getItem(`pro${idx}`)).quantity;
+  let currObj = JSON.parse(localStorage.getItem(`pro${n}`));
+  let currNum = JSON.parse(localStorage.getItem(`pro${n}`)).quantity;
   if ((currNum-1) > 0) currObj.quantity = currNum-1;
-  localStorage.setItem(`pro${idx}`, JSON.stringify(currObj));
+  localStorage.setItem(`pro${n}`, JSON.stringify(currObj));
   render();
 }
 
 function deleteCard(n) {
-  let idx = String(n);
-  localStorage.removeItem(`pro${idx}`);
+  localStorage.removeItem(`pro${n}`);
   render();
 }
 
@@ -105,7 +103,6 @@ function order() {
     let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro");
     if (keys.length == 0) {
       alert("결제할 물품이 없습니다!");
-      location.href="/";
     } else {
       location.href="/order";
     }
@@ -113,11 +110,10 @@ function order() {
 }
 
 function toggle(n) {
-  let idx = String(n);
-  let currObj = JSON.parse(localStorage.getItem(`pro${idx}`));
-  let currChecked = JSON.parse(localStorage.getItem(`pro${idx}`)).checked;
+  let currObj = JSON.parse(localStorage.getItem(`pro${n}`));
+  let currChecked = JSON.parse(localStorage.getItem(`pro${n}`)).checked;
   if (currChecked == "checked") currObj.checked = "";
   else currObj.checked = "checked"; 
-  localStorage.setItem(`pro${idx}`, JSON.stringify(currObj));
+  localStorage.setItem(`pro${n}`, JSON.stringify(currObj));
   render();
 }
