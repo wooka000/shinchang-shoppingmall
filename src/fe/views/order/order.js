@@ -15,9 +15,9 @@ function render() {
   let totalQuantity = 0;  // 총 주문 수량
   let total = 0;  // 총 상품 금액
   let deliveryCharge = 3000;  // 배송비
-  let keys = Object.keys(localStorage).filter(k => JSON.parse(localStorage.getItem(k)).checked === "checked");
-
-  for (let key of keys) {
+  let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro");
+  let validKeys = keys.filter(k => JSON.parse(localStorage.getItem(k)).checked === "checked");
+  for (let key of validKeys) {
     let pro = JSON.parse(localStorage.getItem(key));
     totalQuantity += pro.quantity;
     total += pro.quantity * pro.price;
@@ -120,7 +120,11 @@ orderBtn.addEventListener('click', (e) => {
   .then(res => res.json())  // res = { orderArray: [{productNum: num, quantity: num}, ...] }
   .then(data => {
     console.log(data); 
-    // orderArray를 순회하여 productNum 프로퍼티의 값을 가져온 후 그에 해당하는 키값의 로컬스토리지 제거해주기
+    // orderArray를 순회하여 productNum 프로퍼티의 값을 가져온 후 그에 해당하는 키값의 로컬스토리지 제거해주기 -> orderArray를 응답으로 안받고 그냥 productReq 순회해서 제거해도 될듯?
+    for (let product of productReq) {
+      localStorage.removeItem(`pro${product.productNum}`);
+    };
     // location.href="/order/complete";
-  });
+  })
+  .catch(err => console.log(err));
 });
