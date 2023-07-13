@@ -249,12 +249,12 @@ input[name='quantity'] {
     height: 20px;
     display: flex;
     align-items: center;
-    width: 23.5%;
+    width: 25%;
 }
 
 .delivery-start div:nth-child(2) {
-    text-align: right;
-    width: 76.5%;
+    text-align: left;
+    width: 75%;
 }
 
 .delivery-date {
