@@ -52,7 +52,6 @@ button {
   flex-direction: column;
   align-items: center;
   width: 15%;
-
   margin-right: 10px;
   background-color: #353535;
   color: white;
@@ -112,7 +111,7 @@ a {
 }
 #user-container-date,
 .user-date {
-  width: 20%;
+  width: 15%;
 }
 #user-container-authority,
 .user-authority {

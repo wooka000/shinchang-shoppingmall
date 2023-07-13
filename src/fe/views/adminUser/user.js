@@ -23,20 +23,24 @@ async function fetchJSONData() {
     },
   });
   const data = await response.json();
-
+  console.log(data);
   data.map((element) => {
-    const { _id, name, email, subscriptionDate } = element;
+    const { _id, name, email, subscriptionDate, role } = element;
     content.insertAdjacentHTML(
       "beforeend",
       `<div class="user">
-        <div class="user-number">${_id}</div>
+        <div class="user-number">${_id.slice(13)}</div>
         <div class="user-name">${name}</div>
         <div class="user-id">${email}</div>
-        <div class="user-date">${subscriptionDate}</div>
+        <div class="user-date">${subscriptionDate.slice(0, 10)}</div>
         <div class="user-authority">
-          <select>
-            <option class="admin">관리자</option>
-            <option class="not-admin" >일반사용자</option>
+          <select id="authority-${_id}">
+            <option class="admin" ${
+              role === "admin" ? "selected" : ""
+            }>관리자</option>
+            <option class="not-admin" ${
+              role === "user" ? "selected" : ""
+            }>일반사용자</option>
           </select>
         </div>
         <button id="user-delete-${_id}" class="user-delete">
@@ -55,6 +59,23 @@ async function fetchJSONData() {
       modalClick();
     }
     deleteButton.addEventListener("click", onDelete);
+
+    // 권한 수정 => 수정 API가 필요해보임
+    const authority = document.querySelector(`#authority-${_id}`);
+    async function changeAuthority(e) {
+      const token = localStorage.getItem("token");
+      const response = await fetch("/api/products", {
+        method: "PATCH",
+        headers: {
+          authorization: `bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+    }
+    authority.addEventListener("change", changeAuthority);
   });
 }
 

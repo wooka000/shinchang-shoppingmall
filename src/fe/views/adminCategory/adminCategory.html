@@ -60,6 +60,10 @@
                 placeholder="ex) 피규어"
                 type="text"
               />
+              <label for="newCategory-image" class="label"
+                >카테고리 이미지</label
+              >
+              <input id="newCategory-image" type="file" />
               <button id="button-category-upload">등록</button>
               <button id="button-category-cancel">취소</button>
             </form>
@@ -75,6 +79,22 @@
             <button class="modal-button" id="modal-button-cancel">
               아니오
             </button>
+          </div>
+        </div>
+
+        <div class="modal-modify hidden">
+          <div class="modal-modify-background"></div>
+          <div class="modal-modify-content">
+            <form>
+              <label for="newCategory-name" class="label">카테고리 이름</label>
+              <input id="newCategory-name" type="text" />
+              <label for="newCategory-image" class="label"
+                >카테고리 이미지</label
+              >
+              <input id="newCategory-image" type="file" />
+              <button id="modal-button-modify">수정</button>
+              <button id="modal-button-modify-cancel">취소</button>
+            </form>
           </div>
         </div>
       </div>

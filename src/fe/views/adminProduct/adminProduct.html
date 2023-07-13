@@ -91,7 +91,38 @@
         </div>
         <div class="modal-modify hidden">
           <div class="modal-modify-background"></div>
-          <div class="modal-modify-content"></div>
+          <div class="modal-modify-content">
+            <form action="#">
+              <label for="newProduct-modify-name" class="label"
+                >제품 이름</label
+              >
+              <input id="newProduct-modify-name" type="text" />
+              <label for="newProduct-modify-category" class="label"
+                >카테고리</label
+              >
+              <input id="newProduct-modify-category" type="text" />
+              <label for="newProduct-modify-price" class="label"
+                >제품 가격</label
+              >
+              <input id="newProduct-modify-price" type="number" />
+              <label for="newProduct-modify-image" class="label"
+                >제품 사진</label
+              >
+              <input id="newProduct-modify-image" type="file" />
+              <div id="newProduct-button-container">
+                <input
+                  id="button-product-modify-upload"
+                  type="submit"
+                  value="제품수정"
+                />
+                <input
+                  id="button-product-modify-cancel"
+                  type="submit"
+                  value="취소"
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
