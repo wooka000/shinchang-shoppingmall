@@ -63,6 +63,7 @@ function deleteUser(e) {
   console.log(e.target);
   //'네'버튼 클릭 시 데이터베이스의 유저 삭제
   // deleteUser(deleteUserId);
+  modalClick();
 }
 deleteCheckButton.addEventListener("click", deleteUser);
 
