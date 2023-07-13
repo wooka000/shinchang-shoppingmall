@@ -3,7 +3,8 @@ import { orderModel } from "../database/index.js";
 class OrderService {
   async createOrder(orderInfo) {
     const createdOrder = await orderModel.create(orderInfo);
-    return createdOrder;
+    const orderArray = createdOrder.orderArray;
+    return orderArray;
   }
 
   async getAllOrders() {
