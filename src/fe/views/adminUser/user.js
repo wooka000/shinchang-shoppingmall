@@ -14,39 +14,38 @@ fetchJSONData();
 // user 권한 수정, order status 수정
 
 async function fetchJSONData() {
+  const token = localStorage.getItem("token");
   const response = await fetch("/api/user/userlist", {
     method: "GET",
     headers: {
+      authorization: `bearer ${token}`,
       "Content-Type": "application/json",
     },
   });
   const data = await response.json();
-  console.log(data);
-  // map 사용해서 객체형태로 받아오기
-  //const { _id, name, email, subscriptionDate } = data;
-  for (let i = 0; i < data.length; i++) {
+
+  data.map((element) => {
+    const { _id, name, email, subscriptionDate } = element;
     content.insertAdjacentHTML(
       "beforeend",
       `<div class="user">
-        <div class="user-number">${data[i].userNumber}</div>
-        <div class="user-name">${data[i].userName}</div>
-        <div class="user-id">${data[i].userId}</div>
-        <div class="user-date">${data[i].createdAt}</div>
+        <div class="user-number">${_id}</div>
+        <div class="user-name">${name}</div>
+        <div class="user-id">${email}</div>
+        <div class="user-date">${subscriptionDate}</div>
         <div class="user-authority">
           <select>
             <option class="admin">관리자</option>
             <option class="not-admin" >일반사용자</option>
           </select>
         </div>
-        <button id="user-delete-${data[i].userNumber}" class="user-delete">
+        <button id="user-delete-${_id}" class="user-delete">
           <i class="fa-solid fa-trash"></i>
         </button>
       </div>
       `
     );
-    const deleteButton = document.querySelector(
-      `#user-delete-${data[i].userNumber}`
-    );
+    const deleteButton = document.querySelector(`#user-delete-${_id}`);
     function onDelete(e) {
       e.preventDefault();
       // 회원 번호를 이용해 데이터베이스에서 해당 유저 찾기
@@ -56,7 +55,7 @@ async function fetchJSONData() {
       modalClick();
     }
     deleteButton.addEventListener("click", onDelete);
-  }
+  });
 }
 
 function deleteUser(e) {

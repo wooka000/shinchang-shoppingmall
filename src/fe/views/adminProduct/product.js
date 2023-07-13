@@ -18,9 +18,40 @@ fetchJSONData();
 // json파일에서 데이터 불러오기 (초기 화면 세팅)
 // 이벤트 안에서 바로 걸어주기
 async function fetchJSONData() {
-  const response = await fetch("./product.json");
+  const token = localStorage.getItem("token");
+  const response = await fetch("/api/products", {
+    method: "GET",
+    headers: {
+      authorization: `bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
   const data = await response.json();
   console.log(data);
+
+  data.map((element) => {
+    const { _id, name, image, email, subscriptionDate } = element;
+
+    content.insertAdjacentHTML(
+      "beforeend",
+      `<div class="product">
+        <div class="product-number">${_id}</div>
+        <div class="product-image">${data[i].image}</div>
+        <div class="product-name">${data[i].name}</div>
+        <div class="product-price">${data[i].price}</div>
+        <div class="product-date">${data[i].createdAt}</div>
+        <button class="button-modify">
+          <i class="fa-solid fa-pencil"></i>
+        </button>
+        <button class="button-delete">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+      `
+    );
+  });
+
   for (let i = 0; i < data.length; i++) {
     content.insertAdjacentHTML(
       "beforeend",
