@@ -63,17 +63,19 @@ body {
     transform: translateX(-40%);
     display: flex;
     justify-content: space-around;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     text-align: center;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
 }
 
 .sign-list a,
+.sign-list li,
 .hide-menu a {
     color: #000;
     text-decoration: none;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .sign-list a:hover {

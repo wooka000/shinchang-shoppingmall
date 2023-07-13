@@ -17,8 +17,17 @@ productsRouter.post("/", async (req, res) => {
 // 상품 전체 목록 조회 o
 productsRouter.get("/", async (req, res) => {
   try {
-    const products = await productsService.getProducts();
-    res.json(products);
+    let page = Number(req.query.page || 1);
+    let perPage = Number(req.query.perPage || 12);
+
+    if (isNaN(page) || page < 1) page = 1;
+    if (isNaN(perPage) || perPage < 1) perPage = 12;
+
+    const { products, totalPage } = await productsService.getProducts(
+      page,
+      perPage
+    );
+    res.json({ products, totalPage });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

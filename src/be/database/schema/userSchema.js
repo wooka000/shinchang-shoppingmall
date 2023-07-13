@@ -41,6 +41,10 @@ const UserSchema = new Schema(
       type: Date,
       required: true,
     },
+    profileImage: {
+      type: String,
+      required: false,
+    },
   }
 );
 

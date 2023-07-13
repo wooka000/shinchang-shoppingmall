@@ -7,13 +7,13 @@ class ProductsService {
     return createdNewProduct;
   }
 
-  async getProducts() {
-    const page = 1;
-    const limit = 12;
-    const skip = (page - 1) * limit;
-    const products = await productsModel.findAllProducts(skip, limit);
+  async getProducts(page, perPage) {
+    const { products, totalPage } = await productsModel.findAllProducts(
+      page,
+      perPage
+    );
 
-    return products;
+    return { products, totalPage };
   }
 
   async getProductsByCategoryName(categoryName) {
@@ -29,7 +29,7 @@ class ProductsService {
     const product = await productsModel.findByProductNo(productNo);
 
     if (!product) {
-      throw new Error("?•´?‹¹ ? œ?’ˆë²ˆí˜¸?˜ ?ƒ?’ˆ??? ì¡´ì¬?•˜ì§? ?•Š?Šµ?‹ˆ?‹¤.");
+      throw new Error(`${productNo}ì— í•´ë‹¹í•˜ëŠ” ìƒí’ˆì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.`);
     }
 
     return product;
@@ -48,7 +48,7 @@ class ProductsService {
     const { deletedCount } = await productsModel.deleteByProductNo(productNo);
 
     if (deletedCount === 0) {
-      throw new Error(`${productId} ? œ?’ˆ?˜ ?‚­? œ?— ?‹¤?Œ¨?•˜????Šµ?‹ˆ?‹¤`);
+      throw new Error(`${productNo}ì— í•´ë‹¹í•˜ëŠ” ìƒí’ˆì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.`);
     }
 
     return { result: "success" };

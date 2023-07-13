@@ -14,13 +14,13 @@ async function newProductRender() {
     let products = document.querySelector('.new-products');
     const newPdFragment = new DocumentFragment();
 
-    newProduct.forEach(({ productNo, productName, price }) => {
+    newProduct.forEach(({ productNo, productName, price, image }) => {
         const div = document.createElement('div');
 
         div.innerHTML = `
         <div>
             <div class="img-wrapper">
-            <a href="/products/${productNo}"><img src="./list.jpeg" alt="img" /></a>
+            <a href="/products/${productNo}"><img src="${image}" alt="img" /></a>
             </div>
             <div class="products-title">
                 <strong><a href="/products/${productNo}">${productName}</a></strong>
@@ -48,7 +48,7 @@ async function popularCategoryRender() {
     const productContents = document.querySelector('.popular-contents');
     const popularCategoryFragment = new DocumentFragment();
 
-    data.forEach(({ categoryName }) => {
+    data.forEach(({ categoryName, image }) => {
         const div = document.createElement('div');
         div.setAttribute('class', 'popular-category');
 
@@ -56,7 +56,7 @@ async function popularCategoryRender() {
             div.innerHTML = `
             <div class="category-img-wrapper">
                 <a href="/products/category?categoryName=${categoryName}">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKz_qwtTkmVri-erStn2lSSQ7SRxmC-7pMQw&usqp=CAU" alt="goods 1" />
+                    <img src="${image}" alt="goods 1" />
                 </a>
             <div>
             <div class="title">

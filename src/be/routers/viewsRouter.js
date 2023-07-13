@@ -23,8 +23,8 @@ viewsRouter.use("/products/category", serveStatic("products"));
 viewsRouter.use("/products/:productNo", serveStatic("productDetail"));
 viewsRouter.use("/mypage", serveStatic("mypage"));
 viewsRouter.use("/mypage/modify", serveStatic("mypageModify"));
-viewsRouter.use("/mypage/ordinquiry", serveStatic("ordlnquiry"));
-
+viewsRouter.use("/mypage/ordinquiry", serveStatic("ordInquiry"));
+viewsRouter.use("/error", serveStatic("error"));
 viewsRouter.use("/", serveStatic(""));
 viewsRouter.use(
   "/public",
