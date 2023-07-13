@@ -28,6 +28,9 @@ orderBtn.addEventListener('click', async (e) => {
 
   const response = await fetch('/api/order', {
     method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify({  // 주문자 정보, 배송지 정보, 장바구니 물품들 정보로 이루어진 json 문자열
       orderNo: randomNum,
       userName: userName.value,
@@ -44,11 +47,9 @@ orderBtn.addEventListener('click', async (e) => {
   })
 
   const data = await response.json();
-  
-  console.log(data);
 
-  // orderArray를 순회하여 productNum 프로퍼티의 값을 가져온 후 그에 해당하는 키값의 로컬스토리지 제거해주기 -> orderArray를 응답으로 안받고 그냥 productReq 순회해서 제거해도 될듯?
-  // location.href="/order/complete";
+  data.forEach(e => localStorage.removeItem(`pro${e.productNo}`));
+  location.href="/order/complete";
 });
 
 
@@ -93,7 +94,7 @@ function render() {
         </aside>
       </article>`;
       productReq.push({  // 장바구니 정보중 상품 번호와 주문 개수를 객체화하여 productReq 배열에 추가
-        productNum: pro.productNum,
+        productNo: pro.productNo,
         quantity: pro.quantity
       })
   };
@@ -142,7 +143,6 @@ async function check(n) {
   if (n === 1) {
     userName.value = data.name;
     phone.value = data.phoneNumber;
-    email.value = data.email;
   } else if (n === 2) {
     recipientName.value = data.name;
     sample6_postcode.value = data.postalCode;
