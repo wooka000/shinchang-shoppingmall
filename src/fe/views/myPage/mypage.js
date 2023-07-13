@@ -1,32 +1,43 @@
-// 회원 정보 api 호출해서 정보 가져온 후 프사, 이름, 이메일, 전화번호, 회원등급(role) 렌더링
-// api 명세서 10번째 줄 api 쓰면 되는듯? 
-// const token = localStorage.getItem('token');
-// // console.log(token);
-// fetch('api/user/my', {
-//   method: 'GET',
-//   headers: {
-//     authorization: `bearer ${token}`,
-//     'Content-Type': 'application/json',
-//   }
-// })
-// .then(res => {
-//   // console.log(res);
-//   res.json();
-// })
-// .then(data => console.log(data))
-// .catch(console.log);
+async function userInfoRender() {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/user/my', {
+            method: 'GET',
+            headers: {
+                authorization: `bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+        const data = await response.json();
+        console.log(data);
 
-async function getUserinfo() {
-  const token = localStorage.getItem('token');
-  const response = await fetch('/api/user/my', {
-    method: 'GET',
-    headers: {
-      authorization: `bearer ${token}`,
-      'Content-Type': 'application/json',
-    },
-  });
-  const data = await response.json();
-  console.log(data);
+        const { name, email, phoneNumber, role } = data;
+
+        const main = document.querySelector('.main');
+        const userCardFragment = new DocumentFragment();
+
+        const section = document.createElement('section');
+        section.setAttribute('class', 'user-card');
+
+        section.innerHTML = `
+    <div class="user-profile">
+                        <div class="user-image">
+                            <img id="user-image" src="./images/defaultUser.png" alt="프로필사진" />
+                        </div>
+                        <div class="user-info">
+                            <h4>${name}</h4>
+                            <h6>${email}</h6>
+                            <h6>${phoneNumber}</h6>
+                        </div>
+                    </div>
+                    <div class="user-grade"><h4>${role === 'admin' ? '관리자' : '일반 회원'}</h4></div>
+    `;
+
+        userCardFragment.appendChild(section);
+        main.prepend(userCardFragment);
+    } catch (error) {
+        location.href = '/error';
+    }
 }
 
-getUserinfo();
+userInfoRender();
