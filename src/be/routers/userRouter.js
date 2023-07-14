@@ -132,12 +132,12 @@ userRouter.delete(
 // 사용자 삭제
 userRouter.delete(
   "/user/:userId",
+  loginRequired,
   adminRequired,
   async function (req, res, next) {
     try {
       const userId = req.params.userId;
       await userService.adminDeleteUser(userId);
-
       res.status(204).end();
     } catch (error) {
       next(error);
