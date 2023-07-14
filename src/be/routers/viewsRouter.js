@@ -1,8 +1,8 @@
 import express from "express";
 import path from "path";
 import url from "url";
-import { adminRequired } from "../middlewares/adminRequired.js";
-import { loginRequired } from "../middlewares/loginRequired.js";
+// import { adminRequired } from "../middlewares/adminRequired.js";
+// import { loginRequired } from "../middlewares/loginRequired.js";
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,10 +16,6 @@ viewsRouter.use("/products", serveStatic("products"));
 viewsRouter.use("/productDetail", serveStatic("productDetail"));
 viewsRouter.use("/order", serveStatic("order"));
 viewsRouter.use("/cart", serveStatic("cart"));
-viewsRouter.use("/admin/category", adminRequired, serveStatic("adminCategory"));
-viewsRouter.use("/admin/order", adminRequired, serveStatic("adminOrder"));
-viewsRouter.use("/admin/product", adminRequired, serveStatic("adminProduct"));
-viewsRouter.use("/admin/user", adminRequired, serveStatic("adminUser"));
 viewsRouter.use("/order/complete", serveStatic("orderComplete"));
 viewsRouter.use("/products/category", serveStatic("products"));
 viewsRouter.use("/products/:productNo", serveStatic("productDetail"));
@@ -33,6 +29,12 @@ viewsRouter.use(
   "/public",
   express.static(path.join(__dirname, "../../fe/public"))
 );
+
+viewsRouter.use("/admin/category", serveStatic("adminCategory"));
+viewsRouter.use("/admin/order", serveStatic("adminOrder"));
+viewsRouter.use("/admin/product", serveStatic("adminProduct"));
+viewsRouter.use("/admin/user", serveStatic("adminUser"));
+viewsRouter.use("/admin/error", serveStatic("adminError"));
 
 function serveStatic(resource) {
   const resourcePath = path.join(__dirname, `../../fe/views/${resource}`);
