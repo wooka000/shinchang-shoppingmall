@@ -24,7 +24,7 @@ function render() {
         <aside class="order-content">
           <div class="order-thumb">
             <div class="order-image">
-              <a href="#"><img src="../home/${pro.image}" alt=""></a>
+              <a href="#"><img src="${pro.image}" alt=""></a>
             </div>
             <div class="order-item">
               <div class="order-header">
