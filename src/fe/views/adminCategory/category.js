@@ -90,8 +90,8 @@ async function fetchJSONData() {
         },
       });
       const data = await response.json();
-      modifyCategoryName = data.categoryName;
-      newCategoryName.value = data.categoryName;
+      modifyCategoryName = data;
+      newCategoryName.value = data;
       modifyModal.classList.toggle("hidden");
     }
     modifyButton.addEventListener("click", onModify);
@@ -141,6 +141,10 @@ async function upload(e) {
   });
   const data = await response.json();
   console.log(data);
+  if (data.error) {
+    alert(data.error);
+    return;
+  }
 
   content.insertAdjacentHTML(
     "beforeend",
@@ -163,7 +167,7 @@ async function upload(e) {
     </div>
     `
   );
-  //location.href = "/admin/category";
+  location.href = "/admin/category";
 }
 uploadButton.addEventListener("click", upload);
 
@@ -171,6 +175,10 @@ uploadButton.addEventListener("click", upload);
 async function modifyCategory(e) {
   e.preventDefault();
   console.log(newCategoryName.value);
+  if (!newCategoryName.value || !newCategoryImage.value) {
+    alert("카테고리 이름과 이미지를 확인해주세요!");
+    return;
+  }
   const token = localStorage.getItem("token");
   const response = await fetch(`/api/category/${modifyCategoryName}`, {
     method: "PUT",

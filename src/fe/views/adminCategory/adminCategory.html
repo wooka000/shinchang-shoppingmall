@@ -15,10 +15,12 @@
     <div class="container">
       <div class="header">
         <div id="title">
-          <img
-            src="../../public/assets/img/logo/떡잎마을샵-logo.png"
-            id="logo"
-          />
+          <a href="/">
+            <img
+              src="../../public/assets/img/logo/떡잎마을샵-logo.png"
+              id="logo"
+            />
+          </a>
         </div>
         <button id="button-back" onclick="location.href='/'">
           <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
@@ -93,7 +95,7 @@
               <label for="newCategory-modify-image" class="label"
                 >카테고리 이미지</label
               >
-              <input id="newCategory-modify-image" type="file" required />
+              <input id="newCategory-modify-image" type="file" />
               <button id="modal-button-modify">수정</button>
               <button id="modal-button-modify-cancel">취소</button>
             </form>

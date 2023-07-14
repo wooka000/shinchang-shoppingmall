@@ -32,7 +32,7 @@ fetchJSONData();
 // json파일에서 데이터 불러오기 (초기 화면 세팅)
 async function fetchJSONData() {
   const token = localStorage.getItem("token");
-  const response = await fetch("/api/products", {
+  const response = await fetch("/api/products/get/all", {
     method: "GET",
     headers: {
       authorization: `bearer ${token}`,
@@ -41,11 +41,11 @@ async function fetchJSONData() {
   });
 
   const data = await response.json();
-  console.log(data.products);
-  productsLength = data.products.length;
+  console.log(data);
+  productsLength = data.length;
   console.log(productsLength);
 
-  data.products.map((element) => {
+  data.map((element) => {
     const { productName, image, price, createAt, productNo } = element;
 
     content.insertAdjacentHTML(

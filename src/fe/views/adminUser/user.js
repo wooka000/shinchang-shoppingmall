@@ -8,8 +8,6 @@ const deleteCheckButton = document.querySelector("#modal-button-delete");
 let deleteUserId;
 fetchJSONData();
 
-// user 삭제 api 부탁드리기
-// category 수정시 name을 비워서 넣으면 오류
 // userlist 가져오기 O, productlist 가져오기 O, categorylist 가져오기 O, orderlist 가져오기 O
 // ***user 삭제***, product 삭제 (modal 띄우기) O, category 삭제 O, order 삭제 O
 // product 추가 O, category 추가 O
@@ -52,22 +50,23 @@ async function fetchJSONData() {
       </div>
       `
     );
+
+    //삭제
     const deleteButton = document.querySelector(`#user-delete-${_id}`);
     function onDelete(e) {
       e.preventDefault();
-      // 회원 번호를 이용해 데이터베이스에서 해당 유저 찾기
-      console.log(e.target.parentNode.parentNode.firstElementChild.innerText);
-      deleteUserId = e.target.parentNode.parentNode.firstElementChild.innerText;
+      deleteUserId = _id;
+      console.log(deleteUserId);
       modalClick();
     }
     deleteButton.addEventListener("click", onDelete);
 
-    // 권한 수정 => 수정 API가 필요해보임
+    // 권한 수정
     const authority = document.querySelector(`#authority-${_id}`);
     async function changeAuthority(e) {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/products", {
-        method: "PATCH",
+      const response = await fetch(`/api/user/user/${authority}`, {
+        method: "DELETE",
         headers: {
           authorization: `bearer ${token}`,
           "Content-Type": "application/json",
@@ -81,10 +80,21 @@ async function fetchJSONData() {
   });
 }
 
-function deleteUser(e) {
-  console.log(e.target);
-  //'네'버튼 클릭 시 데이터베이스의 유저 삭제
+// 삭제 확인 버튼
+async function deleteUser(e) {
+  e.preventDefault();
+  const token = localStorage.getItem("token");
+  const response = await fetch(`/api/user/user/${deleteUserId}`, {
+    method: "DELETE",
+    headers: {
+      authorization: `bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  console.log(response);
+
   modalClick();
+  location.reload();
 }
 deleteCheckButton.addEventListener("click", deleteUser);
 
