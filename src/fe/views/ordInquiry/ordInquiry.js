@@ -1,10 +1,11 @@
 const userId = localStorage.getItem('username');
+let deleteNum = 0;
 
+showState(deleteNum);
 drawTable()
   .then(() => {
     const content = document.querySelectorAll(".content");
     const contentAnswer = document.querySelectorAll(".content-answer");
-    console.log(content);
 
     for (let i = 0; i < content.length; i++) {
       content[i].addEventListener("click", () => {
@@ -68,5 +69,30 @@ async function deleteOrder(num) {
     if (data.result === "success") alert('주문이 취소되었습니다!');
     else throw new Error();
   }
+  deleteNum++;
+  await showState(deleteNum);
   drawTable();
+}
+
+async function showState(n) {
+  const card = document.querySelector(".state-card");
+  const orderList = await getOrderInfo();
+  card.innerHTML = `
+    <div class="delivery-deleted">
+      <h3>주문 취소</h3>
+      <span>${n}</span>
+    </div>
+    <div class="delivery-prepairing">
+      <h3>배송준비중</h3>
+      <span>${orderList.length}</span>
+    </div>
+    <div class="delivery-ongoing">
+      <h3>배송중</h3>
+      <span>0</span>
+    </div>
+    <div class="delivery-completed">
+      <h3>배송완료</h3>
+      <span>0</span>
+    </div>
+  `
 }
