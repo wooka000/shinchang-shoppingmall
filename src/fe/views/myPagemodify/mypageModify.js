@@ -125,12 +125,6 @@ async function myPageModifyRender() {
     contentsFragment.appendChild(div);
     contentsWrapper.appendChild(contentsFragment);
 
-    // 파일 업로드에 change 이벤트
-    const inputImage = document.querySelector('.file-input');
-    inputImage.addEventListener('change', (e) => {
-        readImage(e.target);
-    });
-
     // 주소 검색 버튼 클릭시 발생 이벤트
     const addressBtn = document.querySelector('.btn-address');
     addressBtn.addEventListener('click', execDaumPostcode);
