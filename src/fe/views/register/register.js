@@ -108,6 +108,7 @@ register.addEventListener("click", function (e) {
 
   const subscriptionDate = new Date().getTime();
 
+<<<<<<< HEAD
   const data = {
     name: nameInput.value,
     email: emailInput.value,
@@ -137,4 +138,37 @@ register.addEventListener("click", function (e) {
     .catch((error) => {
       console.error("회원가입 중 오류가 발생했습니다.", error);
     });
+=======
+    const data = {
+        name: nameInput.value,
+        email: emailInput.value,
+        password: passwordInput.value,
+        phoneNumber: phoneNumberInput.value,
+        address1: address1Input.value,
+        address2: address2Input.value,
+        postalCode: postalCodeInput.value,
+        subscriptionDate: subscriptionDate.value,
+    };
+
+    fetch("/api/user/register", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((response) => {
+            console.log(response);
+            if (!response.ok) {
+                throw new Error("회원가입에 실패했습니다.");
+            }
+            return response.json();
+        })
+        .then((responseData) => {
+            console.log("회원가입이 성공적으로 완료되었습니다.", responseData);
+        })
+        .catch((error) => {
+            console.error("회원가입 중 오류가 발생했습니다.", error);
+        });
+>>>>>>> 9d6fd19 (Design디자인 수정)
 });
