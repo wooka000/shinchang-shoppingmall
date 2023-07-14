@@ -11,6 +11,7 @@ const productName = document.querySelector("#newProduct-name");
 const productCategory = document.querySelector("#newProduct-category");
 const productPrice = document.querySelector("#newProduct-price");
 const productImage = document.querySelector("#newProduct-image");
+const productDescription = document.querySelector("#newProduct-description");
 
 const modifyUploadButton = document.querySelector(
   "#button-product-modify-upload"
@@ -21,6 +22,9 @@ const newProductCategory = document.querySelector(
 );
 const newProductPrice = document.querySelector("#newProduct-modify-price");
 const newProductImage = document.querySelector("#newProduct-modify-image");
+const newProductDescription = document.querySelector(
+  "#newProduct-modify-description"
+);
 
 let productsLength;
 let modifyId;
@@ -95,11 +99,12 @@ async function fetchJSONData() {
       });
       const data = await response.json();
       modifyData = data;
-
+      console.log(data);
       newProductName.value = data.productName;
       newProductCategory.value = data.categoryName;
       newProductPrice.value = data.price;
       newProductImage.value = data.image;
+      newProductDescription.value = data.description;
       updateProduct();
     }
     modifyButton.addEventListener("click", clickModifyButton);
@@ -124,6 +129,7 @@ function addProduct(e) {
   productCategory.value = "";
   productPrice.value = "";
   productImage.value = "";
+  productDescription.value = "";
   modal.classList.toggle("hidden");
 }
 
@@ -147,6 +153,7 @@ async function upload(e) {
       categoryName: productCategory.value,
       price: productPrice.value,
       image: productImage.value,
+      description: productDescription.value,
     }),
   });
   const data = await response.json();
@@ -174,8 +181,8 @@ async function upload(e) {
   productCategory.value = "";
   productPrice.value = "";
   productImage.value = "";
+  productDescription.value = "";
   modal.classList.toggle("hidden");
-  console.log(data);
   location.href = "/admin/product";
 }
 
