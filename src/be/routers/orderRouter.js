@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { orderService } from "../services/orderService.js";
+import { loginRequired, adminRequired } from "../middlewares/index.js";
 
 const orderRouter = Router();
 
@@ -15,7 +16,7 @@ orderRouter.post("/", async (req, res) => {
 });
 
 // 모든 주문 조회 o
-orderRouter.get("/", async (req, res) => {
+orderRouter.get("/", loginRequired, adminRequired, async (req, res) => {
   try {
     const orders = await orderService.getAllOrders();
     res.json(orders);

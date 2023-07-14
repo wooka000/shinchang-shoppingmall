@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { productsService } from "../services/productsService.js";
+import { loginRequired, adminRequired } from "../middlewares/index.js";
 
 const productsRouter = Router();
 
@@ -71,39 +72,54 @@ productsRouter.get("/:productNo", async (req, res) => {
 });
 
 // 무지성 전체 목록 조회
-productsRouter.get("/get/all", async (req, res) => {
-  try {
-    const product = await productsService.getProductsAll();
-    res.json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+productsRouter.get(
+  "/get/all",
+  loginRequired,
+  adminRequired,
+  async (req, res) => {
+    try {
+      const product = await productsService.getProductsAll();
+      res.json(product);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
-});
+);
 
 // 상품 수정(Admin) o
-productsRouter.put("/:productNo", async (req, res) => {
-  try {
-    const productNo = req.params.productNo;
-    const update = req.body;
-    const updatedProduct = await productsService.setProductByProductNo(
-      productNo,
-      update
-    );
-    res.json(updatedProduct);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+productsRouter.put(
+  "/:productNo",
+  loginRequired,
+  adminRequired,
+  async (req, res) => {
+    try {
+      const productNo = req.params.productNo;
+      const update = req.body;
+      const updatedProduct = await productsService.setProductByProductNo(
+        productNo,
+        update
+      );
+      res.json(updatedProduct);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
-});
+);
 
 // 상품 삭제(Admin) o
-productsRouter.delete("/:productNo", async (req, res) => {
-  try {
-    const productNo = req.params.productNo;
-    await productsService.deleteProductByProductNo(productNo);
-    res.json({ result: "success" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+productsRouter.delete(
+  "/:productNo",
+  loginRequired,
+  adminRequired,
+  async (req, res) => {
+    try {
+      const productNo = req.params.productNo;
+      await productsService.deleteProductByProductNo(productNo);
+      res.json({ result: "success" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
-});
+);
 
 export { productsRouter };
