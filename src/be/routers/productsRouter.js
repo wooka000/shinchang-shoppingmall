@@ -14,7 +14,7 @@ productsRouter.post("/", async (req, res) => {
   }
 });
 
-// 상품 전체 목록 조회 o
+// 상품 전체 목록 조회 - pagination o
 productsRouter.get("/", async (req, res) => {
   try {
     let page = Number(req.query.page || 1);
@@ -64,6 +64,16 @@ productsRouter.get("/:productNo", async (req, res) => {
   try {
     const productNo = req.params.productNo;
     const product = await productsService.getProductByProductNo(productNo);
+    res.json(product);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 무지성 전체 목록 조회
+productsRouter.get("/get/all", async (req, res) => {
+  try {
+    const product = await productsService.getProductsAll();
     res.json(product);
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -7,6 +7,11 @@ class ProductsService {
     return createdNewProduct;
   }
 
+  async getProductsAll() {
+    const products = await productsModel.findAll();
+    return products;
+  }
+
   async getProducts(page, perPage, sortOption) {
     const { products, totalPage } = await productsModel.findAllProducts(
       page,

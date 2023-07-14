@@ -9,6 +9,11 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
+  async findAll() {
+    const products = await Product.find({});
+    return products;
+  }
+
   async findAllProducts(page, perPage, sortOption) {
     const sortQuery = {};
 
