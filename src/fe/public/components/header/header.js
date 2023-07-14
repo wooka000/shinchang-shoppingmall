@@ -32,8 +32,8 @@ async function headerRender() {
                     <menu>
                         <ul class="main-menu">
                             <li class="store"><a href="/products/category?categoryName=인기 | 신상품&page=1&sortOption=createAt">스토어</a></li>
-                            <li class="event"><a href="">이벤트</a></li>
-                            <li class="community"><a href="">커뮤니티</a></li>
+                            <li class="event"><a href="/ready">이벤트</a></li>
+                            <li class="community"><a href="/ready">커뮤니티</a></li>
                         </ul>
                         <div class="hide-menu">
                             <div style="width: 140px">
@@ -42,15 +42,15 @@ async function headerRender() {
                             </div>
                             <div style="width: 100px">
                                 <ul>
-                                    <li><a href="">sale</a></li>
-                                    <li><a href="">사전 예약</a></li>
+                                    <li><a href="/ready">sale</a></li>
+                                    <li><a href="/ready">사전 예약</a></li>
                                 </ul>
                             </div>
                             <div style="width: 150px">
                                 <ul>
-                                    <li><a href="">Q&A</a></li>
-                                    <li><a href="">도움말</a></li>
-                                    <li><a href="">공지사항</a></li>
+                                    <li><a href="/ready">Q&A</a></li>
+                                    <li><a href="/ready">도움말</a></li>
+                                    <li><a href="/ready">공지사항</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ async function headerRender() {
                             <a href="/cart"><img src="../../public/assets/img/icon/cart.svg" alt="cart" /></a>
                         </li>
                         <li class="search-btn">
-                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="search" /></a>
+                            <a href="/ready"><img src="../../public/assets/img/icon/search.svg" alt="search" /></a>
                         </li>
                     </ul>
     `;
