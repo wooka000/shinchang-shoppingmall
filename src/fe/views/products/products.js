@@ -1,18 +1,7 @@
 async function productsRender() {
     try {
-        // url 구분해서 categoryName 가져오기
-        let queryObject = location.search
-            .replace('?', '')
-            .split('&')
-            .reduce((acc, query) => {
-                let [key, value] = query.split('=');
-                acc[key] = decodeURI(value);
-
-                return acc;
-            }, {});
-
-        let { categoryName } = queryObject;
-        console.log(queryObject);
+        let queryObject = window.location.search ? searchToObject(location.search) : {};
+        let categoryName = decodeURI(queryObject.categoryName);
 
         // 상품 카테고리 제목
         const listTitle = document.querySelector('.list-title');
@@ -21,14 +10,16 @@ async function productsRender() {
         strong.textContent = categoryName;
         listTitle.appendChild(strong);
 
+        productSort(categoryName);
+
         // 상품 전체 목록 불러와서 넣어줄 div
         let productList = document.querySelector('.products-list');
 
         // 전체 목록 불러오기
         if (categoryName === '인기 | 신상품') {
-            apiFetch(productList, '/api/products');
+            apiFetch(productList, `/api/products${objectToSearch(queryObject)}`);
         } else {
-            apiFetch(productList, `/api/products/category?categoryName=${categoryName}`);
+            apiFetch(productList, `/api/products/category${objectToSearch(queryObject)}`);
         }
     } catch (error) {
         console.log(error);
@@ -48,8 +39,8 @@ async function apiFetch(target, url) {
             },
         }).then((res) => res.json());
 
-        console.log(data);
         let { products, totalPage } = data;
+        console.log(products);
 
         // 상품 목록
         const listFragment = new DocumentFragment();
@@ -157,12 +148,24 @@ function pagination(totalPage) {
         });
     }
 
-    console.log(prevPage, nextPage, pageWrapper);
     prevPage.append(prevImg);
     nextPage.append(nextImg);
 
     fragment.append(prevPage, pageWrapper, nextPage);
-
     target.append(fragment);
-    console.log(target);
+}
+
+function productSort(categoryName) {
+    const dropDown = document.querySelector('.drop-down');
+    const selectFragment = new DocumentFragment();
+
+    const select = document.createElement('select');
+    select.innerHTML = `
+        <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=createAt">최신순</option>
+        <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=priceDesc">가격 낮은순</option>
+        <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=priceAsc">가격 높은순</option>
+        `;
+
+    selectFragment.appendChild(select);
+    dropDown.appendChild(selectFragment);
 }
