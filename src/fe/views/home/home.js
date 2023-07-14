@@ -1,3 +1,6 @@
+// aos 초기화
+AOS.init();
+
 // 상품을 로드하는 함수
 async function newProductRender() {
     try {
@@ -16,23 +19,28 @@ async function newProductRender() {
         const newPdFragment = new DocumentFragment();
 
         newProduct.forEach(({ productNo, productName, price, image }) => {
-            const div = document.createElement('div');
+            const divWrapper = document.createElement('div');
 
-            div.innerHTML = `
-        <div>
-            <div class="img-wrapper">
-            <a href="/products/${productNo}"><img src="${image}" alt="img" /></a>
-            </div>
-            <div class="products-title">
-                <strong><a href="/products/${productNo}">${productName}</a></strong>
-            </div>
+            divWrapper.setAttribute('data-aos', 'fade-up');
+            divWrapper.setAttribute('data-aos-delay', '60');
+            divWrapper.setAttribute('data-aos-duration', '1000');
 
-            <div class="products-price">
-                <strong>${price.toLocaleString()}원</strong>
-            </div>
-        </div>`;
+            divWrapper.innerHTML = `
+            <div>
+                <div class="img-wrapper">
+                    <a href="/products/${productNo}"><img src="${image}" alt="img" /></a>
+                </div>
+                <div class="products-title">
+                    <strong><a href="/products/${productNo}">${productName}</a></strong>
+                </div>
 
-            newPdFragment.appendChild(div);
+                <div class="products-price">
+                    <strong>${price.toLocaleString()}원</strong>
+                </div>
+            </div>
+            `;
+
+            newPdFragment.appendChild(divWrapper);
         });
 
         products.appendChild(newPdFragment);
@@ -78,7 +86,3 @@ async function popularCategoryRender() {
 }
 
 popularCategoryRender();
-
-// aos 초기화
-// data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000"
-AOS.init();
