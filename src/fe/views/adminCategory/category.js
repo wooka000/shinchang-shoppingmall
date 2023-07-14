@@ -92,8 +92,10 @@ async function fetchJSONData() {
         },
       });
       const data = await response.json();
+      console.log(data);
       modifyCategoryName = data;
-      newCategoryName.value = data;
+      newCategoryName.value = data.categoryName;
+      newCategoryImage.value = data.image;
       modifyModal.classList.toggle("hidden");
     }
     modifyButton.addEventListener("click", onModify);
