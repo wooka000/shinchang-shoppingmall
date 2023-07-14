@@ -99,7 +99,7 @@ async function fetchJSONData() {
       });
       const data = await response.json();
       modifyData = data;
-
+      console.log(data);
       newProductName.value = data.productName;
       newProductCategory.value = data.categoryName;
       newProductPrice.value = data.price;
@@ -180,8 +180,8 @@ async function upload(e) {
   productCategory.value = "";
   productPrice.value = "";
   productImage.value = "";
+  productDescription.value = "";
   modal.classList.toggle("hidden");
-  console.log(data);
   location.href = "/admin/product";
 }
 
