@@ -31,7 +31,7 @@ async function headerRender() {
                     <!-- Menu -->
                     <menu>
                         <ul class="main-menu">
-                            <li class="store"><a href="">스토어</a></li>
+                            <li class="store"><a href="/products/category?categoryName=인기 | 신상품&page=1&sortOption=createAt">스토어</a></li>
                             <li class="event"><a href="">이벤트</a></li>
                             <li class="community"><a href="">커뮤니티</a></li>
                         </ul>
@@ -59,25 +59,25 @@ async function headerRender() {
                     <!-- login & myPage -->
                     <ul class="sign-list">
                         <li class="admin-btn">
-                            <a href="/admin/user"><img src="../../public/assets/img/icon/admin.svg" alt="admin" style="margin-top: 2px" /></a>
+                            <a href="/admin/user"><img src="../../public/assets/img/icon/admin.svg" alt="admin" /></a>
                         </li>
                         <li class="login">
-                            <a><img src="../../public/assets/img/icon/user.svg" /></a>
+                            <a><img src="../../public/assets/img/icon/user.svg" alt="user" /></a>
                             <div class="hide-login">
                                 <ul>
                                     <li class="login-btn"><a href="/login">로그인</a></li>
-                                    <li class="logout-btn">로그아웃</li>
+                                    <li class="logout-btn"><a>로그아웃</a></li>
                                     <li class="register-btn"><a href="/register">회원 가입</a></li>
                                     <li><a href="/cart">장바구니</a></li>
-                                    <li><a href="/mypage">마이 페이지</a></li>
+                                    <li class="mypage-btn"><a href="/mypage">마이 페이지</a></li>
                                 </ul>
                             </div>
                         </li>
                         <li>
-                            <a href="/cart"><img src="../../public/assets/img/icon/cart.svg" alt="" /></a>
+                            <a href="/cart"><img src="../../public/assets/img/icon/cart.svg" alt="cart" /></a>
                         </li>
-                        <li>
-                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="" style="width: 25px; height: 25px; margin: 2px" /></a>
+                        <li class="search-btn">
+                            <a href=""><img src="../../public/assets/img/icon/search.svg" alt="search" /></a>
                         </li>
                     </ul>
     `;
@@ -91,7 +91,7 @@ async function headerRender() {
 
     categoryData.forEach(({ categoryName }) => {
         const li = document.createElement('li');
-        li.innerHTML = `<a href="/products/category?categoryName=${categoryName}">${categoryName}</a>`;
+        li.innerHTML = `<a href="/products/category?categoryName=${categoryName}&page=1&sortOption=createAt">${categoryName}</a>`;
         categoryFragment.appendChild(li);
     });
 
@@ -111,7 +111,7 @@ async function headerRender() {
     $hideLogin.style.height = 0;
 
     function mouseOverHandler(target) {
-        target.style.height = `${(target === $hideMenu ? hideMenuHeight : hideLoginHeight) + padding}px`;
+        target.style.height = `${target === $hideMenu ? hideMenuHeight + padding : hideLoginHeight - 10}px`;
         target.style.padding = '1rem 0 0 0';
     }
 
@@ -139,11 +139,13 @@ async function headerRender() {
     let loginBtn = document.querySelector('.login-btn');
     let registerBtn = document.querySelector('.register-btn');
     let logoutBtn = document.querySelector('.logout-btn');
+    let mypageBtn = document.querySelector('.mypage-btn');
 
     function changeBtnStyle(status) {
         loginBtn.style.display = status ? 'none' : 'block';
         registerBtn.style.display = status ? 'none' : 'block';
         logoutBtn.style.display = status ? 'block' : 'none';
+        mypageBtn.style.display = status ? 'block' : 'none';
     }
 
     const checkToken = localStorage.getItem('token');
@@ -155,6 +157,7 @@ async function headerRender() {
             if (confirm('로그아웃하시겠습니까?') === true) {
                 alert('방문해 주셔서 감사합니다😍 다음에 또 방문 부탁드려요😘');
                 localStorage.removeItem('token');
+                localStorage.removeItem('username');
 
                 changeBtnStyle(false);
 
@@ -174,6 +177,7 @@ async function headerRender() {
         },
     });
     const adminData = await adminResponse.json();
+    console.log(adminData);
 
     const adminBtn = document.querySelector('.admin-btn');
 

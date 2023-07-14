@@ -40,6 +40,11 @@ function footerRender() {
     `;
 
     footer.appendChild(div);
+
+    const logoClick = document.querySelector('.footer-logo');
+    logoClick.addEventListener('click', () => {
+        location.href = '/';
+    });
 }
 
 footerRender();

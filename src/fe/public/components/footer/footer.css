@@ -52,8 +52,13 @@
 .footer-logo img {
     width: 9rem;
     height: 3.8rem;
+    cursor: pointer;
 }
 
 .copyright > span {
     font-size: 14px;
+}
+
+img {
+    cursor: pointer;
 }
