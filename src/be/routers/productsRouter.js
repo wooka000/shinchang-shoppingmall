@@ -19,8 +19,7 @@ productsRouter.get("/", async (req, res) => {
   try {
     let page = Number(req.query.page || 1);
     let perPage = Number(req.query.perPage || 12);
-    const sortBy = req.query.sortBy || "createdAt";
-    const sortPrice = req.query.sortPrice || "desc";
+    const sortOption = req.query.sortOption || "createAt";
 
     if (isNaN(page) || page < 1) page = 1;
     if (isNaN(perPage) || perPage < 1) perPage = 12;
@@ -28,8 +27,7 @@ productsRouter.get("/", async (req, res) => {
     const { products, totalPage } = await productsService.getProducts(
       page,
       perPage,
-      sortBy,
-      sortPrice
+      sortOption
     );
     res.json({ products, totalPage });
   } catch (error) {
@@ -40,11 +38,22 @@ productsRouter.get("/", async (req, res) => {
 // 카테고리 별 상품 목록 조회 o
 productsRouter.get("/category", async (req, res) => {
   try {
+    let page = Number(req.query.page || 1);
+    let perPage = Number(req.query.perPage || 12);
+    const sortOption = req.query.sortOption || "createAt";
     const categoryName = req.query.categoryName;
-    const products = await productsService.getProductsByCategoryName(
-      categoryName
-    );
-    res.json(products);
+
+    if (isNaN(page) || page < 1) page = 1;
+    if (isNaN(perPage) || perPage < 1) perPage = 12;
+
+    const { products, totalPage } =
+      await productsService.getProductsByCategoryName(
+        page,
+        perPage,
+        sortOption,
+        categoryName
+      );
+    res.json({ products, totalPage });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

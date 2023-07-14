@@ -1,5 +1,6 @@
 const productReq = [];  // 서버로 보낼 장바구니 정보를 담을 배열
 
+const randomNum = Math.floor(Math.random() * 10000000000000);
 const userName = document.querySelector("#name");
 const phone = document.querySelector("#phone");
 const email = document.querySelector("#email");
@@ -8,8 +9,50 @@ const sample6_postcode = document.querySelector("#sample6_postcode");
 const sample6_address = document.querySelector("#sample6_address");
 const sample6_detailAddress = document.querySelector("#sample6_detailAddress");
 const sample6_extraAddress = document.querySelector("#sample6_extraAddress");
+const userId = localStorage.getItem('username');
 
 render();
+
+const orderBtn = document.querySelector(".order-button");
+orderBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  let message = "";
+  let deliveryMessage = document.querySelector("#deliveryMessage");
+  let selectedMessage = deliveryMessage.options[deliveryMessage.selectedIndex].value;
+  if (selectedMessage === "직접 입력") {
+    let dm = document.querySelector("#dm").value;
+    message = dm;
+  } else {
+    message = selectedMessage;
+  }
+
+  const response = await fetch('/api/order', {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({  // 주문자 정보, 배송지 정보, 장바구니 물품들 정보로 이루어진 json 문자열
+      orderNo: randomNum,
+      userName: userName.value,
+      phoneNumber: phone.value,
+      userEmail: email.value,
+      recipientName: recipientName.value,
+      addressCode: sample6_postcode.value,
+      address: sample6_address.value,
+      detailAddress: sample6_detailAddress.value,
+      extraAddress: sample6_extraAddress.value,
+      deliveryMessage: message,
+      orderArray: productReq,
+      userId: userId
+    })
+  })
+
+  const data = await response.json();
+
+  data.forEach(e => localStorage.removeItem(`pro${e.productNo}`));
+  location.href="/order/complete";
+});
 
 
 
@@ -31,14 +74,14 @@ function render() {
         <aside class="order-content">
           <div class="order-thumb">
             <div class="order-image">
-              <img src="../home/${pro.productImg}" alt="짱구케이스">
+              <img src="../home/${pro.image}" alt="짱구케이스">
             </div>
             <div class="order-item">
               <div class="order-header">
-                <h5 class="product-num">${pro.productNum}</h5>
+                <h5 class="product-num">${pro.productNo}</h5>
               </div>
               <h4 class="product-title">${pro.productName}</h4>
-              <h5 class="product-type">${pro.category}</h5>
+              <h5 class="product-type">${pro.categoryName}</h5>
               <div class="product-price">
                 <div><h3>${pro.price.toLocaleString()} 원</h3></div>
               </div>
@@ -53,7 +96,7 @@ function render() {
         </aside>
       </article>`;
       productReq.push({  // 장바구니 정보중 상품 번호와 주문 개수를 객체화하여 productReq 배열에 추가
-        productNum: pro.productNum,
+        productNo: pro.productNo,
         quantity: pro.quantity
       })
   };
@@ -82,44 +125,6 @@ function messageSelect() {
   else dm.classList.add("hide");
 }
 
-const orderBtn = document.querySelector(".order-button");
-orderBtn.addEventListener('click', async (e) => {
-  e.preventDefault();
-
-  let message = "";
-  let deliveryMessage = document.querySelector("#deliveryMessage");
-  let selectedMessage = deliveryMessage.options[deliveryMessage.selectedIndex].value;
-  if (selectedMessage === "직접 입력") {
-    let dm = document.querySelector("#dm").value;
-    message = dm;
-  } else {
-    message = selectedMessage;
-  }
-
-  const response = await fetch('/api/order', {
-    method: 'POST',
-    body: JSON.stringify({  // 주문자 정보, 배송지 정보, 장바구니 물품들 정보로 이루어진 json 문자열
-      userName: userName.value,
-      phoneNumber: phone.value,
-      userEmail: email.value,
-      recipientName: recipientName.value,
-      addressCode: sample6_postcode.value,
-      address: sample6_address.value,
-      detailAddress: sample6_detailAddress.value,
-      extraAddress: sample6_extraAddress.value,
-      deliveryMessage: message,
-      orderArray: productReq
-    })
-  })
-
-  const data = await response.json();
-  
-  console.log(data);
-
-    // orderArray를 순회하여 productNum 프로퍼티의 값을 가져온 후 그에 해당하는 키값의 로컬스토리지 제거해주기 -> orderArray를 응답으로 안받고 그냥 productReq 순회해서 제거해도 될듯?
-    // location.href="/order/complete";
-});
-
 // 서버에서 로그인중인 회원의 회원정보 가져오는 api 호출하기
 async function getUserinfo() {
   const token = localStorage.getItem('token');
@@ -131,7 +136,7 @@ async function getUserinfo() {
     },
   });
   const data = await response.json();
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
@@ -140,7 +145,6 @@ async function check(n) {
   if (n === 1) {
     userName.value = data.name;
     phone.value = data.phoneNumber;
-    email.value = data.email;
   } else if (n === 2) {
     recipientName.value = data.name;
     sample6_postcode.value = data.postalCode;

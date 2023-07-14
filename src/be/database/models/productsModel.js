@@ -9,21 +9,21 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
-  async findAllProducts(
-    page,
-    perPage,
-    sortBy = "createdAt",
-    sortPrice = "desc"
-  ) {
-    const skip = perPage * (page - 1);
-    const sortOption = {};
-    sortOption[sortBy] = sortPrice === "asc" ? 1 : -1;
+  async findAllProducts(page, perPage, sortOption) {
+    const sortQuery = {};
 
-    const productsPromise = await Product.find({})
-      .sort(sortOption)
-      .skip(skip)
+    if (sortOption === "createAt") {
+      sortQuery.createAt = -1; // 최신순
+    } else if (sortOption === "priceDesc") {
+      sortQuery.price = -1; // 가격 내림차순
+    } else if (sortOption === "priceAsc") {
+      sortQuery.price = 1; // 가격 오름차순
+    }
+
+    const productsPromise = Product.find({})
+      .sort(sortQuery)
+      .skip(perPage * (page - 1))
       .limit(perPage);
-
     const countPromise = Product.countDocuments({});
 
     const [products, count] = await Promise.all([
@@ -36,9 +36,31 @@ export class ProductsModel {
     return { products, totalPage };
   }
 
-  async findAllByCategoryName(categoryName) {
-    const products = await Product.find({ categoryName });
-    return products;
+  async findAllByCategoryName(page, perPage, sortOption, categoryName) {
+    const sortQuery = {};
+
+    if (sortOption === "createAt") {
+      sortQuery.createAt = -1; // 최신순
+    } else if (sortOption === "priceDesc") {
+      sortQuery.price = -1; // 가격 내림차순
+    } else if (sortOption === "priceAsc") {
+      sortQuery.price = 1; // 가격 오름차순
+    }
+
+    const productsPromise = Product.find({ categoryName })
+      .sort(sortQuery)
+      .skip(perPage * (page - 1))
+      .limit(perPage);
+    const countPromise = Product.countDocuments({ categoryName });
+
+    const [products, count] = await Promise.all([
+      productsPromise,
+      countPromise,
+    ]);
+
+    const totalPage = Math.ceil(count / perPage);
+
+    return { products, totalPage };
   }
 
   async findByProductNo(productNo) {
