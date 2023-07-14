@@ -82,7 +82,7 @@ function formCheck() {
 }
 const registerButton = document.querySelector("#register");
 registerButton.addEventListener("click", function (e) {
-  const isValid = formcheck();
+  const isValid = formCheck();
 
   if (!isValid) {
     e.preventDefault();
@@ -134,9 +134,8 @@ registerButton.addEventListener("click", function (e) {
 
 // Enter 키 누를 때 회원가입 수행
 document.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
+  if (event.key === "Enter") {
     event.preventDefault();
     registerButton.click();
   }
 });
-//

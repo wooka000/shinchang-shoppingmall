@@ -68,6 +68,11 @@ export class ProductsModel {
     return { products, totalPage };
   }
 
+  async findAllByOnlyCategoryName(categoryName) {
+    const products = Product.find({ categoryName });
+    return products;
+  }
+
   async findByProductNo(productNo) {
     const product = await Product.findOne({ productNo });
     return product;
