@@ -25,9 +25,9 @@ async function userInfoRender() {
                             <img id="user-image" src="../../public/assets/img/icon/user.svg" alt="프로필사진" />
                         </div>
                         <div class="user-info">
-                            <h4>${name}</h4>
-                            <h6>${email}</h6>
-                            <h6>${phoneNumber}</h6>
+                            <h2 class="user-name">${name}</h2>
+                            <h4 class="user-email">${email}</h4>
+                            <h4 class="user-phoneNo">${phoneNumber}</h4>
                         </div>
                     </div>
                     <div class="user-grade"><h4>${role === 'admin' ? '관리자' : '일반 회원'}</h4></div>
