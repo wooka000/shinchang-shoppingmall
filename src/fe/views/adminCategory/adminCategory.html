@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="category.css" />
+    <script
+      src="https://kit.fontawesome.com/59c9ef03f3.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Admin Page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div id="title">
+          <img
+            src="../../public/assets/img/logo/떡잎마을샵-logo.png"
+            id="logo"
+          />
+        </div>
+        <button id="button-back">
+          <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
+        </button>
+      </div>
+      <div id="content">
+        <div id="content-title">
+          <div class="page first-page">관리 목록</div>
+          <div class="page"><a href="../adminUser/user.html">회원 관리</a></div>
+          <div class="page">
+            <a href="../adminProduct/product.html">제품 관리</a>
+          </div>
+          <div class="page special-page">
+            <a href="../adminCategory/category.html">카테고리 관리</a>
+          </div>
+          <div class="page">
+            <a href="../adminOrder/order.html">주문 관리</a>
+          </div>
+        </div>
+        <div id="content-detail">
+          <div>
+            <div class="add-container">
+              <button class="button-category-add">
+                <i class="fa-solid fa-plus">카테고리 추가</i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal hidden">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form>
+              <label for="newCategory-name" class="label">카테고리 이름</label>
+              <input
+                id="newCategory-name"
+                placeholder="ex) 피규어"
+                type="text"
+              />
+              <button id="button-category-upload">등록</button>
+              <button id="button-category-cancel">취소</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-delete hidden">
+          <div class="modal-delete-background">
+            <i class="fa-solid fa-x"></i>
+          </div>
+          <div class="modal-delete-content">
+            <div>정말로 삭제하시겠습니까?</div>
+            <button class="modal-button" id="modal-button-delete">네</button>
+            <button class="modal-button" id="modal-button-cancel">
+              아니오
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="category.js"></script>
+  </body>
+</html>
