@@ -44,12 +44,13 @@ orderBtn.addEventListener('click', async (e) => {
       extraAddress: sample6_extraAddress.value,
       deliveryMessage: message,
       orderArray: productReq,
-      userId: userId
+      userId: userId,
+      status: "배송준비중"
     })
   })
 
   const data = await response.json();
-
+  // console.log(data)
   data.forEach(e => localStorage.removeItem(`pro${e.productNo}`));
   location.href="/order/complete";
 });
@@ -97,7 +98,9 @@ function render() {
       </article>`;
       productReq.push({  // 장바구니 정보중 상품 번호와 주문 개수를 객체화하여 productReq 배열에 추가
         productNo: pro.productNo,
-        quantity: pro.quantity
+        quantity: pro.quantity,
+        price: pro.price,
+        productName: pro.productName
       })
   };
 
