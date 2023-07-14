@@ -125,10 +125,6 @@ class UserService {
       );
     }
 
-    // if (user.role !== "admin") {
-    //   throw new Error("관리자 권한이 필요합니다.");
-    // }
-
     await userModel.deleteUser(userId);
   }
 }
