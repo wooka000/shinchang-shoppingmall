@@ -157,7 +157,7 @@ async function myPageModifyRender() {
         const addressBtn = document.querySelector('.btn-address');
         addressBtn.addEventListener('click', execDaumPostcode);
     } catch (error) {
-        location.href = '/error';
+        // location.href = '/error';
     }
 }
 
@@ -182,12 +182,12 @@ async function modifyUserInfo() {
         // formData 만들기
         const formData = new FormData();
 
-        formData.set('name', name);
-        formData.set('address1', address1);
-        formData.set('address2', address2);
-        formData.set('postalCode', postalCode);
-        formData.set('phoneNumber', phoneNum);
-        formData.set('role', 'user' ? 'user' : 'admin');
+        formData.append('name', name);
+        formData.append('address1', address1);
+        formData.append('address2', address2);
+        formData.append('postalCode', postalCode);
+        formData.append('phoneNumber', phoneNum);
+        formData.append('role', 'user' ? 'user' : 'admin');
         // formData.set('profileImage', inputImage);
 
         if (newPassword === checkNewPw) {
@@ -199,9 +199,11 @@ async function modifyUserInfo() {
 
             const response = await fetch('/api/user/my', {
                 method: 'PATCH',
+                headers: {},
                 body: formData,
             });
 
+            console.log(response);
             return true;
         } else {
             alert('현재 패스워드가 일치하지 않습니다!');
@@ -218,7 +220,7 @@ modifyBtn.addEventListener('click', () => {
     if (confirm('회원 정보를 수정하시겠습니까?') == true) {
         if (modifyUserInfo()) {
             alert('회원 정보가 수정되었습니다.');
-            location.href = '/mypage/modify';
+            // location.href = '/mypage/modify';
         }
     }
 });
@@ -241,7 +243,7 @@ async function deleteUser() {
             localStorage.removeItem('username');
         }
     } catch (error) {
-        location.href = '/error';
+        // location.href = '/error';
     }
 }
 
