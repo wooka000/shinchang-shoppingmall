@@ -98,24 +98,6 @@ async function headerRender() {
     hideMenu.appendChild(categoryFragment);
 
     // 호버시 이벤트 들어가는 함수
-    hoverEvent();
-
-    // scroll 이동시 헤더 배경 색상 추가
-    window.addEventListener('scroll', () => {
-        if (window.scrollY !== 0) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
-        } else {
-            header.removeAttribute('style');
-        }
-    });
-
-    loginAdminCheck();
-}
-
-headerRender();
-
-// 카테고리 및 로그인 nav 바 마우스 호버시 보여주기
-function hoverEvent() {
     const $menu = document.querySelector('menu');
     const $hideMenu = document.querySelector('.hide-menu');
     const hideMenuHeight = $hideMenu.offsetHeight;
@@ -143,10 +125,16 @@ function hoverEvent() {
 
     $login.addEventListener('mouseover', () => mouseOverHandler($hideLogin));
     $login.addEventListener('mouseleave', () => mouseOutHandler($hideLogin));
-}
 
-// 로그인시 로그인에서 로그아웃으로 변경 / 어드민 마크를 위한 토큰 및 롤 체크
-async function loginAdminCheck() {
+    // scroll 이동시 헤더 배경 색상 추가
+    window.addEventListener('scroll', () => {
+        if (window.scrollY !== 0) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+        } else {
+            header.removeAttribute('style');
+        }
+    });
+
     const loginBtn = document.querySelector('.login-btn');
     const registerBtn = document.querySelector('.register-btn');
     const logoutBtn = document.querySelector('.logout-btn');
@@ -197,3 +185,9 @@ async function loginAdminCheck() {
         changeBtnStyle(checkToken);
     }
 }
+
+headerRender();
+
+// 카테고리 및 로그인 nav 바 마우스 호버시 보여주기
+
+// 로그인시 로그인에서 로그아웃으로 변경 / 어드민 마크를 위한 토큰 및 롤 체크
