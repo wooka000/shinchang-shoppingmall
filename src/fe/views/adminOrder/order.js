@@ -33,7 +33,7 @@ async function fetchJSONData() {
         <div class="order-number">${orderNo}</div>
         <div class="order-name">${userName}</div>
         <div class="order-info order-info-${orderNo}"></div>
-        <div class="order-price">${price}원</div>
+        <div class="order-price">${price.toLocaleString()} 원</div>
         <div class="order-status">
           <select>
             <option>상품 준비중</option>

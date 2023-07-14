@@ -63,7 +63,7 @@ async function fetchJSONData() {
           <img class="product-image-src" src="${image}" alt="이미지"></img>
         </div>
         <div class="product-name">${productName}</div>
-        <div class="product-price">${price}원</div>
+        <div class="product-price">${price.toLocaleString()} 원</div>
         <div class="product-date">${createdAt}</div>
         <button class="button-modify button-modify-${productNo}">
           <i class="fa-solid fa-pencil"></i>

@@ -1,7 +1,8 @@
 const userId = localStorage.getItem('username');
 let deleteNum = 0;
 
-showState(deleteNum);
+showState(deleteNum)
+
 drawTable()
   .then(() => {
     const content = document.querySelectorAll(".content");
@@ -12,7 +13,8 @@ drawTable()
         contentAnswer[i].classList.toggle("active");
       })
     }
-  });
+  })
+
 
 
 
@@ -71,7 +73,17 @@ async function deleteOrder(num) {
   }
   deleteNum++;
   await showState(deleteNum);
-  drawTable();
+  drawTable()
+  .then(() => {
+    const content = document.querySelectorAll(".content");
+    const contentAnswer = document.querySelectorAll(".content-answer");
+
+    for (let i = 0; i < content.length; i++) {
+      content[i].addEventListener("click", () => {
+        contentAnswer[i].classList.toggle("active");
+      })
+    }
+  })
 }
 
 async function showState(n) {
