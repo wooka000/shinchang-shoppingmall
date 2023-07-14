@@ -1,26 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>로그인</title>
-        <!-- CSS -->
-        <link rel="stylesheet" href="../../public/style/reset.css" />
-        <link
-            rel="stylesheet"
-            href="../../public/components/header/header.css"
-        />
-        <link
-            rel="stylesheet"
-            href="../../public/components/footer/footer.css"
-        />
-        <link rel="stylesheet" href="login.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../public/style/reset.css" />
+    <link rel="stylesheet" href="../../public/components/header/header.css" />
+    <link rel="stylesheet" href="../../public/components/footer/footer.css" />
+    <link rel="stylesheet" href="login.css" />
 
-        <!-- favicon -->
-        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
-        <script src="login.js"></script>
-    </head>
-    <!-- <body>
+    <!-- favicon -->
+    <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+    <script defer src="login.js"></script>
+  </head>
+  <!-- <body>
         <div class="login-wrapper">
             <h2>로그인</h2>
             <form method="post" action="서버의url" id="login-form">
@@ -30,49 +24,45 @@
             </form>
         </div>
     </body> -->
-    <body>
-        <!-- header -->
-        <div id="header"></div>
+  <body>
+    <!-- header -->
+    <div id="header"></div>
 
-        <main>
-            <div class="login-wrapper">
-                <h2>로그인</h2>
+    <main>
+      <div class="login-wrapper">
+        <h2>로그인</h2>
 
-                <div class="line"></div>
+        <div class="line"></div>
 
-                <form id="login-form" method="post">
-                    <div class="email-input">
-                        <strong>아이디</strong>
-                        <input type="text" name="id" placeholder="id" id="id" />
-                    </div>
+        <!-- <form id="login-form" method="post"> -->
+        <div class="email-input">
+          <strong>아이디</strong>
+          <input type="text" name="id" placeholder="id" id="id" />
+        </div>
 
-                    <div class="pw-input">
-                        <strong>비밀번호</strong>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            id="password"
-                        />
-                    </div>
+        <div class="pw-input">
+          <strong>비밀번호</strong>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="password"
+          />
+        </div>
 
-                    <input
-                        id="login-btn"
-                        type="submit"
-                        form="login-form"
-                        value="로그인"
-                    />
-                    <!-- onclick="loginId()" -->
-                </form>
-                <button type="submit" form="/user/login"></button>
-            </div>
-        </main>
+        <!-- <input id="login-btn" type="button" value="로그인" /> -->
+        <button id="login-btn">로그인</button>
+        <!-- onclick="loginId()" -->
 
-        <!-- footer -->
-        <div id="footer"></div>
+        <!-- <button type="submit" form="/user/login"></button> -->
+      </div>
+    </main>
 
-        <!-- header & footer -->
-        <script src="../../public/components/header/header.js"></script>
-        <script src="../../public/components/footer/footer.js"></script>
-    </body>
+    <!-- footer -->
+    <div id="footer"></div>
+
+    <!-- header & footer -->
+    <script src="../../public/components/header/header.js"></script>
+    <script src="../../public/components/footer/footer.js"></script>
+  </body>
 </html>
