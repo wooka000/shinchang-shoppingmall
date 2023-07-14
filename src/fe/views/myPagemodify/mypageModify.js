@@ -74,28 +74,33 @@ async function myPageModifyRender() {
                             <p>이름</p>
                             <input type="text" value="${name}" class="name-input" readonly />
                         </div>
-                        <div class="id-wrapper">
-                            <p>아이디</p>
-                            <input type="text" value="${email}" class="id-input" readonly />
-                        </div>
+                        <div style="height: 0.5px"></div>
                         <div class="password-wrapper">
                             <p>현재 비밀번호</p>
                             <input type="password" class="current-pw" />
                         </div>
+                        <div style="height: 0.5px"></div>
                         <div class="password-wrapper">
                             <p>새 비밀번호</p>
                             <input type="password" class="new-pw" />
                         </div>
+                        <div style="height: 0.5px"></div>
                         <div class="password-check-wrapper">
                             <p>새 비밀번호 확인</p>
                             <input type="password" class="new-check-pw" />
                         </div>
                     </div>
                     <div class="last-wrapper">
+                        <div class="id-wrapper">
+                            <p>아이디</p>
+                            <input type="text" value="${email}" class="id-input" readonly />
+                        </div>
+                        <div style="height: 16px"></div>
                         <div class="number-wrapper">
                             <p>전화번호</p>
                             <input type="text" class="number-input" value="${phoneNumber}" />
                         </div>
+                        <div style="height: 16px"></div>
                         <div class="address-wrapper">
                             <div>
                                 <p>주소</p>
