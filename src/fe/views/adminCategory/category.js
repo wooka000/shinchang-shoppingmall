@@ -13,11 +13,19 @@ const deleteModalCheck = document.querySelector("#modal-button-delete");
 const modalModifyBackground = document.querySelector(
   ".modal-modify-background"
 );
+
+const createCategoryName = document.querySelector("#newCategory-name");
+const createCategoryImage = document.querySelector("#newCategory-image");
+
 const modifyModalCheck = document.querySelector("#modal-button-modify");
 const cancelDelete = document.querySelector("#modal-button-cancel");
 
+const newCategoryName = document.querySelector("#newCategory-modify-name");
+const newCategoryImage = document.querySelector("#newCategory-modify-image");
+
 let deleteCategoryName;
 let modifyCategoryName;
+let modifyData;
 fetchJSONData();
 
 async function fetchJSONData() {
@@ -67,26 +75,23 @@ async function fetchJSONData() {
     deleteButton.addEventListener("click", onDelete);
 
     // 수정 버튼 누를시
-    // 단일 카테고리 조회 API 필요 => 내일 아침에 여쭤보기
     const modifyButton = document.querySelector(`.button-modify-${_id}`);
     async function onModify(e) {
       e.preventDefault();
       const name =
         e.target.parentNode.parentNode.parentNode.firstElementChild.innerText;
       modifyCategoryName = name;
-      // const token = localStorage.getItem("token");
-      // const response = await fetch(`/api/products/${modifyCategoryName}`, {
-      //   method: "GET",
-      //   headers: {
-      //     authorization: `bearer ${token}`,
-      //     "Content-Type": "application/json",
-      //   },
-      // });
-      // const data = await response.json();
-      // modifyCategoryName = data;
-      console.log(newCategoryName.value);
-      newCategoryName.value = "hello";
-      console.log(newCategoryName.value);
+      const token = localStorage.getItem("token");
+      const response = await fetch(`/api/category/${name}`, {
+        method: "GET",
+        headers: {
+          authorization: `bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      modifyCategoryName = data.categoryName;
+      newCategoryName.value = data.categoryName;
       modifyModal.classList.toggle("hidden");
     }
     modifyButton.addEventListener("click", onModify);
@@ -113,8 +118,7 @@ async function deleteCategory(e) {
 deleteModalCheck.addEventListener("click", deleteCategory);
 
 // 카테고리 추가 버튼 누를 시 이벤트
-const newCategoryName = document.querySelector("#newCategory-name");
-const newCategoryImage = document.querySelector("#newCategory-image");
+
 function addButtonClick(e) {
   e.preventDefault();
   modal.classList.toggle("hidden");
@@ -131,8 +135,8 @@ async function upload(e) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      categoryName: newCategoryName.value,
-      image: newCategoryImage.value,
+      categoryName: createCategoryName.value,
+      image: createCategoryImage.value,
     }),
   });
   const data = await response.json();
@@ -159,14 +163,14 @@ async function upload(e) {
     </div>
     `
   );
-  location.href = "/admin/category";
+  //location.href = "/admin/category";
 }
 uploadButton.addEventListener("click", upload);
 
 // 수정 확인 버튼 누를 시
 async function modifyCategory(e) {
   e.preventDefault();
-  console.log(modifyCategoryName);
+  console.log(newCategoryName.value);
   const token = localStorage.getItem("token");
   const response = await fetch(`/api/category/${modifyCategoryName}`, {
     method: "PUT",
@@ -187,7 +191,7 @@ modifyModalCheck.addEventListener("click", modifyCategory);
 
 // 모달 창 제어
 function modalClick(e) {
-  newCategoryName.value = "";
+  createCategoryName.value = "";
   modal.classList.toggle("hidden");
 }
 

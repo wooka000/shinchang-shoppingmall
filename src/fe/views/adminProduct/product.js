@@ -42,7 +42,7 @@ async function fetchJSONData() {
 
   const data = await response.json();
   console.log(data.products);
-  productsLength = data.length;
+  productsLength = data.products.length;
   console.log(productsLength);
 
   data.products.map((element) => {

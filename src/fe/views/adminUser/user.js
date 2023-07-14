@@ -9,10 +9,12 @@ let deleteUserId;
 fetchJSONData();
 
 // user 삭제 api 부탁드리기
+// category 수정시 name을 비워서 넣으면 오류
 // userlist 가져오기 O, productlist 가져오기 O, categorylist 가져오기 O, orderlist 가져오기 O
-// user 삭제, product 삭제 O, category 삭제 O, order 삭제 O
+// ***user 삭제***, product 삭제 (modal 띄우기) O, category 삭제 O, order 삭제 O
 // product 추가 O, category 추가 O
-// user 권한 수정, order status 수정 (추가 기능)
+// product 수정 O, category 수정 O
+// ***user 권한 수정, order status 수정 (추가 기능)***
 
 async function fetchJSONData() {
   const token = localStorage.getItem("token");

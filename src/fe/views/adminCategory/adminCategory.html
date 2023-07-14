@@ -86,12 +86,14 @@
           <div class="modal-modify-background"></div>
           <div class="modal-modify-content">
             <form>
-              <label for="newCategory-name" class="label">카테고리 이름</label>
-              <input id="newCategory-name" type="text" />
-              <label for="newCategory-image" class="label"
+              <label for="newCategory-modify-name" class="label"
+                >카테고리 이름</label
+              >
+              <input id="newCategory-modify-name" type="text" required />
+              <label for="newCategory-modify-image" class="label"
                 >카테고리 이미지</label
               >
-              <input id="newCategory-image" type="file" />
+              <input id="newCategory-modify-image" type="file" required />
               <button id="modal-button-modify">수정</button>
               <button id="modal-button-modify-cancel">취소</button>
             </form>
