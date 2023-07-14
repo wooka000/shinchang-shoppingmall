@@ -20,6 +20,7 @@ const newProductCategory = document.querySelector(
   "#newProduct-modify-category"
 );
 const newProductPrice = document.querySelector("#newProduct-modify-price");
+const newProductImage = document.querySelector("#newProduct-modify-image");
 
 let productsLength;
 let modifyId;
@@ -98,6 +99,7 @@ async function fetchJSONData() {
       newProductName.value = data.productName;
       newProductCategory.value = data.categoryName;
       newProductPrice.value = data.price;
+      newProductImage.value = data.image;
       updateProduct();
     }
     modifyButton.addEventListener("click", clickModifyButton);
@@ -195,7 +197,7 @@ async function modifyProduct(e) {
       productName: newProductName.value,
       categoryName: newProductCategory.value,
       price: newProductPrice.value,
-      image: modifyData.image,
+      image: newProductImage.value,
     }),
   });
   const data = await response.json();
