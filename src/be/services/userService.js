@@ -115,6 +115,22 @@ class UserService {
   async deleteUser(userId) {
     return userModel.deleteUser(userId);
   }
+
+  async adminDeleteUser(userId) {
+    const user = await userModel.findUserById(userId);
+
+    if (!user) {
+      throw new Error(
+        `해당 사용자 ID: (${userId})를 가진 사용자가 존재하지 않습니다.`
+      );
+    }
+
+    if (user.role !== "admin") {
+      throw new Error("관리자 권한이 필요합니다.");
+    }
+
+    await userModel.deleteUser(userId);
+  }
 }
 
 const userService = new UserService(userModel);

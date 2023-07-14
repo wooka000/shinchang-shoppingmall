@@ -44,6 +44,19 @@ export class UserModel {
     }
     await User.deleteOne(targetUser);
   }
+
+  async adminDeleteUser(userId) {
+    const targetUser = await User.findOne({ _id: userId });
+
+    if (!(await User.exists({ _id: userId }))) {
+      throw new Error(`DB에 ${targetUser.userId}는 존재하지 않습니다.`);
+    }
+
+    if (targetUser.role !== "admin") {
+      throw new Error("관리자 권한이 필요합니다.");
+    }
+    await User.deleteOne({ _id: userId });
+  }
 }
 
 const userModel = new UserModel();
