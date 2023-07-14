@@ -11,6 +11,7 @@ const ProductsSchema = new Schema({
   price: { type: Number, required: true }, // 가격
   image: { type: String, required: true }, // 이미지
   createAt: { type: Date, default: koreaNow }, //등록시간
+  description: { type: String, required: false },
 });
 
 export { ProductsSchema };
