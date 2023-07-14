@@ -62,7 +62,7 @@ userRouter.patch("/my", loginRequired, async function (req, res, next) {
     const userId = req.currentUserId;
 
     // body data 로부터 업데이트할 사용자 정보를 추출함.
-    const fullName = req.body.fullName;
+    const fullName = req.body.name;
     const password = req.body.password;
     const postalCode = req.body.postalCode;
     const address1 = req.body.address1;
