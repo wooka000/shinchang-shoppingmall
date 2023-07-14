@@ -46,23 +46,6 @@ function execDaumPostcode() {
     }).open();
 }
 
-/*
-1. 마이페이지 정보 수정
-    - 현재 비밀번호를 바꿀 생각이라면
-        newPwInput ? newPwInput : currentPwInput
-
-    - 비밀번호와 비밀번호 확인란의 비번이 맞는지 확인
-        맞지 않을 경우 알럿 / 밑에 마진으로 줘서 알려주기
-        같아야 정보 수정 가능하게 하기
-
-2. 페이지네이션
-    - 상품 목록 페이지네이션 해서 볼 수 있게 하기
-    ...?
-
-    - 상품 드롭다운 api 가져오기
-    ...?
-*/
-
 // myPage api 불러와서 연결 회원 정보 그리기
 async function myPageModifyRender() {
     try {
@@ -78,12 +61,15 @@ async function myPageModifyRender() {
 
         const data = await response.json();
 
-        const { address1, address2, postalCode, email, name, phoneNumber } = data;
+        const { address1, address2, postalCode, email, name, phoneNumber, image } = data;
 
-        const contentsWrapper = document.querySelector('.contents-wrapper');
-        // const contentsFragment = new DocumentFragment();
+        const contentsWrapper = document.querySelector('.contents');
+        const contentsFragment = new DocumentFragment();
 
-        contentsWrapper.innerHTML = `
+        const div = document.createElement('div');
+        div.setAttribute('class', 'contents-wrapper');
+
+        div.innerHTML = `
                     <div class="middle-wrapper">
                         <div class="name-wrapper">
                             <p>이름</p>
@@ -113,7 +99,9 @@ async function myPageModifyRender() {
                     <div class="last-wrapper">
                         <div class="img-wrapper">
                             <div>
-                                <img src="../../public/assets/img/icon/user.svg" alt="preview-image" class="preview-image" />
+                                <img src="${
+                                    image ? image : '../../public/assets/img/icon/mypage-user.svg'
+                                }" alt="preview-image" class="preview-image" />
                             </div>
                             <div class="file-wrapper"> 
                             <input class="file-input" type="file" />
@@ -141,6 +129,9 @@ async function myPageModifyRender() {
                     </div>
     `;
 
+        contentsFragment.appendChild(div);
+        contentsWrapper.appendChild(contentsFragment);
+
         // 이미지 업로드 버튼 클릭시 발생 이벤트
         function readImage(input) {
             if (input.files && input.files[0]) {
@@ -166,7 +157,7 @@ async function myPageModifyRender() {
         const addressBtn = document.querySelector('.btn-address');
         addressBtn.addEventListener('click', execDaumPostcode);
     } catch (error) {
-        // location.href = '/error';
+        location.href = '/error';
     }
 }
 
@@ -208,7 +199,6 @@ async function modifyUserInfo() {
 
             const response = await fetch('/api/user/my', {
                 method: 'PATCH',
-
                 body: formData,
             });
 
@@ -219,7 +209,7 @@ async function modifyUserInfo() {
         }
     } catch (error) {
         console.log(error);
-        // location.href = '/error';
+        location.href = '/error';
     }
 }
 
@@ -228,7 +218,7 @@ modifyBtn.addEventListener('click', () => {
     if (confirm('회원 정보를 수정하시겠습니까?') == true) {
         if (modifyUserInfo()) {
             alert('회원 정보가 수정되었습니다.');
-            // location.href = '/mypage/modify';
+            location.href = '/mypage/modify';
         }
     }
 });
@@ -251,16 +241,16 @@ async function deleteUser() {
             localStorage.removeItem('username');
         }
     } catch (error) {
-        // location.href = '/error';
+        location.href = '/error';
     }
 }
 
 // 회원 탈퇴 버튼 클릭 이벤트
 const deleteBtn = document.querySelector('.delete-btn');
 deleteBtn.addEventListener('click', () => {
-    if (confirm('정말 탈퇴하실 건가요🫢?') == true) {
+    if (confirm('정말 탈퇴하실 건가요?') == true) {
         deleteUser();
-        alert('탈퇴가 완료되었습니다😱');
+        alert('탈퇴가 완료되었습니다.');
 
         location.href = '/';
     }
