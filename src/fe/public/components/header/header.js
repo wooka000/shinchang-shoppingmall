@@ -66,10 +66,10 @@ async function headerRender() {
                             <div class="hide-login">
                                 <ul>
                                     <li class="login-btn"><a href="/login">로그인</a></li>
-                                    <li class="logout-btn"><a>로그아웃</a></li>
+                                    <li class="logout-btn" style="display: none"><a>로그아웃</a></li>
                                     <li class="register-btn"><a href="/register">회원 가입</a></li>
                                     <li><a href="/cart">장바구니</a></li>
-                                    <li class="mypage-btn"><a href="/mypage">마이 페이지</a></li>
+                                    <li class="mypage-btn" style="display: none"><a href="/mypage">마이 페이지</a></li>
                                 </ul>
                             </div>
                         </li>
@@ -97,7 +97,25 @@ async function headerRender() {
 
     hideMenu.appendChild(categoryFragment);
 
-    // 카테고리 및 로그인 nav 바 마우스 호버시 보여주기
+    // 호버시 이벤트 들어가는 함수
+    hoverEvent();
+
+    // scroll 이동시 헤더 배경 색상 추가
+    window.addEventListener('scroll', () => {
+        if (window.scrollY !== 0) {
+            header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
+        } else {
+            header.removeAttribute('style');
+        }
+    });
+
+    loginAdminCheck();
+}
+
+headerRender();
+
+// 카테고리 및 로그인 nav 바 마우스 호버시 보여주기
+function hoverEvent() {
     const $menu = document.querySelector('menu');
     const $hideMenu = document.querySelector('.hide-menu');
     const hideMenuHeight = $hideMenu.offsetHeight;
@@ -111,7 +129,7 @@ async function headerRender() {
     $hideLogin.style.height = 0;
 
     function mouseOverHandler(target) {
-        target.style.height = `${target === $hideMenu ? hideMenuHeight + padding : hideLoginHeight - 10}px`;
+        target.style.height = `${(target === $hideMenu ? hideMenuHeight : hideLoginHeight) + padding}px`;
         target.style.padding = '1rem 0 0 0';
     }
 
@@ -125,48 +143,25 @@ async function headerRender() {
 
     $login.addEventListener('mouseover', () => mouseOverHandler($hideLogin));
     $login.addEventListener('mouseleave', () => mouseOutHandler($hideLogin));
+}
 
-    // scroll 이동시 헤더 배경 색상 추가
-    window.addEventListener('scroll', () => {
-        if (window.scrollY !== 0) {
-            header.style.backgroundColor = 'rgba(255, 255, 255, 0.85)';
-        } else {
-            header.removeAttribute('style');
-        }
-    });
-
-    // 로그인시 로그인에서 로그아웃으로 변경 / 회원가입 가리기 (jwt 토큰 살아있는지 유무 확인)
-    let loginBtn = document.querySelector('.login-btn');
-    let registerBtn = document.querySelector('.register-btn');
-    let logoutBtn = document.querySelector('.logout-btn');
-    let mypageBtn = document.querySelector('.mypage-btn');
+// 로그인시 로그인에서 로그아웃으로 변경 / 어드민 마크를 위한 토큰 및 롤 체크
+async function loginAdminCheck() {
+    const loginBtn = document.querySelector('.login-btn');
+    const registerBtn = document.querySelector('.register-btn');
+    const logoutBtn = document.querySelector('.logout-btn');
+    const mypageBtn = document.querySelector('.mypage-btn');
+    const adminBtn = document.querySelector('.admin-btn img');
 
     function changeBtnStyle(status) {
         loginBtn.style.display = status ? 'none' : 'block';
         registerBtn.style.display = status ? 'none' : 'block';
         logoutBtn.style.display = status ? 'block' : 'none';
         mypageBtn.style.display = status ? 'block' : 'none';
+        adminBtn.style.display = status ? 'block' : 'none';
     }
 
     const checkToken = localStorage.getItem('token');
-
-    if (checkToken) {
-        changeBtnStyle(checkToken);
-
-        logoutBtn.addEventListener('click', () => {
-            if (confirm('로그아웃하시겠습니까?') === true) {
-                alert('방문해 주셔서 감사합니다😍 다음에 또 방문 부탁드려요😘');
-                localStorage.removeItem('token');
-                localStorage.removeItem('username');
-
-                changeBtnStyle(false);
-
-                location.href = '/';
-            } else alert('즐거운 쇼핑 되시길 바랍니다😋');
-        });
-    } else {
-        changeBtnStyle(checkToken);
-    }
 
     // admin 일 경우 마크 띄우기
     const adminResponse = await fetch('/api/user/my', {
@@ -177,15 +172,22 @@ async function headerRender() {
         },
     });
     const adminData = await adminResponse.json();
-    console.log(adminData);
 
-    const adminBtn = document.querySelector('.admin-btn');
+    if (checkToken) {
+        if (adminData.role === 'admin') changeBtnStyle(checkToken);
 
-    if (adminData.role === 'admin') {
-        adminBtn.style.display = 'block';
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('로그아웃하시겠습니까?') === true) {
+                alert('방문해 주셔서 감사합니다.');
+                localStorage.removeItem('token');
+                localStorage.removeItem('username');
+
+                changeBtnStyle(false);
+
+                location.href = '/';
+            } else alert('즐거운 쇼핑 되시길 바랍니다!');
+        });
     } else {
-        adminBtn.style.display = 'none';
+        changeBtnStyle(checkToken);
     }
 }
-
-headerRender();
