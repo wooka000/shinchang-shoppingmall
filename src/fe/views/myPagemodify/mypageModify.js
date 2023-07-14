@@ -162,7 +162,7 @@ async function modifyUserInfo() {
                     address2: address2,
                     postalCode: postalCode,
                     phoneNumber: phoneNum,
-                    role: 'user' ? 'user' : 'admin',
+                    role: role === 'user' ? 'user' : 'admin',
                 }),
             });
 
