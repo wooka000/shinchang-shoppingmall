@@ -41,7 +41,7 @@ function formCheck() {
 
     const checkId = /^[a-zA-Z0-9]{4,10}$/;
     const checkPasswordForm = /^[a-zA-Z0-9]{4,10}$/;
-    const checkNumber = /^[0-9]+$/;
+    const checkNumber = /^\d{3}-\d{3,4}-\d{4}$/;
 
     if (id === '') {
         alert('아이디를 입력해 주세요.');
@@ -72,7 +72,7 @@ function formCheck() {
         return false;
     }
     if (!checkNumber.test(number)) {
-        alert('전화번호를 숫자로만 입력해 주세요.');
+        alert('전화번호를 형식에 맞게 입력해 주세요.');
         return false;
     }
 
