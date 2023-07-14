@@ -32,20 +32,12 @@
                     pagination-clickable="true"
                     space-between="30"
                     centered-slides="true"
-                    autoplay-delay="2000"
+                    autoplay-delay="2000000000"
                     autoplay-disable-on-interaction="false"
                 >
                     <swiper-slide role="group" aria-label="1 / 4" class="" style="width: 1512px; margin-right: 30px">
-                        <div class="slide-contents">
-                            <div>
-                                <h2>새로운 짱구 굿즈 출시!</h2>
-                                <h1>귀여운 짱구 쿠션을 만나보세요~</h1>
-                            </div>
-                            <button>바로가기</button>
-                        </div>
-
                         <img
-                            src="https://m.godshop.co.kr/web/product/big/202212/b548f74afde82a46f0f7f0b7f3e6b71d.jpg"
+                            src="https://m.prugna.co.kr/web/upload/NNEditor/20220801/932bff543ba9fc2bcad307bac9360793.jpg"
                             alt=""
                         />
                     </swiper-slide>
@@ -55,7 +47,7 @@
                         class="swiper-slide-prev"
                         style="width: 1512px; margin-right: 30px"
                     >
-                        <img src="../../public/assets/img/slideImg/짱구 슬라이드용 2.jpeg" alt="" />
+                        <img src="https://d.line-scdn.net/stf/linecorp/ko/pr/shinchan_sticker.jpg" alt="" />
                     </swiper-slide>
                     <swiper-slide
                         role="group"
@@ -63,7 +55,10 @@
                         style="width: 1512px; margin-right: 30px"
                         class="swiper-slide-active"
                     >
-                        <img src="../../public/assets/img/slideImg/짱구 슬라이드용 4.jpeg" alt="" />
+                        <img
+                            src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv0YsV%2FbtqDLDlXpL3%2F1wvL2qz9M99BoWwlpZO131%2Fimg.jpg"
+                            alt=""
+                        />
                     </swiper-slide>
                     <swiper-slide
                         role="group"
@@ -71,7 +66,10 @@
                         style="width: 1512px; margin-right: 30px"
                         class="swiper-slide-next"
                     >
-                        <img src="../../public/assets/img/slideImg/짱구 슬라이드용 5.jpeg" alt="" />
+                        <img
+                            src="https://arqachylpmku8348141.cdn.ntruss.com/app/display/20230323120855152_16885_1.jpg"
+                            alt=""
+                        />
                     </swiper-slide>
                 </swiper-container>
             </div>
@@ -85,7 +83,11 @@
                         </div>
                         <!-- 인기 | 신상품 페이지로 이동 -->
                         <div class="more">
-                            <a href="/products/category?categoryName=인기 | 신상품" class="more">더 보기 &gt;</a>
+                            <a
+                                href="/products/category?categoryName=인기 | 신상품&page=1&sortOption=createAt"
+                                class="more"
+                                >더 보기 &gt;</a
+                            >
                         </div>
                     </div>
 
@@ -97,20 +99,14 @@
 
             <div class="popular-list">
                 <div>
-                    <div class="popular-title">
+                    <div class="popular-title" data-aos="fade-left" data-aos-delay="50" data-aos-duration="1000">
                         <strong>떡잎마을샵 인기 굿즈 아이템</strong>
                     </div>
 
                     <hr />
 
-                    <div class="popular-contents">
-                        <!-- <div class="popular-category">
-                            <img src="../../public/assets/img/goodsImg/짱구.jpeg" alt="goods 1" />
-                            <div class="title">
-                                <strong>의류</strong>
-                            </div>
-                        </div> -->
-                    </div>
+                    <!-- 인기 있는 굿즈 -->
+                    <div class="popular-contents"></div>
                 </div>
             </div>
         </main>
