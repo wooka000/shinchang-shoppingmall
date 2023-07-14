@@ -4,16 +4,10 @@ const modalBackground = document.querySelector(".modal-background");
 const cancelButton = document.querySelector("#modal-button-cancel");
 const deleteCheckButton = document.querySelector("#modal-button-delete");
 
-// 삭제할 유저의 id를 전역변수로 관리
 let deleteUserId;
 fetchJSONData();
 
-// userlist 가져오기 O, productlist 가져오기 O, categorylist 가져오기 O, orderlist 가져오기 O
-// user 삭제 O, product 삭제 O, category 삭제 O, order 삭제 O
-// product 추가 O, category 추가 Os
-// product 수정 O, category 수정 O
-// ***user 권한 수정, order status 수정 (추가 기능)***
-
+// 화면 로드 시 실행
 async function fetchJSONData() {
   const token = localStorage.getItem("token");
   const response = await fetch("/api/user/userlist", {
@@ -24,7 +18,6 @@ async function fetchJSONData() {
     },
   });
   const data = await response.json();
-  console.log(data);
   data.map((element) => {
     const { _id, name, email, subscriptionDate, role } = element;
     content.insertAdjacentHTML(
@@ -51,36 +44,18 @@ async function fetchJSONData() {
       `
     );
 
-    //삭제
+    //삭제(휴지통 버튼 클릭 시)
     const deleteButton = document.querySelector(`#user-delete-${_id}`);
     function onDelete(e) {
       e.preventDefault();
       deleteUserId = _id;
-      console.log(deleteUserId);
       modalClick();
     }
     deleteButton.addEventListener("click", onDelete);
-
-    // 권한 수정
-    const authority = document.querySelector(`#authority-${_id}`);
-    async function changeAuthority(e) {
-      const token = localStorage.getItem("token");
-      const response = await fetch(`/api/user/user/${authority}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      console.log(data);
-    }
-    authority.addEventListener("change", changeAuthority);
   });
 }
 
-// 삭제 확인 버튼
+// 삭제 modal 창 내의 확인 버튼 클릭 시
 async function deleteUser(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");
@@ -98,6 +73,7 @@ async function deleteUser(e) {
 }
 deleteCheckButton.addEventListener("click", deleteUser);
 
+// modal 띄우기
 function modalClick() {
   modal.classList.toggle("hidden");
 }

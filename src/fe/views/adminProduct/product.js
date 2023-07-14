@@ -6,14 +6,12 @@ const cancelButton = document.querySelector("#button-product-cancel");
 const modifyButton = document.querySelector(".button-modify");
 const deleteButton = document.querySelector(".button-delete");
 
-// 제품 추가
 const content = document.querySelector("#content-detail");
 const productName = document.querySelector("#newProduct-name");
 const productCategory = document.querySelector("#newProduct-category");
 const productPrice = document.querySelector("#newProduct-price");
 const productImage = document.querySelector("#newProduct-image");
 
-// 제품 수정
 const modifyUploadButton = document.querySelector(
   "#button-product-modify-upload"
 );
@@ -30,7 +28,7 @@ let deleteProductId;
 
 fetchJSONData();
 
-// json파일에서 데이터 불러오기 (초기 화면 세팅)
+// 화면 로드 시 실행
 async function fetchJSONData() {
   const token = localStorage.getItem("token");
   const response = await fetch("/api/products/get/all", {
@@ -48,7 +46,10 @@ async function fetchJSONData() {
 
   data.map((element) => {
     const { productName, image, price, createAt, productNo } = element;
-
+    const createdAt = `
+    ${createAt.slice(0, 10)}
+    ${createAt.slice(12, 19)}
+    `;
     content.insertAdjacentHTML(
       "beforeend",
       `<div class="product">
@@ -57,8 +58,8 @@ async function fetchJSONData() {
           <img class="product-image-src" src="${image}" alt="이미지"></img>
         </div>
         <div class="product-name">${productName}</div>
-        <div class="product-price">${price}</div>
-        <div class="product-date">${createAt.slice(0, 10)}</div>
+        <div class="product-price">${price}원</div>
+        <div class="product-date">${createdAt}</div>
         <button class="button-modify button-modify-${productNo}">
           <i class="fa-solid fa-pencil"></i>
         </button>
@@ -69,7 +70,7 @@ async function fetchJSONData() {
       `
     );
 
-    //제품 수정  **이미지는 보안상의 이유로 디폴트 값을 넣어줄 수 없음**
+    //제품 수정(연필 버튼 클릭 시)
     const modifyButton = document.querySelector(`.button-modify-${productNo}`);
     const modifyCancelButton = document.querySelector(
       "#button-product-modify-cancel"
@@ -77,7 +78,6 @@ async function fetchJSONData() {
 
     modifyCancelButton.addEventListener("click", updateProduct);
 
-    // 연필 모양 수정 버튼 클릭 시 함수
     async function clickModifyButton(e) {
       e.preventDefault();
       const id = Number(
@@ -95,7 +95,6 @@ async function fetchJSONData() {
       const data = await response.json();
       modifyData = data;
 
-      // hidden modal창 기본값 설정
       newProductName.value = data.productName;
       newProductCategory.value = data.categoryName;
       newProductPrice.value = data.price;
@@ -103,7 +102,7 @@ async function fetchJSONData() {
     }
     modifyButton.addEventListener("click", clickModifyButton);
 
-    //제품 삭제 (휴지통 버튼)
+    //제품 삭제 (휴지통 버튼 클릭 시)
     const deleteButton = document.querySelector(`.button-delete-${productNo}`);
 
     async function deleteProduct(e) {
@@ -130,8 +129,7 @@ addButton.addEventListener("click", addProduct);
 modalBackground.addEventListener("click", addProduct);
 cancelButton.addEventListener("click", addProduct);
 
-// 제품 등록 버튼 클릭 시 이벤트
-// ************* 제품 번호 수정 필요 ******************
+// 제품 추가 모달 창에서 등록 버튼 클릭 시 이벤트
 async function upload(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");
@@ -142,7 +140,7 @@ async function upload(e) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      productNo: productsLength + 1,
+      productNo: Math.floor(Math.random() * 1000000000),
       productName: productName.value,
       categoryName: productCategory.value,
       price: productPrice.value,
@@ -181,7 +179,7 @@ async function upload(e) {
 
 uploadButton.addEventListener("click", upload);
 
-// 제품 수정 버튼 클릭 시 함수
+// 수정 modal 창 내의 확인 버튼 클릭 시
 async function modifyProduct(e) {
   e.preventDefault();
   console.log(modifyId);
@@ -220,7 +218,7 @@ const modifyContent = document.querySelector(".modal-modify-content");
 
 modifyBackground.addEventListener("click", updateProduct);
 
-// 삭제 관련
+// 삭제 modal 창 내의 확인 버튼 클릭 시
 const deleteModal = document.querySelector(".modal-delete");
 const deleteBackground = document.querySelector(".modal-delete-background");
 const deleteCheck = document.querySelector("#modal-button-delete");

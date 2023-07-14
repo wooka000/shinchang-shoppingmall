@@ -28,6 +28,7 @@ let modifyCategoryName;
 let modifyData;
 fetchJSONData();
 
+// 화면 로드 시 실행
 async function fetchJSONData() {
   const token = localStorage.getItem("token");
   const response = await fetch("/api/category", {
@@ -64,7 +65,8 @@ async function fetchJSONData() {
       `
     );
     const deleteButton = document.querySelector(`#delete-button-${_id}`);
-    // 삭제 버튼 누를시
+
+    //삭제(휴지통 버튼 클릭 시)
     async function onDelete(e) {
       e.preventDefault();
       const name =
@@ -74,7 +76,7 @@ async function fetchJSONData() {
     }
     deleteButton.addEventListener("click", onDelete);
 
-    // 수정 버튼 누를시
+    //수정(연필 버튼 클릭 시)
     const modifyButton = document.querySelector(`.button-modify-${_id}`);
     async function onModify(e) {
       e.preventDefault();
@@ -98,7 +100,7 @@ async function fetchJSONData() {
   });
 }
 
-// 삭제 하시겠습니까? 후 확인버튼 누를시
+// 삭제 modal 창 내의 확인 버튼 클릭 시
 async function deleteCategory(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");
@@ -117,14 +119,13 @@ async function deleteCategory(e) {
 }
 deleteModalCheck.addEventListener("click", deleteCategory);
 
-// 카테고리 추가 버튼 누를 시 이벤트
-
+// 카테고리 추가 버튼 클릭 시 이벤트
 function addButtonClick(e) {
   e.preventDefault();
   modal.classList.toggle("hidden");
 }
 
-// 카테고리 등록 버튼 클릭 시 이벤트
+// 카테고리 추가 모달 창에서 등록 버튼 클릭 시 이벤트
 async function upload(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");
@@ -171,7 +172,7 @@ async function upload(e) {
 }
 uploadButton.addEventListener("click", upload);
 
-// 수정 확인 버튼 누를 시
+// 수정 modal 창 내의 확인 버튼 클릭 시
 async function modifyCategory(e) {
   e.preventDefault();
   console.log(newCategoryName.value);

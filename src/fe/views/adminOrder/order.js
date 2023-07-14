@@ -4,10 +4,10 @@ const modalBackground = document.querySelector(".modal-background");
 const cancelButton = document.querySelector("#modal-button-cancel");
 const deleteCheckButton = document.querySelector("#modal-button-delete");
 
-// 삭제할 주문번호
 let deleteOrderNo;
 fetchJSONData();
 
+// 화면 로드 시 실행
 async function fetchJSONData() {
   const token = localStorage.getItem("token");
   const response = await fetch("/api/order", {
@@ -23,18 +23,17 @@ async function fetchJSONData() {
   data.map((element) => {
     const { userName, orderArray, orderNo } = element;
     let price = 0;
-    let orderInfo = "";
     for (let i = 0; i < orderArray.length; i++) {
       price += orderArray[i].quantity * orderArray[i].price;
-      orderInfo += `${orderArray[i].productName} - ${orderArray[i].quantity}개  `;
     }
+
     content.insertAdjacentHTML(
       "beforeend",
       `<div class="order">
         <div class="order-number">${orderNo}</div>
         <div class="order-name">${userName}</div>
-        <div class="order-info">${orderInfo}</div>
-        <div class="order-price">${price}</div>
+        <div class="order-info order-info-${orderNo}"></div>
+        <div class="order-price">${price}원</div>
         <div class="order-status">
           <select>
             <option>상품 준비중</option>
@@ -48,9 +47,14 @@ async function fetchJSONData() {
       </div>
       `
     );
+    document.querySelector(`.order-info-${orderNo}`).innerHTML = orderArray
+      .map((order) => {
+        return `<div>${order.productName} - ${order.quantity}개</div>`;
+      })
+      .join("");
     const deleteButton = document.querySelector(`#delete-button-${orderNo}`);
 
-    // 삭제 버튼 클릭 시
+    //삭제 (휴지통 버튼 클릭 시)
     async function onDelete(e) {
       e.preventDefault();
       const id = Number(
@@ -79,7 +83,7 @@ function modalClick() {
 modalBackground.addEventListener("click", modalClick);
 cancelButton.addEventListener("click", modalClick);
 
-// 정말로 삭제하시겠습니까? 후 동작
+// 삭제 modal 창 내의 확인 버튼 클릭 시
 async function deleteUser(e) {
   e.preventDefault();
   const token = localStorage.getItem("token");
