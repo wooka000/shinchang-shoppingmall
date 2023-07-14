@@ -32,71 +32,91 @@ function execDaumPostcode() {
                     extraAddr = ' (' + extraAddr + ')';
                 }
                 // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById('extra-address').value = extraAddr;
+                document.querySelector('.extra-address').value = extraAddr;
             } else {
-                document.getElementById('extra-address').value = '';
+                document.querySelector('.extra-address').value = '';
             }
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('postcode').value = data.zonecode;
-            document.getElementById('address').value = addr;
+            document.querySelector('.postal-code').value = data.zonecode;
+            document.querySelector('.address').value = addr;
             // 커서를 상세주소 필드로 이동한다.
-            document.getElementById('detail-address').focus();
+            document.querySelector('.detail-address').focus();
         },
     }).open();
 }
 
+/*
+1. 마이페이지 정보 수정
+    - 현재 비밀번호를 바꿀 생각이라면
+        newPwInput ? newPwInput : currentPwInput
+
+    - 비밀번호와 비밀번호 확인란의 비번이 맞는지 확인
+        맞지 않을 경우 알럿 / 밑에 마진으로 줘서 알려주기
+        같아야 정보 수정 가능하게 하기
+
+2. 페이지네이션
+    - 상품 목록 페이지네이션 해서 볼 수 있게 하기
+    ...?
+
+    - 상품 드롭다운 api 가져오기
+    ...?
+*/
+
 // myPage api 불러와서 연결 회원 정보 그리기
 async function myPageModifyRender() {
-    const token = localStorage.getItem('token');
+    try {
+        const token = localStorage.getItem('token');
 
-    const response = await fetch('/api/user/my', {
-        method: 'GET',
-        headers: {
-            authorization: `bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-    });
+        const response = await fetch('/api/user/my', {
+            method: 'GET',
+            headers: {
+                authorization: `bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
 
-    const data = await response.json();
+        const data = await response.json();
 
-    const { address1, address2, postalCode, email, name, phoneNumber } = data;
+        const { address1, address2, postalCode, email, name, phoneNumber } = data;
 
-    console.log(data);
+        const contentsWrapper = document.querySelector('.contents-wrapper');
+        // const contentsFragment = new DocumentFragment();
 
-    const contentsWrapper = document.querySelector('.contents-wrapper');
-    // const contentsFragment = new DocumentFragment();
-
-    contentsWrapper.innerHTML = `
+        contentsWrapper.innerHTML = `
                     <div class="middle-wrapper">
                         <div class="name-wrapper">
                             <p>이름</p>
-                            <input type="text" value="${name}" readonly />
+                            <input type="text" value="${name}" class="name-input" readonly />
                         </div>
                         <div class="id-wrapper">
                             <p>아이디</p>
-                            <input type="text" value="${email}" readonly />
+                            <input type="text" value="${email}" class="id-input" readonly />
                         </div>
                         <div class="password-wrapper">
-                            <p>비밀번호</p>
-                            <input type="password" />
+                            <p>현재 비밀번호</p>
+                            <input type="password" class="current-pw" />
+                        </div>
+                        <div class="password-wrapper">
+                            <p>새 비밀번호</p>
+                            <input type="password" class="new-pw" />
                         </div>
                         <div class="password-check-wrapper">
-                            <p>비밀번호 확인</p>
-                            <input type="password" />
+                            <p>새 비밀번호 확인</p>
+                            <input type="password" class="new-check-pw" />
                         </div>
                         <div class="number-wrapper">
                             <p>전화번호</p>
-                            <input type="text" id="number" value="${phoneNumber}" />
+                            <input type="text" class="number-input" value="${phoneNumber}" />
                         </div>
                     </div>
                     <div class="last-wrapper">
                         <div class="img-wrapper">
                             <div>
-                                <img src="./철수.jpeg" alt="" />
+                                <img src="../../public/assets/img/icon/user.svg" alt="preview-image" class="preview-image" />
                             </div>
                             <div class="file-wrapper"> 
-                            <input id="file-input" type="file" />
+                            <input class="file-input" type="file" />
                             <label for="file-input">업로드</label>
                             </div>
                         </div>
@@ -106,75 +126,133 @@ async function myPageModifyRender() {
                             </div>
                             <div>
                                 <div class="address-search">
-                                    <input type="text" id="postcode" value="${postalCode}" />
+                                    <input type="text" class="postal-code" value="${postalCode}" />
                                     <button class="btn-address">검색</button>
                                 </div>
                                 <div class="main-address">
-                                    <input type="text" value="${address1}" id="address" />
+                                    <input type="text" value="${address1}" class="address" />
                                 </div>
                                 <div class="sub-address">
-                                    <input type="text" value="${address2}" id="detail-address" />
-                                    <input type="text" placeholder="참조 사항" id="extra-address" />
+                                    <input type="text" value="${address2}" class="detail-address" />
+                                    <input type="text" placeholder="참조 항목" class="extra-address" />
                                 </div>
                             </div>
                         </div>
                     </div>
     `;
 
-    const addressBtn = document.querySelector('.btn-address');
-    addressBtn.addEventListener('click', execDaumPostcode);
+        // 이미지 업로드 버튼 클릭시 발생 이벤트
+        function readImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                // 이미지가 로드가 된 경우
+                reader.onload = (e) => {
+                    const previewImage = document.querySelector('.preview-image');
+                    previewImage.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // 파일 업로드에 change 이벤트
+        const inputImage = document.querySelector('.file-input');
+        inputImage.addEventListener('change', (e) => {
+            readImage(e.target);
+        });
+
+        // 주소 검색 버튼 클릭시 발생 이벤트
+        const addressBtn = document.querySelector('.btn-address');
+        addressBtn.addEventListener('click', execDaumPostcode);
+    } catch (error) {
+        // location.href = '/error';
+    }
 }
 
 myPageModifyRender();
 
 // 회원 정보 수정 함수
 async function modifyUserInfo() {
-    const token = localStorage.getItem('token');
+    try {
+        const token = localStorage.getItem('token');
 
-    const response = await fetch('/api/user/my', {
-        method: 'PATCH',
-        headers: {
-            authorization: `bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        body: {
-            name: '엘리스',
-            password: 'changedPW',
-            currentPassword: 'elicePW',
-            address1: '서울특별시 성동구 아차산로17길 48',
-            address2: '성수낙낙 2층',
-            postalCode: '04799',
-            phoneNumber: '010-2222-3333',
-            role: 'user',
-        },
-    });
+        // 이름 / 새로운 비밀번호 & 새로운 비밀번호 체크 / 주소 1 / 주소 2 / 우편번호 / 폰 넘버 / 이미지
+        const name = document.querySelector('.name-input').value;
+        const currentPassword = document.querySelector('.current-pw').value;
+        const newPassword = document.querySelector('.new-pw').value;
+        const checkNewPw = document.querySelector('.new-check-pw').value;
+        const address1 = document.querySelector('.address').value;
+        const address2 = document.querySelector('.detail-address').value;
+        const postalCode = document.querySelector('.postal-code').value;
+        const phoneNum = document.querySelector('.number-input').value;
+        const inputImage = document.querySelector('.file-input').files[0];
 
-    console.log(response);
+        // formData 만들기
+        const formData = new FormData();
+
+        formData.set('name', name);
+        formData.set('address1', address1);
+        formData.set('address2', address2);
+        formData.set('postalCode', postalCode);
+        formData.set('phoneNumber', phoneNum);
+        formData.set('role', 'user' ? 'user' : 'admin');
+        // formData.set('profileImage', inputImage);
+
+        if (newPassword === checkNewPw) {
+            formData.set('currentPassword', currentPassword);
+
+            if (checkNewPw !== '') {
+                formData.set('password', checkNewPw);
+            }
+
+            const response = await fetch('/api/user/my', {
+                method: 'PATCH',
+
+                body: formData,
+            });
+
+            return true;
+        } else {
+            alert('현재 패스워드가 일치하지 않습니다!');
+            return false;
+        }
+    } catch (error) {
+        console.log(error);
+        // location.href = '/error';
+    }
 }
 
 const modifyBtn = document.querySelector('.modify-btn');
 modifyBtn.addEventListener('click', () => {
     if (confirm('회원 정보를 수정하시겠습니까?') == true) {
-        modifyUserInfo();
-        alert('회원 정보가 수정되었습니다.');
-
-        // location.href = '/mypage/modify';
+        if (modifyUserInfo()) {
+            alert('회원 정보가 수정되었습니다.');
+            // location.href = '/mypage/modify';
+        }
     }
 });
 
 // 회원 탈퇴 함수
 async function deleteUser() {
-    const token = localStorage.getItem('token');
+    try {
+        const token = localStorage.getItem('token');
 
-    const response = await fetch('/api/user/my', {
-        method: 'DELETE',
-        headers: {
-            authorization: `bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-    });
+        const response = await fetch('/api/user/my', {
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
 
-    if (response.ok) localStorage.removeItem('token');
+        if (response.ok) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+        }
+    } catch (error) {
+        // location.href = '/error';
+    }
 }
 
 // 회원 탈퇴 버튼 클릭 이벤트
@@ -183,5 +261,7 @@ deleteBtn.addEventListener('click', () => {
     if (confirm('정말 탈퇴하실 건가요🫢?') == true) {
         deleteUser();
         alert('탈퇴가 완료되었습니다😱');
+
+        location.href = '/';
     }
 });
