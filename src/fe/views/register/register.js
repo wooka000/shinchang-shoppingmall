@@ -39,9 +39,8 @@ function formCheck() {
     const name = document.querySelector('#name').value;
     const number = document.querySelector('#number').value;
 
-    const nameCheck = /^[가-힣]{4,10}$/;
     const checkId = /^[a-zA-Z0-9]{4,10}$/;
-    const checkPasswordForm = /^[0-9]+$/;
+    const checkPasswordForm = /^[a-zA-Z0-9]{4,10}$/;
     const checkNumber = /^[0-9]+$/;
 
     if (id === '') {
@@ -52,12 +51,12 @@ function formCheck() {
         alert('영문 및 숫자만 4-10자리까지 입력해 주세요.');
         return false;
     }
-    if (password === '') {
+    if (password === '' && checkPasswordForm.test(password)) {
         alert('비밀번호를 입력해 주세요.');
         return false;
     }
-    if (checkPassword === '') {
-        alert('비밀번호를 입력해 주세요.');
+    if (checkPassword === '' && checkPasswordForm.test(checkPassword)) {
+        alert('다시 한 번 비밀번호를 입력해 주세요.');
         return false;
     }
     if (password !== checkPassword) {
@@ -73,7 +72,7 @@ function formCheck() {
         return false;
     }
     if (!checkNumber.test(number)) {
-        alert('숫자로만 입력해 주세요.');
+        alert('전화번호를 숫자로만 입력해 주세요.');
         return false;
     }
 
