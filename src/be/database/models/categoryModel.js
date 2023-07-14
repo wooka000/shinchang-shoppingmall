@@ -20,7 +20,7 @@ export class CategoryModel {
 
   async findCategory(categoryName) {
     const category = await Category.findOne({ categoryName });
-    return category.categoryName;
+    return category;
   }
 
   async update({ categoryName, update }) {
