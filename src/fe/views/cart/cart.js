@@ -29,7 +29,7 @@ function render() {
             <div class="order-item">
               <div class="order-header">
                 <h5 class="product-num">${pro.productNo}</h5>
-                <img src="./images/x-button.png" alt="장바구니 취소" class="x-button" onclick="deleteCard(${pro.productNo})">
+                <img src="../../public/assets/img/icon/x-button.svg" alt="장바구니 취소" class="x-button" onclick="deleteCard(${pro.productNo})">
               </div>
               <a href="#"><h4 class="product-title">${pro.productName}</h4></a>
               <h5 class="product-type">${pro.categoryName}</h5>

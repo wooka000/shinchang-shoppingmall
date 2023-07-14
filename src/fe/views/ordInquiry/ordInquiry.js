@@ -1,7 +1,18 @@
 const userId = localStorage.getItem('username');
-let extendedPrice = 0;
 
-drawTable();
+drawTable()
+  .then(() => {
+    const content = document.querySelectorAll(".content");
+    const contentAnswer = document.querySelectorAll(".content-answer");
+    console.log(content);
+
+    for (let i = 0; i < content.length; i++) {
+      content[i].addEventListener("click", () => {
+        contentAnswer[i].classList.toggle("active");
+      })
+    }
+  });
+
 
 
 async function getOrderInfo() {
@@ -16,15 +27,28 @@ async function drawTable() {
 
   const tBody = document.querySelector(".order-table > tbody");
   let output = "";
-  orderList.forEach(async (e, idx) => {
+  orderList.forEach((e) => {
     let numStr = "";
     if (e.orderArray.length-1 > 0) numStr = ` 외 ${e.orderArray.length-1}개`;
-    // let div = await showDetail(idx);
+    let products = `주문번호 : ${e.orderNo}<br>`;
+    let extendedPrice = 0;
+    e.orderArray.forEach(o => {
+      products += `
+        ${o.productName}(${(o.price).toLocaleString()}원) / ${o.quantity}개 : ${((o.price)*(o.quantity)).toLocaleString()}원<br>
+      `
+      extendedPrice += (o.price)*(o.quantity);
+    })
+    products += `
+      결제금액 : ${(extendedPrice).toLocaleString()}원<br>
+      수령인 : ${e.recipientName}<br>
+      주소 : ${e.address} ${e.detailAddress}
+    `
     output += `
-      <tr>
+      <tr class="content">
         <td>${e.createAt}</td>
-        <td class="content-title">
-          <p>${e.orderArray[0].productName}${numStr}</p>
+        <td>
+          <p class="content-title">${e.orderArray[0].productName}${numStr}</p>
+          <div class="content-answer">${products}</div>
         </td>
         <td>${e.status}</td>
         <td><button onclick="deleteOrder(${e.orderNo})">주문 취소</button></td>
@@ -33,30 +57,6 @@ async function drawTable() {
   })
   tBody.innerHTML = output;
 }
-
-// async function showDetail(idx) {
-//   const orderList = await getOrderInfo();
-//   const orderObj = orderList[idx];
-//   let products = "";
-//   orderObj.orderArray.forEach(e => {
-//     products += `
-//       ${e.productName} / ${e.quantity}개 - ${(e.price)*(e.quantity)}`
-//     extendedPrice += (e.price)*(e.quantity);
-//   })
-//   let output = `
-//     <div>
-//       주문번호 : ${orderObj.orderNo}
-//       주문 물품 : ${products}
-//       총 결제 금액 : ${extendedPrice}
-//       수령인 : ${orderObj.recipientName}
-//       주소 : ${orderObj.address} ${orderObj.detailAddress}
-//       배송메시지 : ${orderObj.deliveryMessage}
-//     </div>
-//   `
-//   extendedPrice = 0;
-//   return output;
-// }
-
 
 async function deleteOrder(num) {
   let answer = confirm('주문을 삭제하시겠습니까?');

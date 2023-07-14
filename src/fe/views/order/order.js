@@ -50,8 +50,9 @@ orderBtn.addEventListener('click', async (e) => {
   })
 
   const data = await response.json();
-  // console.log(data)
+  console.log(data)
   data.forEach(e => localStorage.removeItem(`pro${e.productNo}`));
+  localStorage.removeItem('buy-now');
   location.href="/order/complete";
 });
 
@@ -62,8 +63,8 @@ function render() {
   let totalQuantity = 0;  // 총 주문 수량
   let total = 0;  // 총 상품 금액
   let deliveryCharge = 3000;  // 배송비
-  let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro");
-  let validKeys = keys.filter(k => JSON.parse(localStorage.getItem(k)).checked === "checked");
+  let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro" || k === "buy-now");
+  let validKeys = keys.filter(k => JSON.parse(localStorage.getItem(k)).checked === "checked" || k === "buy-now");
   for (let key of validKeys) {
     let pro = JSON.parse(localStorage.getItem(key));
     totalQuantity += pro.quantity;
