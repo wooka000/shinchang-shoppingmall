@@ -34,21 +34,23 @@ main {
 .img-wrapper {
     width: 100%;
     text-align: center;
-    height: 283px;
+    height: 100%;
 }
 
 .img-wrapper > div:first-child {
     width: 100%;
-    height: 230px;
+    height: 338.5px;
     padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    object-fit: cover;
 }
 
 .img-wrapper img {
-    width: 60%;
-    height: 85%;
+    height: 70%;
+    /* width: 70%; */
+    border-radius: 10px;
 }
 
 .file-wrapper {
@@ -70,7 +72,7 @@ main {
     border-radius: 10px;
     width: 25%;
     height: 3rem;
-    padding: 0.9rem;
+    padding: 0.7rem;
     margin: 0 0.3rem 0 0;
 }
 
@@ -142,7 +144,7 @@ main {
 .btn-wrapper {
     width: 100%;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem 1rem 2rem 1rem;
 }
 
 .btn-wrapper button {
