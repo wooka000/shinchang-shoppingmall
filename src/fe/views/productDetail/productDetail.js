@@ -90,17 +90,12 @@ async function productDetailRender() {
                 const immediatePurchase = data;
                 immediatePurchase.quantity = num;
 
-                const { productName } = immediatePurchase;
-
-                const orderPd = JSON.stringify({ [productNo]: immediatePurchase });
-                localStorage.setItem('buy-now', orderPd);
+                localStorage.setItem('buy-now', JSON.stringify(immediatePurchase));
 
                 alert('결제 화면으로 넘어갑니다.');
-
                 location.href = '/order';
             } else {
                 alert('로그인 후 이용 가능합니다. 로그인 페이지로 이동합니다.');
-
                 location.href = '/login';
             }
         });
