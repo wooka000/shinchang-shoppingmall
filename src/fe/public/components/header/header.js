@@ -25,7 +25,7 @@ async function headerRender() {
     nav.innerHTML = `
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="/"><img src="../../public/assets/img/logo/떡잎마을샵-logo.png" alt="Logo" /></a>
+                        <a href="/"><img src="../../public/assets/img/logo/page-logo.png" alt="Logo" /></a>
                     </div>
     
                     <!-- Menu -->
@@ -158,10 +158,10 @@ async function loginAdminCheck() {
         registerBtn.style.display = status ? 'none' : 'block';
         logoutBtn.style.display = status ? 'block' : 'none';
         mypageBtn.style.display = status ? 'block' : 'none';
-        adminBtn.style.display = status ? 'block' : 'none';
     }
 
     const checkToken = localStorage.getItem('token');
+    console.log(checkToken);
 
     // admin 일 경우 마크 띄우기
     const adminResponse = await fetch('/api/user/my', {
@@ -174,7 +174,13 @@ async function loginAdminCheck() {
     const adminData = await adminResponse.json();
 
     if (checkToken) {
-        if (adminData.role === 'admin') changeBtnStyle(checkToken);
+        changeBtnStyle(checkToken);
+
+        if (adminData.role === 'admin') {
+            adminBtn.style.display = 'block';
+        } else {
+            adminBtn.style.display = 'none';
+        }
 
         logoutBtn.addEventListener('click', () => {
             if (confirm('로그아웃하시겠습니까?') === true) {

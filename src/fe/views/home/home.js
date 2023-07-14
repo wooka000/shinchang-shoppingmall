@@ -45,7 +45,8 @@ async function newProductRender() {
 
         products.appendChild(newPdFragment);
     } catch (error) {
-        location.href = '/error';
+        console.log(error);
+        // location.href = '/error';
     }
 }
 
@@ -81,7 +82,8 @@ async function popularCategoryRender() {
 
         productContents.appendChild(popularCategoryFragment);
     } catch (error) {
-        location.href = '/error';
+        console.log(error);
+        // location.href = '/error';
     }
 }
 
