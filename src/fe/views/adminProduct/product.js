@@ -26,6 +26,7 @@ const newProductPrice = document.querySelector("#newProduct-modify-price");
 let productsLength;
 let modifyId;
 let modifyData;
+let deleteProductId;
 
 fetchJSONData();
 
@@ -102,25 +103,14 @@ async function fetchJSONData() {
     }
     modifyButton.addEventListener("click", clickModifyButton);
 
-    //제품 삭제
+    //제품 삭제 (휴지통 버튼)
     const deleteButton = document.querySelector(`.button-delete-${productNo}`);
 
     async function deleteProduct(e) {
       e.preventDefault();
-      const id = Number(
-        e.target.parentNode.parentNode.firstElementChild.innerText
-      );
-      const token = localStorage.getItem("token");
-      const response = await fetch(`/api/products/${id}`, {
-        method: "DELETE",
-        headers: {
-          authorization: `bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      console.log(data);
-      location.reload();
+      deleteProductId = productNo;
+      console.log(deleteProductId);
+      deleteModal.classList.toggle("hidden");
     }
     deleteButton.addEventListener("click", deleteProduct);
   });
@@ -216,7 +206,7 @@ async function modifyProduct(e) {
 }
 modifyUploadButton.addEventListener("click", modifyProduct);
 
-async function updateProduct() {
+function updateProduct() {
   modifyModal.classList.toggle("hidden");
   productName.value = "";
   productCategory.value = "";
@@ -229,3 +219,32 @@ const modifyBackground = document.querySelector(".modal-modify-background");
 const modifyContent = document.querySelector(".modal-modify-content");
 
 modifyBackground.addEventListener("click", updateProduct);
+
+// 삭제 관련
+const deleteModal = document.querySelector(".modal-delete");
+const deleteBackground = document.querySelector(".modal-delete-background");
+const deleteCheck = document.querySelector("#modal-button-delete");
+const deleteCancel = document.querySelector("#modal-button-cancel");
+deleteBackground.addEventListener("click", deleteProduct);
+deleteCancel.addEventListener("click", deleteProduct);
+
+function deleteProduct() {
+  deleteModal.classList.toggle("hidden");
+}
+
+async function clickDelete(e) {
+  e.preventDefault();
+  console.log(deleteProductId);
+  const token = localStorage.getItem("token");
+  const response = await fetch(`/api/products/${deleteProductId}`, {
+    method: "DELETE",
+    headers: {
+      authorization: `bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+  const data = await response.json();
+  console.log(data);
+  location.reload();
+}
+deleteCheck.addEventListener("click", clickDelete);

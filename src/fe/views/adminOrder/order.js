@@ -21,14 +21,13 @@ async function fetchJSONData() {
   console.log(data);
 
   data.map((element) => {
-    const { userName, orderArray, orderStatus, orderNo } = element;
+    const { userName, orderArray, orderNo } = element;
     let price = 0;
     let orderInfo = "";
     for (let i = 0; i < orderArray.length; i++) {
       price += orderArray[i].quantity * orderArray[i].price;
       orderInfo += `${orderArray[i].productName} - ${orderArray[i].quantity}개  `;
     }
-    console.log(orderInfo);
     content.insertAdjacentHTML(
       "beforeend",
       `<div class="order">
@@ -66,7 +65,6 @@ async function fetchJSONData() {
         },
       });
       const data = await response.json();
-      console.log(data);
       deleteOrderNo = data.orderNo;
       modalClick();
     }
@@ -93,7 +91,6 @@ async function deleteUser(e) {
     },
   });
   const data = await response.json();
-  console.log(data);
   location.href = "/admin/order";
 }
 deleteCheckButton.addEventListener("click", deleteUser);

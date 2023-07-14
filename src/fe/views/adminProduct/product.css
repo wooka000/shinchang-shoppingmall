@@ -166,7 +166,8 @@ a {
 }
 
 .modal,
-.modal-modify {
+.modal-modify,
+.modal-delete {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,7 +180,8 @@ a {
 }
 
 .modal-background,
-.modal-modify-background {
+.modal-modify-background,
+.modal-delete-background {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
@@ -187,7 +189,8 @@ a {
 }
 
 .modal-content,
-.modal-modify-content {
+.modal-modify-content,
+.modal-delete-content {
   text-align: center;
   position: relative;
   background-color: white;
@@ -219,7 +222,8 @@ form {
 }
 
 #button-product-upload,
-#button-product-modify-upload {
+#button-product-modify-upload,
+#modal-button-delete {
   margin-top: 30px;
   margin-right: 10px;
   background-color: #e6ffde;
@@ -228,13 +232,15 @@ form {
 }
 
 #button-product-upload:hover,
-#button-product-modify-upload:hover {
+#button-product-modify-upload:hover,
+#modal-button-delete:hover {
   color: white;
   background-color: green;
 }
 
 #button-product-cancel,
-#button-product-modify-cancel {
+#button-product-modify-cancel,
+#modal-button-cancel {
   margin-top: 30px;
   background-color: rgb(255, 95, 95);
   font-weight: bold;
@@ -242,11 +248,22 @@ form {
 }
 
 #button-product-cancel:hover,
-#button-product-modify-cancel:hover {
+#button-product-modify-cancel:hover,
+#modal-button-cancel:hover {
   color: white;
   background-color: red;
 }
 
+#modal-button-delete,
+#modal-button-cancel {
+  width: 20%;
+  border-radius: 10px;
+}
+
 .product-image-src {
   width: 40px;
+}
+
+.modal-button {
+  width: 20%;
 }

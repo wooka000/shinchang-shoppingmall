@@ -9,8 +9,8 @@ let deleteUserId;
 fetchJSONData();
 
 // userlist 가져오기 O, productlist 가져오기 O, categorylist 가져오기 O, orderlist 가져오기 O
-// ***user 삭제***, product 삭제 (modal 띄우기) O, category 삭제 O, order 삭제 O
-// product 추가 O, category 추가 O
+// user 삭제 O, product 삭제 O, category 삭제 O, order 삭제 O
+// product 추가 O, category 추가 Os
 // product 수정 O, category 수정 O
 // ***user 권한 수정, order status 수정 (추가 기능)***
 
