@@ -87,7 +87,7 @@ async function productDetailRender() {
         // 바로 구매하기
         orderBtn.addEventListener('click', () => {
             if (localStorage.getItem('token')) {
-                const immediatePurchase = productDummy[8];
+                const immediatePurchase = productNo;
                 immediatePurchase.quantity = num;
 
                 const { productName } = immediatePurchase;
