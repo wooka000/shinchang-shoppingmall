@@ -47,7 +47,9 @@ class CategoryService {
   }
 
   async deleteCategoryData(categoryName) {
-    const products = await productsModel.findAllByCategoryName(categoryName);
+    const products = await productsModel.findAllByOnlyCategoryName(
+      categoryName
+    );
     if (products.length > 0) {
       throw new Error(
         `해당 카테고리에 등록된 제품이 있습니다. 등록된 제품이 없어야 카테고리 삭제가 가능합니다.`
