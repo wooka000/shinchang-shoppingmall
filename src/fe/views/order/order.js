@@ -76,7 +76,7 @@ function render() {
         <aside class="order-content">
           <div class="order-thumb">
             <div class="order-image">
-              <img src="../home/${pro.image}" alt="짱구케이스">
+              <img src="${pro.image}" alt="짱구케이스">
             </div>
             <div class="order-item">
               <div class="order-header">
