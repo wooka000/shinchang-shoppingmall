@@ -1,7 +1,3 @@
-/*
-사용자마다 장바구니 데이터가 각각 다른데 어떻게 계정마다의 로컬스토리지 내용을 따로 관리하지?
-*/
-
 render();
 
 
@@ -23,26 +19,26 @@ function render() {
     output += `
       <article class="order-card">
         <div class="order-check">
-          <input class="checkbox" type="checkbox" name="product" value="" ${pro.checked} onclick="toggle(${pro.productNum})">
+          <input class="checkbox" type="checkbox" name="product" value="" ${pro.checked} onclick="toggle(${pro.productNo})">
         </div>
         <aside class="order-content">
           <div class="order-thumb">
             <div class="order-image">
-              <a href="#"><img src="../home/${pro.productImg}" alt=""></a>
+              <a href="#"><img src="../home/${pro.image}" alt=""></a>
             </div>
             <div class="order-item">
               <div class="order-header">
-                <h5 class="product-num">${pro.productNum}</h5>
-                <img src="./images/x-button.png" alt="장바구니 취소" class="x-button" onclick="deleteCard(${pro.productNum})">
+                <h5 class="product-num">${pro.productNo}</h5>
+                <img src="./images/x-button.png" alt="장바구니 취소" class="x-button" onclick="deleteCard(${pro.productNo})">
               </div>
               <a href="#"><h4 class="product-title">${pro.productName}</h4></a>
-              <h5 class="product-type">${pro.category}</h5>
+              <h5 class="product-type">${pro.categoryName}</h5>
               <div class="product-price">
                 <div><h3>${pro.price.toLocaleString()} 원</h3></div>
                 <div class="product-variation">
-                  <input type='button' onclick='plus(${pro.productNum})' value='+'/>
+                  <input type='button' onclick='minus(${pro.productNo})' value='-'/>
                   <div id='result'>${pro.quantity}</div>
-                  <input type='button' onclick='minus(${pro.productNum})' value='-'/>
+                  <input type='button' onclick='plus(${pro.productNo})' value='+'/>
                 </div>
               </div>
             </div>
@@ -102,11 +98,17 @@ function deleteAll() {
 }
 
 function order() {
-  if (localStorage.length == 0) {
-    alert("결제할 물품이 없습니다!");
-    location.href="/";
+  if (!localStorage.getItem('token')) {
+    alert("상품을 주문하시려면 로그인을 해주세요!");
+    location.href="/login";
   } else {
-    location.href="/order";
+    let keys = Object.keys(localStorage).filter(k => k.substring(0, 3) === "pro");
+    if (keys.length == 0) {
+      alert("결제할 물품이 없습니다!");
+      location.href="/";
+    } else {
+      location.href="/order";
+    }
   }
 }
 
