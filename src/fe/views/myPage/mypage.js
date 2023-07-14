@@ -9,9 +9,10 @@ async function userInfoRender() {
             },
         });
         const data = await response.json();
-        console.log(data);
 
         const { name, email, phoneNumber, role } = data;
+
+        const number = phoneNumber.replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 
         const main = document.querySelector('.main');
         const userCardFragment = new DocumentFragment();
@@ -22,12 +23,12 @@ async function userInfoRender() {
         section.innerHTML = `
     <div class="user-profile">
                         <div class="user-image">
-                            <img id="user-image" src="../../public/assets/img/icon/user.svg" alt="프로필사진" />
+                            <img id="user-image" src="../../public/assets/img/icon/mypage-user.svg" alt="프로필사진" />
                         </div>
                         <div class="user-info">
                             <h2 class="user-name">${name}</h2>
                             <h4 class="user-email">${email}</h4>
-                            <h4 class="user-phoneNo">${phoneNumber}</h4>
+                            <h4 class="user-phoneNo">${number}</h4>
                         </div>
                     </div>
                     <div class="user-grade"><h4>${role === 'admin' ? '관리자' : '일반 회원'}</h4></div>
