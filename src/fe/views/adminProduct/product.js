@@ -153,6 +153,7 @@ async function upload(e) {
       categoryName: productCategory.value,
       price: productPrice.value,
       image: productImage.value,
+      description: productDescription.value,
     }),
   });
   const data = await response.json();
