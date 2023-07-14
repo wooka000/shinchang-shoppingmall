@@ -27,6 +27,7 @@ viewsRouter.use("/mypage", loginRequired, serveStatic("mypage"));
 viewsRouter.use("/mypage/modify", loginRequired, serveStatic("mypageModify"));
 viewsRouter.use("/mypage/ordinquiry", loginRequired, serveStatic("ordInquiry"));
 viewsRouter.use("/error", serveStatic("error"));
+viewsRouter.use("/error/forbidden", serveStatic("errorAdmin"));
 viewsRouter.use("/", serveStatic(""));
 viewsRouter.use(
   "/public",
