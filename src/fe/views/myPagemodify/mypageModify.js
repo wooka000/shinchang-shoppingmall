@@ -86,7 +86,7 @@ async function myPageModifyRender() {
         if (confirm('회원 정보를 수정하시겠습니까?') == true) {
             if (modifyUserInfo(role)) {
                 alert('회원 정보가 수정되었습니다.');
-                // location.href = '/mypage/modify';
+                location.href = '/mypage/modify';
             }
         }
     });
