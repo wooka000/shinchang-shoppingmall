@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { orderService } from "../services/orderService.js";
+import { loginRequired, adminRequired } from "../middlewares/index.js";
 
 const orderRouter = Router();
 
@@ -15,7 +16,7 @@ orderRouter.post("/", async (req, res) => {
 });
 
 // 모든 주문 조회 o
-orderRouter.get("/", async (req, res) => {
+orderRouter.get("/", loginRequired, adminRequired, async (req, res) => {
   try {
     const orders = await orderService.getAllOrders();
     res.json(orders);
@@ -24,11 +25,22 @@ orderRouter.get("/", async (req, res) => {
   }
 });
 
-// 특정 주문 조회 o
+// 특정 주문 조회 o - orderNo
 orderRouter.get("/:orderNo", async (req, res) => {
   try {
     const orderNo = req.params.orderNo;
     const order = await orderService.getOrderByOrderNo(orderNo);
+    res.json(order);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// 특정 사용자 전체 주문 조회 o - userId
+orderRouter.get("/userId/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const order = await orderService.getOrderByUserId(userId);
     res.json(order);
   } catch (error) {
     res.status(500).json({ error: error.message });

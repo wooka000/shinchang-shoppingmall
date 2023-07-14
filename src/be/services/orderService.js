@@ -1,9 +1,10 @@
-import { orderModel } from "../database/index.js";
+import { orderModel, userModel } from "../database/index.js";
 
 class OrderService {
   async createOrder(orderInfo) {
     const createdOrder = await orderModel.create(orderInfo);
-    return createdOrder;
+    const orderArray = createdOrder.orderArray;
+    return orderArray;
   }
 
   async getAllOrders() {
@@ -16,6 +17,11 @@ class OrderService {
     if (!order) {
       throw new Error("해당 주문번호의 주문이 없습니다. 다시 확인해 주세요.");
     }
+    return order;
+  }
+
+  async getOrderByUserId(userId) {
+    const order = await orderModel.findByUserId(userId);
     return order;
   }
 

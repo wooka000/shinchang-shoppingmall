@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>떡잎마을샵</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../public/style/reset.css" />
+        <link rel="stylesheet" href="../../public/components/header/header.css" />
+        <link rel="stylesheet" href="../../public/components/footer/footer.css" />
+        <link rel="stylesheet" href="./ready.css" />
+
+        <!-- favicon -->
+        <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+    </head>
+    <body>
+        <!-- header -->
+        <div id="header"></div>
+
+        <!-- main -->
+        <main>
+            <div class="main-wrapper">
+                <div class="ready-msg">
+                    <div>
+                        <img src="../../public/assets/img/icon/hourglass.svg" alt="" />
+                    </div>
+
+                    <div>
+                        <h2>현재 서비스 준비 중입니다.</h2>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <div id="footer"></div>
+
+        <!-- js header & footer -->
+        <script src="../../public/components/header/header.js"></script>
+        <script src="../../public/components/footer/footer.js"></script>
+
+        <script>
+            const homeBtn = document.querySelector('button');
+
+            homeBtn.addEventListener('click', () => {
+                location.href = '/';
+            });
+        </script>
+    </body>
+</html>

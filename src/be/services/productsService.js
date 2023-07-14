@@ -7,29 +7,38 @@ class ProductsService {
     return createdNewProduct;
   }
 
-  async getProducts() {
-    const page = 1;
-    const limit = 12;
-    const skip = (page - 1) * limit;
-    const products = await productsModel.findAllProducts(skip, limit);
-
+  async getProductsAll() {
+    const products = await productsModel.findAll();
     return products;
   }
 
-  async getProductsByCategoryName(categoryName) {
+  async getProducts(page, perPage, sortOption) {
+    const { products, totalPage } = await productsModel.findAllProducts(
+      page,
+      perPage,
+      sortOption
+    );
+
+    return { products, totalPage };
+  }
+
+  async getProductsByCategoryName(page, perPage, sortOption, categoryName) {
     const category = await categoryModel.findByName(categoryName);
-    const products = await productsModel.findAllByCategoryName(
+    const { products, totalPage } = await productsModel.findAllByCategoryName(
+      page,
+      perPage,
+      sortOption,
       category.categoryName
     );
 
-    return products;
+    return { products, totalPage };
   }
 
   async getProductByProductNo(productNo) {
     const product = await productsModel.findByProductNo(productNo);
 
     if (!product) {
-      throw new Error("?•´?‹¹ ? œ?’ˆë²ˆí˜¸?˜ ?ƒ?’ˆ??? ì¡´ì¬?•˜ì§? ?•Š?Šµ?‹ˆ?‹¤.");
+      throw new Error(`${productNo}ì— í•´ë‹¹í•˜ëŠ” ìƒí’ˆì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.`);
     }
 
     return product;
@@ -48,7 +57,7 @@ class ProductsService {
     const { deletedCount } = await productsModel.deleteByProductNo(productNo);
 
     if (deletedCount === 0) {
-      throw new Error(`${productId} ? œ?’ˆ?˜ ?‚­? œ?— ?‹¤?Œ¨?•˜????Šµ?‹ˆ?‹¤`);
+      throw new Error(`${productNo}ì— í•´ë‹¹í•˜ëŠ” ìƒí’ˆì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.`);
     }
 
     return { result: "success" };

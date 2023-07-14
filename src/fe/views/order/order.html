@@ -16,7 +16,7 @@
   <main class="container">
     <section class="back">
       <a id="back" href="../cart/cart.html">
-        <img src="./images/back-button.png" alt="뒤로가기버튼" class="back-button">
+        <img src="../../public/assets/img/icon/back-button.svg" alt="뒤로가기버튼" class="back-button">
       </a>
       <h3>장바구니</h3>
     </section>
@@ -34,7 +34,7 @@
             <div>
               <div class="pull-info">
                 <label for="inputName" class="required">이름 &nbsp</label>
-                <section class="info-check"><input type="checkbox">회원 정보와 동일</section>
+                <section class="info-check"><input type="checkbox" id="check1" onclick="check(1)">회원 정보와 동일</section>
               </div>
               <input type="text" id="name" placeholder="이름을 입력해 주세요." required>
             </div>
@@ -59,7 +59,7 @@
             <div>
               <div class="pull-info">
                 <label for="inputName" class="required">수령인 &nbsp</label>
-                <section class="info-check"><input type="checkbox">회원 정보와 동일</section>
+                <section class="info-check"><input type="checkbox" id="check2" onclick="check(2)">회원 정보와 동일</section>
               </div>
               <input type="text" id="recipientName" placeholder="이름을 입력해 주세요." required>
             </div>

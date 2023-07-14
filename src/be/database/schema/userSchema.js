@@ -21,11 +21,11 @@ const UserSchema = new Schema(
       required: false,
       default: "user", // user, admin 2가지
     },
-    adress1: {
+    address1: {
       type: String,
       required: true,
     },
-    adress2: {
+    address2: {
       type: String,
       required: true,
     },
@@ -40,6 +40,10 @@ const UserSchema = new Schema(
     subscriptionDate: {
       type: Date,
       required: true,
+    },
+    profileImage: {
+      type: String,
+      required: false,
     },
   }
 );

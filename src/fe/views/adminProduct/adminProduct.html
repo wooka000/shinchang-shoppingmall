@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="product.css" />
+    <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+
     <script
       src="https://kit.fontawesome.com/59c9ef03f3.js"
       crossorigin="anonymous"
     ></script>
-    <title>Admin Page</title>
+    <title>떡잎마을샵</title>
   </head>
   <body>
     <div class="container">
       <div class="header">
         <div id="title">
-          <img
-            src="../../public/assets/img/logo/떡잎마을샵-logo.png"
-            id="logo"
-          />
+          <a href="/">
+            <img src="../../public/assets/img/logo/page-logo.png" id="logo" />
+          </a>
         </div>
-        <button id="button-back">
+        <button id="button-back" onclick="location.href='/'">
           <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
@@ -28,16 +29,16 @@
         <div id="content-title">
           <div class="page first-page">관리 목록</div>
           <div class="page">
-            <a href="../adminUser/adminUser.html">회원 관리</a>
+            <a href="/admin/user">회원 관리</a>
           </div>
           <div class="page special-page">
-            <a href="../adminProduct/adminProduct.html">제품 관리</a>
+            <a href="/admin/product">제품 관리</a>
           </div>
           <div class="page">
-            <a href="../adminCategory/adminCategory.html">카테고리 관리</a>
+            <a href="/admin/category">카테고리 관리</a>
           </div>
           <div class="page">
-            <a href="../adminOrder/adminOrder.html">주문 관리</a>
+            <a href="/admin/order">주문 관리</a>
           </div>
         </div>
         <div id="content-detail">
@@ -76,8 +77,12 @@
                 placeholder="ex) 30000"
                 type="number"
               />
-              <label for="newProduct-image" class="label">제품 사진</label>
-              <input id="newProduct-image" type="file" />
+              <label for="newProduct-image" class="label">제품 사진 URL</label>
+              <input id="newProduct-image" type="text" />
+              <label for="newProduct-description" class="label"
+                >제품 설명</label
+              >
+              <input id="newProduct-description" type="text" />
               <div id="newProduct-button-container">
                 <input
                   id="button-product-upload"
@@ -91,7 +96,54 @@
         </div>
         <div class="modal-modify hidden">
           <div class="modal-modify-background"></div>
-          <div class="modal-modify-content"></div>
+          <div class="modal-modify-content">
+            <form action="#">
+              <label for="newProduct-modify-name" class="label"
+                >제품 이름</label
+              >
+              <input id="newProduct-modify-name" type="text" />
+              <label for="newProduct-modify-category" class="label"
+                >카테고리</label
+              >
+              <input id="newProduct-modify-category" type="text" />
+              <label for="newProduct-modify-price" class="label"
+                >제품 가격</label
+              >
+              <input id="newProduct-modify-price" type="number" />
+              <label for="newProduct-modify-image" class="label"
+                >제품 사진</label
+              >
+              <input id="newProduct-modify-image" type="text" />
+              <label for="newProduct-modify-description" class="label"
+                >제품 설명</label
+              >
+              <input id="newProduct-modify-description" type="text" />
+              <div id="newProduct-button-container">
+                <input
+                  id="button-product-modify-upload"
+                  type="submit"
+                  value="제품수정"
+                />
+                <input
+                  id="button-product-modify-cancel"
+                  type="submit"
+                  value="취소"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-delete hidden">
+          <div class="modal-delete-background">
+            <i class="fa-solid fa-x"></i>
+          </div>
+          <div class="modal-delete-content">
+            <div>제품 삭제 시 복구할 수 없습니다. 정말로 삭제하시겠습니까?</div>
+            <button class="modal-button" id="modal-button-delete">네</button>
+            <button class="modal-button" id="modal-button-cancel">
+              아니오
+            </button>
+          </div>
         </div>
       </div>
     </div>

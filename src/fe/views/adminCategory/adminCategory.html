@@ -5,22 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="category.css" />
+    <link rel="icon" href="../../public/assets/img/icon/favicon.png" />
+
     <script
       src="https://kit.fontawesome.com/59c9ef03f3.js"
       crossorigin="anonymous"
     ></script>
-    <title>Admin Page</title>
+    <title>떡잎마을샵</title>
   </head>
   <body>
     <div class="container">
       <div class="header">
         <div id="title">
-          <img
-            src="../../public/assets/img/logo/떡잎마을샵-logo.png"
-            id="logo"
-          />
+          <a href="/">
+            <img src="../../public/assets/img/logo/page-logo.png" id="logo" />
+          </a>
         </div>
-        <button id="button-back">
+        <button id="button-back" onclick="location.href='/'">
           <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
@@ -29,16 +30,16 @@
           <div class="page first-page">관리 목록</div>
 
           <div class="page">
-            <a href="../adminUser/adminUser.html">회원 관리</a>
+            <a href="/admin/user">회원 관리</a>
           </div>
           <div class="page">
-            <a href="../adminProduct/adminProduct.html">제품 관리</a>
+            <a href="/admin/product">제품 관리</a>
           </div>
           <div class="page special-page">
-            <a href="../adminCategory/adminCategory.html">카테고리 관리</a>
+            <a href="/admin/category">카테고리 관리</a>
           </div>
           <div class="page">
-            <a href="../adminOrder/adminOrder.html">주문 관리</a>
+            <a href="/admin/order">주문 관리</a>
           </div>
         </div>
         <div id="content-detail">
@@ -60,6 +61,10 @@
                 placeholder="ex) 피규어"
                 type="text"
               />
+              <label for="newCategory-image" class="label"
+                >카테고리 이미지</label
+              >
+              <input id="newCategory-image" type="text" />
               <button id="button-category-upload">등록</button>
               <button id="button-category-cancel">취소</button>
             </form>
@@ -75,6 +80,24 @@
             <button class="modal-button" id="modal-button-cancel">
               아니오
             </button>
+          </div>
+        </div>
+
+        <div class="modal-modify hidden">
+          <div class="modal-modify-background"></div>
+          <div class="modal-modify-content">
+            <form>
+              <label for="newCategory-modify-name" class="label"
+                >카테고리 이름</label
+              >
+              <input id="newCategory-modify-name" type="text" required />
+              <label for="newCategory-modify-image" class="label"
+                >카테고리 이미지</label
+              >
+              <input id="newCategory-modify-image" type="text" />
+              <button id="modal-button-modify">수정</button>
+              <button id="modal-button-modify-cancel">취소</button>
+            </form>
           </div>
         </div>
       </div>
