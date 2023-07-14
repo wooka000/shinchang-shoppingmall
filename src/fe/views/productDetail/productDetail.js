@@ -9,7 +9,9 @@ async function productDetailRender() {
 
         const data = await response.json();
 
-        let { productNo, productName, image, price } = data;
+        let { productNo, productName, image, price, description } = data;
+
+        let descriptionSummary = description.split('.')[0];
 
         // 로드되자마자 보이는 이미지
         let productImg = document.querySelector('.product-img');
@@ -21,24 +23,31 @@ async function productDetailRender() {
         productImg.appendChild(productFragment);
 
         // 본문 상품 상세 이미지
-        let contentsImg = document.querySelector('.contents-img');
-        let contentsFragment = new DocumentFragment();
-        let contentsDiv = document.createElement('div');
+        const contentsImg = document.querySelector('.contents-img');
+        const contentsFragment = new DocumentFragment();
+        const contentsDiv = document.createElement('div');
 
         contentsDiv.innerHTML = `<img src="${image}" alt="product-img" />`;
         contentsFragment.appendChild(contentsDiv);
         contentsImg.appendChild(contentsFragment);
 
         // 로드되자마자 보이는 제품 제목 및 가격
-        let productInfo = document.querySelector('.product-info');
-        let productInfoFragment = new DocumentFragment();
-        let productInfoDiv = document.createElement('div');
+        const productInfo = document.querySelector('.product-info');
+        const productInfoFragment = new DocumentFragment();
+        const productInfoDiv = document.createElement('div');
 
         productInfoDiv.innerHTML = `<h2>${productName}</h2>
                             <p>${price.toLocaleString()}원</p>`;
 
         productInfoFragment.appendChild(productInfoDiv);
         productInfo.appendChild(productInfoFragment);
+
+        // 로드되자마자 보이는 상품 설명
+        const productDescription = document.querySelector('.product-description');
+        productDescription.innerText = `${descriptionSummary}.`;
+
+        const contentsEx = document.querySelector('.contents-ex');
+        contentsEx.textContent = description;
 
         // minus & plus btn 클릭시 input 값 증가 / 감소
         const minusBtn = document.querySelector('.minus-btn');
