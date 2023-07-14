@@ -30,23 +30,34 @@ a {
 
 .drop-down {
     margin: 2rem 1rem 3rem 2.5rem;
+    display: flex;
+    width: 25%;
+    justify-content: space-around;
+    text-align: center;
 }
 
-select {
-    width: 140px;
-    height: 35px;
-    border: 1px solid #ececec;
-    border-radius: 5px;
-    font-size: 15px;
-    text-align: center;
-    line-height: 1.2;
-    appearance: none;
-    background: #fff;
-    background-image: url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2715%27%20height=%2715%27%20viewBox=%270%200%2015%2015%27%3E%3Cg%20fill=%27none%27%20fill-rule=%27evenodd%27%20stroke-linecap=%27round%27%3E%3Cg%20stroke=%27%23A2A2A2%27%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath%20d=%27M9.657%202.657L9.657%2010.657%201.657%2010.657%27%20transform=%27translate%28-1325%20-246%29%20translate%28932%2088%29%20translate%280%20112%29%20translate%280%2030%29%20rotate%2890%20196%20212%29%20rotate%28-45%205.657%206.657%29%27/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 20px) 50%;
+.drop-down > div {
     cursor: pointer;
-    padding: 0 40px 0 13px;
+    border: 1px solid #8e8e8e;
+    border-radius: 10px;
+    width: auto;
+    height: 35px;
+    padding: 2px 10px 0 10px;
+}
+
+.drop-down > div:hover {
+    background-color: #272727;
+    color: #fff;
+}
+
+.click {
+    background-color: #272727;
+    color: #fff;
+}
+
+.non-click {
+    background-color: #fff;
+    color: #000;
 }
 
 /* product list */
@@ -129,6 +140,7 @@ select {
 
 .page-wrapper > li.current {
     font-size: 20px;
+    color: rgb(251, 82, 82);
 }
 
 .next-page > img,
@@ -136,3 +148,24 @@ select {
     height: 18px;
     width: 18px;
 }
+
+/* 
+리팩토링
+
+select {
+    width: 140px;
+    height: 35px;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.2;
+    appearance: none;
+    background: #fff;
+    background-image: url(data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2715%27%20height=%2715%27%20viewBox=%270%200%2015%2015%27%3E%3Cg%20fill=%27none%27%20fill-rule=%27evenodd%27%20stroke-linecap=%27round%27%3E%3Cg%20stroke=%27%23A2A2A2%27%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cg%3E%3Cpath%20d=%27M9.657%202.657L9.657%2010.657%201.657%2010.657%27%20transform=%27translate%28-1325%20-246%29%20translate%28932%2088%29%20translate%280%20112%29%20translate%280%2030%29%20rotate%2890%20196%20212%29%20rotate%28-45%205.657%206.657%29%27/%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A);
+    background-repeat: no-repeat;
+    background-position: calc(100% - 20px) 50%;
+    cursor: pointer;
+    padding: 0 40px 0 13px;
+}
+*/

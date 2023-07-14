@@ -23,7 +23,7 @@ async function productsRender() {
         }
     } catch (error) {
         console.log(error);
-        // location.href = '/error';
+        location.href = '/error';
     }
 }
 
@@ -40,7 +40,6 @@ async function apiFetch(target, url) {
         }).then((res) => res.json());
 
         let { products, totalPage } = data;
-        console.log(products);
 
         // 상품 목록
         const listFragment = new DocumentFragment();
@@ -71,7 +70,7 @@ async function apiFetch(target, url) {
         pagination(totalPage);
     } catch (error) {
         console.log(error);
-        // location.href = '/error';
+        location.href = '/error';
     }
 }
 
@@ -96,6 +95,7 @@ function objectToSearch(obj) {
     return searchParam;
 }
 
+// 페이지네이션 함수
 function pagination(totalPage) {
     const { pathname, search } = window.location;
     const searchObj = search ? searchToObject(search) : {};
@@ -155,17 +155,28 @@ function pagination(totalPage) {
     target.append(fragment);
 }
 
+// 정렬 클릭시 url 변경되면서 정렬
 function productSort(categoryName) {
     const dropDown = document.querySelector('.drop-down');
-    const selectFragment = new DocumentFragment();
 
-    const select = document.createElement('select');
-    select.innerHTML = `
-        <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=createAt">최신순</option>
-        <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=priceDesc">가격 낮은순</option>
-        <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=priceAsc">가격 높은순</option>
-        `;
+    dropDown.addEventListener('click', (e) => {
+        e.preventDefault(e);
 
-    selectFragment.appendChild(select);
-    dropDown.appendChild(selectFragment);
+        location.href = `/products/category/?categoryName=${categoryName}&page=1&sortOption=${e.target.classList}`;
+    });
 }
+
+/*
+const dropDown = document.querySelector('.drop-down');
+const selectFragment = new DocumentFragment();
+
+const select = document.createElement('select');
+select.innerHTML = `
+    <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=createAt">최신순</option>
+    <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=priceDesc">가격 낮은순</option>
+    <option value="/products/category/?categoryName=${categoryName}&page=1&sortOption=priceAsc">가격 높은순</option>
+`;
+
+selectFragment.appendChild(select);
+dropDown.appendChild(selectFragment);
+*/
