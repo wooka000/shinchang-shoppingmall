@@ -87,12 +87,12 @@ async function productDetailRender() {
         // 바로 구매하기
         orderBtn.addEventListener('click', () => {
             if (localStorage.getItem('token')) {
-                const immediatePurchase = productNo;
+                const immediatePurchase = data;
                 immediatePurchase.quantity = num;
 
                 const { productName } = immediatePurchase;
 
-                const orderPd = JSON.stringify({ [productName]: immediatePurchase });
+                const orderPd = JSON.stringify({ [productNo]: immediatePurchase });
                 localStorage.setItem('buy-now', orderPd);
 
                 alert('결제 화면으로 넘어갑니다.');
