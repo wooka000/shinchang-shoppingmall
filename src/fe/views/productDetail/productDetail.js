@@ -89,7 +89,7 @@ async function productDetailRender() {
             if (confirmCart === true) {
                 location.href = '/cart';
             } else {
-                alert('즐거운 쇼핑 되시길 바랍니다🥰');
+                alert('즐거운 쇼핑 되시길 바랍니다.');
             }
         });
 
