@@ -69,12 +69,12 @@ async function popularCategoryRender() {
             if (categoryName != '인기 | 신상품') {
                 div.innerHTML = `
             <div class="category-img-wrapper">
-                <a href="/products/category?categoryName=${categoryName}">
+                <a href="/products/category?categoryName=${categoryName}&page=1&sortOption=createAt">
                     <img src="${image}" alt="goods 1" />
                 </a>
             <div>
             <div class="title">
-                <a href="/products/category?categoryName=${categoryName}"><strong>${categoryName}</strong></a>
+                <a href="/products/category?categoryName=${categoryName}&page=1&sortOption=createAt"><strong>${categoryName}</strong></a>
             </div>`;
                 popularCategoryFragment.appendChild(div);
             }
