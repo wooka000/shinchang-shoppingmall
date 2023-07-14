@@ -15,12 +15,11 @@
     <div class="container">
       <div class="header">
         <div id="title">
-          <img
-            src="../../public/assets/img/logo/떡잎마을샵-logo.png"
-            id="logo"
-          />
+          <a href="/">
+            <img src="../../public/assets/icon/logo/page-logo.png" id="logo" />
+          </a>
         </div>
-        <button id="button-back">
+        <button id="button-back" onclick="location.href='/'">
           <i class="fa-solid fa-right-from-bracket fa-lg"> 나가기</i>
         </button>
       </div>
@@ -28,16 +27,16 @@
         <div id="content-title">
           <div class="page first-page">관리 목록</div>
           <div class="page special-page">
-            <a href="../adminUser/adminUser.html">회원 관리</a>
+            <a href="/admin/user">회원 관리</a>
           </div>
           <div class="page">
-            <a href="../adminProduct/adminProduct.html">제품 관리</a>
+            <a href="/admin/product">제품 관리</a>
           </div>
           <div class="page">
-            <a href="../adminCategory/adminCategory.html">카테고리 관리</a>
+            <a href="/admin/category">카테고리 관리</a>
           </div>
           <div class="page">
-            <a href="../adminOrder/adminOrder.html">주문 관리</a>
+            <a href="/admin/order">주문 관리</a>
           </div>
         </div>
         <div id="content-detail">
@@ -45,7 +44,7 @@
           <div class="user-container">
             <div id="user-container-number">회원번호</div>
             <div id="user-container-name">회원명</div>
-            <div id="user-container-id">이메일</div>
+            <div id="user-container-id">아이디</div>
             <div id="user-container-date">가입날짜</div>
             <div id="user-container-authority">권한</div>
           </div>
