@@ -257,8 +257,8 @@ input[type=checkbox]:active {
 .order-thumb {
   display: flex;
   height: 74%;
-  gap: 2rem;
-  padding: 10px;
+  gap: 3rem;
+  padding: 15px;
 }
 
 .order-image {

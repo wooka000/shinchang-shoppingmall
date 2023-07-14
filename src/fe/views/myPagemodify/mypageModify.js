@@ -48,28 +48,27 @@ function execDaumPostcode() {
 
 // myPage api 불러와서 연결 회원 정보 그리기
 async function myPageModifyRender() {
-    try {
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-        const response = await fetch('/api/user/my', {
-            method: 'GET',
-            headers: {
-                authorization: `bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
+    const response = await fetch('/api/user/my', {
+        method: 'GET',
+        headers: {
+            authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
 
-        const data = await response.json();
+    const data = await response.json();
 
-        const { address1, address2, postalCode, email, name, phoneNumber, image } = data;
+    const { address1, address2, postalCode, email, name, phoneNumber } = data;
 
-        const contentsWrapper = document.querySelector('.contents');
-        const contentsFragment = new DocumentFragment();
+    const contentsWrapper = document.querySelector('.contents');
+    const contentsFragment = new DocumentFragment();
 
-        const div = document.createElement('div');
-        div.setAttribute('class', 'contents-wrapper');
+    const div = document.createElement('div');
+    div.setAttribute('class', 'contents-wrapper');
 
-        div.innerHTML = `
+    div.innerHTML = `
                     <div class="middle-wrapper">
                         <div class="name-wrapper">
                             <p>이름</p>
@@ -91,22 +90,11 @@ async function myPageModifyRender() {
                             <p>새 비밀번호 확인</p>
                             <input type="password" class="new-check-pw" />
                         </div>
+                    </div>
+                    <div class="last-wrapper">
                         <div class="number-wrapper">
                             <p>전화번호</p>
                             <input type="text" class="number-input" value="${phoneNumber}" />
-                        </div>
-                    </div>
-                    <div class="last-wrapper">
-                        <div class="img-wrapper">
-                            <div>
-                                <img src="${
-                                    image ? image : '../../public/assets/img/icon/mypage-user.svg'
-                                }" alt="preview-image" class="preview-image" />
-                            </div>
-                            <div class="file-wrapper"> 
-                            <input class="file-input" type="file" />
-                            <label for="file-input">업로드</label>
-                            </div>
                         </div>
                         <div class="address-wrapper">
                             <div>
@@ -129,89 +117,64 @@ async function myPageModifyRender() {
                     </div>
     `;
 
-        contentsFragment.appendChild(div);
-        contentsWrapper.appendChild(contentsFragment);
+    contentsFragment.appendChild(div);
+    contentsWrapper.appendChild(contentsFragment);
 
-        // 이미지 업로드 버튼 클릭시 발생 이벤트
-        function readImage(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
+    // 파일 업로드에 change 이벤트
+    const inputImage = document.querySelector('.file-input');
+    inputImage.addEventListener('change', (e) => {
+        readImage(e.target);
+    });
 
-                // 이미지가 로드가 된 경우
-                reader.onload = (e) => {
-                    const previewImage = document.querySelector('.preview-image');
-                    previewImage.src = e.target.result;
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
-        // 파일 업로드에 change 이벤트
-        const inputImage = document.querySelector('.file-input');
-        inputImage.addEventListener('change', (e) => {
-            readImage(e.target);
-        });
-
-        // 주소 검색 버튼 클릭시 발생 이벤트
-        const addressBtn = document.querySelector('.btn-address');
-        addressBtn.addEventListener('click', execDaumPostcode);
-    } catch (error) {
-        // location.href = '/error';
-    }
+    // 주소 검색 버튼 클릭시 발생 이벤트
+    const addressBtn = document.querySelector('.btn-address');
+    addressBtn.addEventListener('click', execDaumPostcode);
 }
 
 myPageModifyRender();
 
 // 회원 정보 수정 함수
 async function modifyUserInfo() {
-    try {
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-        // 이름 / 새로운 비밀번호 & 새로운 비밀번호 체크 / 주소 1 / 주소 2 / 우편번호 / 폰 넘버 / 이미지
-        const name = document.querySelector('.name-input').value;
-        const currentPassword = document.querySelector('.current-pw').value;
-        const newPassword = document.querySelector('.new-pw').value;
-        const checkNewPw = document.querySelector('.new-check-pw').value;
-        const address1 = document.querySelector('.address').value;
-        const address2 = document.querySelector('.detail-address').value;
-        const postalCode = document.querySelector('.postal-code').value;
-        const phoneNum = document.querySelector('.number-input').value;
-        const inputImage = document.querySelector('.file-input').files[0];
+    // 이름 / 새로운 비밀번호 & 새로운 비밀번호 체크 / 주소 1 / 주소 2 / 우편번호 / 폰 넘버 / 이미지
+    const name = document.querySelector('.name-input').value;
+    const currentPassword = document.querySelector('.current-pw').value;
+    const newPassword = document.querySelector('.new-pw').value;
+    const checkNewPw = document.querySelector('.new-check-pw').value;
+    const address1 = document.querySelector('.address').value;
+    const address2 = document.querySelector('.detail-address').value;
+    const postalCode = document.querySelector('.postal-code').value;
+    const phoneNum = document.querySelector('.number-input').value;
 
-        // formData 만들기
-        const formData = new FormData();
-
-        formData.append('name', name);
-        formData.append('address1', address1);
-        formData.append('address2', address2);
-        formData.append('postalCode', postalCode);
-        formData.append('phoneNumber', phoneNum);
-        formData.append('role', 'user' ? 'user' : 'admin');
-        // formData.set('profileImage', inputImage);
-
-        if (newPassword === checkNewPw) {
-            formData.set('currentPassword', currentPassword);
-
-            if (checkNewPw !== '') {
-                formData.set('password', checkNewPw);
-            }
-
+    if (newPassword === checkNewPw) {
+        if (checkNewPw !== '' && currentPassword) {
             const response = await fetch('/api/user/my', {
                 method: 'PATCH',
-                headers: {},
-                body: formData,
+                headers: {
+                    authorization: `bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    password: checkNewPw,
+                    currentPassword: currentPassword,
+                    address1: address1,
+                    address2: address2,
+                    postalCode: postalCode,
+                    phoneNumber: phoneNum,
+                    role: 'user' ? 'user' : 'admin',
+                }),
             });
 
             console.log(response);
+            const data = await response.json();
+            console.log(data);
             return true;
-        } else {
-            alert('현재 패스워드가 일치하지 않습니다!');
-            return false;
         }
-    } catch (error) {
-        console.log(error);
-        location.href = '/error';
+    } else {
+        alert('현재 패스워드가 일치하지 않습니다!');
+        return false;
     }
 }
 
@@ -227,23 +190,19 @@ modifyBtn.addEventListener('click', () => {
 
 // 회원 탈퇴 함수
 async function deleteUser() {
-    try {
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-        const response = await fetch('/api/user/my', {
-            method: 'DELETE',
-            headers: {
-                authorization: `bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
+    const response = await fetch('/api/user/my', {
+        method: 'DELETE',
+        headers: {
+            authorization: `bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
 
-        if (response.ok) {
-            localStorage.removeItem('token');
-            localStorage.removeItem('username');
-        }
-    } catch (error) {
-        // location.href = '/error';
+    if (response.ok) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
     }
 }
 
