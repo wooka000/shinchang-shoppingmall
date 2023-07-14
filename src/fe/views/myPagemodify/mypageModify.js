@@ -12,7 +12,7 @@ async function myPageModifyRender() {
 
     const data = await response.json();
 
-    const { address1, address2, postalCode, email, name, phoneNumber } = data;
+    const { address1, address2, postalCode, email, name, phoneNumber, role } = data;
 
     const contentsWrapper = document.querySelector('.contents');
     const contentsFragment = new DocumentFragment();
@@ -80,6 +80,16 @@ async function myPageModifyRender() {
     // 주소 검색 버튼 클릭시 발생 이벤트
     const addressBtn = document.querySelector('.btn-address');
     addressBtn.addEventListener('click', execDaumPostcode);
+
+    const modifyBtn = document.querySelector('.modify-btn');
+    modifyBtn.addEventListener('click', () => {
+        if (confirm('회원 정보를 수정하시겠습니까?') == true) {
+            if (modifyUserInfo(role)) {
+                alert('회원 정보가 수정되었습니다.');
+                location.href = '/mypage/modify';
+            }
+        }
+    });
 }
 
 myPageModifyRender();
@@ -133,7 +143,7 @@ function execDaumPostcode() {
 }
 
 // 회원 정보 수정 함수
-async function modifyUserInfo() {
+async function modifyUserInfo(role) {
     const token = localStorage.getItem('token');
 
     // 이름 / 새로운 비밀번호 & 새로운 비밀번호 체크 / 주소 1 / 주소 2 / 우편번호 / 폰 넘버 / 이미지
@@ -147,45 +157,33 @@ async function modifyUserInfo() {
     const phoneNum = document.querySelector('.number-input').value;
 
     if (newPassword === checkNewPw) {
-        if (checkNewPw !== '' && currentPassword) {
-            const response = await fetch('/api/user/my', {
-                method: 'PATCH',
-                headers: {
-                    authorization: `bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: name,
-                    password: checkNewPw,
-                    currentPassword: currentPassword,
-                    address1: address1,
-                    address2: address2,
-                    postalCode: postalCode,
-                    phoneNumber: phoneNum,
-                    role: role === 'user' ? 'user' : 'admin',
-                }),
-            });
+        role = role === 'user' ? 'user' : 'admin';
 
-            console.log(response);
-            const data = await response.json();
-            console.log(data);
-            return true;
-        }
+        const response = await fetch('/api/user/my', {
+            method: 'PATCH',
+            headers: {
+                authorization: `bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                password: checkNewPw,
+                currentPassword: currentPassword,
+                address1: address1,
+                address2: address2,
+                postalCode: postalCode,
+                phoneNumber: phoneNum,
+                role: role,
+            }),
+        });
+
+        console.log(response);
+        return true;
     } else {
         alert('현재 패스워드가 일치하지 않습니다!');
         return false;
     }
 }
-
-const modifyBtn = document.querySelector('.modify-btn');
-modifyBtn.addEventListener('click', () => {
-    if (confirm('회원 정보를 수정하시겠습니까?') == true) {
-        if (modifyUserInfo()) {
-            alert('회원 정보가 수정되었습니다.');
-            // location.href = '/mypage/modify';
-        }
-    }
-});
 
 // 회원 탈퇴 함수
 async function deleteUser() {
