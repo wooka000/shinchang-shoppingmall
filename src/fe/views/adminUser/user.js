@@ -28,14 +28,9 @@ async function fetchJSONData() {
         <div class="user-id">${email}</div>
         <div class="user-date">${subscriptionDate.slice(0, 10)}</div>
         <div class="user-authority">
-          <select id="authority-${_id}">
-            <option class="admin" ${
-              role === "admin" ? "selected" : ""
-            }>관리자</option>
-            <option class="not-admin" ${
-              role === "user" ? "selected" : ""
-            }>일반사용자</option>
-          </select>
+          <div id="authority-${_id}">
+            
+          </div>
         </div>
         <button id="user-delete-${_id}" class="user-delete">
           <i class="fa-solid fa-trash"></i>
@@ -43,6 +38,8 @@ async function fetchJSONData() {
       </div>
       `
     );
+    const authority = document.querySelector(`#authority-${_id}`);
+    authority.innerText = role === "user" ? "일반 사용자" : "관리자";
 
     //삭제(휴지통 버튼 클릭 시)
     const deleteButton = document.querySelector(`#user-delete-${_id}`);
