@@ -9,16 +9,67 @@ export class ProductsModel {
     return createdNewProduct;
   }
 
-  async findAllProducts(skip, limit) {
-    const products = await Product.find({})
-      .sort({ createAt: -1 })
-      .skip(skip)
-      .limit(limit);
+  async findAll() {
+    const products = await Product.find({});
     return products;
   }
 
-  async findAllByCategoryName(categoryName) {
-    const products = await Product.find({ categoryName });
+  async findAllProducts(page, perPage, sortOption) {
+    const sortQuery = {};
+
+    if (sortOption === "createAt") {
+      sortQuery.createAt = -1; // 최신순
+    } else if (sortOption === "priceDesc") {
+      sortQuery.price = -1; // 가격 내림차순
+    } else if (sortOption === "priceAsc") {
+      sortQuery.price = 1; // 가격 오름차순
+    }
+
+    const productsPromise = Product.find({})
+      .sort(sortQuery)
+      .skip(perPage * (page - 1))
+      .limit(perPage);
+    const countPromise = Product.countDocuments({});
+
+    const [products, count] = await Promise.all([
+      productsPromise,
+      countPromise,
+    ]);
+
+    const totalPage = Math.ceil(count / perPage);
+
+    return { products, totalPage };
+  }
+
+  async findAllByCategoryName(page, perPage, sortOption, categoryName) {
+    const sortQuery = {};
+
+    if (sortOption === "createAt") {
+      sortQuery.createAt = -1; // 최신순
+    } else if (sortOption === "priceDesc") {
+      sortQuery.price = -1; // 가격 내림차순
+    } else if (sortOption === "priceAsc") {
+      sortQuery.price = 1; // 가격 오름차순
+    }
+
+    const productsPromise = Product.find({ categoryName })
+      .sort(sortQuery)
+      .skip(perPage * (page - 1))
+      .limit(perPage);
+    const countPromise = Product.countDocuments({ categoryName });
+
+    const [products, count] = await Promise.all([
+      productsPromise,
+      countPromise,
+    ]);
+
+    const totalPage = Math.ceil(count / perPage);
+
+    return { products, totalPage };
+  }
+
+  async findAllByOnlyCategoryName(categoryName) {
+    const products = Product.find({ categoryName });
     return products;
   }
 

@@ -32,7 +32,7 @@ function footerRender() {
                         </div>
                     </div>
                     <div class="footer-logo">
-                        <img src="../../public/assets/img/logo/떡잎마을샵-logo.png" alt="Logo" />
+                        <img src="../../public/assets/img/logo/page-logo.png" alt="Logo" />
                     </div>
                     <div class="copyright">
                         <span>© 2023 TTEOGIPMAEULSHOP Co. ALL RIGHTS RESERVED.</span>
@@ -40,6 +40,11 @@ function footerRender() {
     `;
 
     footer.appendChild(div);
+
+    const logoClick = document.querySelector('.footer-logo');
+    logoClick.addEventListener('click', () => {
+        location.href = '/';
+    });
 }
 
 footerRender();

@@ -63,17 +63,30 @@ body {
     transform: translateX(-40%);
     display: flex;
     justify-content: space-around;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     text-align: center;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
 }
 
+.admin-btn > a > img {
+    margin-top: 2px;
+    display: none;
+}
+
+.search-btn > a > img {
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+}
+
 .sign-list a,
+.sign-list li,
 .hide-menu a {
     color: #000;
     text-decoration: none;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .sign-list a:hover {

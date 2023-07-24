@@ -19,6 +19,11 @@ export class OrderModel {
     return order;
   }
 
+  async findByUserId(userId) {
+    const order = await Order.find({ userId });
+    return order;
+  }
+
   async update({ orderNo, update }) {
     const filter = { orderNo };
     const option = { returnOriginal: false };

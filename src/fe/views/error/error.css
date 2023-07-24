@@ -1,0 +1,48 @@
+main {
+    width: 100%;
+    height: calc(100vh - 230px);
+    margin: 0 auto;
+    color: #000;
+    z-index: 0;
+    position: relative;
+    padding: 160px 160px 60px;
+}
+
+h1 {
+    font-size: 7rem;
+}
+
+strong {
+    color: rgb(251, 82, 82);
+    font-weight: bolder;
+}
+
+.error-contents {
+    margin: 2rem 0;
+}
+
+p {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    letter-spacing: 0.5px;
+}
+
+button {
+    border-radius: 10px;
+    width: 12rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    font-weight: 900;
+    background-color: #292929;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background-color: #fff;
+    color: black;
+
+    & span {
+        color: rgb(26, 180, 26);
+    }
+}
